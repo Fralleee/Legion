@@ -27,12 +27,17 @@ public class Builder2 : MonoBehaviour
       else if (Input.GetMouseButton(0) && currentPlaceable.placeable.CanBuild())
       {
         progress.value += Time.deltaTime;
-        if (progress.value >= progress.maxValue) currentPlaceable.placeable.Build();
+        if (progress.value >= progress.maxValue)
+        {
+          currentPlaceable.placeable.Build();
+          progress.value = 0f;
+        }
       }
 
       else if (Input.GetMouseButtonUp(0)) progress.value = 0f;
       else if (Input.GetMouseButtonDown(1))
       {
+        progress.value = 0f;
         currentPlaceable.placeable.Cancel();
         currentPlaceable.DeActivate();
       }

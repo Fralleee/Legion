@@ -3,13 +3,11 @@
 public class ToggleUI : MonoBehaviour
 {
   [SerializeField] KeyCode key;
+  [SerializeField] BoolVariable show;
   void Update()
   {
-    if (Input.GetKeyDown(key)) Toggle();
+    if (Input.GetKeyDown(key)) show.currentValue = !show.currentValue;
+    foreach (Transform t in transform) t.gameObject.SetActive(show.currentValue);
   }
 
-  public void Toggle()
-  {
-    foreach (Transform t in transform) t.gameObject.SetActive(!t.gameObject.activeSelf);
-  }
 }
