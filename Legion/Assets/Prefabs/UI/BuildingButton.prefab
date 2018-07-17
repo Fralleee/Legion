@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114276038213556274}
   - component: {fileID: 114833231047764062}
   m_Layer: 5
-  m_Name: Building
+  m_Name: BuildingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9411765}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -146,7 +146,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114256492075414902}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114833231047764062}
+        m_MethodName: SetCurrentPlaceable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114441308165428734
@@ -259,6 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf03dc887914264da01aa9cfcf6d7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlaceable: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
+  toggleBuildingListUI: {fileID: 11400000, guid: 6848f088fae3f0549bd106982e8443a4,
+    type: 2}
 --- !u!222 &222156206222992216
 CanvasRenderer:
   m_ObjectHideFlags: 1
