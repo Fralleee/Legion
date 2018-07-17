@@ -11,6 +11,7 @@ public class Builder : MonoBehaviour
   }
   States currentState = States.Default;
 
+  [SerializeField] float castTime = 1f;
   [SerializeField] List<Placeable> buildings = new List<Placeable>();
 
   void Update()

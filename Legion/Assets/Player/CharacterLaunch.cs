@@ -21,10 +21,11 @@ public class CharacterLaunch : MonoBehaviour
   [SerializeField] float castTime = 1f;
   [SerializeField] float launchForce = 25f;
   [SerializeField] FloatVariable cooldown;
-  [SerializeField] FloatVariable currentCastTime;
   [SerializeField] Transform landingIndicatorPrefab;
   [SerializeField] GameObject landingEffectPrefab;
   [SerializeField] Transform cameraFocusAtLaunch;
+
+  [SerializeField] StringRangeVariable progress;
 
   bool CanLaunch { get { return cooldown.currentValue <= 0 && controller.isGrounded && !Physics.Raycast(transform.position, Vector3.up, 25f); } }
 
@@ -61,27 +62,31 @@ public class CharacterLaunch : MonoBehaviour
   #region State handling
   void Default_Update()
   {
-    currentCastTime.currentValue = 0f;
+    //currentCastTime.currentValue = 0f;
     if (Input.GetKeyDown(KeyCode.Q) && CanLaunch) fsm.ChangeState(States.Charging);
   }
 
   void Charging_Enter()
   {
+    progress.text = "LAUNCHING!";
+    progress.minValue = 0f;
+    progress.maxValue = castTime;
+    progress.value = 0f;
     characterMotor.MovementBlockers.Add("Charging_Launch");
     animator.SetBool("Charging Launch", true);
     ActivateLaunchParticles();
   }
   void Charging_Update()
   {
-    if (Input.GetKey(KeyCode.Q) && CanLaunch) currentCastTime.currentValue += Time.deltaTime;
+    if (Input.GetKey(KeyCode.Q) && CanLaunch) progress.value += Time.deltaTime;
     else fsm.ChangeState(States.Default);
-    if (currentCastTime.currentValue >= castTime) fsm.ChangeState(States.Launching);
+    if (progress.value >= progress.maxValue) fsm.ChangeState(States.Launching);
   }
   void Charging_Exit()
   {
     characterMotor.MovementBlockers.Remove("Charging_Launch");
     DeActivateLaunchParticles();
-    currentCastTime.currentValue = 0f;
+    progress.value = 0f;
     animator.SetBool("Charging Launch", false);
   }
 

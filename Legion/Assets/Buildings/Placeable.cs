@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Placeable : ScriptableObject
 {
-  [SerializeField] float cost;
+  public float gold;
+  public float wood;
   [SerializeField] GameObject prefab;  
   GameObject instance;
 
@@ -13,6 +14,7 @@ public class Placeable : ScriptableObject
   {
     instance = Instantiate(prefab, new Vector3(parent.position.x, 0, parent.position.z) + parent.transform.forward * 2, Quaternion.Euler(0,0,0));
     instance.GetComponent<SnapToGrid>().parent = parent;
+    Debug.Log(instance);
   }
 
   public void Cancel()
@@ -22,7 +24,8 @@ public class Placeable : ScriptableObject
 
   public bool CanBuild()
   {
-    return instance.GetComponent<PlacementCollisionDetection>().allowedPlacement;
+    if(instance) return instance.GetComponent<PlacementCollisionDetection>().allowedPlacement;
+    return false;
   }
 
   public void Build()

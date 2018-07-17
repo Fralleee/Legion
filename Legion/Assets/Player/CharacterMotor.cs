@@ -25,6 +25,7 @@ public class CharacterMotor : MonoBehaviour
   {
     if (MovementBlockers.Count > 0)
     {
+      movement = Vector3.zero;
       if (useGravity)
       {
         vSpeed += Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
