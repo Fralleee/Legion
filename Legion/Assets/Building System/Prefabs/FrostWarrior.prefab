@@ -1971,8 +1971,6 @@ MonoBehaviour:
   - {fileID: 23056570789891654}
   successMaterial: {fileID: 2100000, guid: f5fb2704dad25d54c8dd280755b29b8d, type: 2}
   errorMaterial: {fileID: 2100000, guid: 8fe80650b15a8ab4d91adfd9c1ff6b79, type: 2}
-  allowedPosition: 1
-  allowedTerrain: 1
   allowedPlacement: 1
 --- !u!114 &114779296962949570
 MonoBehaviour:

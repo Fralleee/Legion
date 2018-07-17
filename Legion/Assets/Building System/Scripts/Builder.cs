@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Builder2 : MonoBehaviour
+public class Builder : MonoBehaviour
 {
   public enum States { Default, Placing }
   States currentState = States.Default;
 
   [SerializeField] StringRangeVariable progress;
   [SerializeField] float castTime = 0.5f;
+  [SerializeField] FloatVariable cooldown;
   [SerializeField] FloatReference gold;
   [SerializeField] FloatReference wood;
   [SerializeField] CurrentPlaceable currentPlaceable;
 
+  void Start() { cooldown.currentValue = 0; }
   void Update()
   {
+    if (cooldown.currentValue > 0) cooldown.currentValue = Mathf.Clamp(cooldown.currentValue - Time.deltaTime, 0, cooldown.defaultValue);
     if (currentPlaceable.placeable != null)
     {
       if (Input.GetMouseButtonDown(0))
@@ -31,6 +34,7 @@ public class Builder2 : MonoBehaviour
         {
           currentPlaceable.placeable.Build();
           progress.value = 0f;
+          cooldown.currentValue = cooldown.defaultValue;
         }
       }
 
