@@ -32,7 +32,6 @@ public class PlacementCollisionDetection : MonoBehaviour
 
   void OnTriggerExit(Collider other)
   {
-    Debug.Log("OnTriggerExit: " + other.gameObject);
     triggerList.Remove(other.gameObject.layer);
     allowedPosition = !triggerList.Contains(LayerMask.NameToLayer("Placeable"));
     allowedTerrain = triggerList.Contains(LayerMask.NameToLayer("Placeable Terrain"));
