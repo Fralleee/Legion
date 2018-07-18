@@ -56,7 +56,7 @@ public class StateMachine<T> : IStateMachine where T : struct, IConvertible, ICo
 
   private Dictionary<object, StateMapping> stateLookup;
 
-  private readonly string[] ignoredNames = { "add", "remove", "get", "set" };
+  //private readonly string[] ignoredNames = { "add", "remove", "get", "set" };
 
   private bool isInTransition = false;
   private IEnumerator currentTransition;

@@ -6,5 +6,7 @@ using UnityEngine;
 public class CurrentPlaceable : ScriptableObject
 {
   public Placeable placeable;
+  Placeable defaultValue = null;
+  void OnEnable() { placeable = defaultValue;   }
   public void DeActivate() { placeable = null; }
 }

@@ -11,9 +11,15 @@ public class PlacementCollisionDetection : MonoBehaviour
   List<Material> defaultMaterials = new List<Material>();
   List<int> triggerList = new List<int>();
 
-  bool allowedPosition = true;
-  bool allowedTerrain = true;
-  public bool allowedPlacement = true;
+  bool allowedPosition;
+  bool allowedTerrain;
+  public bool allowedPlacement
+  {
+    get
+    {
+      return allowedPosition && allowedTerrain;
+    }
+  }
 
   void Start()
   {
@@ -26,7 +32,6 @@ public class PlacementCollisionDetection : MonoBehaviour
     triggerList.Add(other.gameObject.layer);
     allowedPosition = !triggerList.Contains(LayerMask.NameToLayer("Placeable"));
     allowedTerrain = triggerList.Contains(LayerMask.NameToLayer("Placeable Terrain"));
-    allowedPlacement = allowedPosition && allowedTerrain;
     SetMaterial();
   }
 
@@ -35,7 +40,6 @@ public class PlacementCollisionDetection : MonoBehaviour
     triggerList.Remove(other.gameObject.layer);
     allowedPosition = !triggerList.Contains(LayerMask.NameToLayer("Placeable"));
     allowedTerrain = triggerList.Contains(LayerMask.NameToLayer("Placeable Terrain"));
-    allowedPlacement = allowedPosition && allowedTerrain;
     SetMaterial();
   }
 

@@ -10,25 +10,21 @@ public class CameraController : MonoBehaviour
   bool isLaunching;
   float cacheDistance;
 
-  [SerializeField] float sensitivityX = 4f;
-  [SerializeField] float sensitivityY = 1f;
   [SerializeField] float distance = 10f;
   [SerializeField] float cameraSmoothTime = 1f;
 
   Vector3 velocity = Vector3.zero;
-  Camera cam;
-  CharacterController character;
   const float Y_ANGLE_MIN = -25f;
   const float Y_ANGLE_MAX = 60f;
   float currentX;
   float currentY;
 
   public bool lockRotation;
+  int layerMask;
 
   void Start()
   {
-    cam = Camera.main;
-    character = lookAt.GetComponent<CharacterController>();
+    layerMask = 1 << LayerMask.NameToLayer("Environment");
   }
 
   void GatherInput()
@@ -61,7 +57,7 @@ public class CameraController : MonoBehaviour
     {
       Vector3 newPosition = lookAt.position + rotation * dir;
       RaycastHit hit;
-      if (Physics.Raycast(lookAt.position, newPosition - lookAt.position, out hit, distance)) newPosition = hit.point;
+      if (Physics.Raycast(lookAt.position, newPosition - lookAt.position, out hit, distance, layerMask)) newPosition = hit.point;
       transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, cameraSmoothTime);
       transform.LookAt(lookAt.position);
     }

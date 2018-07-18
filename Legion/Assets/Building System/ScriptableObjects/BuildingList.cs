@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BuildingList : ScriptableObject
 {
-  [SerializeField] string name;
+  [SerializeField] new string name;
   [SerializeField] string description;
   public List<Placeable> buildings = new List<Placeable>();
 }

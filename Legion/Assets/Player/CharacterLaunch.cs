@@ -27,6 +27,9 @@ public class CharacterLaunch : MonoBehaviour
 
   [SerializeField] StringRangeVariable progress;
 
+  [SerializeField] BlockerList blockerList;
+  [SerializeField] Blocker blocker;
+
   bool CanLaunch { get { return cooldown.currentValue <= 0 && controller.isGrounded && !Physics.Raycast(transform.position, Vector3.up, 25f); } }
 
   void Start()
@@ -63,28 +66,40 @@ public class CharacterLaunch : MonoBehaviour
   void Default_Update()
   {
     //currentCastTime.currentValue = 0f;
-    if (Input.GetKeyDown(KeyCode.Q) && CanLaunch) fsm.ChangeState(States.Charging);
+    if (Input.GetKeyDown(KeyCode.Q) && CanLaunch && !isBlocked) fsm.ChangeState(States.Charging);
   }
 
   void Charging_Enter()
   {
+    if (isBlocked)
+    {
+      fsm.ChangeState(States.Default);
+      progress.value = 0f;
+      return;
+    }
     progress.text = "LAUNCHING!";
     progress.minValue = 0f;
     progress.maxValue = castTime;
     progress.value = 0f;
-    characterMotor.MovementBlockers.Add("Charging_Launch");
+    ApplyBlocker();
     animator.SetBool("Charging Launch", true);
     ActivateLaunchParticles();
   }
   void Charging_Update()
   {
+    if (isBlocked)
+    {
+      fsm.ChangeState(States.Default);
+      progress.value = 0f;
+      return;
+    }
     if (Input.GetKey(KeyCode.Q) && CanLaunch) progress.value += Time.deltaTime;
     else fsm.ChangeState(States.Default);
     if (progress.value >= progress.maxValue) fsm.ChangeState(States.Launching);
   }
   void Charging_Exit()
   {
-    characterMotor.MovementBlockers.Remove("Charging_Launch");
+    RemoveBlocker();
     DeActivateLaunchParticles();
     progress.value = 0f;
     animator.SetBool("Charging Launch", false);
@@ -92,7 +107,7 @@ public class CharacterLaunch : MonoBehaviour
 
   void Launching_Enter()
   {
-    characterMotor.MovementBlockers.Add("Launching");
+    ApplyBlocker();
     ActivateLaunchParticles();
     cooldown.currentValue = cooldown.defaultValue;
     animator.SetTrigger("Launch");
@@ -152,7 +167,7 @@ public class CharacterLaunch : MonoBehaviour
   void ChangeCameraFocus() { cameraController.ToggleShoulderLook(cameraFocusAtLaunch); }
   void ActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Play(); }
   void DeActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Stop(); }
-  void RemoveMovementBlock() { characterMotor.MovementBlockers.Remove("Launching"); }
+  void RemoveMovementBlock() { RemoveBlocker(); }
   void DrawLanding()
   {
     Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
@@ -165,6 +180,25 @@ public class CharacterLaunch : MonoBehaviour
       landingIndicatorInstance.rotation = Quaternion.LookRotation(hit.normal);
     }
     else landingIndicatorInstance.gameObject.SetActive(false);
+  }
+
+
+  void ApplyBlocker()
+  {
+    if (!blockerList.blockers.Contains(blocker)) blockerList.blockers.Add(blocker);
+  }
+
+  void RemoveBlocker()
+  {
+    if (blockerList.blockers.Contains(blocker)) blockerList.blockers.Remove(blocker);
+  }
+
+  public bool isBlocked
+  {
+    get
+    {
+      return blockerList.blockers.Exists(x => x.type == BlockType.Action && x != blocker);
+    }
   }
 
 }

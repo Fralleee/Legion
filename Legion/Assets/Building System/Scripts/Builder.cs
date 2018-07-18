@@ -1,52 +1,75 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
-  public enum States { Default, Placing }
-  States currentState = States.Default;
-
-  [SerializeField] StringRangeVariable progress;
   [SerializeField] float castTime = 0.5f;
-  [SerializeField] FloatVariable cooldown;
-  [SerializeField] FloatReference gold;
-  [SerializeField] FloatReference wood;
+  [SerializeField] StringRangeVariable progress;
   [SerializeField] CurrentPlaceable currentPlaceable;
 
-  void Start() { cooldown.currentValue = 0; }
+  [SerializeField] BlockerList blockerList;
+  [SerializeField] Blocker blocker;
+  [SerializeField] BoolVariable toggleBuildButton;
+
+  bool isBuilding;
   void Update()
   {
-    if (cooldown.currentValue > 0) cooldown.currentValue = Mathf.Clamp(cooldown.currentValue - Time.deltaTime, 0, cooldown.defaultValue);
     if (currentPlaceable.placeable != null)
     {
-      if (Input.GetMouseButtonDown(0))
+      if (Input.GetMouseButtonDown(0) && !isBlocked && currentPlaceable.placeable.canBuild)
       {
         progress.text = "BUILDING!";
         progress.minValue = 0f;
         progress.maxValue = castTime;
         progress.value = 0f;
+        isBuilding = true;
+        ApplyBlocker();
       }
-      else if (Input.GetMouseButton(0) && currentPlaceable.placeable.CanBuild())
+      else if (isBuilding && !isBlocked)
       {
         progress.value += Time.deltaTime;
         if (progress.value >= progress.maxValue)
         {
           currentPlaceable.placeable.Build();
+          currentPlaceable.DeActivate();
           progress.value = 0f;
-          cooldown.currentValue = cooldown.defaultValue;
+          isBuilding = false;
+          RemoveBlocker();
         }
       }
-
-      else if (Input.GetMouseButtonUp(0)) progress.value = 0f;
-      else if (Input.GetMouseButtonDown(1))
+      else if (isBuilding && (Input.GetMouseButtonDown(1) || isBlocked))
       {
         progress.value = 0f;
         currentPlaceable.placeable.Cancel();
         currentPlaceable.DeActivate();
+        isBuilding = false;
       }
     }
 
-
   }
+
+  void ApplyBlocker()
+  {
+    if (!blockerList.blockers.Contains(blocker)) blockerList.blockers.Add(blocker);
+  }
+
+  void RemoveBlocker()
+  {
+    if (blockerList.blockers.Contains(blocker)) blockerList.blockers.Remove(blocker);
+  }
+
+  public bool isBlocked
+  {
+    get { return blockerList.blockers.Exists(x => x.type == BlockType.Action && x != blocker); }
+  }
+  
+  void OnTriggerEnter(Collider other)
+  {
+    if(other.gameObject.layer == LayerMask.NameToLayer("Placeable Terrain")) toggleBuildButton.currentValue = true;
+  }
+
+  void OnTriggerExit(Collider other)
+  {
+    if (other.gameObject.layer == LayerMask.NameToLayer("Placeable Terrain")) toggleBuildButton.currentValue = false;
+  }
+
 }

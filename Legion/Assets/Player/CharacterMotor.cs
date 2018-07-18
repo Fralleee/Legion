@@ -8,12 +8,19 @@ public class CharacterMotor : MonoBehaviour
   public float speed = 1f;
   public float fallMultiplier = 2.5f;
   public float jumpPower = 50f;
-  public List<string> MovementBlockers = new List<string>();
   [HideInInspector] public CharacterController controller;
 
   Animator animator;
   Vector3 movement;
   float vSpeed = 0;
+
+  [SerializeField] BlockerList blockerList;
+
+
+  bool isBlocked
+  {
+    get { return blockerList.blockers.Exists(x => x.type == BlockType.Action || x.type == BlockType.Movement); }
+  }
 
   void Start()
   {
@@ -23,7 +30,7 @@ public class CharacterMotor : MonoBehaviour
 
   void Update()
   {
-    if (MovementBlockers.Count > 0)
+    if (isBlocked)
     {
       movement = Vector3.zero;
       if (useGravity)
@@ -32,6 +39,8 @@ public class CharacterMotor : MonoBehaviour
         movement.y = vSpeed;
         controller.Move(movement * Time.deltaTime);
       }
+      animator.SetFloat("Vertical", 0, .1f, Time.deltaTime);
+      animator.SetFloat("Horizontal", 0, .1f, Time.deltaTime);
       return;
     }
     float movementVertical = Input.GetAxisRaw("Vertical");

@@ -8,7 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f4ff5c580c162643aa950a1ee3f8059, type: 3}
-  m_Name: CurrentPlaceable
+  m_Script: {fileID: 11500000, guid: 59584b647fd5dbf498e00bdfa8dd6437, type: 3}
+  m_Name: ToggleBuildButton
   m_EditorClassIdentifier: 
-  placeable: {fileID: 0}
+  defaultValue: 0
+  currentValue: 1
