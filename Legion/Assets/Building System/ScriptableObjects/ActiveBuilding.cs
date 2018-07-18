@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class CurrentPlaceable : ScriptableObject
+public class ActiveBuilding : ScriptableObject
 {
   public Placeable placeable;
   Placeable defaultValue = null;

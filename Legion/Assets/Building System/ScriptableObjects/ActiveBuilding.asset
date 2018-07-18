@@ -8,9 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c781375addd8e04cb1b547ef0102cc8, type: 3}
-  m_Name: StoneGolem
+  m_Script: {fileID: 11500000, guid: 7f4ff5c580c162643aa950a1ee3f8059, type: 3}
+  m_Name: ActiveBuilding
   m_EditorClassIdentifier: 
-  gold: 25
-  wood: 25
-  prefab: {fileID: 1691206179217438, guid: fe16b94572a04254e9757241e9e92235, type: 2}
+  placeable: {fileID: 0}

@@ -4,7 +4,7 @@ public class Builder : MonoBehaviour
 {
   [SerializeField] float castTime = 0.5f;
   [SerializeField] StringRangeVariable progress;
-  [SerializeField] CurrentPlaceable currentPlaceable;
+  [SerializeField] ActiveBuilding currentPlaceable;
 
   [SerializeField] BlockerList blockerList;
   [SerializeField] Blocker blocker;

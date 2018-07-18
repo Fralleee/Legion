@@ -41,9 +41,9 @@ GameObject:
   - component: {fileID: 114276038213556274}
   - component: {fileID: 114833231047764062}
   m_Layer: 5
-  m_Name: BuildingButton
+  m_Name: BuildListButtonUI
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: d946ba1095d83464e8cc8b1f16a4208c, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

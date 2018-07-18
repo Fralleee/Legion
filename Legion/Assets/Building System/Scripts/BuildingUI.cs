@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BuildingUI : MonoBehaviour
 {
-  [SerializeField] CurrentPlaceable currentPlaceable;
+  [SerializeField] ActiveBuilding currentPlaceable;
   [SerializeField] BoolVariable toggleBuildingListUI;
   Placeable placeable;
   public void Initialize(Placeable p)
