@@ -14,6 +14,7 @@ public class Builder : MonoBehaviour
   [SerializeField] FloatVariable Wood;
 
   [SerializeField] ActiveBuildingList activeBuildings;
+  Vector3 location;
 
   bool isBuilding;
   void Update()
@@ -27,6 +28,7 @@ public class Builder : MonoBehaviour
         progress.maxValue = castTime;
         progress.value = 0f;
         isBuilding = true;
+        currentPlaceable.placeable.LockPosition();
         ApplyBlocker();
       }
       else if (isBuilding && !isBlocked)

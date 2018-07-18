@@ -8,8 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6808627c7d89a374cae29a2844b10765, type: 3}
-  m_Name: LaunchCooldown
+  m_Script: {fileID: 11500000, guid: f3b9af7dfb195c743891a984d9cc0484, type: 3}
+  m_Name: Launch
   m_EditorClassIdentifier: 
-  defaultValue: 5
-  currentValue: 0
+  Physics: 0
+  Camera: 0
+  Movement: 1
+  Abilities: 1

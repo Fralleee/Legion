@@ -8,10 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3677f55868555d5459140892d5e05246, type: 3}
-  m_Name: CastingProgress
+  m_Script: {fileID: 11500000, guid: 6808627c7d89a374cae29a2844b10765, type: 3}
+  m_Name: LaunchCooldown
   m_EditorClassIdentifier: 
-  minValue: 0
-  maxValue: 1
-  value: 0
-  text: LAUNCHING!
+  defaultValue: 5
+  currentValue: 5

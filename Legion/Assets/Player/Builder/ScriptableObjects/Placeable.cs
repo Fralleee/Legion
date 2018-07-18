@@ -23,6 +23,11 @@ public class Placeable : ScriptableObject
     instance.GetComponent<SnapToGrid>().parent = parent;
   }
 
+  public void LockPosition()
+  {
+    Destroy(instance.GetComponent<SnapToGrid>());
+  }
+
   public void Cancel()
   {
     if(instance != null) Destroy(instance);

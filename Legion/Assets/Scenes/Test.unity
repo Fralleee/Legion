@@ -789,6 +789,7 @@ GameObject:
   - component: {fileID: 341554286}
   - component: {fileID: 341554289}
   - component: {fileID: 341554287}
+  - component: {fileID: 341554293}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -926,6 +927,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.0799999, z: 0}
+--- !u!114 &341554293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341554284}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b9278340493d34fb416af7d883d99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
+  activeAbility: {fileID: 0}
+  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
+  blocker: {fileID: 0}
+  hands:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &399640874 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4713754776425644, guid: fbd9b3adb96c68b458ff77233250a90a,
@@ -1353,7 +1372,7 @@ MonoBehaviour:
   lookAt: {fileID: 341554290}
   distance: 10
   cameraSmoothTime: 0.1
-  lockRotation: 0
+  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
 --- !u!114 &486475332
 MonoBehaviour:
   m_ObjectHideFlags: 0

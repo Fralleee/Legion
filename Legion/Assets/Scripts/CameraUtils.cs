@@ -12,12 +12,9 @@ public class CameraUtils : MonoBehaviour
   bool changingFOV;
   bool resettingFOV;
 
-  CameraController cameraController;
-
   void Start()
   {
     initialFOV = Camera.main.fieldOfView;
-    cameraController = GetComponent<CameraController>();
   }
 
   void Update()

@@ -10,7 +10,6 @@ public class Building : MonoBehaviour
   {
     GetComponent<PlacementCollisionDetection>().SetDefaultMaterials();
     Destroy(GetComponent<PlacementCollisionDetection>());
-    Destroy(GetComponent<SnapToGrid>());
     Destroy(GetComponent<Rigidbody>());
     transform.parent = parent;
   }

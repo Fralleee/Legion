@@ -8,7 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3b9af7dfb195c743891a984d9cc0484, type: 3}
-  m_Name: Launch
+  m_Script: {fileID: 11500000, guid: 3677f55868555d5459140892d5e05246, type: 3}
+  m_Name: CastingProgress
   m_EditorClassIdentifier: 
-  type: 2
+  minValue: 0
+  maxValue: 1
+  value: 0
+  text: BUILDING!
