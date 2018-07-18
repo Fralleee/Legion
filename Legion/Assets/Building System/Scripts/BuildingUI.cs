@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class BuildingUI : MonoBehaviour
 {
   [SerializeField] ActiveBuilding currentPlaceable;
-  [SerializeField] BoolVariable toggleBuildingListUI;
   Placeable placeable;
   public void Initialize(Placeable p)
   {
@@ -20,6 +19,5 @@ public class BuildingUI : MonoBehaviour
   {
     currentPlaceable.placeable = placeable;
     currentPlaceable.placeable.Initiate(GameObject.Find("Player").transform);
-    toggleBuildingListUI.currentValue = false;
   }
 }

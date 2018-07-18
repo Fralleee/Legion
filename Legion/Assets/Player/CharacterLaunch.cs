@@ -66,7 +66,7 @@ public class CharacterLaunch : MonoBehaviour
   void Default_Update()
   {
     //currentCastTime.currentValue = 0f;
-    if (Input.GetKeyDown(KeyCode.Q) && CanLaunch && !isBlocked) fsm.ChangeState(States.Charging);
+    if (Input.GetButtonDown("Launch") && CanLaunch && !isBlocked) fsm.ChangeState(States.Charging);
   }
 
   void Charging_Enter()
