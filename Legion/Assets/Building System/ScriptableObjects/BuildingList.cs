@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Building/Available Buildings List")]
 public class BuildingList : ScriptableObject
 {
   [SerializeField] new string name;

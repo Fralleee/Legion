@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
-public class ListBuildings : MonoBehaviour
+public class ListBuildingsUI : MonoBehaviour
 {
   [SerializeField] ActiveBuilding currentPlaceable;
   [SerializeField] GameEventArgs onBuildingSelect;
   [SerializeField] BuildingList buildingList;
   [SerializeField] GameObject prefab;
+  [SerializeField] FloatVariable Gold;
+  [SerializeField] FloatVariable Wood;
 
   void Start()
   {
@@ -25,8 +27,11 @@ public class ListBuildings : MonoBehaviour
 
   void SelectBuilding(int index)
   {
+    Placeable building = buildingList.buildings[index];
+    if (building.gold > Gold.currentValue || building.wood > Wood.currentValue) return;
     currentPlaceable.DeActivate();
     currentPlaceable.Activate(buildingList.buildings[index]);
     onBuildingSelect.Raise(null);
   }
+
 }

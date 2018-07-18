@@ -8,15 +8,9 @@
 + Distance of where the buildings location should be (based on player) should be based on angle of mouse look
 + Clickbug when ui is open (ignore clicks when ui is open)
 + Add all spawned buildings to "<Parent Name>'s buildings"
-
-
-
-# Build system
-- Subtract cost from players "wallet"
-- Use Runtime sets (scriptableobjects)
-  Add building to this set
-
-	
++ Subtract cost from players "wallet"
++ Organize asset menu
++ Remake blockers	
 	
 
 # Caster
@@ -25,9 +19,6 @@
   - Cooldown
   - Cost
   - Spell prefab (ISpell)  
-
-# UI
-- Building menu (use same dataset as Builder-behaviour)
 
   
 # Damageable

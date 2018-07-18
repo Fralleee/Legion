@@ -19,7 +19,7 @@ public class CharacterMotor : MonoBehaviour
 
   bool isBlocked
   {
-    get { return blockerList.blockers.Exists(x => x.type == BlockType.Action || x.type == BlockType.Movement); }
+    get { return blockerList.blockers.Exists(x => x.Movement); }
   }
 
   void Start()

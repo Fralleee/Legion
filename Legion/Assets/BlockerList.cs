@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Blocker/Blockers List")]
 public class BlockerList : ScriptableObject
 {
   public List<Blocker> blockers = new List<Blocker>();

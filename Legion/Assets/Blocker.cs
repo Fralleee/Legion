@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 
-public enum BlockType
-{
-  Action,   // Blocks everything
-  Movement, // Blocks movement and camera
-  Ability,  // Blocks abilities
-  Attack    // Blocks attack abilities
-}
-
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Blocker/Blocker")]
 public class Blocker : ScriptableObject
 {
-  public BlockType type;
+  public bool Physics;
+  public bool Camera;
+  public bool Movement;
+  public bool Abilities;
 }

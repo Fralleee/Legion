@@ -138,7 +138,7 @@ public class CharacterLaunch : MonoBehaviour
 
   void Landing_Enter()
   {
-    cameraUtils.LockRotation();
+    blocker.Camera = true;
     impactReceiver.AccelerateTo(landingIndicatorInstance.position);
     cameraUtils.ChangeFOV();
     animator.SetBool("Landing", true);
@@ -154,7 +154,7 @@ public class CharacterLaunch : MonoBehaviour
   {
     characterMotor.useGravity = true;
     cameraUtils.ResetFOV();
-    cameraUtils.UnlockRotation();
+    blocker.Camera = false;
     GameObject effect = Instantiate(landingEffectPrefab, landingIndicatorInstance.position, Quaternion.Euler(-90, 0, 0));
     Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
     Destroy(landingIndicatorInstance.gameObject);
@@ -197,7 +197,7 @@ public class CharacterLaunch : MonoBehaviour
   {
     get
     {
-      return blockerList.blockers.Exists(x => x.type == BlockType.Action && x != blocker);
+      return blockerList.blockers.Exists(x => x.Abilities && x != blocker);
     }
   }
 

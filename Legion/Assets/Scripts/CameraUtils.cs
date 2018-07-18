@@ -26,16 +26,6 @@ public class CameraUtils : MonoBehaviour
     if (resettingFOV) SettingFOV(zoomInFOV, initialFOV);
   }
 
-  public void LockRotation()
-  {
-    cameraController.lockRotation = true;
-  }
-
-  public void UnlockRotation()
-  {
-    cameraController.lockRotation = false;
-  }
-
   public void ChangeFOV()
   {
     changingFOV = true;

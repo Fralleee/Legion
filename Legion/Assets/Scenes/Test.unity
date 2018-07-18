@@ -848,6 +848,9 @@ MonoBehaviour:
   blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
   blocker: {fileID: 11400000, guid: b3dafe740a3488f4d9c00585e0585840, type: 2}
   toggleBuildButton: {fileID: 11400000, guid: 01afc8c7da891d94fb6e905e52fc7776, type: 2}
+  Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
+  Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
+  activeBuildings: {fileID: 11400000, guid: d238b4253a7d62246a58c59c4ff29661, type: 2}
 --- !u!114 &341554288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,6 +2759,8 @@ MonoBehaviour:
   onBuildingSelect: {fileID: 11400000, guid: 54099c60b8d125845a1325e4b6f97648, type: 2}
   buildingList: {fileID: 11400000, guid: d8aa72789b9ac374d9c9a992be7567be, type: 2}
   prefab: {fileID: 1236235691810176, guid: aae8012e7dc95c64998d6150116c251e, type: 2}
+  Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
+  Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
 --- !u!4 &923233769 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4585453369738264, guid: c7cebe2178705794aa9a9911f182d8c1,

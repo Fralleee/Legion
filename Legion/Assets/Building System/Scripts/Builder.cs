@@ -10,6 +10,11 @@ public class Builder : MonoBehaviour
   [SerializeField] Blocker blocker;
   [SerializeField] BoolVariable toggleBuildButton;
 
+  [SerializeField] FloatVariable Gold;
+  [SerializeField] FloatVariable Wood;
+
+  [SerializeField] ActiveBuildingList activeBuildings;
+
   bool isBuilding;
   void Update()
   {
@@ -29,6 +34,9 @@ public class Builder : MonoBehaviour
         progress.value += Time.deltaTime;
         if (progress.value >= progress.maxValue)
         {
+          Gold.currentValue -= currentPlaceable.placeable.gold;
+          Wood.currentValue -= currentPlaceable.placeable.wood;
+          activeBuildings.Add(currentPlaceable.instance);
           currentPlaceable.placeable.Build(name);
           currentPlaceable.DeActivate();
           progress.value = 0f;
@@ -59,7 +67,7 @@ public class Builder : MonoBehaviour
 
   public bool isBlocked
   {
-    get { return blockerList.blockers.Exists(x => x.type == BlockType.Action && x != blocker); }
+    get { return blockerList.blockers.Exists(x => x.Abilities && x != blocker); }
   }
   
   void OnTriggerEnter(Collider other)

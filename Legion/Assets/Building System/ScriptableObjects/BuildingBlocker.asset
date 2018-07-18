@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b9af7dfb195c743891a984d9cc0484, type: 3}
   m_Name: BuildingBlocker
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1

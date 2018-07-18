@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c784583e34ba54044af3097c3a3836d8, type: 3}
-  m_Name: DefaultBuildingList
+  m_Name: AvailableBuildings
   m_EditorClassIdentifier: 
   name: Default
   description: Default List

@@ -19,8 +19,13 @@ public class CameraController : MonoBehaviour
   float currentX;
   float currentY;
 
-  public bool lockRotation;
   int layerMask;
+
+  [SerializeField] BlockerList blockerList;
+  bool isBlocked
+  {
+    get { return blockerList.blockers.Exists(x => x.Camera); }
+  }
 
   void Start()
   {
@@ -29,7 +34,7 @@ public class CameraController : MonoBehaviour
 
   void GatherInput()
   {
-    if (lockRotation) return;
+    if (isBlocked) return;
     distance -= Input.GetAxis("Mouse ScrollWheel") * 5;
     currentX += Input.GetAxis("Mouse X");
     currentY -= Input.GetAxis("Mouse Y");
@@ -51,7 +56,6 @@ public class CameraController : MonoBehaviour
       float smoothing = extraSmoothing ? 0.15f : cameraSmoothTime;
       transform.position = Vector3.SmoothDamp(transform.position, newPosition + offset, ref velocity, smoothing);
       transform.LookAt(lookAt.position + offset);
-      lockRotation = extraSmoothing;
     }
     else
     {
@@ -71,7 +75,6 @@ public class CameraController : MonoBehaviour
     if (newLookAt)
     {
       isLaunching = true;
-      lockRotation = true;
       head = newLookAt;
       cacheDistance = distance;
       distance = 1.5f;

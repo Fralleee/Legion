@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Variables/StringRange")]
 public class StringRangeVariable : RangeVariable
 {
   public string text = "";

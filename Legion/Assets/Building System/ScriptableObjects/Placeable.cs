@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Building/Placeable")]
 public class Placeable : ScriptableObject
 {
   public float gold;
@@ -37,6 +35,11 @@ public class Placeable : ScriptableObject
     if(!parentBuildingRoot) parentBuildingRoot = new GameObject(name + "s buildings");
     instance.GetComponent<Building>().Initiate(parentBuildingRoot.transform);
     instance = null;
+  }
+
+  public GameObject GetInstance()
+  {
+    return instance;
   }
 
 }

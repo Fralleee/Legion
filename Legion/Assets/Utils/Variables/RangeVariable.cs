@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Variables/Range")]
 public class RangeVariable : ScriptableObject
 {
   public float minValue = 0f;
