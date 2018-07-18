@@ -1,3 +1,5 @@
+
+
 # Caster
 - Create caster behaviour, kind of same as Builder
 - Make castable scriptableobject
@@ -7,23 +9,33 @@
 
   
 # Damageable
-- Implement damage directions
-  Animate accordingly
-  Use events?
+- Implement damage & health
+
+# Caster
+- Simple damaging script
   
-# Improve character
-https://www.youtube.com/watch?v=C2wwxd8SnKY
 
 
 # GameControls
 - Rounds
 - GameState: Preparation, Live, Ended
+- Conditions
 
 # AI
 
 
+# Improve character
+- https://www.youtube.com/watch?v=C2wwxd8SnKY
+
+
+
+
 
 ## Much Laters
+# Damageable
+- Implement damage directions
+  Animate accordingly
+	
 # Controller
 - Turn when above certain degree (45deg-)
   Otherwise turn characters upper body towards direction
