@@ -1,0 +1,54 @@
++ Only show build button if inside placeable terrain
++ Fix blockers issue
++ Fix build one responsibility
++ Camera collision detection ony on Environment layer
++ Fix some names + folders
++ Fix input values: Launch, Build, Building1, Building2, Building3, Ability1, Ability2
++ Player then selects a building (either keys 1-10 or latest (E))
++ Distance of where the buildings location should be (based on player) should be based on angle of mouse look
++ Clickbug when ui is open (ignore clicks when ui is open)
++ Add all spawned buildings to "<Parent Name>'s buildings"
+
+
+
+# Build system
+- Subtract cost from players "wallet"
+- Use Runtime sets (scriptableobjects)
+  Add building to this set
+
+	
+	
+
+# Caster
+- Create caster behaviour, kind of same as Builder
+- Make castable scriptableobject
+  - Cooldown
+  - Cost
+  - Spell prefab (ISpell)  
+
+# UI
+- Building menu (use same dataset as Builder-behaviour)
+
+  
+# Damageable
+- Implement damage directions
+  Animate accordingly
+  Use events?
+  
+  
+
+
+# Improve character
+https://www.youtube.com/watch?v=C2wwxd8SnKY
+
+
+## Laters
+# Controller
+- Turn when above certain degree (45deg-)
+  Otherwise turn characters upper body towards direction
+
+# InventorySystem
+- Kolla unitegrejerna
+
+# Armor/damage types
+- Use scriptableobjects, ryan hipple => elements talk (unite 2017)
