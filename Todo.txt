@@ -6,6 +6,8 @@
   - Cooldown
   - Cost
   - Spell prefab (ISpell)  
+- Try reconstructing Launch as an ability instead
+  Probably need an enum that says AbilityType [Default, Attack, Ultimate]
 
   
 # Damageable
