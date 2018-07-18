@@ -15,4 +15,4 @@ MonoBehaviour:
   description: Default List
   buildings:
   - {fileID: 11400000, guid: e97a866f9fcc02142be39603c2bf9be6, type: 2}
-  - {fileID: 11400000, guid: aebc8e1f6d366344fad94a0070d3ebdb, type: 2}
+  - {fileID: 11400000, guid: 6aa39303d650bb848b8040751f1394d9, type: 2}

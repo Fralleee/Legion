@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 118c1440644eccb46ba5d8a2657a9556
+guid: 4afbc9197e05542408b98d6f922c4429
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -228,7 +228,7 @@ ModelImporter:
     2100008: Ellen_Tear_Mat
     2100010: Default_Material
     4300000: Ellen_Body
-    7400000: EllenSpawn
+    7400000: BuildingPose
     9500000: //RootNode
     13700000: Ellen_Body
     2186277476908879412: ImportLogs
@@ -265,10 +265,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: EllenSpawn
+      name: BuildingPose
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 107
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -321,7 +321,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 1
+  copyAvatar: 0
   humanDescription:
     serializedVersion: 2
     human:
@@ -1324,8 +1324,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4afbc9197e05542408b98d6f922c4429,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0

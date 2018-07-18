@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c781375addd8e04cb1b547ef0102cc8, type: 3}
-  m_Name: StoneGolemPlaceable
+  m_Name: MechanicalGolem
   m_EditorClassIdentifier: 
-  gold: 25
-  wood: 25
-  prefab: {fileID: 1691206179217438, guid: fe16b94572a04254e9757241e9e92235, type: 2}
+  gold: 50
+  wood: 10
+  prefab: {fileID: 1632255309608786, guid: 856784848ccc58a4fa46a4492e00ba91, type: 2}
