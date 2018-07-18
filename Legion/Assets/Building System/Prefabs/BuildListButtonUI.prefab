@@ -217,6 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf03dc887914264da01aa9cfcf6d7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
+  Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
+  errorColor: {r: 1, g: 0.77428734, b: 0.7490196, a: 0}
+  successColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!222 &222156206222992216
 CanvasRenderer:
   m_ObjectHideFlags: 1

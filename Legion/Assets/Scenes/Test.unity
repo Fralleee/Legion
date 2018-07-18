@@ -860,6 +860,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 11400000, guid: ddd188b5fe4643a4b8110b1478a412a8, type: 2}
+  Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
+  Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
 --- !u!114 &341554289
 MonoBehaviour:
   m_ObjectHideFlags: 0
