@@ -29,7 +29,7 @@ public class Builder : MonoBehaviour
         progress.value += Time.deltaTime;
         if (progress.value >= progress.maxValue)
         {
-          currentPlaceable.placeable.Build();
+          currentPlaceable.placeable.Build(name);
           currentPlaceable.DeActivate();
           progress.value = 0f;
           isBuilding = false;

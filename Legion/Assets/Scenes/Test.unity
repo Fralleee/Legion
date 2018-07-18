@@ -2750,6 +2750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d74a219e1ddc7438f1d29cf34c2edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlaceable: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
+  onBuildingSelect: {fileID: 11400000, guid: 54099c60b8d125845a1325e4b6f97648, type: 2}
   buildingList: {fileID: 11400000, guid: d8aa72789b9ac374d9c9a992be7567be, type: 2}
   prefab: {fileID: 1236235691810176, guid: aae8012e7dc95c64998d6150116c251e, type: 2}
 --- !u!4 &923233769 stripped
@@ -3465,6 +3467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f716ce27b2b0fed4dad94cfadc29d313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeBuilding: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
 --- !u!1 &1120389163
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,8 +25,8 @@ public class ListBuildings : MonoBehaviour
 
   void SelectBuilding(int index)
   {
-    currentPlaceable.placeable = buildingList.buildings[index];
-    currentPlaceable.placeable.Initiate(GameObject.Find("Player").transform);
+    currentPlaceable.DeActivate();
+    currentPlaceable.Activate(buildingList.buildings[index]);
     onBuildingSelect.Raise(null);
   }
 }

@@ -31,9 +31,11 @@ public class Placeable : ScriptableObject
   }
 
 
-  public void Build()
+  public void Build(string name)
   {
-    instance.GetComponent<Building>().Initiate();
+    var parentBuildingRoot = GameObject.Find(name + "s buildings");
+    if(!parentBuildingRoot) parentBuildingRoot = new GameObject(name + "s buildings");
+    instance.GetComponent<Building>().Initiate(parentBuildingRoot.transform);
     instance = null;
   }
 
