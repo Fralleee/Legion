@@ -6,10 +6,12 @@ public class ToggleBuildMenu : MonoBehaviour
 {
   bool displayItems = false;
   [SerializeField] ActiveBuilding activeBuilding;
+  [SerializeField] BoolVariable canShowBuildMenu;
 
   void Update()
   {
-    if (Input.GetButtonDown("Build")) Toggle();
+    if (displayItems && Input.GetButtonDown("Build")) Toggle();
+    else if (Input.GetButtonDown("Build") && canShowBuildMenu.currentValue) Toggle();
   }
 
   public void Toggle()

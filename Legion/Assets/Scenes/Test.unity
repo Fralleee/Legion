@@ -3494,6 +3494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeBuilding: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
+  canShowBuildMenu: {fileID: 11400000, guid: 01afc8c7da891d94fb6e905e52fc7776, type: 2}
 --- !u!1 &1120389163
 GameObject:
   m_ObjectHideFlags: 0
