@@ -1,4 +1,15 @@
+THE WIZARD MUST BE STOPPED
+Orange vs Blue
+Last boss: The Wizard
+
 - Rename Third Party => Libraries
+
+---- Use a namespace: Fralle ----
+- Create Colours-file, static class
+- Create extension methods - Look through code to see if there are more cases	
+	
+	
+
 
 # Caster
 - Create caster behaviour, kind of same as Builder
