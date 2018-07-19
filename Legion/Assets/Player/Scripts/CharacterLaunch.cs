@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterLaunch : MonoBehaviour
+public class CharacterLaunch : BlockerBehaviour
 {
 
   StateMachine<States> fsm;
@@ -26,10 +26,7 @@ public class CharacterLaunch : MonoBehaviour
   [SerializeField] Transform cameraFocusAtLaunch;
 
   [SerializeField] StringRangeVariable progress;
-
-  [SerializeField] BlockerList blockerList;
-  [SerializeField] Blocker blocker;
-
+  
   bool CanLaunch { get { return cooldown.currentValue <= 0 && controller.isGrounded && !Physics.Raycast(transform.position, Vector3.up, 25f); } }
 
   void Start()
@@ -180,17 +177,6 @@ public class CharacterLaunch : MonoBehaviour
       landingIndicatorInstance.rotation = Quaternion.LookRotation(hit.normal);
     }
     else landingIndicatorInstance.gameObject.SetActive(false);
-  }
-
-
-  void ApplyBlocker()
-  {
-    if (!blockerList.blockers.Contains(blocker)) blockerList.blockers.Add(blocker);
-  }
-
-  void RemoveBlocker()
-  {
-    if (blockerList.blockers.Contains(blocker)) blockerList.blockers.Remove(blocker);
   }
 
   public bool isBlocked

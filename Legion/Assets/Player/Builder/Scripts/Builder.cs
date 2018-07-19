@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 
-public class Builder : MonoBehaviour
+public class Builder : BlockerBehaviour
 {
   [SerializeField] float castTime = 0.5f;
   [SerializeField] StringRangeVariable progress;
   [SerializeField] ActiveBuilding currentPlaceable;
 
-  [SerializeField] BlockerList blockerList;
-  [SerializeField] Blocker blocker;
   [SerializeField] BoolVariable toggleBuildButton;
 
   [SerializeField] FloatVariable Gold;
@@ -56,17 +54,7 @@ public class Builder : MonoBehaviour
     }
 
   }
-
-  void ApplyBlocker()
-  {
-    if (!blockerList.blockers.Contains(blocker)) blockerList.blockers.Add(blocker);
-  }
-
-  void RemoveBlocker()
-  {
-    if (blockerList.blockers.Contains(blocker)) blockerList.blockers.Remove(blocker);
-  }
-
+  
   public bool isBlocked
   {
     get { return blockerList.blockers.Exists(x => x.Abilities && x != blocker); }

@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fralle;
 
-public class Caster : MonoBehaviour
+public class Caster : BlockerBehaviour
 {
   [SerializeField] StringRangeVariable progress;
   [SerializeField] ActiveAbility activeAbility;
-  
-  [SerializeField] BlockerList blockerList;
-  [SerializeField] Blocker blocker;
 
   public Transform[] hands = new Transform[2];
 
@@ -45,17 +43,6 @@ public class Caster : MonoBehaviour
       }
     }
 
-  }
-
-
-  void ApplyBlocker()
-  {
-    if (!blockerList.blockers.Contains(blocker)) blockerList.blockers.Add(blocker);
-  }
-
-  void RemoveBlocker()
-  {
-    if (blockerList.blockers.Contains(blocker)) blockerList.blockers.Remove(blocker);
   }
 
   public bool isBlocked

@@ -10,7 +10,7 @@ public class SnapToGrid : MonoBehaviour
   {
     float camXRot = Camera.main.transform.eulerAngles.x;
     int zPosition = camXRot > 30 ? 2 : camXRot > 20 ? 3 : camXRot > 10 ? 4 : 5;
-    Vector3 position = new Vector3(parent.position.x, 0, parent.position.z) + parent.forward * zPosition;    
+    Vector3 position = parent.position.WithY(0) + parent.forward * zPosition;    
     transform.position = position.SnapToGrid(factor);
   }
 }

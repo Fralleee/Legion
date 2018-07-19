@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController : BlockerBehaviour
 {
 
   public Transform lookAt;
@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
 
   int layerMask;
 
-  [SerializeField] BlockerList blockerList;
   bool isBlocked
   {
     get { return blockerList.blockers.Exists(x => x.Camera); }

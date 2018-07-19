@@ -2,13 +2,10 @@ THE WIZARD MUST BE STOPPED
 Orange vs Blue
 Last boss: The Wizard
 
-- Rename Third Party => Libraries
+- Review all code, move duplicate code to Fralle.Core if mainstream
+- Refactor code to use utils code and extensions	
 
----- Use a namespace: Fralle ----
-- Create Colours-file, static class
-- Create extension methods - Look through code to see if there are more cases	
-	
-	
+
 
 
 # Caster

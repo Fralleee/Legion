@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TextSetter : MonoBehaviour
+public class StringRangeTextSetter : MonoBehaviour
 {
   [SerializeField] StringRangeVariable range;
   Text text;

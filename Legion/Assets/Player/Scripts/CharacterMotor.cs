@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMotor : MonoBehaviour
+public class CharacterMotor : BlockerBehaviour
 {
   public bool useGravity = true;
   public float speed = 1f;
@@ -13,8 +13,6 @@ public class CharacterMotor : MonoBehaviour
   Animator animator;
   Vector3 movement;
   float vSpeed = 0;
-
-  [SerializeField] BlockerList blockerList;
 
 
   bool isBlocked

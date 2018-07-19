@@ -821,6 +821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2403ca09e9f67e243b36e8a3771edf88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
+  blocker: {fileID: 11400000, guid: b2bf234fff3e7ac47a0704630f99f49c, type: 2}
   castTime: 1
   launchForce: 125
   cooldown: {fileID: 11400000, guid: fd05608297647c248b1f302d37705d21, type: 2}
@@ -830,8 +832,6 @@ MonoBehaviour:
     type: 2}
   cameraFocusAtLaunch: {fileID: 1319253700}
   progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
-  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
-  blocker: {fileID: 11400000, guid: b2bf234fff3e7ac47a0704630f99f49c, type: 2}
 --- !u!114 &341554287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,11 +843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d0f1e2a95be5c47bbc4aaafb6fdb64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
+  blocker: {fileID: 11400000, guid: b3dafe740a3488f4d9c00585e0585840, type: 2}
   castTime: 0.5
   progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
   currentPlaceable: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
-  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
-  blocker: {fileID: 11400000, guid: b3dafe740a3488f4d9c00585e0585840, type: 2}
   toggleBuildButton: {fileID: 11400000, guid: 01afc8c7da891d94fb6e905e52fc7776, type: 2}
   Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
   Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
@@ -904,12 +904,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dc4582b266930468d3980f8dbe3ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
+  blocker: {fileID: 0}
   useGravity: 1
   speed: 7
   fallMultiplier: 3
   jumpPower: 8.5
   controller: {fileID: 0}
-  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
 --- !u!143 &341554292
 CharacterController:
   m_ObjectHideFlags: 0
@@ -938,10 +939,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b9278340493d34fb416af7d883d99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
-  activeAbility: {fileID: 0}
   blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
   blocker: {fileID: 0}
+  progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
+  activeAbility: {fileID: 0}
   hands:
   - {fileID: 0}
   - {fileID: 0}
@@ -1369,10 +1370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82fed94b41c6934ca669ce22dee8a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
+  blocker: {fileID: 0}
   lookAt: {fileID: 341554290}
   distance: 10
-  cameraSmoothTime: 0.1
-  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
+  cameraSmoothTime: 0.05
 --- !u!114 &486475332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4878,6 +4880,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114695522174563694, guid: bbc7d851c5042794c803cffd9cce01ef,
+        type: 2}
+      propertyPath: showOnlyWhenPositive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbc7d851c5042794c803cffd9cce01ef, type: 2}
   m_IsPrefabParent: 0
@@ -6725,6 +6732,18 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114879176812157698, guid: 3640081fbf246444bb3c04c20f68e176,
+        type: 2}
+      propertyPath: obj
+      value: 
+      objectReference: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781,
+        type: 2}
+    - target: {fileID: 114879176812157698, guid: 3640081fbf246444bb3c04c20f68e176,
+        type: 2}
+      propertyPath: range
+      value: 
+      objectReference: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3640081fbf246444bb3c04c20f68e176, type: 2}
   m_IsPrefabParent: 0
