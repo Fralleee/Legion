@@ -1,18 +1,23 @@
-THE WIZARD MUST BE STOPPED
-Orange vs Blue
-Last boss: The Wizard
-
 + Glödande particles
 + Character rotation utanför smoothdamp
 + Fixa in CameraShake
++ Gamemanager som scriptableobject
 
-- Gamemanager som scriptableobject
-  - Timer : ScriptableObject (Add to timer button)
-	- State : Enum
-	- Skip (next round) -button
+
 
 - Review all code, move duplicate code to Fralle.Core if mainstream
 - Refactor code to use utils code and extensions	
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -64,3 +69,8 @@ Last boss: The Wizard
 
 # Armor/damage types
 - Use scriptableobjects, ryan hipple => elements talk (unite 2017)
+
+# Game Info
+- THE WIZARD MUST BE STOPPED
+- Orange vs Blue
+- Last boss: The Wizard

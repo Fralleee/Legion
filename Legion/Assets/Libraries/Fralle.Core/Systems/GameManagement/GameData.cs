@@ -27,6 +27,11 @@ public class GameData : ScriptableObject
   // Stats
   // Unit info
   // Conditions?
+  void CheckConditions()
+  {
+    winCondition = true;
+  }
+
   public void NextState()
   {
     switch (state)
