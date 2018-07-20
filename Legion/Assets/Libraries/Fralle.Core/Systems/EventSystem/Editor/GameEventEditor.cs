@@ -6,7 +6,6 @@ using UnityEngine;
 [CustomEditor(typeof(GameEvent))]
 public class GameEventEditor : Editor
 {
-
   public override void OnInspectorGUI()
   {
     base.OnInspectorGUI();
@@ -14,5 +13,4 @@ public class GameEventEditor : Editor
     GameEvent e = (GameEvent)target;
     if (GUILayout.Button("Raise")) e.Raise();
   }
-
 }

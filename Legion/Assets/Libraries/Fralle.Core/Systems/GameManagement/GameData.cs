@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState
+public enum GameStates
 {
   Waiting,
-  MatchStart,
   Preparation,
   Live,
   Ended,
@@ -14,10 +13,11 @@ public enum GameState
 [CreateAssetMenu(menuName = "Game Management/Game Data")]
 public class GameData : ScriptableObject
 {
-  [SerializeField] Timer timer;
-  [SerializeField] GameState state;
-  [SerializeField] IntVariable round;
-  GameState defaultState = GameState.Waiting;
+  public Timer timer;
+  public GameStates state;
+  public IntVariable round;
+
+  GameStates defaultState = GameStates.Waiting;
 
   void OnEnable() { state = defaultState; }
 
@@ -33,25 +33,22 @@ public class GameData : ScriptableObject
   {
     winCondition = true;
   }
-
+  
   public void NextState()
   {
     switch (state)
     {
-      case GameState.Waiting:
-        state = GameState.MatchStart;
+      case GameStates.Waiting:
+        state = GameStates.Preparation;
         break;
-      case GameState.MatchStart:
-        state = GameState.Preparation;
+      case GameStates.Preparation:
+        state = GameStates.Live;
         break;
-      case GameState.Preparation:
-        state = GameState.Live;
+      case GameStates.Live:
+        if (winCondition) state = GameStates.Ended;
+        else state = GameStates.Preparation;
         break;
-      case GameState.Live:
-        if (winCondition) state = GameState.Ended;
-        else state = GameState.Preparation;
-        break;
-      case GameState.Ended:
+      case GameStates.Ended:
         // Back to menu
         break;
       default:
@@ -60,6 +57,11 @@ public class GameData : ScriptableObject
         break;
     }
   }
+
+  public bool isWaiting { get { return state == GameStates.Waiting; } }
+  public bool isPreparation { get { return state == GameStates.Preparation; } }
+  public bool isLive { get { return state == GameStates.Live; } }
+  public bool isEnded { get { return state == GameStates.Ended; } }
 
   public void Victory()
   {

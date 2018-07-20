@@ -7,16 +7,17 @@
 + Split Builder into two, one that performs actions and one that gathers input
 + Remade GameEvent
 + UI has no control over activation of placeable, instead it just sets ActiveBuilding and raises events
-
-- Remove old GameEvents
++ Remove old GameEvents
 	
 
 	
 	
 
 # GameControls
-- Start State: 
+- LiveStart: 
   Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
+	
+- LiveUpdate:
 	After small delay add the old model and slowly apply dissolve to make it visible
 
 # AI

@@ -5,11 +5,20 @@ public class Timer : ScriptableObject
 {
   [SerializeField] FloatReference startTime;
   [SerializeField] FloatReference prepTime;
-  public FloatVariable currentTime;
+  public FloatVariable roundTime;
   public FloatVariable elapsedTime;
+  public FloatVariable countdown;
 
   void OnEnable() {
-    currentTime.currentValue = 0;
+    roundTime.currentValue = 0;
     elapsedTime.currentValue = 0;
   }
+
+  public void Tick(float time) { elapsedTime.currentValue += time; }
+  public void RoundTick(float time) { roundTime.currentValue += time; }
+  public void CountdownTick(float time) { countdown.currentValue -= time; }
+  public bool CountdownReached { get { return countdown.currentValue <= 0;  } }
+  public void ResetCountdown() { countdown.currentValue = countdown.defaultValue; }
+  public void ResetRoundTime() { roundTime.currentValue = 0f; }
+  
 }

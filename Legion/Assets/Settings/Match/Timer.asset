@@ -19,5 +19,6 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 30
     Variable: {fileID: 0}
-  currentTime: {fileID: 11400000, guid: d7b5357b0b98a5343a9a5cf2847425fb, type: 2}
+  roundTime: {fileID: 11400000, guid: d7b5357b0b98a5343a9a5cf2847425fb, type: 2}
   elapsedTime: {fileID: 11400000, guid: 915b6709e5125a04c83290d16a44f094, type: 2}
+  countdown: {fileID: 11400000, guid: 26726cfe11e735348a1d15a75b3adf3d, type: 2}

@@ -5,7 +5,7 @@ public class Builder : BlockerBehaviour
   public ActiveBuilding activeBuilding;
   [HideInInspector] public bool isBuilding;
 
-  [SerializeField] float castTime = 0.5f;
+  [SerializeField] float castTime = 5.5f;
 
   [SerializeField] StringRangeVariable progress;
 
@@ -17,18 +17,26 @@ public class Builder : BlockerBehaviour
   [SerializeField] BuildingList availableBuildings;
   [SerializeField] ActiveBuildingList activeBuildings;
 
+  [SerializeField] GameData gameData;
+
   Vector3 location;
 
 
 
   void Update()
   {
+    if (!gameData.isPreparation)
+    {
+      toggleBuildButton.currentValue = false;
+      InterruptBuilding();
+      return;
+    }
     ContinueBuilding();
   }
 
   public void StartBuilding()
   {
-    if (!isBlocked && activeBuilding.CanBuild)
+    if (gameData.isPreparation && !isBlocked && activeBuilding.CanBuild)
     {
       progress.text = "BUILDING!";
       progress.minValue = 0f;
@@ -61,11 +69,12 @@ public class Builder : BlockerBehaviour
 
   public void InterruptBuilding()
   {
-    if (isBuilding && isBlocked)
+    if (isBuilding)
     {
       progress.value = 0f;
       activeBuilding.Cancel();
       activeBuilding.DeActivate();
+      RemoveBlocker();
       isBuilding = false;
     }
   }
@@ -77,6 +86,7 @@ public class Builder : BlockerBehaviour
       progress.value = 0f;
       activeBuilding.Cancel();
       activeBuilding.DeActivate();
+      RemoveBlocker();
       isBuilding = false;
     }
   }
@@ -86,7 +96,7 @@ public class Builder : BlockerBehaviour
     get { return blockerList.blockers.Exists(x => x.Abilities && x != blocker); }
   }
 
-  void OnTriggerEnter(Collider other)
+  void OnTriggerStay(Collider other)
   {
     if (other.gameObject.layer == LayerMask.NameToLayer("Placeable Terrain")) toggleBuildButton.currentValue = true;
   }
