@@ -4,9 +4,7 @@ Last boss: The Wizard
 
 + Glödande particles
 + Character rotation utanför smoothdamp
-
-- Fixa in CameraShake
-- Camera shake pp animation eventet
++ Fixa in CameraShake
 
 - Gamemanager som scriptableobject
   - Timer : ScriptableObject (Add to timer button)
