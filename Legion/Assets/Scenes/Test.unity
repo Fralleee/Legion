@@ -1247,7 +1247,7 @@ MonoBehaviour:
   blocker: {fileID: 11400000, guid: b3dafe740a3488f4d9c00585e0585840, type: 2}
   activeBuilding: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
   isBuilding: 0
-  castTime: 5.5
+  castTime: 2.5
   progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
   toggleBuildButton: {fileID: 11400000, guid: 01afc8c7da891d94fb6e905e52fc7776, type: 2}
   Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}

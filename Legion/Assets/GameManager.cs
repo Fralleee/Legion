@@ -27,11 +27,7 @@ public class GameManager : MonoBehaviour
   void Update()
   {
     if (gameData.state != fsm.State) fsm.ChangeState(gameData.state);
-    if (fsm.State != GameStates.Waiting)
-    {
-      Debug.Log("Waiting state");
-      gameData.timer.Tick(Time.deltaTime);
-    }
+    if (fsm.State != GameStates.Waiting) { gameData.timer.Tick(Time.deltaTime); }
   }
 
   void Preparation_Enter() { gameData.timer.ResetCountdown(); }
