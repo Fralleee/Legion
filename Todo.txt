@@ -1,17 +1,8 @@
-+ Glödande particles
-+ Character rotation utanför smoothdamp
-+ Fixa in CameraShake
-+ Gamemanager som scriptableobject
-+ Review all code, move duplicate code to Fralle.Core if mainstream
-+ Refactor code to use utils code and extensions	
-+ Split Builder into two, one that performs actions and one that gathers input
-+ Remade GameEvent
-+ UI has no control over activation of placeable, instead it just sets ActiveBuilding and raises events
-+ Remove old GameEvents
-	
+So.. I have initialized game manager, as of now it syncs state with game data and builder actually listens to the state.
+What needs to be done, the actual buildings should spawn nigguz when state changes to Live
+We need AI
+oh god.. need lots of stuff
 
-	
-	
 
 # GameControls
 - LiveStart: 
