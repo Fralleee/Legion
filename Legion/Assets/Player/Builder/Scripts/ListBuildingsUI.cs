@@ -2,12 +2,13 @@
 
 public class ListBuildingsUI : MonoBehaviour
 {
-  [SerializeField] ActiveBuilding currentPlaceable;
-  [SerializeField] GameEventArgs onBuildingSelect;
+  [SerializeField] ActiveBuilding activeBuilding;
   [SerializeField] BuildingList buildingList;
   [SerializeField] GameObject prefab;
   [SerializeField] FloatVariable Gold;
   [SerializeField] FloatVariable Wood;
+
+  [SerializeField] GameEvent onBuildingSelect;
 
   void Start()
   {
@@ -29,9 +30,8 @@ public class ListBuildingsUI : MonoBehaviour
   {
     Placeable building = buildingList.buildings[index];
     if (building.gold > Gold.currentValue || building.wood > Wood.currentValue) return;
-    currentPlaceable.DeActivate();
-    currentPlaceable.Activate(buildingList.buildings[index]);
-    onBuildingSelect.Raise(null);
+    activeBuilding.Set(building);
+    onBuildingSelect.Raise();
   }
 
 }

@@ -3,25 +3,59 @@
 [CreateAssetMenu(menuName = "Building/Active Building")]
 public class ActiveBuilding : ScriptableObject
 {
-  public Placeable placeable;
+  GameObject builder;
+  [SerializeField] string builderName = "Player";
+  public Placeable building;
   Placeable defaultValue = null;
-  void OnEnable() { placeable = defaultValue; }
+
+  void OnEnable() {
+    building = defaultValue;
+    builder = GameObject.Find(builderName);
+  }
 
   public GameObject instance
   {
-    get { return placeable ? placeable.GetInstance() : null; }
+    get { return building ? building.GetInstance() : null; }
   }
 
-  public void Activate(Placeable p)
+  public void Set(Placeable p)
   {
-    placeable = p;
-    placeable.Initiate(GameObject.Find("Player").transform);
+    building = p;
+  }
+
+  public void Activate()
+  {
+    building.Initiate(builder.transform);
   }
 
   public void DeActivate()
   {
-    if (placeable) placeable.Cancel();
-    placeable = null;
+    if (building) building.Cancel();
+    building = null;
+  }
+
+  public void LockPosition()
+  {
+    building.LockPosition();
+  }
+
+  public void Build(string name)
+  {
+    building.Build(name);
+  }
+
+  public void Cancel()
+  {
+    building.Cancel();
+  }
+
+  public bool CanBuild
+  {
+    get
+    {
+      if (building && building.canBuild) return true;
+      return false;
+    }
   }
 
 }

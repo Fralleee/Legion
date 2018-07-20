@@ -890,7 +890,9 @@ GameObject:
   - component: {fileID: 341554286}
   - component: {fileID: 341554289}
   - component: {fileID: 341554287}
+  - component: {fileID: 341554294}
   - component: {fileID: 341554293}
+  - component: {fileID: 341554295}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -940,7 +942,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341554284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4d0f1e2a95be5c47bbc4aaafb6fdb64, type: 3}
   m_Name: 
@@ -953,6 +955,7 @@ MonoBehaviour:
   toggleBuildButton: {fileID: 11400000, guid: 01afc8c7da891d94fb6e905e52fc7776, type: 2}
   Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
   Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
+  availableBuildings: {fileID: 0}
   activeBuildings: {fileID: 11400000, guid: d238b4253a7d62246a58c59c4ff29661, type: 2}
 --- !u!114 &341554288
 MonoBehaviour:
@@ -1036,18 +1039,63 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341554284}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b9278340493d34fb416af7d883d99d, type: 3}
+  m_Script: {fileID: 11500000, guid: f08a2c30e2a2d264aa902b238769f42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &341554294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341554284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cc3c39d6d27b44ca00d3edd3e4287f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
-  blocker: {fileID: 0}
+  blocker: {fileID: 11400000, guid: b3dafe740a3488f4d9c00585e0585840, type: 2}
+  activeBuilding: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
+  isBuilding: 0
+  castTime: 0.5
   progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
-  activeAbility: {fileID: 0}
-  hands:
-  - {fileID: 0}
-  - {fileID: 0}
+  toggleBuildButton: {fileID: 11400000, guid: 01afc8c7da891d94fb6e905e52fc7776, type: 2}
+  Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
+  Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
+  availableBuildings: {fileID: 11400000, guid: d8aa72789b9ac374d9c9a992be7567be, type: 2}
+  activeBuildings: {fileID: 11400000, guid: d238b4253a7d62246a58c59c4ff29661, type: 2}
+--- !u!114 &341554295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341554284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed0ce8a263ef754c97277519a2e8796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: OnSelectedBuilding
+    gameEvent: {fileID: 11400000, guid: 527e7ac0309dbaf48a322d159fbc873e, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 341554294}
+          m_MethodName: OnBuildingSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!4 &399640874 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4713754776425644, guid: fbd9b3adb96c68b458ff77233250a90a,
@@ -2863,12 +2911,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d74a219e1ddc7438f1d29cf34c2edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlaceable: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
-  onBuildingSelect: {fileID: 11400000, guid: 54099c60b8d125845a1325e4b6f97648, type: 2}
+  activeBuilding: {fileID: 11400000, guid: 584785b4eaa752444802c12cda0be6c7, type: 2}
   buildingList: {fileID: 11400000, guid: d8aa72789b9ac374d9c9a992be7567be, type: 2}
   prefab: {fileID: 1236235691810176, guid: aae8012e7dc95c64998d6150116c251e, type: 2}
   Gold: {fileID: 11400000, guid: 6d36d95afacce1846830c2372f8c5c4f, type: 2}
   Wood: {fileID: 11400000, guid: 9b435a0ea5a498e41b3b985a5b72a4d8, type: 2}
+  onBuildingSelect: {fileID: 11400000, guid: 527e7ac0309dbaf48a322d159fbc873e, type: 2}
 --- !u!4 &923233769 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4585453369738264, guid: c7cebe2178705794aa9a9911f182d8c1,
@@ -3515,8 +3563,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1110039922}
-  - component: {fileID: 1110039924}
   - component: {fileID: 1110039925}
+  - component: {fileID: 1110039923}
   m_Layer: 5
   m_Name: BuildMenu
   m_TagString: Untagged
@@ -3543,7 +3591,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1110039924
+--- !u!114 &1110039923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -3551,26 +3599,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1110039921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0a9eaa675b2044f86cc0bfff73908d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ed0ce8a263ef754c97277519a2e8796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 54099c60b8d125845a1325e4b6f97648, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1110039925}
-        m_MethodName: Toggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: GameEventArgsResponse, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  eventAndResponses:
+  - name: OnSelectedBuilding
+    gameEvent: {fileID: 11400000, guid: 527e7ac0309dbaf48a322d159fbc873e, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1110039925}
+          m_MethodName: Toggle
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &1110039925
 MonoBehaviour:
   m_ObjectHideFlags: 0

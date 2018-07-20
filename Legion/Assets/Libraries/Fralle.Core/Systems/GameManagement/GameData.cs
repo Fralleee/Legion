@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum GameState
 {
-  Start,
-  PrepTime,
+  Waiting,
+  MatchStart,
+  Preparation,
   Live,
-  End,
+  Ended,
 }
 
 [CreateAssetMenu(menuName = "Game Management/Game Data")]
@@ -15,7 +16,8 @@ public class GameData : ScriptableObject
 {
   [SerializeField] Timer timer;
   [SerializeField] GameState state;
-  GameState defaultState = GameState.Start;
+  [SerializeField] IntVariable round;
+  GameState defaultState = GameState.Waiting;
 
   void OnEnable() { state = defaultState; }
 
@@ -36,17 +38,20 @@ public class GameData : ScriptableObject
   {
     switch (state)
     {
-      case GameState.Start:
-        state = GameState.PrepTime;
+      case GameState.Waiting:
+        state = GameState.MatchStart;
         break;
-      case GameState.PrepTime:
+      case GameState.MatchStart:
+        state = GameState.Preparation;
+        break;
+      case GameState.Preparation:
         state = GameState.Live;
         break;
       case GameState.Live:
-        if (winCondition) state = GameState.End;
-        else state = GameState.PrepTime;
+        if (winCondition) state = GameState.Ended;
+        else state = GameState.Preparation;
         break;
-      case GameState.End:
+      case GameState.Ended:
         // Back to menu
         break;
       default:

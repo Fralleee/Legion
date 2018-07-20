@@ -2,72 +2,103 @@
 
 public class Builder : BlockerBehaviour
 {
+  public ActiveBuilding activeBuilding;
+  [HideInInspector] public bool isBuilding;
+
   [SerializeField] float castTime = 0.5f;
+
   [SerializeField] StringRangeVariable progress;
-  [SerializeField] ActiveBuilding currentPlaceable;
 
   [SerializeField] BoolVariable toggleBuildButton;
 
   [SerializeField] FloatVariable Gold;
   [SerializeField] FloatVariable Wood;
 
+  [SerializeField] BuildingList availableBuildings;
   [SerializeField] ActiveBuildingList activeBuildings;
+
   Vector3 location;
 
-  bool isBuilding;
+
+
   void Update()
   {
-    if (currentPlaceable.placeable != null)
+    ContinueBuilding();
+  }
+
+  public void StartBuilding()
+  {
+    if (!isBlocked && activeBuilding.CanBuild)
     {
-      if (Input.GetMouseButtonDown(0) && !isBlocked && currentPlaceable.placeable.canBuild)
+      progress.text = "BUILDING!";
+      progress.minValue = 0f;
+      progress.maxValue = castTime;
+      progress.value = 0f;
+      isBuilding = true;
+      activeBuilding.LockPosition();
+      ApplyBlocker();
+    }
+  }
+
+  public void ContinueBuilding()
+  {
+    if (isBuilding && !isBlocked)
+    {
+      progress.value += Time.deltaTime;
+      if (progress.value >= progress.maxValue)
       {
-        progress.text = "BUILDING!";
-        progress.minValue = 0f;
-        progress.maxValue = castTime;
+        Gold.currentValue -= activeBuilding.building.gold;
+        Wood.currentValue -= activeBuilding.building.wood;
+        activeBuildings.Add(activeBuilding.instance);
+        activeBuilding.Build(name);
+        activeBuilding.DeActivate();
         progress.value = 0f;
-        isBuilding = true;
-        currentPlaceable.placeable.LockPosition();
-        ApplyBlocker();
-      }
-      else if (isBuilding && !isBlocked)
-      {
-        progress.value += Time.deltaTime;
-        if (progress.value >= progress.maxValue)
-        {
-          Gold.currentValue -= currentPlaceable.placeable.gold;
-          Wood.currentValue -= currentPlaceable.placeable.wood;
-          activeBuildings.Add(currentPlaceable.instance);
-          currentPlaceable.placeable.Build(name);
-          currentPlaceable.DeActivate();
-          progress.value = 0f;
-          isBuilding = false;
-          RemoveBlocker();
-        }
-      }
-      else if (isBuilding && (Input.GetMouseButtonDown(1) || isBlocked))
-      {
-        progress.value = 0f;
-        currentPlaceable.placeable.Cancel();
-        currentPlaceable.DeActivate();
         isBuilding = false;
+        RemoveBlocker();
       }
     }
-
   }
-  
+
+  public void InterruptBuilding()
+  {
+    if (isBuilding && isBlocked)
+    {
+      progress.value = 0f;
+      activeBuilding.Cancel();
+      activeBuilding.DeActivate();
+      isBuilding = false;
+    }
+  }
+
+  public void CancelBuilding()
+  {
+    if (isBuilding)
+    {
+      progress.value = 0f;
+      activeBuilding.Cancel();
+      activeBuilding.DeActivate();
+      isBuilding = false;
+    }
+  }
+
   public bool isBlocked
   {
     get { return blockerList.blockers.Exists(x => x.Abilities && x != blocker); }
   }
-  
+
   void OnTriggerEnter(Collider other)
   {
-    if(other.gameObject.layer == LayerMask.NameToLayer("Placeable Terrain")) toggleBuildButton.currentValue = true;
+    if (other.gameObject.layer == LayerMask.NameToLayer("Placeable Terrain")) toggleBuildButton.currentValue = true;
   }
 
   void OnTriggerExit(Collider other)
   {
     if (other.gameObject.layer == LayerMask.NameToLayer("Placeable Terrain")) toggleBuildButton.currentValue = false;
+  }
+
+  public void OnBuildingSelected()
+  {
+    activeBuilding.Activate();
   }
 
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(GameEventArgs))]
+[CustomEditor(typeof(GameEvent))]
 public class GameEventEditor : Editor
 {
 
@@ -11,7 +11,7 @@ public class GameEventEditor : Editor
   {
     base.OnInspectorGUI();
     GUI.enabled = Application.isPlaying;
-    GameEventArgs e = (GameEventArgs)target;
+    GameEvent e = (GameEvent)target;
     if (GUILayout.Button("Raise")) e.Raise();
   }
 

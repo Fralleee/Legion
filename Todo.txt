@@ -2,22 +2,29 @@
 + Character rotation utanför smoothdamp
 + Fixa in CameraShake
 + Gamemanager som scriptableobject
++ Review all code, move duplicate code to Fralle.Core if mainstream
++ Refactor code to use utils code and extensions	
++ Split Builder into two, one that performs actions and one that gathers input
++ Remade GameEvent
++ UI has no control over activation of placeable, instead it just sets ActiveBuilding and raises events
 
+- Remove old GameEvents
+	
 
+	
+	
 
-- Review all code, move duplicate code to Fralle.Core if mainstream
-- Refactor code to use utils code and extensions	
+# GameControls
+- Start State: 
+  Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
+	After small delay add the old model and slowly apply dissolve to make it visible
 
-
-
-
-
-
-
-
-
-
-
+# AI
+- NavMesh
+- TakeDamage
+- Attack
+- Caster
+	When given an ability and target => Cast spell (play animation, apply blockers, turn towards target, e.t.c)
 
 
 
@@ -39,12 +46,7 @@
   
 
 
-# GameControls
-- Rounds
-- GameState: Preparation, Live, Ended
-- Conditions
 
-# AI
 
 
 # Improve character
