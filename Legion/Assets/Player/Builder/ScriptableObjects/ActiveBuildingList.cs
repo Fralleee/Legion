@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Fralle;
 
 [CreateAssetMenu(menuName = "Building/Active Buildings List")]
 public class ActiveBuildingList : ScriptableObject
@@ -7,14 +8,14 @@ public class ActiveBuildingList : ScriptableObject
   public int Count { get { return buildings.Count; } }  
   public List<GameObject> buildings = new List<GameObject>();
 
-  public void Add(GameObject thing)
+  public void Add(GameObject building)
   {
-    if (!buildings.Contains(thing)) buildings.Add(thing);
+    buildings.AddIfUnique(building);
   }
 
-  public void Remove(GameObject thing)
+  public void Remove(GameObject building)
   {
-    if (buildings.Contains(thing)) buildings.Remove(thing);
+    buildings.RemoveIfExists(building);
   }
 
   void OnEnable() { buildings = new List<GameObject>(); }

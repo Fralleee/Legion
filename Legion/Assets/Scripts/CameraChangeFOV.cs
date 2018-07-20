@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraUtils : MonoBehaviour
+public class CameraChangeFOV : MonoBehaviour
 {
   public float zoomInFOV;
   public float smoothingTime;
-  float sphereRotation;
   float lerpTimer;
   float initialFOV;
   bool changingFOV;

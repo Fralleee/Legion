@@ -21,7 +21,6 @@
 
 
 
-
 # Caster
 - Create caster behaviour, kind of same as Builder
 - Make castable scriptableobject

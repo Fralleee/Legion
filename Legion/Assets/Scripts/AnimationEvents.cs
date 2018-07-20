@@ -1,19 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationEvents : MonoBehaviour
 {
-
-  CharacterLaunch characterLaunch;
-
-  void Start()
-  {
-    characterLaunch = GetComponentInParent<CharacterLaunch>();
-  }
-
+  [SerializeField] UnityEvent evt;
   void ApplyForce()
   {
-    characterLaunch.ApplyForce();
+    evt.Invoke();
   }
 }

@@ -11,7 +11,7 @@ public class CharacterLaunch : BlockerBehaviour
   CharacterMotor characterMotor;
   ImpactReceiver impactReceiver;
   Animator animator;
-  CameraUtils cameraUtils;
+  CameraChangeFOV cameraUtils;
   CameraController cameraController;
   Transform landingIndicatorInstance;
   GameObject leftHandParticles;
@@ -24,9 +24,7 @@ public class CharacterLaunch : BlockerBehaviour
   [SerializeField] Transform landingIndicatorPrefab;
   [SerializeField] GameObject landingEffectPrefab;
   [SerializeField] Transform cameraFocusAtLaunch;
-
   [SerializeField] StringRangeVariable progress;
-
   [SerializeField] ShakeTransformEventData cameraShake;
 
   bool CanLaunch { get { return cooldown.currentValue <= 0 && controller.isGrounded && !Physics.Raycast(transform.position, Vector3.up, 25f); } }
@@ -38,7 +36,7 @@ public class CharacterLaunch : BlockerBehaviour
     characterMotor = GetComponent<CharacterMotor>();
     impactReceiver = GetComponent<ImpactReceiver>();
     animator = GetComponentInChildren<Animator>();
-    cameraUtils = Camera.main.GetComponentInParent<CameraUtils>();
+    cameraUtils = Camera.main.GetComponentInParent<CameraChangeFOV>();
     cameraController = Camera.main.GetComponentInParent<CameraController>();
     fsm = StateMachine<States>.Initialize(this);
     fsm.ChangeState(States.Default);
@@ -46,6 +44,8 @@ public class CharacterLaunch : BlockerBehaviour
     foreach (Transform t in transforms)
       if (t.name == "Hand Particles")
         launchParticles.Add(t.GetComponent<ParticleSystem>());
+
+    if (launchParticles.Count < 2) Debug.LogWarning("Could not find 2x launch particles");
   }
 
   void Update() { if (cooldown.currentValue > 0) cooldown.currentValue = Mathf.Clamp(cooldown.currentValue - Time.deltaTime, 0, cooldown.defaultValue); }
@@ -163,9 +163,7 @@ public class CharacterLaunch : BlockerBehaviour
   #endregion
 
   // This method gets called from animation events in childs animator controller
-  public void ApplyForce() {
-    impactReceiver.AddImpact(Vector3.up, launchForce);
-  }
+  public void ApplyForce() { impactReceiver.AddImpact(Vector3.up, launchForce); }
 
   void ChangeCameraFocus() { cameraController.ToggleShoulderLook(cameraFocusAtLaunch); }
   void ActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Play(); }

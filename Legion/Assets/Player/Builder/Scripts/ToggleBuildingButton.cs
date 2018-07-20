@@ -8,6 +8,7 @@ public class ToggleBuildingButton : MonoBehaviour
   void Start()
   {
     buildButton = transform.Find("Build Ability").gameObject;
+    if (buildButton == null) Debug.LogError("Could not find 'Build Ability' button");
   }
 
   void Update()
