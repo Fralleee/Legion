@@ -933,6 +933,7 @@ MonoBehaviour:
     type: 2}
   cameraFocusAtLaunch: {fileID: 1319253700}
   progress: {fileID: 11400000, guid: e4688932b188bc94da5e53b683cb5781, type: 2}
+  cameraShake: {fileID: 11400000, guid: 83ccd934109a503489e702b708bf6e2e, type: 2}
 --- !u!114 &341554287
 MonoBehaviour:
   m_ObjectHideFlags: 0
