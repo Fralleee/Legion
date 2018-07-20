@@ -21,10 +21,7 @@ public class CameraController : BlockerBehaviour
 
   int layerMask;
 
-  bool isBlocked
-  {
-    get { return blockerList.blockers.Exists(x => x.Camera); }
-  }
+  bool isBlocked { get { return blockerList.blockers.Exists(x => x.Camera); } }
 
   void Start()
   {
@@ -44,13 +41,14 @@ public class CameraController : BlockerBehaviour
   {
     GatherInput();
 
+    Vector3 newPosition;
     Vector3 dir = new Vector3(0, 0, -distance);
     Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
 
     if (isLaunching)
     {
       Vector3 offset = lookAt.transform.right + lookAt.transform.up;
-      Vector3 newPosition = head.position + rotation * dir;
+      newPosition = head.position + rotation * dir;
       bool extraSmoothing = (transform.position - newPosition).magnitude > 2;
       float smoothing = extraSmoothing ? 0.15f : cameraSmoothTime;
       transform.position = Vector3.SmoothDamp(transform.position, newPosition + offset, ref velocity, smoothing);
@@ -58,14 +56,15 @@ public class CameraController : BlockerBehaviour
     }
     else
     {
-      Vector3 newPosition = lookAt.position + rotation * dir;
+      newPosition = lookAt.position + rotation * dir;
       RaycastHit hit;
       if (Physics.Raycast(lookAt.position, newPosition - lookAt.position, out hit, distance, layerMask)) newPosition = hit.point;
       transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, cameraSmoothTime);
       transform.LookAt(lookAt.position);
     }
 
-    Quaternion newrotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+    Vector3 direction = lookAt.position - newPosition;
+    Quaternion newrotation = Quaternion.Euler(0f, Quaternion.LookRotation(direction).eulerAngles.y, 0f);
     lookAt.transform.rotation = newrotation;
   }
 

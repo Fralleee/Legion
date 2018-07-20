@@ -2,6 +2,17 @@ THE WIZARD MUST BE STOPPED
 Orange vs Blue
 Last boss: The Wizard
 
++ Glödande particles
++ Character rotation utanför smoothdamp
+
+- Fixa in CameraShake
+- Camera shake pp animation eventet
+
+- Gamemanager som scriptableobject
+  - Timer : ScriptableObject (Add to timer button)
+	- State : Enum
+	- Skip (next round) -button
+
 - Review all code, move duplicate code to Fralle.Core if mainstream
 - Refactor code to use utils code and extensions	
 
@@ -37,7 +48,7 @@ Last boss: The Wizard
 # Improve character
 - https://www.youtube.com/watch?v=C2wwxd8SnKY
 
-
+# En liten stuga men stor som en mansion innuti, kör portaltricket
 
 
 

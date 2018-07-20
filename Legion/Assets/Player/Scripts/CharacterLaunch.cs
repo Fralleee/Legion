@@ -26,7 +26,9 @@ public class CharacterLaunch : BlockerBehaviour
   [SerializeField] Transform cameraFocusAtLaunch;
 
   [SerializeField] StringRangeVariable progress;
-  
+
+  [SerializeField] ShakeTransformEventData cameraShake;
+
   bool CanLaunch { get { return cooldown.currentValue <= 0 && controller.isGrounded && !Physics.Raycast(transform.position, Vector3.up, 25f); } }
 
   void Start()
@@ -36,8 +38,8 @@ public class CharacterLaunch : BlockerBehaviour
     characterMotor = GetComponent<CharacterMotor>();
     impactReceiver = GetComponent<ImpactReceiver>();
     animator = GetComponentInChildren<Animator>();
-    cameraUtils = Camera.main.GetComponent<CameraUtils>();
-    cameraController = Camera.main.GetComponent<CameraController>();
+    cameraUtils = Camera.main.GetComponentInParent<CameraUtils>();
+    cameraController = Camera.main.GetComponentInParent<CameraController>();
     fsm = StateMachine<States>.Initialize(this);
     fsm.ChangeState(States.Default);
     Transform[] transforms = GetComponentsInChildren<Transform>();
@@ -155,12 +157,16 @@ public class CharacterLaunch : BlockerBehaviour
     GameObject effect = Instantiate(landingEffectPrefab, landingIndicatorInstance.position, Quaternion.Euler(-90, 0, 0));
     Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
     Destroy(landingIndicatorInstance.gameObject);
+    Camera.main.GetComponentInParent<ShakeTransform>().AddShakeEvent(cameraShake);
     Invoke("RemoveMovementBlock", 1);
   }
   #endregion
 
   // This method gets called from animation events in childs animator controller
-  public void ApplyForce() { impactReceiver.AddImpact(Vector3.up, launchForce); }
+  public void ApplyForce() {
+    impactReceiver.AddImpact(Vector3.up, launchForce);
+  }
+
   void ChangeCameraFocus() { cameraController.ToggleShoulderLook(cameraFocusAtLaunch); }
   void ActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Play(); }
   void DeActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Stop(); }
