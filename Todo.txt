@@ -1,6 +1,9 @@
+- GridProjector should be visible when GameState.Preparation
+
 - Should be able to cancel build when in placeable-mode
 - Bind new input: Cancel: Escape and Cancel: Mouse2
   Use this new input button to cancel builds
+
 
 So.. I have initialized game manager, as of now it syncs state with game data and builder actually listens to the state.
 What needs to be done, the actual buildings should spawn nigguz when state changes to Live
@@ -56,7 +59,11 @@ oh god.. need lots of stuff
 # Damageable
 - Implement damage directions
   Animate accordingly
-	
+
+# Launch
+  - Figure out why you get blocked sometimes
+  - Sometimes it bugs when landing on uneven terrain
+  
 # Controller
 - Turn when above certain degree (45deg-)
   Otherwise turn characters upper body towards direction
