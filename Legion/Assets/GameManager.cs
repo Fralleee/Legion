@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
   void Start()
   {
     fsm = StateMachine<GameStates>.Initialize(this);
-    ChangeState(GameStates.Waiting);
+    ChangeState(gameData.state);
   }
 
   void Update()

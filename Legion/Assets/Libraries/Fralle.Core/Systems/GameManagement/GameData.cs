@@ -4,20 +4,20 @@ using UnityEngine;
 
 public enum GameStates
 {
-  Waiting,
   Preparation,
   Live,
   Ended,
+  Waiting,
 }
 
 [CreateAssetMenu(menuName = "Game Management/Game Data")]
 public class GameData : ScriptableObject
 {
   public Timer timer;
-  public GameStates state;
+  public GameStates state = GameStates.Preparation;
   public IntVariable round;
 
-  GameStates defaultState = GameStates.Waiting;
+  GameStates defaultState = GameStates.Preparation;
 
   void OnEnable() { state = defaultState; }
 

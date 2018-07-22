@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   timer: {fileID: 11400000, guid: 9dca222397425b64882ce98186e68019, type: 2}
-  state: 2
+  state: 0
   round: {fileID: 0}
