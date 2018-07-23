@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameStates
+public enum GameState
 {
   Preparation,
   Live,
@@ -14,41 +14,49 @@ public enum GameStates
 public class GameData : ScriptableObject
 {
   public Timer timer;
-  public GameStates state = GameStates.Preparation;
+  public GameState state = GameState.Preparation;
   public IntVariable round;
 
-  GameStates defaultState = GameStates.Preparation;
+  public GameRules rules;
+  [SerializeField] List<GameRules> stateRules = new List<GameRules>();
 
-  void OnEnable() { state = defaultState; }
+  GameState defaultState = GameState.Preparation;
+
+  void OnEnable()
+  {
+    state = defaultState;
+    rules.CopyValues(stateRules[(int)state]);
+  }
+
+  public void ChangeState(GameState nextState)
+  {
+    state = nextState;
+    rules.CopyValues(stateRules[(int)nextState]);
+  }
 
   // Change this
   bool winCondition;
 
-  // Player buildings
-  // Scores
-  // Stats
-  // Unit info
-  // Conditions?
   void CheckConditions()
   {
     winCondition = true;
   }
-  
+
   public void NextState()
   {
     switch (state)
     {
-      case GameStates.Waiting:
-        state = GameStates.Preparation;
+      case GameState.Waiting:
+        state = GameState.Preparation;
         break;
-      case GameStates.Preparation:
-        state = GameStates.Live;
+      case GameState.Preparation:
+        state = GameState.Live;
         break;
-      case GameStates.Live:
-        if (winCondition) state = GameStates.Ended;
-        else state = GameStates.Preparation;
+      case GameState.Live:
+        if (winCondition) state = GameState.Ended;
+        else state = GameState.Preparation;
         break;
-      case GameStates.Ended:
+      case GameState.Ended:
         // Back to menu
         break;
       default:
@@ -58,14 +66,9 @@ public class GameData : ScriptableObject
     }
   }
 
-  public bool isWaiting { get { return state == GameStates.Waiting; } }
-  public bool isPreparation { get { return state == GameStates.Preparation; } }
-  public bool isLive { get { return state == GameStates.Live; } }
-  public bool isEnded { get { return state == GameStates.Ended; } }
-
   public void Victory()
   {
-    
+
   }
 
   public void Defeat()

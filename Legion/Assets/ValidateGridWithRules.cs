@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectorOnActiveBuilding : MonoBehaviour
+public class ValidateGridWithRules : BlockerBehaviour
 {
-  [SerializeField] ActiveBuilding activeBuilding;
   Projector projector;
 
   void Start()
@@ -12,8 +11,8 @@ public class ProjectorOnActiveBuilding : MonoBehaviour
     projector = GetComponent<Projector>();
   }
 
-  void Update()
+  public void Validate()
   {
-    projector.enabled = activeBuilding.instance != null;
+    projector.enabled = blockerList.blockers.Exists(x => !x.Production);
   }
 }

@@ -18,7 +18,7 @@ public class Timer : ScriptableObject
   public void RoundTick(float time) { roundTime.currentValue += time; }
   public void CountdownTick(float time) { countdown.currentValue -= time; }
   public bool CountdownReached { get { return countdown.currentValue <= 0;  } }
-  public void ResetCountdown() { countdown.currentValue = countdown.defaultValue; }
+  public void ResetCountdown(float countdownTime) { countdown.currentValue = countdownTime; }
   public void ResetRoundTime() { roundTime.currentValue = 0f; }
   
 }

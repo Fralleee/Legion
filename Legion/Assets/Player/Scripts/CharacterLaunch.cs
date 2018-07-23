@@ -17,7 +17,7 @@ public class CharacterLaunch : BlockerBehaviour
   GameObject rightHandParticles;
   List<ParticleSystem> launchParticles = new List<ParticleSystem>();
 
-
+  [Header("Launch Settings")]
   [SerializeField] float castTime = 1f;
   [SerializeField] float launchForce = 25f;
   [SerializeField] FloatVariable cooldown;

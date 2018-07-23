@@ -10,7 +10,7 @@ public class ToggleBuildMenu : MonoBehaviour
 
   void Update()
   {
-    if (displayItems && Input.GetButtonDown("Build")) Toggle();
+    if (displayItems && (Input.GetButtonDown("Build") || Input.GetButtonDown("Cancel"))) Toggle();
     else if (Input.GetButtonDown("Build") && canShowBuildMenu.currentValue) Toggle();
   }
 

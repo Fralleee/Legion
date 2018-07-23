@@ -2,6 +2,7 @@
 
 public class Builder : BlockerBehaviour
 {
+  [Header("Builder Settings")]
   public ActiveBuilding activeBuilding;
   [HideInInspector] public bool isBuilding;
 
@@ -21,11 +22,9 @@ public class Builder : BlockerBehaviour
 
   Vector3 location;
 
-
-
   void Update()
   {
-    if (!gameData.isPreparation)
+    if (isBlocked)
     {
       toggleBuildButton.currentValue = false;
       InterruptBuilding();
@@ -36,7 +35,7 @@ public class Builder : BlockerBehaviour
 
   public void StartBuilding()
   {
-    if (gameData.isPreparation && !isBlocked && activeBuilding.CanBuild)
+    if (!isBlocked && activeBuilding.CanBuild)
     {
       progress.text = "BUILDING!";
       progress.minValue = 0f;
@@ -93,7 +92,7 @@ public class Builder : BlockerBehaviour
 
   public bool isBlocked
   {
-    get { return blockerList.blockers.Exists(x => x.Abilities && x != blocker); }
+    get { return blockerList.blockers.Exists(x => x.Production && x != blocker); }
   }
 
   void OnTriggerStay(Collider other)

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class ImpactReceiver : MonoBehaviour
+public class ImpactReceiver : BlockerBehaviour
 {
+  [Header("Impact Settings")]
   [SerializeField] float mass = 3f;
   [Range(0, 1)] [SerializeField] float smoothing = 0.25f;
   Vector3 impact = Vector3.zero;

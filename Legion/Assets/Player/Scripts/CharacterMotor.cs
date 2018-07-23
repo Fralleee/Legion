@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterMotor : BlockerBehaviour
 {
+  [Header("Motor Settings")]
   public bool useGravity = true;
   public float speed = 1f;
   public float fallMultiplier = 2.5f;

@@ -56,6 +56,8 @@ GameObject:
   - component: {fileID: 224918621903956638}
   - component: {fileID: 222088365745993648}
   - component: {fileID: 114947102919045086}
+  - component: {fileID: 114299707144870578}
+  - component: {fileID: 114969945584901148}
   m_Layer: 5
   m_Name: Launch Ability
   m_TagString: Untagged
@@ -109,6 +111,36 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114299707144870578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592404940473598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed0ce8a263ef754c97277519a2e8796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: ValidateWithRules
+    gameEvent: {fileID: 11400000, guid: a52b777d84af1f44aa9220a95d8b0b89, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114969945584901148}
+          m_MethodName: Validate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &114337548831950224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +258,7 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: fd05608297647c248b1f302d37705d21, type: 2}
+  showOnlyWhenPositive: 1
 --- !u!114 &114947102919045086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +286,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114969945584901148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592404940473598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3414b862f72e44598253678ba5a530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockerList: {fileID: 11400000, guid: 59d5c8f99704e1a4ab3d63c82913cdad, type: 2}
+  blocker: {fileID: 0}
+  currentRules: {fileID: 11400000, guid: 7b9e21ba7bc765544aff443e9411c789, type: 2}
 --- !u!222 &222048726404035614
 CanvasRenderer:
   m_ObjectHideFlags: 1

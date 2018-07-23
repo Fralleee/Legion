@@ -6,9 +6,9 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class ImageFillColor : MonoBehaviour
 {
-  [SerializeField] Color readyColor = Color.white;
-  [SerializeField] Color cooldownColor = Color.yellow;
+  public Color readyColor = Color.white;
+  public Color cooldownColor = Color.yellow;
   Image image;
   void OnEnable() { image = GetComponent<Image>(); }
-  void Update() { image.color = image.fillAmount == 1 ? readyColor : cooldownColor; }
+  void Update() { image.color = image.fillAmount >= 1 ? readyColor : cooldownColor; }
 }

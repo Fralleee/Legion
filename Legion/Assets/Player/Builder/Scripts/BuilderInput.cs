@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class BuilderInput : MonoBehaviour
 {
-  Builder builder2;
+  Builder builder;
 
   void Start()
   {
-    builder2 = GetComponent<Builder>();  
+    builder = GetComponent<Builder>();  
   }
 
   void Update()
   {
-    if(builder2.activeBuilding)
+    if(builder.activeBuilding)
     {
-      if (Input.GetMouseButtonDown(0)) builder2.StartBuilding();
-      else if (builder2.isBuilding && Input.GetMouseButtonDown(1)) builder2.CancelBuilding();
+      if (Input.GetMouseButtonDown(0)) builder.StartBuilding();
+      else if (Input.GetButtonDown("Cancel"))
+      {
+        if (builder.isBuilding) builder.CancelBuilding();
+        else builder.activeBuilding.DeActivate();
+      }
     }
   }
 }

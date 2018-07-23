@@ -7,4 +7,5 @@ public class Blocker : ScriptableObject
   public bool Camera;
   public bool Movement;
   public bool Abilities;
+  public bool Production;
 }
