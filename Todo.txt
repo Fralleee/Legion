@@ -54,7 +54,11 @@ oh god.. need lots of stuff
 # Damageable
 - Implement damage directions
   Animate accordingly
-	
+
+# Launch
+  - Figure out why you get blocked sometimes
+  - Sometimes it bugs when landing on uneven terrain
+  
 # Controller
 - Turn when above certain degree (45deg-)
   Otherwise turn characters upper body towards direction

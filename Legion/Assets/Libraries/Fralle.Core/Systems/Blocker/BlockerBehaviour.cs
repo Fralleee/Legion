@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using Fralle;
 
-public partial class BlockerBehaviour : MonoBehaviour
+public class BlockerBehaviour : MonoBehaviour
 {
   [Header("Blocker Settings")]
   [SerializeField] protected BlockerList blockerList;
   [SerializeField] protected Blocker blocker;
+  [SerializeField] protected GameRules currentRules;
+
+  protected void ApplyBlocker(Blocker b)
+  {
+    blockerList.blockers.AddIfUnique(b);
+  }
 
   protected void ApplyBlocker()
   {
@@ -15,6 +21,13 @@ public partial class BlockerBehaviour : MonoBehaviour
   protected void RemoveBlocker()
   {
     blockerList.blockers.RemoveIfExists(blocker);
+  }
+
+  public void OnStateChange()
+  {
+    Debug.Log("BlockerBehaviour recognized state change");
+    blockerList.blockers.Clear();
+    ApplyBlocker(currentRules.blocker);
   }
 
 }

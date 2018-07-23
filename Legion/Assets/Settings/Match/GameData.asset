@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   timer: {fileID: 11400000, guid: 9dca222397425b64882ce98186e68019, type: 2}
-  state: 2
+  state: 0
   round: {fileID: 0}
+  rules: {fileID: 11400000, guid: 7b9e21ba7bc765544aff443e9411c789, type: 2}
+  stateRules:
+  - {fileID: 11400000, guid: 69bc13cf8d17108469d84c249d446ed7, type: 2}
+  - {fileID: 11400000, guid: 35d04ae1197a67549aedaaf926431fa0, type: 2}
+  - {fileID: 11400000, guid: bdc51885c0c000a46898e57595e5b19f, type: 2}
+  - {fileID: 11400000, guid: 950170f60f2fc8d4d939827ed92b76ac, type: 2}

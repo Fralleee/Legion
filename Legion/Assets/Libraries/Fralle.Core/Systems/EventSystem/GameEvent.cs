@@ -2,7 +2,7 @@
 using UnityEngine;
 using Fralle;
 
-[CreateAssetMenu(menuName = "Events/Game Event")]
+[CreateAssetMenu(menuName = "Game Management/Game Event")]
 public class GameEvent : ScriptableObject
 {
   private List<EventListener> eventListeners = new List<EventListener>();

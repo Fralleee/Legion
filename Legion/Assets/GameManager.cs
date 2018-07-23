@@ -10,34 +10,40 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   [SerializeField] GameData gameData;
-  StateMachine<GameStates> fsm;
+  StateMachine<GameState> fsm;
+  public GameEvent stateChange;
 
-  void ChangeState(GameStates state)
+  void ChangeState(GameState state)
   {
+    Debug.Log("Changing state to: " + state.ToString());
     fsm.ChangeState(state);
-    gameData.state = state;
+    gameData.ChangeState(state);
+    gameData.timer.ResetCountdown(gameData.rules.countdown);
+    gameData.timer.ResetRoundTime();
+    stateChange.Raise();
   }
 
   void Start()
   {
-    fsm = StateMachine<GameStates>.Initialize(this);
-    ChangeState(GameStates.Waiting);
+    fsm = StateMachine<GameState>.Initialize(this);
+    ChangeState(gameData.state);
   }
 
   void Update()
   {
-    if (gameData.state != fsm.State) fsm.ChangeState(gameData.state);
-    if (fsm.State != GameStates.Waiting) { gameData.timer.Tick(Time.deltaTime); }
+    SyncState();
+    TimerTick();
   }
 
-  void Preparation_Enter() { gameData.timer.ResetCountdown(); }
-  void Preparation_Update()
+  void SyncState()
   {
-    gameData.timer.CountdownTick(Time.deltaTime);
-    if (gameData.timer.CountdownReached) ChangeState(GameStates.Live);
+    if (gameData.state != fsm.State) ChangeState(gameData.state);
   }
 
-
-  void Live_Update() { gameData.timer.RoundTick(Time.deltaTime); }
-  void Live_Exit() { gameData.timer.ResetRoundTime(); }
+  void TimerTick()
+  {
+    if (gameData.rules.applyToElapsedTime) gameData.timer.Tick(Time.deltaTime);
+    if (gameData.rules.countdown > 0) gameData.timer.CountdownTick(Time.deltaTime);
+    if (gameData.rules.useRoundTimer) gameData.timer.RoundTick(Time.deltaTime);
+  }
 }

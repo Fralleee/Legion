@@ -58,7 +58,7 @@ public class CameraController : BlockerBehaviour
     {
       newPosition = lookAt.position + rotation * dir;
       RaycastHit hit;
-      if (Physics.Raycast(lookAt.position, newPosition - lookAt.position, out hit, distance, layerMask)) newPosition = hit.point;
+      if (Physics.Raycast(lookAt.position, newPosition - lookAt.position, out hit, distance, layerMask)) newPosition = hit.point + transform.forward * 0.25f ;
       transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, cameraSmoothTime);
       transform.LookAt(lookAt.position);
     }
