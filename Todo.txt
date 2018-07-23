@@ -29,6 +29,8 @@ oh god.. need lots of stuff
 - Try reconstructing Launch as an ability instead
   Probably need an enum that says AbilityType [Default, Attack, Ultimate]
 
+# Ability UI
+- Ability UI should have functionality Flashing, where it indicates with a pulsating glowing border and shine.
   
 # Damageable
 - Implement damage & health
