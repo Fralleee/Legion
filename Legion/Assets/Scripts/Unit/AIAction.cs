@@ -10,8 +10,8 @@ public class AIAction : MonoBehaviour
   [Tooltip("The action which will base the nav mesh agents stopping distance")]
   [SerializeField] UnitAction mainAttack;
 
-  [SerializeField] List<UnitAction> allActions;
-
+  [SerializeField] List<UnitAction> inputActions;
+  List<UnitAction> allActions = new List<UnitAction>();
   List<UnitAction> hostileTargetActions = new List<UnitAction>();
   List<UnitAction> friendlyTargetActions = new List<UnitAction>();
 
@@ -20,7 +20,7 @@ public class AIAction : MonoBehaviour
   float hostileScanRange;
   LayerMask enemyLayerMask;
 
-  float lastAttack = 0f;
+  float lastAttack = 8f;
   float lastAttackBuffer = 4f;
   float lastAttackTry = 0f;
 
@@ -28,45 +28,64 @@ public class AIAction : MonoBehaviour
   float lastHostileScanBuffer = 1f;
 
   bool isBlocked { get { return false; } }
-  bool requireNewTarget { get { return  Time.time > lastAttack || (stats.currentTarget == null && Time.time > lastHostileScan); } }
+  bool requireNewTarget { get { return Time.time > lastAttack || (stats.currentTarget == null && Time.time > lastHostileScan); } }
+  bool actionIsValid
+  {
+    get
+    {
+      float distanceToTarget = Vector3.Distance(stats.currentTarget.transform.position, transform.position);
+      if (currentAction.range >= distanceToTarget) return true;
+      return false;
+    }
+  }
+
+  bool isPerforming;
+  UnitAction currentAction;
 
   void Start()
   {
     stats = GetComponent<Stats>();
     stats.SetStoppingDistance(mainAttack.range);
+
+    mainAttack = (UnitAction)ScriptableObject.CreateInstance(mainAttack.GetType());
+
     allActions.Add(mainAttack);
+    foreach (UnitAction action in inputActions) allActions.Add((UnitAction)ScriptableObject.CreateInstance(action.GetType()));
     hostileTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Hostile));
     friendlyTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Friendly));
 
     hostileScanRange = Mathf.Clamp(hostileTargetActions.Max(x => x.scanRange), 15, 100);
-    Debug.Log("hostileScanRange: " + hostileScanRange);
     enemyLayerMask = 1 << stats.teamData.enemyLayer;
   }
 
   void Update()
   {
-    if (!isBlocked)
+    if (isPerforming && currentAction)
+    {
+      if (!actionIsValid) ClearAction();
+      else if (currentAction.readyToPerform) PerformAction();
+    }
+    else if (!isBlocked)
     {
       if (requireNewTarget)
       {
-        GameObject target = FindNewTarget();        
+        GameObject target = FindNewTarget();
         stats.SetNewTarget(target);
       }
-      else if (stats.currentTarget) PerformAction();
+      else if (stats.currentTarget) StartAction();
     }
   }
 
   public void ForceNewTarget()
   {
+    Debug.Log("ForceNewTarget");
     stats.ClearTarget();
     GameObject target = FindNewTarget();
     stats.SetNewTarget(target);
   }
 
-  void PerformAction()
+  void StartAction()
   {
-    lastAttack = Time.time + lastAttackBuffer;
-
     List<UnitAction> availableActions = allActions.FindAll(x => !x.onCooldown);
     if (availableActions.Count == 0) return;
 
@@ -74,17 +93,34 @@ public class AIAction : MonoBehaviour
     UnitAction action = availableActions.Find(x => x.range >= distanceToTarget);
     if (action == null) return;
 
-    Debug.Log("AIAction: Performing " + action.name);
-    action.Perform(stats.currentTarget, gameObject);
+    Debug.Log("AIAction: Found action, will start performing " + action.name);
+    isPerforming = true;
+    currentAction = action;
+    action.StartPerform();
   }
-  
+
+  void PerformAction()
+  {
+    lastAttack = Time.time + mainAttack.cooldown + lastAttackBuffer;
+    currentAction.Perform(stats.currentTarget, gameObject);
+    ClearAction();
+  }
+
+  void ClearAction()
+  {
+    isPerforming = false;
+    currentAction = null;
+  }
+
   GameObject FindNewTarget()
   {
+
     lastHostileScan = Time.time + lastHostileScanBuffer;
-    lastAttack = Time.time + lastAttackBuffer;
+    lastAttack = Time.time + mainAttack.cooldown + lastAttackBuffer;
+    Debug.Log("lastAttack: " + lastAttack);
 
     Collider[] colliders = FindTargets(enemyLayerMask, hostileScanRange, transform.position);
-    if(colliders.Length > 0)
+    if (colliders.Length > 0)
     {
       if (stats.currentTarget && colliders.Length > 1 && colliders[0].gameObject == stats.currentTarget) return colliders[1].gameObject;
       return colliders[0].gameObject;

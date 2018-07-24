@@ -1,14 +1,34 @@
-- add float timeSinceLastAttack
-- When lastAttack was 4 seconds then search for new target, preferably not the same one
 
-- TryPerform on action
 
-- Use castTime on Action before getting the result
+
+
+
+# Actions
++ Use castTime on Action before getting the result
+
+- CREATE COPIES
 - Ensure that scriptableobjects are copied on setup and not used as references
-
-- Use two frostwarriors that attack two different monsters
+  Use two frostwarriors that attack two different monsters
   Ensure that cooldown does not affect them both
 
+	
+# Blocker
+- Remake how blockers are used, instead use a component: BlockerController
+	
+	
+	
+	
+# Remove Ability-code (replaced by UnitAction)
+- Add Logic for LoS (TryPerform == false => nextAction || try to find LoS (only if mainAttack))
+- TryPerform on action
+	
+
+	
+	
+	
+	
+	
+	
 	
 # Statistics : ScriptableObject
   - Health
@@ -23,11 +43,6 @@
 
 
 
-
-# Maybe remake Ability to Action
-- Action => Ability
-- Action => Attack
-	
 
 
 # GameControls

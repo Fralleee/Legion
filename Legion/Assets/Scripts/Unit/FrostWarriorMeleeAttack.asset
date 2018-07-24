@@ -13,9 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   range: 2
-  scanRange: 10
-  requireLineOfSight: 0
-  castTime: 0
+  scanRange: 15
   cooldown: 5
+  castTimeBlocker: {fileID: 11400000, guid: 551b04cdef4f51a48beb39cf592ccfed, type: 2}
+  castTime: 1
+  readyTime: 8.289417
+  requireLineOfSight: 0
   actionEffects:
   - {fileID: 11400000, guid: c1a987c8a71babd4c9309556f7d45846, type: 2}
