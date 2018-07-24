@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35d04ae1197a67549aedaaf926431fa0, type: 2}
   - {fileID: 11400000, guid: bdc51885c0c000a46898e57595e5b19f, type: 2}
   - {fileID: 11400000, guid: 950170f60f2fc8d4d939827ed92b76ac, type: 2}
+  blueTeam: {fileID: 11400000, guid: 96e2cf6cee2a2e34887c8df8eeac2afd, type: 2}
+  orangeTeam: {fileID: 11400000, guid: a1ce28c20b8921f4f822306e9330974f, type: 2}

@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
   {
     fsm = StateMachine<GameState>.Initialize(this);
     ChangeState(gameData.state);
+    gameData.blueTeam.MatchStart();
+    gameData.orangeTeam.MatchStart();
   }
 
   void Update()

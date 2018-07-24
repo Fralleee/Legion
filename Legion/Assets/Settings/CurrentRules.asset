@@ -9,8 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea7e43523dbd4da418b26c5d354c9560, type: 3}
-  m_Name: WaitingRules
+  m_Name: CurrentRules
   m_EditorClassIdentifier: 
-  gameState: 3
-  blocker: {fileID: 11400000, guid: dafca278df0be6044aff31b48cbcbaa8, type: 2}
-  countdown: 0
+  gameState: 0
+  blocker: {fileID: 11400000, guid: 4d6cbc6d431acee428e49611baeab0ec, type: 2}
+  applyToElapsedTime: 1
+  useRoundTimer: 0
+  countdown: 45

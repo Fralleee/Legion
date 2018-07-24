@@ -8,6 +8,11 @@ public class BlockerBehaviour : MonoBehaviour
   [SerializeField] protected Blocker blocker;
   [SerializeField] protected GameRules currentRules;
 
+  void Awake()
+  {
+    if(blockerList == null) blockerList = ScriptableObject.CreateInstance<BlockerList>();
+  }
+
   protected void ApplyBlocker(Blocker b)
   {
     blockerList.blockers.AddIfUnique(b);

@@ -6,10 +6,7 @@ public class ValidateGridWithRules : BlockerBehaviour
 {
   Projector projector;
 
-  void Start()
-  {
-    projector = GetComponent<Projector>();
-  }
+  void Awake() { projector = GetComponent<Projector>(); }
 
   public void Validate()
   {

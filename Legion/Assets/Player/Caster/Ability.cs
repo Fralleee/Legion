@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TargetType
-{
-  Target,     // Direct target 
-  Direction,  // Direction
-  Area,       // Area where mouse is
-  Self,       // Only on self (buff, heal, ...)
-  SelfArea,   // Self AoE    
-}
-
 [CreateAssetMenu]
 public class Ability : ScriptableObject
 {

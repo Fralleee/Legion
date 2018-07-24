@@ -1,14 +1,40 @@
-So.. I have initialized game manager, as of now it syncs state with game data and builder actually listens to the state.
-What needs to be done, the actual buildings should spawn nigguz when state changes to Live
-We need AI
-oh god.. need lots of stuff
+- add float timeSinceLastAttack
+- When lastAttack was 4 seconds then search for new target, preferably not the same one
+
+- TryPerform on action
+
+- Use castTime on Action before getting the result
+- Ensure that scriptableobjects are copied on setup and not used as references
+
+- Use two frostwarriors that attack two different monsters
+  Ensure that cooldown does not affect them both
+
+	
+# Statistics : ScriptableObject
+  - Health
+	- Armor
+	- Animations
+	- List<Attack>
+	  Attack : ScriptableObject
+		  - Damage
+			- Attackspeed
+			- List<Animations>
+	
+
+
+
+
+# Maybe remake Ability to Action
+- Action => Ability
+- Action => Attack
+	
 
 
 # GameControls
-- LiveStart: 
+- LiveStart: Spawn soldiers from buildings
   Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
 	
-- LiveUpdate:
+- LiveUpdate: 
 	After small delay add the old model and slowly apply dissolve to make it visible
 
 # AI

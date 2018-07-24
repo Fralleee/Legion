@@ -20,6 +20,9 @@ public class GameData : ScriptableObject
   public GameRules rules;
   [SerializeField] List<GameRules> stateRules = new List<GameRules>();
 
+  public TeamData blueTeam;
+  public TeamData orangeTeam;
+
   GameState defaultState = GameState.Preparation;
 
   void OnEnable()
