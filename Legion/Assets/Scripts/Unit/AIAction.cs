@@ -46,11 +46,10 @@ public class AIAction : MonoBehaviour
   {
     stats = GetComponent<Stats>();
     stats.SetStoppingDistance(mainAttack.range);
+    
 
-    mainAttack = (UnitAction)ScriptableObject.CreateInstance(mainAttack.GetType());
-
-    allActions.Add(mainAttack);
-    foreach (UnitAction action in inputActions) allActions.Add((UnitAction)ScriptableObject.CreateInstance(action.GetType()));
+    allActions.Add(Instantiate(mainAttack));
+    foreach (UnitAction action in inputActions) allActions.Add(Instantiate(action));
     hostileTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Hostile));
     friendlyTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Friendly));
 
