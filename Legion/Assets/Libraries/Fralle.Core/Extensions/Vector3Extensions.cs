@@ -12,6 +12,13 @@ namespace Fralle
         Mathf.Round(vector.z / gridSize) * gridSize
       );
     }
+    public static Vector3 With(this Vector3 v, float? x = null, float? y = null, float? z = null)
+    {
+      float newX = x.HasValue ? x.Value : v.x;
+      float newY = y.HasValue ? y.Value : v.y;
+      float newZ = z.HasValue ? z.Value : v.z;
+      return new Vector3(newX, newY, newZ);
+    }
     public static Vector3 WithX(this Vector3 v, float x)
     {
       return new Vector3(x, v.y, v.z);
