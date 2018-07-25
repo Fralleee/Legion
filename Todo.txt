@@ -1,5 +1,10 @@
-- AIMotor: Should be able to move around obstacles to get in line of sight
+################################################
+#										  NOW  										 #
+################################################
 
+
+# Actions, LineOfSight, Testing	
+- AIMotor: Should be able to move around obstacles to get in line of sight
 - TestCase: 
 	Have two units. 
 	One has LoS ability with Range as MainAbility. One has ranged Ability without LoS as MainAbility
@@ -9,29 +14,18 @@
 	The other should only shoot ranged ability which can hit the enemy.
 	
 	
-# UnitAction
-- Apply blocker if there is one to caster on StartPerform
-- Remove if interrupted
-
-	
 	
 # GameControls
 - LiveStart: Spawn soldiers from buildings
   Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
-	
 - LiveUpdate: 
 	After small delay add the old model and slowly apply dissolve to make it visible
 
-# AI
-- NavMesh
-- TakeDamage
-- Attack
-- Caster
-	When given an ability and target => Cast spell (play animation, apply blockers, turn towards target, e.t.c)
+	
+# AI animations
 
 
-
-# Caster
+# ActionController (player)
 - Create caster behaviour, kind of same as Builder
 - Make castable scriptableobject
   - Cooldown
@@ -40,29 +34,30 @@
 - Try reconstructing Launch as an ability instead
   Probably need an enum that says AbilityType [Default, Attack, Ultimate]
 
+	
 # Ability UI
 - Ability UI should have functionality Flashing, where it indicates with a pulsating glowing border and shine.
   
-# Damageable
-- Implement damage & health
+	
+	
+	
+	
+	
+	
 
-# Caster
-- Simple damaging script
-  
+	
 
-
-
-
-
+################################################
+#										LATER											 #
+################################################
+	
+	
 # Improve character
 - https://www.youtube.com/watch?v=C2wwxd8SnKY
 
 # En liten stuga men stor som en mansion innuti, kör portaltricket
 
-
-
-## Much Laters
-# Damageable
+# DamageController
 - Implement damage directions
   Animate accordingly
 
