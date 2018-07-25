@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ImpactReceiver : BlockerBehaviour
+public class ImpactReceiver : MonoBehaviour
 {
   [Header("Impact Settings")]
   [SerializeField] float mass = 3f;
@@ -9,11 +9,14 @@ public class ImpactReceiver : BlockerBehaviour
   Vector3 accelerationTarget = Vector3.zero;
   Vector3 acceleration = Vector3.zero;
   CharacterController controller;
+  BlockerController blockerController;
   public bool hasActiveImpact { get { return impact.magnitude < 0.2; } }
+  bool isBlocked { get { return blockerController.ContainsBlocker(physics: true);  } }
 
   void Start()
   {
     controller = GetComponent<CharacterController>();
+    blockerController = GetComponent<BlockerController>();
   }
 
   void Update()

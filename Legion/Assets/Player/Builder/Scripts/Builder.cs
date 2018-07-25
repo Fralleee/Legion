@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Builder : BlockerBehaviour
+public class Builder : MonoBehaviour
 {
   [Header("Builder Settings")]
   public ActiveBuilding activeBuilding;
@@ -21,6 +21,14 @@ public class Builder : BlockerBehaviour
   [SerializeField] GameData gameData;
 
   Vector3 location;
+
+  [SerializeField] Blocker blocker;
+  BlockerController blockerController;
+
+  void Start()
+  {
+    blockerController = GetComponent<BlockerController>();
+  }
 
   void Update()
   {
@@ -43,7 +51,7 @@ public class Builder : BlockerBehaviour
       progress.value = 0f;
       isBuilding = true;
       activeBuilding.LockPosition();
-      ApplyBlocker();
+      blockerController.AddBlocker(blocker);
     }
   }
 
@@ -61,7 +69,7 @@ public class Builder : BlockerBehaviour
         activeBuilding.DeActivate();
         progress.value = 0f;
         isBuilding = false;
-        RemoveBlocker();
+        blockerController.RemoveBlocker(blocker);
       }
     }
   }
@@ -73,7 +81,7 @@ public class Builder : BlockerBehaviour
       progress.value = 0f;
       activeBuilding.Cancel();
       activeBuilding.DeActivate();
-      RemoveBlocker();
+      blockerController.RemoveBlocker(blocker);
       isBuilding = false;
     }
   }
@@ -85,15 +93,12 @@ public class Builder : BlockerBehaviour
       progress.value = 0f;
       activeBuilding.Cancel();
       activeBuilding.DeActivate();
-      RemoveBlocker();
+      blockerController.RemoveBlocker(blocker);
       isBuilding = false;
     }
   }
 
-  public bool isBlocked
-  {
-    get { return blockerList.blockers.Exists(x => x.Production && x != blocker); }
-  }
+  public bool isBlocked { get { return blockerController.ContainsBlocker(production: true); } }
 
   void OnTriggerStay(Collider other)
   {

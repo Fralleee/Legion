@@ -3,34 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIMotor : BlockerBehaviour
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(BlockerController))]
+[RequireComponent(typeof(StatisticsController))]
+public class AIMotor : MonoBehaviour
 {
   NavMeshAgent agent;
-  Stats stats;
+  StatisticsController statisticsController;
+  BlockerController blockerController;
 
-  bool isBlocked
-  {
-    get { return blockerList.blockers.Exists(x => x.Movement); }
-  }
+  bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
 
   void Start()
   {
     agent = GetComponent<NavMeshAgent>();
-    stats = GetComponent<Stats>();
+    statisticsController = GetComponent<StatisticsController>();
+    blockerController = GetComponent<BlockerController>();
   }
 
   void Update()
   {
     if (isBlocked) agent.isStopped = true;
-    else if (stats.currentTarget)
-    {
-      agent.SetDestination(stats.currentTarget.transform.position);
-      agent.stoppingDistance = stats.stoppingDistance;
-    }
-    else if (stats.mainObjective)
-    {
-      agent.SetDestination(stats.mainObjective.transform.position);
-      agent.stoppingDistance = stats.stoppingDistance;
-    }
+    else if (statisticsController.targetStats.currentTarget) MoveTowards(statisticsController.targetStats.currentTarget.transform.position);
+    else if (statisticsController.targetStats.mainObjective) MoveTowards(statisticsController.targetStats.mainObjective.transform.position);
+    else agent.isStopped = true;
   }
+
+  void MoveTowards(Vector3 target)
+  {
+    agent.isStopped = false;
+    agent.SetDestination(target);
+    agent.stoppingDistance = statisticsController.targetStats.stoppingDistance;
+
+    // TODO:
+    // If target is out of LoS then we need to alter the stopping distance and move closer
+
+  }
+
 }

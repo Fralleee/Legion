@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : BlockerBehaviour
+public class CameraController : MonoBehaviour
 {
 
   public Transform lookAt;
@@ -21,11 +21,14 @@ public class CameraController : BlockerBehaviour
 
   int layerMask;
 
-  bool isBlocked { get { return blockerList.blockers.Exists(x => x.Camera); } }
+  BlockerController blockerController;
+
+  bool isBlocked { get { return blockerController.ContainsBlocker(camera: true); } }
 
   void Start()
   {
     layerMask = 1 << LayerMask.NameToLayer("Environment");
+    blockerController = GetComponent<BlockerController>();
   }
 
   void GatherInput()

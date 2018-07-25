@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMotor : BlockerBehaviour
+public class CharacterMotor : MonoBehaviour
 {
   [Header("Motor Settings")]
   public bool useGravity = true;
@@ -15,16 +15,15 @@ public class CharacterMotor : BlockerBehaviour
   Vector3 movement;
   float vSpeed = 0;
 
+  BlockerController blockerController;
 
-  bool isBlocked
-  {
-    get { return blockerList.blockers.Exists(x => x.Movement); }
-  }
+  bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
 
   void Start()
   {
     controller = GetComponent<CharacterController>();
     animator = GetComponentInChildren<Animator>();
+    blockerController = GetComponent<BlockerController>();
   }
 
   void Update()

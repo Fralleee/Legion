@@ -18,29 +18,29 @@ public class GameData : ScriptableObject
   public IntVariable round;
 
   public GameRules rules;
-  [SerializeField] List<GameRules> stateRules = new List<GameRules>();
+  [SerializeField] List<GameRules> rulesFromState = new List<GameRules>();
 
-  public TeamData blueTeam;
-  public TeamData orangeTeam;
+  public TeamData blueTeamData;
+  public TeamData orangeTeamData;
 
   GameState defaultState = GameState.Preparation;
 
   void OnEnable()
   {
     state = defaultState;
-    rules.CopyValues(stateRules[(int)state]);
+    rules.CopyValues(rulesFromState[(int)state]);
   }
 
-  public void ChangeState(GameState nextState)
+  public void SetRulesFromState(GameState nextState)
   {
     state = nextState;
-    rules.CopyValues(stateRules[(int)nextState]);
+    rules.CopyValues(rulesFromState[(int)nextState]);
   }
 
   // Change this
   bool winCondition;
 
-  void CheckConditions()
+  void CheckMatchConditions()
   {
     winCondition = true;
   }

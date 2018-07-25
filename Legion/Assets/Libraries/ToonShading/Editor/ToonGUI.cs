@@ -86,9 +86,11 @@ namespace ToonShading
 
         // Misc
         MaterialEditor m_MaterialEditor;
-        ColorPickerHDRConfig m_ColorPickerHDRConfig = new ColorPickerHDRConfig(0f, 99f, 1 / 99f, 3f);
+#pragma warning disable CS0612 // Type or member is obsolete
+    ColorPickerHDRConfig m_ColorPickerHDRConfig = new ColorPickerHDRConfig(0f, 99f, 1 / 99f, 3f);
+#pragma warning restore CS0612 // Type or member is obsolete
 
-        bool m_FirstTimeApply = true;
+    bool m_FirstTimeApply = true;
 
         public void FindProperties(MaterialProperty[] props)
         {
@@ -267,11 +269,13 @@ namespace ToonShading
             {
                 bool hadEmissionTexture = emissionMap.textureValue != null;
 
-                // Texture and HDR color controls
-                m_MaterialEditor.TexturePropertyWithHDRColor(Styles.emissionText, emissionMap, emissionColorForRendering, m_ColorPickerHDRConfig, false);
+        // Texture and HDR color controls
+#pragma warning disable CS0618 // Type or member is obsolete
+        m_MaterialEditor.TexturePropertyWithHDRColor(Styles.emissionText, emissionMap, emissionColorForRendering, m_ColorPickerHDRConfig, false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
-                // If texture was assigned and color was black set color to white
-                float brightness = emissionColorForRendering.colorValue.maxColorComponent;
+        // If texture was assigned and color was black set color to white
+        float brightness = emissionColorForRendering.colorValue.maxColorComponent;
                 if (emissionMap.textureValue != null && !hadEmissionTexture && brightness <= 0f)
                     emissionColorForRendering.colorValue = Color.white;
 

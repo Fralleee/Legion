@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterLaunch : BlockerBehaviour
+public class CharacterLaunch : MonoBehaviour
 {
 
   StateMachine<States> fsm;
@@ -29,6 +29,9 @@ public class CharacterLaunch : BlockerBehaviour
   Vector3 landingPosition;
   [SerializeField] GameObject landingProjector;
 
+  [SerializeField] Blocker blocker;
+  BlockerController blockerController;
+
   bool CanLaunch { get { return cooldown.currentValue <= 0 && controller.isGrounded && !Physics.Raycast(transform.position, Vector3.up, 25f); } }
 
   void Start()
@@ -37,6 +40,7 @@ public class CharacterLaunch : BlockerBehaviour
     controller = GetComponent<CharacterController>();
     characterMotor = GetComponent<CharacterMotor>();
     impactReceiver = GetComponent<ImpactReceiver>();
+    blockerController = GetComponent<BlockerController>();
     animator = GetComponentInChildren<Animator>();
     cameraUtils = Camera.main.GetComponentInParent<CameraChangeFOV>();
     cameraController = Camera.main.GetComponentInParent<CameraController>();
@@ -81,7 +85,7 @@ public class CharacterLaunch : BlockerBehaviour
     progress.minValue = 0f;
     progress.maxValue = castTime;
     progress.value = 0f;
-    ApplyBlocker();
+    blockerController.AddBlocker(blocker);
     animator.SetBool("Charging Launch", true);
     ActivateLaunchParticles();
   }
@@ -99,7 +103,7 @@ public class CharacterLaunch : BlockerBehaviour
   }
   void Charging_Exit()
   {
-    RemoveBlocker();
+    blockerController.RemoveBlocker(blocker);
     DeActivateLaunchParticles();
     progress.value = 0f;
     animator.SetBool("Charging Launch", false);
@@ -107,7 +111,7 @@ public class CharacterLaunch : BlockerBehaviour
 
   void Launching_Enter()
   {
-    ApplyBlocker();
+    blockerController.AddBlocker(blocker);
     ActivateLaunchParticles();
     cooldown.currentValue = cooldown.defaultValue;
     animator.SetTrigger("Launch");
@@ -178,14 +182,8 @@ public class CharacterLaunch : BlockerBehaviour
   void ChangeCameraFocus() { cameraController.ToggleShoulderLook(cameraFocusAtLaunch); }
   void ActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Play(); }
   void DeActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Stop(); }
-  void RemoveMovementBlock() { RemoveBlocker(); }
+  void RemoveMovementBlock() { blockerController.RemoveBlocker(blocker); }
 
-  public bool isBlocked
-  {
-    get
-    {
-      return blockerList.blockers.Exists(x => x.Abilities && x != blocker);
-    }
-  }
+  public bool isBlocked { get { return blockerController.ContainsBlocker(actions: true); } }
 
 }

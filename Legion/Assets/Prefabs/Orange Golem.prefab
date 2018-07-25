@@ -456,8 +456,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4029117792393160}
   - component: {fileID: 95347058581738560}
-  - component: {fileID: 114709597545056502}
   - component: {fileID: 136542452598400552}
+  - component: {fileID: 114035741773334508}
+  - component: {fileID: 114245427579626382}
   m_Layer: 14
   m_Name: Orange Golem
   m_TagString: Untagged
@@ -1511,7 +1512,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114709597545056502
+--- !u!114 &114035741773334508
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1519,10 +1520,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619578070938272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c800787d576bf642a99ba19d3295dac, type: 3}
+  m_Script: {fileID: 11500000, guid: 8952f5685188af342bd40d9ae17bd53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputStats: {fileID: 11400000, guid: 9d01378b7cdab4847a0e9605d7f1340e, type: 2}
+  teamData: {fileID: 11400000, guid: a1ce28c20b8921f4f822306e9330974f, type: 2}
+  targetStats:
+    currentTarget: {fileID: 0}
+    mainObjective: {fileID: 0}
+    stoppingDistance: 2
+  actionStats: {fileID: 11400000, guid: 9e4722d315f0db747914f57a1c75f66e, type: 2}
+  defensiveStats: {fileID: 11400000, guid: 9d01378b7cdab4847a0e9605d7f1340e, type: 2}
+--- !u!114 &114245427579626382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619578070938272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7991ebc0388e79548b167181e4037982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   armor: 0
   health: 0
 --- !u!136 &136542452598400552
@@ -1535,9 +1553,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137961958603670288
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

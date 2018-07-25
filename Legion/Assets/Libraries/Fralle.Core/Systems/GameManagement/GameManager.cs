@@ -12,12 +12,12 @@ public class GameManager : MonoBehaviour
   [SerializeField] GameData gameData;
   StateMachine<GameState> fsm;
   public GameEvent stateChange;
-
-  void ChangeState(GameState state)
+  
+  void SetState(GameState state)
   {
     Debug.Log("Changing state to: " + state.ToString());
     fsm.ChangeState(state);
-    gameData.ChangeState(state);
+    gameData.SetRulesFromState(state);
     gameData.timer.ResetCountdown(gameData.rules.countdown);
     gameData.timer.ResetRoundTime();
     stateChange.Raise();
@@ -26,23 +26,23 @@ public class GameManager : MonoBehaviour
   void Start()
   {
     fsm = StateMachine<GameState>.Initialize(this);
-    ChangeState(gameData.state);
-    gameData.blueTeam.MatchStart();
-    gameData.orangeTeam.MatchStart();
+    SetState(gameData.state);
+    gameData.blueTeamData.MatchStart();
+    gameData.orangeTeamData.MatchStart();
   }
 
   void Update()
   {
-    SyncState();
-    TimerTick();
+    SyncStateWithGameData();
+    TickTimer();
   }
 
-  void SyncState()
+  void SyncStateWithGameData()
   {
-    if (gameData.state != fsm.State) ChangeState(gameData.state);
+    if (gameData.state != fsm.State) SetState(gameData.state);
   }
 
-  void TimerTick()
+  void TickTimer()
   {
     if (gameData.rules.applyToElapsedTime) gameData.timer.Tick(Time.deltaTime);
     if (gameData.rules.countdown > 0) gameData.timer.CountdownTick(Time.deltaTime);

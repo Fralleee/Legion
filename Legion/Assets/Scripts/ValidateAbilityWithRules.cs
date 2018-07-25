@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ValidateAbilityWithRules : BlockerBehaviour
+public class ValidateAbilityWithRules : MonoBehaviour
 {
   ImageFillColor imageSettings;
+  BlockerController blockerController;
 
   void Start()
   {
     imageSettings = GetComponentInChildren<ImageFillColor>();
+    blockerController = GetComponent<BlockerController>();
   }
 
   public void Validate()
   {
-    if(imageSettings)
+    if (imageSettings)
     {
-      if (blockerList.blockers.Exists(x => x.Abilities)) imageSettings.readyColor = Color.gray;
+      if (blockerController.ContainsBlocker(actions: true)) imageSettings.readyColor = Color.gray;
       else imageSettings.readyColor = Color.white;
     }
   }

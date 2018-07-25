@@ -1,33 +1,20 @@
-# Blocker
-- Remake how blockers are used, instead use a component: BlockerController
+- AIMotor: Should be able to move around obstacles to get in line of sight
+
+- TestCase: 
+	Have two units. 
+	One has LoS ability with Range as MainAbility. One has ranged Ability without LoS as MainAbility
+	Both of them have secondary ability that is ranged.
+	Both of the try to attack a target behind a wall.
+	The one with LoS main should run towards target, shooting abilities on the way.
+	The other should only shoot ranged ability which can hit the enemy.
 	
-# Remove Ability-code (replaced by UnitAction)
-- Add Logic for LoS (TryPerform == false => nextAction || try to find LoS (only if mainAttack))
-- TryPerform on action
 	
+# UnitAction
+- Apply blocker if there is one to caster on StartPerform
+- Remove if interrupted
 
 	
 	
-	
-	
-	
-	
-	
-# Statistics : ScriptableObject
-  - Health
-	- Armor
-	- Animations
-	- List<Attack>
-	  Attack : ScriptableObject
-		  - Damage
-			- Attackspeed
-			- List<Animations>
-	
-
-
-
-
-
 # GameControls
 - LiveStart: Spawn soldiers from buildings
   Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation

@@ -338,7 +338,8 @@ GameObject:
   - component: {fileID: 95782049500505110}
   - component: {fileID: 195771836560334756}
   - component: {fileID: 114207510470654764}
-  - component: {fileID: 114620800625414110}
+  - component: {fileID: 114679224856838668}
+  - component: {fileID: 114697767278010474}
   - component: {fileID: 114238967658583240}
   - component: {fileID: 114187086310551350}
   m_Layer: 0
@@ -1097,7 +1098,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450951494954290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.9341345, y: 0.5, z: 7.9588184}
+  m_LocalPosition: {x: -6.07, y: 0.5, z: 15.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4912095789197130}
@@ -1525,9 +1526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36bca2ac30452c40b3325fabc16f7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 5
+  targetingSettings: {fileID: 11400000, guid: 7b9eb1b99dc8ae24bb82a463544b0338, type: 2}
   mainAttack: {fileID: 11400000, guid: c2c00796c8d7e804d959e74ad4aaa06b, type: 2}
-  allActions: []
+  inputActions: []
 --- !u!114 &114207510470654764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1540,8 +1541,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamData: {fileID: 11400000, guid: 96e2cf6cee2a2e34887c8df8eeac2afd, type: 2}
-  currentTarget: {fileID: 0}
-  stoppingDistance: 1
+  targetStats:
+    currentTarget: {fileID: 0}
+    mainObjective: {fileID: 0}
+    stoppingDistance: 2
+  actionStats: {fileID: 11400000, guid: 9e4722d315f0db747914f57a1c75f66e, type: 2}
+  defensiveStats: {fileID: 11400000, guid: 9d01378b7cdab4847a0e9605d7f1340e, type: 2}
 --- !u!114 &114238967658583240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1553,10 +1558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd97de2f45fe30a4ba132728e552f1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockerList: {fileID: 0}
-  blocker: {fileID: 0}
-  currentRules: {fileID: 0}
---- !u!114 &114620800625414110
+--- !u!114 &114679224856838668
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1564,10 +1566,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1450951494954290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c800787d576bf642a99ba19d3295dac, type: 3}
+  m_Script: {fileID: 11500000, guid: 71fdfccfe257f834ea11f6fca0a01ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputStats: {fileID: 11400000, guid: 9d01378b7cdab4847a0e9605d7f1340e, type: 2}
+  blockerList: {fileID: 0}
+  blocker: {fileID: 0}
+  currentRules: {fileID: 0}
+--- !u!114 &114697767278010474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450951494954290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7991ebc0388e79548b167181e4037982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   armor: 0
   health: 0
 --- !u!137 &137180064562288272

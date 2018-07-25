@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damageable : MonoBehaviour
+[RequireComponent(typeof(StatisticsController))]
+public class DamageController : MonoBehaviour
 {
-  [SerializeField] DefensiveStats inputStats;
   [SerializeField] float armor;
   [SerializeField] float health;
   float damageReduction;
 
   void Awake()
   {
-    health = inputStats.health;
-    armor = inputStats.armor;
+    StatisticsController statisticsController = GetComponent<StatisticsController>();
+    health = statisticsController.defensiveStats.health;
+    armor = statisticsController.defensiveStats.armor;
     damageReduction = 1 - armor / 10;
   }
 
@@ -24,8 +25,8 @@ public class Damageable : MonoBehaviour
 
     if (health <= 0)
     {
-      AIAction ai = attacker.GetComponent<AIAction>();
-      if (ai) ai.ForceNewTarget();
+      AIActionController ai = attacker.GetComponent<AIActionController>();
+      if (ai) ai.TargetDied();
       Die();
     }
   }

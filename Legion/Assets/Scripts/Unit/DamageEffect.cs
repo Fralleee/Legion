@@ -7,6 +7,8 @@ public class DamageEffect : ActionEffect
 {
   public override void Affect(GameObject target, GameObject caster)
   {
-    target.GetComponent<Damageable>().TakeDamage(caster.GetComponent<AIAction>().attackPower, caster);
+    DamageController targetDamageable = target.GetComponent<DamageController>();
+    StatisticsController statisticsController = caster.GetComponent<StatisticsController>();
+    targetDamageable.TakeDamage(statisticsController.actionStats.offensivePower, caster);
   }
 }
