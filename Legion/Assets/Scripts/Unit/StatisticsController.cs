@@ -41,4 +41,7 @@ public class StatisticsController : MonoBehaviour
   {
     targetStats.stoppingDistance = distance;
   }
+
+  public GameObject movementTarget { get { return targetStats.currentTarget ? targetStats.currentTarget : targetStats.mainObjective; } }
+  public GameObject actionTarget { get { return targetStats.currentTarget; } }
 }

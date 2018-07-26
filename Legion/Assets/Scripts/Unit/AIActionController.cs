@@ -5,9 +5,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(BlockerController))]
 [RequireComponent(typeof(StatisticsController))]
+[RequireComponent(typeof(AITargeter))]
 public class AIActionController : MonoBehaviour
 {
-  [SerializeField] AITargetingSettings targetingSettings;
   [Tooltip("The action which will base the nav mesh agents stopping distance")]
   [SerializeField] UnitAction mainAttack;
   [SerializeField] List<UnitAction> inputActions;
@@ -17,23 +17,21 @@ public class AIActionController : MonoBehaviour
 
   StatisticsController statisticsController;
   BlockerController blockerController;
-
+  AITargeter targeter;
 
   bool isBlocked { get { return blockerController.ContainsBlocker(actions: true); } }
-  bool requireNewTarget { get { return Time.time > targetingSettings.lastAttack || (statisticsController.targetStats.currentTarget == null && Time.time > targetingSettings.lastHostileScan); } }
   bool actionIsValid
   {
     get
     {
-      if (statisticsController.targetStats.currentTarget)
+      if (statisticsController.actionTarget)
       {
-        float distanceToTarget = Vector3.Distance(statisticsController.targetStats.currentTarget.transform.position, transform.position);
+        float distanceToTarget = Vector3.Distance(statisticsController.actionTarget.transform.position, transform.position);
         if (currentAction.range >= distanceToTarget) return true;
       }
       return false;
     }
   }
-
   bool isPerforming;
   UnitAction currentAction;
 
@@ -44,16 +42,13 @@ public class AIActionController : MonoBehaviour
     blockerController = GetComponent<BlockerController>();
     statisticsController = GetComponent<StatisticsController>();
     statisticsController.SetStoppingDistance(mainAttack.range);
+    targeter = GetComponent<AITargeter>();
 
-    targetingSettings = Instantiate(targetingSettings);
     allActions.Add(Instantiate(mainAttack));
     foreach (UnitAction action in inputActions) allActions.Add(Instantiate(action));
     foreach (UnitAction action in allActions) action.SetupAction(gameObject);
     hostileTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Hostile));
     friendlyTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Friendly));
-
-    targetingSettings.SetHostileScanRange(hostileTargetActions.Max(x => x.scanRange));
-    targetingSettings.enemyLayerMask = 1 << statisticsController.teamData.enemyLayer;
   }
 
   void Update()
@@ -63,15 +58,7 @@ public class AIActionController : MonoBehaviour
       if (!actionIsValid) ClearAction();
       else if (currentAction.readyToPerform) PerformAction();
     }
-    else if (!isBlocked)
-    {
-      if (requireNewTarget)
-      {
-        GameObject target = LookForTargetInRange();
-        statisticsController.SetTarget(target);
-      }
-      else if (statisticsController.targetStats.currentTarget) StartAction();
-    }
+    else if (!isBlocked && statisticsController.actionTarget) StartAction();
   }
 
   void StartAction()
@@ -79,13 +66,13 @@ public class AIActionController : MonoBehaviour
     List<UnitAction> availableActions = allActions.FindAll(x => !x.onCooldown);
     if (availableActions.Count == 0) return;
 
-    float distanceToTarget = Vector3.Distance(statisticsController.targetStats.currentTarget.transform.position, transform.position);
+    float distanceToTarget = Vector3.Distance(statisticsController.actionTarget.transform.position, transform.position);
     List<UnitAction> actions = availableActions.FindAll(x => x.range >= distanceToTarget);
     if (actions.Count == 0) return;
 
     foreach (UnitAction action in actions)
     {
-      if (action.TryPerform(statisticsController.targetStats.currentTarget))
+      if (action.TryPerform(statisticsController.actionTarget))
       {
         isPerforming = true;
         currentAction = action;
@@ -96,8 +83,8 @@ public class AIActionController : MonoBehaviour
 
   void PerformAction()
   {
-    targetingSettings.SetLastAttack(mainAttack);
-    currentAction.Perform(statisticsController.targetStats.currentTarget);
+    targeter.targetingSettings.SetLastAttack(mainAttack.cooldown);
+    currentAction.Perform(statisticsController.actionTarget);
     ClearAction();
   }
 
@@ -105,28 +92,6 @@ public class AIActionController : MonoBehaviour
   {
     isPerforming = false;
     currentAction = null;
-  }
-
-
-  // Target stuff (AI Only)
-  public void TargetDied()
-  {
-    statisticsController.ClearTarget();
-    GameObject target = LookForTargetInRange();
-    statisticsController.SetTarget(target);
-  }
-
-  GameObject LookForTargetInRange()
-  {
-    targetingSettings.SetLastHostileScan();
-    targetingSettings.SetLastAttack(mainAttack);
-    Collider[] colliders = TargetFinder.FindTargetsWithDamageable(targetingSettings.enemyLayerMask, targetingSettings.hostileScanRange, transform.position);
-    if (colliders.Length > 0)
-    {
-      if (statisticsController.targetStats.currentTarget && colliders.Length > 1 && colliders[0].gameObject == statisticsController.targetStats.currentTarget) return colliders[1].gameObject;
-      return colliders[0].gameObject;
-    }
-    return null;
   }
 
 }

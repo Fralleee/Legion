@@ -15,9 +15,9 @@ public class AITargetingSettings : ScriptableObject
   public float lastHostileScan = 0f;
   
 
-  public void SetLastAttack(UnitAction mainAttack)
+  public void SetLastAttack(float extraTime = 0)
   {
-    lastAttack = Time.time + mainAttack.cooldown + lastAttackBuffer;
+    lastAttack = Time.time + extraTime + lastAttackBuffer;
   }
 
   public void SetHostileScanRange(float maxRangeInActions)

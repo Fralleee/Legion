@@ -6,12 +6,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(BlockerController))]
 [RequireComponent(typeof(StatisticsController))]
+[RequireComponent(typeof(AITargeter))]
 public class AIMotor : MonoBehaviour
 {
   NavMeshAgent agent;
   StatisticsController statisticsController;
   BlockerController blockerController;
-  LayerMask layerMask;
+  AITargeter targeter;
 
   bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
 
@@ -20,26 +21,39 @@ public class AIMotor : MonoBehaviour
     agent = GetComponent<NavMeshAgent>();
     statisticsController = GetComponent<StatisticsController>();
     blockerController = GetComponent<BlockerController>();
-    layerMask = 1 << LayerMask.NameToLayer("Environment");
+    targeter = GetComponent<AITargeter>();
   }
 
   void Update()
   {
     if (isBlocked) agent.isStopped = true;
-    else if (statisticsController.targetStats.currentTarget) MoveTowards(statisticsController.targetStats.currentTarget.transform.position);
-    else if (statisticsController.targetStats.mainObjective) MoveTowards(statisticsController.targetStats.mainObjective.transform.position);
-    else agent.isStopped = true;
+    else if (needsToMove()) Move();
+    else StopAndTurn();
   }
 
-  void MoveTowards(Vector3 target)
+  bool needsToMove()
+  {
+    GameObject target = statisticsController.movementTarget;
+    if (target == null) return false;
+
+    agent.stoppingDistance = targeter.hasLineOfSight ? statisticsController.targetStats.stoppingDistance : -1f;
+    return !targeter.hasLineOfSight;
+  }
+
+  void Move()
   {
     agent.isStopped = false;
-    agent.SetDestination(target);
-    agent.stoppingDistance = statisticsController.targetStats.stoppingDistance;
-    if (agent.remainingDistance <= agent.stoppingDistance)
+    agent.SetDestination(statisticsController.movementTarget.transform.position);
+  }
+
+  void StopAndTurn()
+  {
+    agent.isStopped = true;
+    if (statisticsController.movementTarget && agent.velocity.magnitude < 3)
     {
-      Ray ray = new Ray(transform.position, target - transform.position);
-      if (Physics.Raycast(ray, agent.remainingDistance, layerMask)) agent.stoppingDistance = 0f;
+      Vector3 direction = statisticsController.movementTarget.transform.position - transform.position;
+      Quaternion toRotation = Quaternion.LookRotation(direction);
+      transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 0.2f);
     }
   }
 

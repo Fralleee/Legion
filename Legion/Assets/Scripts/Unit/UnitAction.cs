@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Fralle;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum TargetType
@@ -31,11 +32,13 @@ public abstract class UnitAction : ScriptableObject
   protected StatisticsController casterStats;
   protected BlockerController casterBlockerController;
   protected float lastCast;
+  protected int environmentLayer;
 
   void OnEnable()
   {
     lastCast = 0f;
     performActionTime = 0f;
+    environmentLayer = LayerMask.NameToLayer("Environment");
   }
 
   public bool onCooldown { get { return Time.time < lastCast; } }
@@ -64,13 +67,7 @@ public abstract class UnitAction : ScriptableObject
   {
     if (requireLineOfSight)
     {
-      LayerMask targetLayer = 1 << (targetType == TargetType.Hostile ? casterStats.teamData.enemyLayer : casterStats.teamData.teamLayer);
-      RaycastHit[] hits = Physics.RaycastAll(caster.transform.position, target.transform.position - caster.transform.position, range, targetLayer);
-      if (hits.Length > 0)
-      {
-        foreach (RaycastHit hit in hits)
-          if (hit.transform.gameObject == target) return true;
-      }
+      if (caster.GetComponent<AITargeter>().hasLineOfSight) return true;
       lastCast = Time.time + tryPerformBuffer;
       return false;
     }

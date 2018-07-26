@@ -2,6 +2,9 @@
 #										  NOW  										 #
 ################################################
 	
+# AITargeter: Responsible for checking line of sight and retargeting enemies
+- Move LoS logic to this one
+	
 # GameControls
 - LiveStart: Spawn soldiers from buildings
   Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
