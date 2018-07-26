@@ -13,9 +13,9 @@ public class DamageController : MonoBehaviour
   void Awake()
   {
     StatisticsController statisticsController = GetComponent<StatisticsController>();
-    health = statisticsController.defensiveStats.health;
-    maxHealth = statisticsController.defensiveStats.health;
-    armor = statisticsController.defensiveStats.armor;
+    health = statisticsController.attributes.health;
+    maxHealth = statisticsController.attributes.health;
+    armor = statisticsController.attributes.armor;
     damageReduction = 1 - armor / 10;
   }
 

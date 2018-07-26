@@ -9,6 +9,6 @@ public class DamageEffect : ActionEffect
   {
     DamageController targetDamageable = target.GetComponent<DamageController>();
     StatisticsController statisticsController = caster.GetComponent<StatisticsController>();
-    targetDamageable.TakeDamage(statisticsController.actionStats.offensivePower, caster);
+    targetDamageable.TakeDamage(statisticsController.attributes.physicalPower, caster);
   }
 }

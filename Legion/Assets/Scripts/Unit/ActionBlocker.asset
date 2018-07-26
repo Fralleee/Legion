@@ -8,8 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 809bda02add693645a32b19034379d16, type: 3}
-  m_Name: FrostWarriorDefensiveStats
+  m_Script: {fileID: 11500000, guid: f3b9af7dfb195c743891a984d9cc0484, type: 3}
+  m_Name: ActionBlocker
   m_EditorClassIdentifier: 
-  health: 40
-  armor: 1
+  Physics: 0
+  Camera: 0
+  Movement: 1
+  Actions: 1
+  Production: 0

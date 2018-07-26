@@ -61,7 +61,6 @@ public class AITargeter : MonoBehaviour
       float stoppingDistance = statisticsController.targetStats.stoppingDistance;
       if (Vector3.Distance(transform.position, target.transform.position) <= stoppingDistance)
       {
-        Vector3 direction = target.transform.position - transform.position;
         lastLoSCheck = Time.time + losCheckBufferTime;
         Ray ray = new Ray(transform.position, target.transform.position - transform.position);
         Debug.DrawRay(transform.position, target.transform.position - transform.position, Color.red, 0.5f);

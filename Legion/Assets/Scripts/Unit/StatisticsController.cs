@@ -6,8 +6,9 @@ public class StatisticsController : MonoBehaviour
 {
   public TeamData teamData;
   public TargetStats targetStats;
-  public ActionStats actionStats;
-  public DefensiveStats defensiveStats;
+  //public ActionStats actionStats;
+  //public DefensiveStats defensiveStats;
+  public Attributes attributes;
 
   void Start()
   {
