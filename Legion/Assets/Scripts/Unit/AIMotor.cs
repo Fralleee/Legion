@@ -11,6 +11,7 @@ public class AIMotor : MonoBehaviour
   NavMeshAgent agent;
   StatisticsController statisticsController;
   BlockerController blockerController;
+  LayerMask layerMask;
 
   bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
 
@@ -19,6 +20,7 @@ public class AIMotor : MonoBehaviour
     agent = GetComponent<NavMeshAgent>();
     statisticsController = GetComponent<StatisticsController>();
     blockerController = GetComponent<BlockerController>();
+    layerMask = 1 << LayerMask.NameToLayer("Environment");
   }
 
   void Update()
@@ -34,10 +36,11 @@ public class AIMotor : MonoBehaviour
     agent.isStopped = false;
     agent.SetDestination(target);
     agent.stoppingDistance = statisticsController.targetStats.stoppingDistance;
-
-    // TODO
-    // If target is out of LoS then we need to alter the stopping distance and move closer
-
+    if (agent.remainingDistance <= agent.stoppingDistance)
+    {
+      Ray ray = new Ray(transform.position, target - transform.position);
+      if (Physics.Raycast(ray, agent.remainingDistance, layerMask)) agent.stoppingDistance = 0f;
+    }
   }
 
 }

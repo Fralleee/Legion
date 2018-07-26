@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d9f2a70679e6f74bbfc7d71b326e9db, type: 3}
-  m_Name: FrostWarriorActionStats
+  m_Name: RangedActionStats
   m_EditorClassIdentifier: 
-  offensivePower: 25
+  offensivePower: 5
   defensivePower: 5

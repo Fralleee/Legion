@@ -19,15 +19,17 @@ public class AIActionController : MonoBehaviour
   BlockerController blockerController;
 
 
-
   bool isBlocked { get { return blockerController.ContainsBlocker(actions: true); } }
   bool requireNewTarget { get { return Time.time > targetingSettings.lastAttack || (statisticsController.targetStats.currentTarget == null && Time.time > targetingSettings.lastHostileScan); } }
   bool actionIsValid
   {
     get
     {
-      float distanceToTarget = Vector3.Distance(statisticsController.targetStats.currentTarget.transform.position, transform.position);
-      if (currentAction.range >= distanceToTarget) return true;
+      if (statisticsController.targetStats.currentTarget)
+      {
+        float distanceToTarget = Vector3.Distance(statisticsController.targetStats.currentTarget.transform.position, transform.position);
+        if (currentAction.range >= distanceToTarget) return true;
+      }
       return false;
     }
   }
@@ -83,7 +85,7 @@ public class AIActionController : MonoBehaviour
 
     foreach (UnitAction action in actions)
     {
-      if(action.TryPerform(statisticsController.targetStats.currentTarget))
+      if (action.TryPerform(statisticsController.targetStats.currentTarget))
       {
         isPerforming = true;
         currentAction = action;

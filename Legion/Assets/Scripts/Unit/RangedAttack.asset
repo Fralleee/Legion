@@ -9,15 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25488ebc2e403a7478ea117011a2ebea, type: 3}
-  m_Name: FrostWarriorMeleeAttack
+  m_Name: RangedAttack
   m_EditorClassIdentifier: 
   castTimeBlocker: {fileID: 11400000, guid: 551b04cdef4f51a48beb39cf592ccfed, type: 2}
-  castTime: 1
+  castTime: 0.1
   performActionTime: 0
   actionEffects:
   - {fileID: 11400000, guid: c1a987c8a71babd4c9309556f7d45846, type: 2}
   targetType: 0
-  cooldown: 3
+  cooldown: 0.1
   requireLineOfSight: 1
-  range: 2
+  range: 10
   scanRange: 15
