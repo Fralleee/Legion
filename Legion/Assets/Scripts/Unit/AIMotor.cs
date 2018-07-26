@@ -35,7 +35,7 @@ public class AIMotor : MonoBehaviour
     agent.SetDestination(target);
     agent.stoppingDistance = statisticsController.targetStats.stoppingDistance;
 
-    // TODO:
+    // TODO
     // If target is out of LoS then we need to alter the stopping distance and move closer
 
   }

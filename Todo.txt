@@ -2,6 +2,7 @@
 #										  NOW  										 #
 ################################################
 
++ HealthBar shader
 
 # Actions, LineOfSight, Testing	
 - AIMotor: Should be able to move around obstacles to get in line of sight
@@ -39,8 +40,7 @@
 - Ability UI should have functionality Flashing, where it indicates with a pulsating glowing border and shine.
   
 	
-	
-	
+
 	
 	
 	
@@ -69,6 +69,10 @@
 - Turn when above certain degree (45deg-)
   Otherwise turn characters upper body towards direction
 
+# UI 
+- Split up canvases
+- Optimizations https://unity3d.com/how-to/unity-ui-optimization-tips
+	
 # InventorySystem
 - Kolla unitegrejerna
 

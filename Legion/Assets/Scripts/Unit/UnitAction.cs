@@ -21,7 +21,9 @@ public abstract class UnitAction : ScriptableObject
   // These are not required if TargetType is self
   // use an editor script for this
   public float range;
-  public float scanRange = 10f;
+
+  [Range(15, 100)]
+  public float scanRange = 15f;
 
   protected float tryPerformBuffer = 0.25f;
 
