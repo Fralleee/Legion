@@ -5,14 +5,15 @@
 + Add these to AITargeter-behaviour
 + Rename to Lastinteractionwithtarget
 + Move LoS logic to this one
++ Raycast i overlapsphere
++ CheckLineOfSight improved
 
-
-# Targeting
-- Raycast i overlapsphere
-
-- CheckLineOfSight är kass, vi måste kolla om vi kan se rätt target inte om vi inte kan se väggar
-  Vi behöver köra en raycast och se om den träffar vårat target före en vägg
-
+# Target
+- Move targetstats from statisticscontroller to AITargeter 
+  Target is an AI only thing
+	
+- Remove TargetStats
+- Remove commented code in statisticscontroller
 
 # Action
 - Rename to ability

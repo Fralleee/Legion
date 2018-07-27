@@ -26,7 +26,7 @@ public class DamageController : MonoBehaviour
     if (health <= 0)
     {
       AITargeter ai = attacker.GetComponent<AITargeter>();
-      if (ai) ai.TargetDied();
+      if (ai) ai.ClearTarget(gameObject);
       Die();
     }
   }

@@ -5,21 +5,29 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(BlockerController))]
-[RequireComponent(typeof(StatisticsController))]
 [RequireComponent(typeof(AITargeter))]
 public class AIMotor : MonoBehaviour
 {
   NavMeshAgent agent;
-  StatisticsController statisticsController;
   BlockerController blockerController;
   AITargeter targeter;
 
   bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
+  bool needsToMove
+  {
+    get
+    {
+      GameObject target = targeter.target;
+      if (target == null) return false;
+
+      agent.stoppingDistance = targeter.hasLineOfSight ? targeter.stoppingDistance : -1f;
+      return !targeter.hasLineOfSight;
+    }
+  }
 
   void Start()
   {
     agent = GetComponent<NavMeshAgent>();
-    statisticsController = GetComponent<StatisticsController>();
     blockerController = GetComponent<BlockerController>();
     targeter = GetComponent<AITargeter>();
   }
@@ -27,31 +35,22 @@ public class AIMotor : MonoBehaviour
   void Update()
   {
     if (isBlocked) agent.isStopped = true;
-    else if (needsToMove()) Move();
+    else if (needsToMove) Move();
     else StopAndTurn();
-  }
-
-  bool needsToMove()
-  {
-    GameObject target = statisticsController.movementTarget;
-    if (target == null) return false;
-
-    agent.stoppingDistance = targeter.hasLineOfSight ? statisticsController.targetStats.stoppingDistance : -1f;
-    return !targeter.hasLineOfSight;
   }
 
   void Move()
   {
     agent.isStopped = false;
-    agent.SetDestination(statisticsController.movementTarget.transform.position);
+    agent.SetDestination(targeter.target.transform.position);
   }
 
   void StopAndTurn()
   {
     agent.isStopped = true;
-    if (statisticsController.movementTarget && agent.velocity.magnitude < 3)
+    if (targeter.target && agent.velocity.magnitude < 3)
     {
-      Vector3 direction = statisticsController.movementTarget.transform.position - transform.position;
+      Vector3 direction = targeter.target.transform.position - transform.position;
       Quaternion toRotation = Quaternion.LookRotation(direction);
       transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 0.2f);
     }

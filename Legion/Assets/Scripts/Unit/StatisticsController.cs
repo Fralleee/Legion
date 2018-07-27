@@ -5,13 +5,13 @@ using UnityEngine;
 public class StatisticsController : MonoBehaviour
 {
   public TeamData teamData;
-  public TargetStats targetStats;
-  //public ActionStats actionStats;
-  //public DefensiveStats defensiveStats;
   public Attributes attributes;
+
+  AITargeter targeter;
 
   void Start()
   {
+    targeter = GetComponent<AITargeter>();
     Invoke("DelayedStart", 0.25f);
   }
 
@@ -20,29 +20,7 @@ public class StatisticsController : MonoBehaviour
   void DelayedStart()
   {
     gameObject.layer = teamData.teamLayer;
-    targetStats.mainObjective = teamData.objective;
+    if (targeter) targeter.SetObjective(teamData.objective);
   }
 
-  public void ClearTarget()
-  {
-    targetStats.currentTarget = null;
-  }
-
-  public void SetTarget(GameObject target)
-  {
-    if (target)
-    {
-      Debug.Log("New Target: " + target.gameObject.name);
-      targetStats.currentTarget = target;
-    }
-    else ClearTarget();
-  }
-
-  public void SetStoppingDistance(float distance)
-  {
-    targetStats.stoppingDistance = distance;
-  }
-
-  public GameObject movementTarget { get { return targetStats.currentTarget ? targetStats.currentTarget : targetStats.mainObjective; } }
-  public GameObject actionTarget { get { return targetStats.currentTarget; } }
 }

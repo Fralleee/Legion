@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(BlockerController))]
-[RequireComponent(typeof(StatisticsController))]
 [RequireComponent(typeof(AITargeter))]
 public class AIActionController : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class AIActionController : MonoBehaviour
   List<UnitAction> hostileTargetActions = new List<UnitAction>();
   List<UnitAction> friendlyTargetActions = new List<UnitAction>();
 
-  StatisticsController statisticsController;
   BlockerController blockerController;
   AITargeter targeter;
 
@@ -24,9 +22,9 @@ public class AIActionController : MonoBehaviour
   {
     get
     {
-      if (statisticsController.actionTarget)
+      if (targeter.currentTarget)
       {
-        float distanceToTarget = Vector3.Distance(statisticsController.actionTarget.transform.position, transform.position);
+        float distanceToTarget = Vector3.Distance(targeter.currentTarget.transform.position, transform.position);
         if (currentAction.range >= distanceToTarget) return true;
       }
       return false;
@@ -40,9 +38,8 @@ public class AIActionController : MonoBehaviour
     if (!mainAttack.requireLineOfSight) Debug.LogWarning(gameObject.name + "'s mainAttack (" + mainAttack.name + ") does not require Line of Sight, this could cause issues.");
 
     blockerController = GetComponent<BlockerController>();
-    statisticsController = GetComponent<StatisticsController>();
-    statisticsController.SetStoppingDistance(mainAttack.range - 0.5f);
     targeter = GetComponent<AITargeter>();
+    targeter.SetStoppingDistance(mainAttack.range - 0.5f);
 
     allActions.Add(Instantiate(mainAttack));
     foreach (UnitAction action in inputActions) allActions.Add(Instantiate(action));
@@ -59,7 +56,7 @@ public class AIActionController : MonoBehaviour
       if (!actionIsValid) ClearAction();
       else if (currentAction.readyToPerform) PerformAction();
     }
-    else if (!isBlocked && statisticsController.actionTarget) StartAction();
+    else if (!isBlocked && targeter.currentTarget) StartAction();
   }
 
   void StartAction()
@@ -67,13 +64,13 @@ public class AIActionController : MonoBehaviour
     List<UnitAction> availableActions = allActions.FindAll(x => !x.onCooldown);
     if (availableActions.Count == 0) return;
 
-    float distanceToTarget = Vector3.Distance(statisticsController.actionTarget.transform.position, transform.position);
+    float distanceToTarget = Vector3.Distance(targeter.currentTarget.transform.position, transform.position);
     List<UnitAction> actions = availableActions.FindAll(x => x.range >= distanceToTarget);
     if (actions.Count == 0) return;
 
     foreach (UnitAction action in actions)
     {
-      if (action.TryPerform(statisticsController.actionTarget))
+      if (action.TryPerform(targeter.currentTarget))
       {
         isPerforming = true;
         currentAction = action;
@@ -85,7 +82,7 @@ public class AIActionController : MonoBehaviour
   void PerformAction()
   {
     targeter.SetLastInteractionWithTarget(mainAttack.cooldown);
-    currentAction.Perform(statisticsController.actionTarget);
+    currentAction.Perform(targeter.currentTarget);
     ClearAction();
   }
 

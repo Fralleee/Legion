@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(StatisticsController))]
 public class AITargeter : MonoBehaviour
@@ -10,6 +8,10 @@ public class AITargeter : MonoBehaviour
   [SerializeField] float lineOfSightCheckCooldown = 0.25f;
   [Range(15, 100)] [SerializeField] float hostileScanRange = 15f;
 
+  public GameObject currentTarget { get; private set; }
+  public GameObject objective { get; private set; }
+  public GameObject target { get { return currentTarget ? currentTarget : objective; } }
+  public float stoppingDistance { get; private set; }
   public bool hasLineOfSight { get; private set; }
   public float lastInteractionWithTarget { get; private set; }
   public float lastHostileScan { get; private set; }
@@ -19,7 +21,7 @@ public class AITargeter : MonoBehaviour
   LayerMask environmentLayerMask;
   LayerMask enemyLayerMask;
   float lastLineOfSightCheck;
-  bool requireNewTarget { get { return Time.time > lastInteractionWithTarget || (statisticsController.actionTarget == null && Time.time > lastHostileScan); } }
+  bool requireNewTarget { get { return Time.time > lastInteractionWithTarget || (currentTarget == null && Time.time > lastHostileScan); } }
 
   void Start()
   {
@@ -33,55 +35,60 @@ public class AITargeter : MonoBehaviour
     if (requireNewTarget)
     {
       GameObject target = LookForTargetInRange();
-      statisticsController.SetTarget(target);
+      if (target)
+      {
+        SetTarget(target);
+        CheckLineOfSight();
+      }
     }
-    CheckLineOfSight();
+    else if (Time.time > lastLineOfSightCheck && target) CheckLineOfSight();
   }
   GameObject LookForTargetInRange()
   {
     SetLastHostileScan();
     SetLastInteractionWithTarget();
     Collider[] colliders = TargetFinder.FindTargetsWithDamageable(enemyLayerMask, hostileScanRange, transform.position);
-    if (colliders.Length > 0)
+    foreach (Collider collider in colliders)
     {
-      foreach (Collider collider in colliders)
+      RaycastHit hit;
+      if (TargetFinder.HasLineOfSight(gameObject, collider.gameObject, out hit, hostileScanRange, environmentLayerMask | enemyLayerMask))
       {
-        RaycastHit hit;
-        if (TargetFinder.HasLineOfSight(gameObject, collider.gameObject, out hit, hostileScanRange, environmentLayerMask | enemyLayerMask))
-        {
-          if (hit.transform.gameObject.layer == statisticsController.teamData.enemyLayer) return collider.gameObject;
-        }
+        if (hit.transform.gameObject.layer == statisticsController.teamData.enemyLayer) return collider.gameObject;
       }
     }
     return null;
   }
 
+  public void SetStoppingDistance(float distance) { stoppingDistance = distance; }
   public void SetLastInteractionWithTarget(float extraTime = 0) { lastInteractionWithTarget = Time.time + extraTime + targetSwitchEvaluationTime; }
   public void SetHostileScanRange(float maxRangeInActions) { hostileScanRange = Mathf.Clamp(Mathf.Max(hostileScanRange, maxRangeInActions), 15, 100); }
   public void SetLastHostileScan() { lastHostileScan = Time.time + targetScanCooldown; }
-  public void TargetDied() { statisticsController.ClearTarget(); }
+  public void ClearTarget(GameObject target = null)
+  {
+    if (target == currentTarget) currentTarget = null;
+    else if (target == objective) objective = null;
+    return;
+  }
+  public void SetObjective(GameObject target)
+  {
+    Debug.Log("New Objective: " + target.gameObject.name);
+    objective = target;
+  }
+  public void SetTarget(GameObject target)
+  {
+    Debug.Log("New Target: " + target.gameObject.name);
+    currentTarget = target;
+  }
   public void CheckLineOfSight()
   {
-    if (Time.time > lastLineOfSightCheck)
+    if (Vector3.Distance(transform.position, target.transform.position) <= stoppingDistance)
     {
-      GameObject target = statisticsController.movementTarget;
-      if (target == null)
+      lastLineOfSightCheck = Time.time + lineOfSightCheckCooldown;
+      RaycastHit hit;
+      if (TargetFinder.HasLineOfSightRadius(gameObject, target, out hit, stoppingDistance, 0.5f, environmentLayerMask | enemyLayerMask))
       {
-        hasLineOfSight = false;
-        return;
-      }
-
-      float stoppingDistance = statisticsController.targetStats.stoppingDistance;
-      if (Vector3.Distance(transform.position, target.transform.position) <= stoppingDistance)
-      {
-        lastLineOfSightCheck = Time.time + lineOfSightCheckCooldown;
-        RaycastHit hit;
-        if (TargetFinder.HasLineOfSightRadius(gameObject, target, out hit, stoppingDistance, 0.5f, environmentLayerMask | enemyLayerMask))
-        {
-          hasLineOfSight = hit.transform.gameObject.layer != environmentLayer;
-        }
+        hasLineOfSight = hit.transform.gameObject.layer != environmentLayer;
       }
     }
   }
-
 }
