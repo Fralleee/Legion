@@ -1,9 +1,26 @@
 ################################################
 #										  NOW  										 #
 ################################################
++ Remove AITargetingSettings
++ Add these to AITargeter-behaviour
++ Rename to Lastinteractionwithtarget
++ Move LoS logic to this one
+
+
+# Targeting
+- Raycast i overlapsphere
+
+- CheckLineOfSight är kass, vi måste kolla om vi kan se rätt target inte om vi inte kan se väggar
+  Vi behöver köra en raycast och se om den träffar vårat target före en vägg
+
+
+# Action
+- Rename to ability
+
+
+- Diska ur shaken
+- Fixa högtalare
 	
-# AITargeter: Responsible for checking line of sight and retargeting enemies
-- Move LoS logic to this one
 	
 # GameControls
 - LiveStart: Spawn soldiers from buildings

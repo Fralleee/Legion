@@ -41,7 +41,7 @@ public class AIActionController : MonoBehaviour
 
     blockerController = GetComponent<BlockerController>();
     statisticsController = GetComponent<StatisticsController>();
-    statisticsController.SetStoppingDistance(mainAttack.range);
+    statisticsController.SetStoppingDistance(mainAttack.range - 0.5f);
     targeter = GetComponent<AITargeter>();
 
     allActions.Add(Instantiate(mainAttack));
@@ -49,6 +49,7 @@ public class AIActionController : MonoBehaviour
     foreach (UnitAction action in allActions) action.SetupAction(gameObject);
     hostileTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Hostile));
     friendlyTargetActions.AddRange(allActions.FindAll(x => x.targetType == TargetType.Friendly));
+    targeter.SetHostileScanRange(hostileTargetActions.Max(x => x.scanRange));
   }
 
   void Update()
@@ -83,7 +84,7 @@ public class AIActionController : MonoBehaviour
 
   void PerformAction()
   {
-    targeter.targetingSettings.SetLastAttack(mainAttack.cooldown);
+    targeter.SetLastInteractionWithTarget(mainAttack.cooldown);
     currentAction.Perform(statisticsController.actionTarget);
     ClearAction();
   }

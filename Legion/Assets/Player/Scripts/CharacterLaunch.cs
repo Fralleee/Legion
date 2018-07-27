@@ -131,7 +131,6 @@ public class CharacterLaunch : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.Q)) fsm.ChangeState(States.Landing);
     Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-    Debug.DrawRay(transform.position, ray.direction, Color.red, 1f);
     RaycastHit hit;
     int layer = 1 << LayerMask.NameToLayer("Environment");
     if (Physics.Raycast(transform.position, ray.direction, out hit, 35f, layer))

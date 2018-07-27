@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class UnitScreenSpaceUI : MonoBehaviour
 {
-  StatisticsController statisticsController;
   DamageController damageController;
   ImageFillSetter healthBarValue;
 
   void Start()
   {
-    statisticsController = GetComponent<StatisticsController>();
     damageController = GetComponent<DamageController>();
     healthBarValue = GetComponentInChildren<ImageFillSetter>();
     if(healthBarValue)

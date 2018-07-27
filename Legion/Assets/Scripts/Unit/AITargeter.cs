@@ -5,23 +5,29 @@ using UnityEngine;
 [RequireComponent(typeof(StatisticsController))]
 public class AITargeter : MonoBehaviour
 {
-  public AITargetingSettings targetingSettings;
-  StatisticsController statisticsController;
+  [SerializeField] float targetSwitchEvaluationTime = 4f;
+  [SerializeField] float targetScanCooldown = 1f;
+  [SerializeField] float lineOfSightCheckCooldown = 0.25f;
+  [Range(15, 100)] [SerializeField] float hostileScanRange = 15f;
 
-  bool requireNewTarget { get { return Time.time > targetingSettings.lastAttack || (statisticsController.actionTarget == null && Time.time > targetingSettings.lastHostileScan); } }
   public bool hasLineOfSight { get; private set; }
-  float lastLoSCheck;
-  float losCheckBufferTime = 0.25f;
+  public float lastInteractionWithTarget { get; private set; }
+  public float lastHostileScan { get; private set; }
+
+  StatisticsController statisticsController;
+  int environmentLayer;
   LayerMask environmentLayerMask;
+  LayerMask enemyLayerMask;
+  float lastLineOfSightCheck;
+  bool requireNewTarget { get { return Time.time > lastInteractionWithTarget || (statisticsController.actionTarget == null && Time.time > lastHostileScan); } }
 
   void Start()
   {
     statisticsController = GetComponent<StatisticsController>();
-    targetingSettings = Instantiate(targetingSettings);
-    targetingSettings.enemyLayerMask = 1 << statisticsController.teamData.enemyLayer;
-    environmentLayerMask = 1 << LayerMask.NameToLayer("Environment");
+    environmentLayer = LayerMask.NameToLayer("Environment");
+    enemyLayerMask = 1 << statisticsController.teamData.enemyLayer;
+    environmentLayerMask = 1 << environmentLayer;
   }
-
   void Update()
   {
     if (requireNewTarget)
@@ -31,25 +37,32 @@ public class AITargeter : MonoBehaviour
     }
     CheckLineOfSight();
   }
-
-  public void TargetDied() { statisticsController.ClearTarget(); }
-
   GameObject LookForTargetInRange()
   {
-    targetingSettings.SetLastHostileScan();
-    targetingSettings.SetLastAttack();
-    Collider[] colliders = TargetFinder.FindTargetsWithDamageable(targetingSettings.enemyLayerMask, targetingSettings.hostileScanRange, transform.position);
+    SetLastHostileScan();
+    SetLastInteractionWithTarget();
+    Collider[] colliders = TargetFinder.FindTargetsWithDamageable(enemyLayerMask, hostileScanRange, transform.position);
     if (colliders.Length > 0)
     {
-      if (statisticsController.actionTarget && colliders.Length > 1 && colliders[0].gameObject == statisticsController.actionTarget) return colliders[1].gameObject;
-      return colliders[0].gameObject;
+      foreach (Collider collider in colliders)
+      {
+        RaycastHit hit;
+        if (TargetFinder.HasLineOfSight(gameObject, collider.gameObject, out hit, hostileScanRange, environmentLayerMask | enemyLayerMask))
+        {
+          if (hit.transform.gameObject.layer == statisticsController.teamData.enemyLayer) return collider.gameObject;
+        }
+      }
     }
     return null;
   }
 
+  public void SetLastInteractionWithTarget(float extraTime = 0) { lastInteractionWithTarget = Time.time + extraTime + targetSwitchEvaluationTime; }
+  public void SetHostileScanRange(float maxRangeInActions) { hostileScanRange = Mathf.Clamp(Mathf.Max(hostileScanRange, maxRangeInActions), 15, 100); }
+  public void SetLastHostileScan() { lastHostileScan = Time.time + targetScanCooldown; }
+  public void TargetDied() { statisticsController.ClearTarget(); }
   public void CheckLineOfSight()
   {
-    if (Time.time > lastLoSCheck)
+    if (Time.time > lastLineOfSightCheck)
     {
       GameObject target = statisticsController.movementTarget;
       if (target == null)
@@ -61,11 +74,14 @@ public class AITargeter : MonoBehaviour
       float stoppingDistance = statisticsController.targetStats.stoppingDistance;
       if (Vector3.Distance(transform.position, target.transform.position) <= stoppingDistance)
       {
-        lastLoSCheck = Time.time + losCheckBufferTime;
-        Ray ray = new Ray(transform.position, target.transform.position - transform.position);
-        Debug.DrawRay(transform.position, target.transform.position - transform.position, Color.red, 0.5f);
-        hasLineOfSight = !Physics.SphereCast(ray, 0.5f, stoppingDistance, environmentLayerMask);
+        lastLineOfSightCheck = Time.time + lineOfSightCheckCooldown;
+        RaycastHit hit;
+        if (TargetFinder.HasLineOfSightRadius(gameObject, target, out hit, stoppingDistance, 0.5f, environmentLayerMask | enemyLayerMask))
+        {
+          hasLineOfSight = hit.transform.gameObject.layer != environmentLayer;
+        }
       }
     }
   }
+
 }

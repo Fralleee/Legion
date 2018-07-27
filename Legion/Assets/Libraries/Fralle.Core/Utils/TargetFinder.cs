@@ -11,4 +11,19 @@ public static class TargetFinder
       .OrderBy(x => (x.transform.position - position).sqrMagnitude)
       .ToArray();
   }
+
+  public static bool HasLineOfSight(GameObject origin, GameObject target, out RaycastHit hit, float range, LayerMask layerMask)
+  {
+    Debug.Log("HasLineOfSight");
+    Ray ray = new Ray(origin.transform.position, target.transform.position - origin.transform.position);
+    Debug.DrawRay(origin.transform.position, target.transform.position - origin.transform.position, Color.red, 0.5f);
+    return Physics.Raycast(ray, out hit, range, layerMask);
+  }
+
+  public static bool HasLineOfSightRadius(GameObject origin, GameObject target, out RaycastHit hit, float range, float sphereCastRadius, LayerMask layerMask)
+  {
+    Ray ray = new Ray(origin.transform.position, target.transform.position - origin.transform.position);
+    //Debug.DrawRay(origin.transform.position, target.transform.position - origin.transform.position, Color.red, 0.5f);
+    return Physics.SphereCast(ray, sphereCastRadius, out hit, range, layerMask);
+  }
 }

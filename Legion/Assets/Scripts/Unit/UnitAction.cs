@@ -39,6 +39,7 @@ public abstract class UnitAction : ScriptableObject
     lastCast = 0f;
     performActionTime = 0f;
     environmentLayer = LayerMask.NameToLayer("Environment");
+    scanRange = scanRange < range ? range : scanRange;
   }
 
   public bool onCooldown { get { return Time.time < lastCast; } }

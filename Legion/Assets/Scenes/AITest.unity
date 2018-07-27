@@ -2675,7 +2675,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121d3f1c0df14294690e136bd1238527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetingSettings: {fileID: 11400000, guid: 7b9eb1b99dc8ae24bb82a463544b0338, type: 2}
+  targetSwitchEvaluationTime: 4
+  targetScanCooldown: 1
+  lineOfSightCheckCooldown: 0.25
+  hostileScanRange: 15
 --- !u!1 &2009854703
 GameObject:
   m_ObjectHideFlags: 0
