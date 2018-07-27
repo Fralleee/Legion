@@ -1289,6 +1289,7 @@ GameObject:
   - component: {fileID: 502152033}
   - component: {fileID: 502152032}
   - component: {fileID: 502152031}
+  - component: {fileID: 502152035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1352,13 +1353,28 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 502152030}
-  m_LocalRotation: {x: 0.19111088, y: 0.6325316, z: -0.16509603, w: 0.73220474}
-  m_LocalPosition: {x: -26.742239, y: 15.033855, z: -4.1474056}
+  m_LocalRotation: {x: 0.26038274, y: 0.63611925, z: -0.24184394, w: 0.684883}
+  m_LocalPosition: {x: -24.020424, y: 17.008331, z: -0.51475894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 286209779}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &502152035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502152030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1da63591dc67445b632e87664be9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 703b245f98d111d418d988ba74eefbce, type: 3}
+  pixelSizeX: 4
+  pixelSizeY: 4
+  lockXY: 1
 --- !u!1 &569803860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainAttack: {fileID: 11400000, guid: 2250f5ca0dcc5934cb43022cd8113acf, type: 2}
-  inputActions: []
+  inputAbilities: []
 --- !u!114 &2008242975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,10 +2604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamData: {fileID: 11400000, guid: 96e2cf6cee2a2e34887c8df8eeac2afd, type: 2}
-  targetStats:
-    currentTarget: {fileID: 0}
-    mainObjective: {fileID: 0}
-    stoppingDistance: 2
   attributes: {fileID: 11400000, guid: 239fdb9572e78a04c8b02cfb0aad2520, type: 2}
 --- !u!195 &2008242978
 NavMeshAgent:
