@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ActionEffect : ScriptableObject
+public abstract class AbilityEffect : ScriptableObject
 {
   public virtual void Affect(GameObject target) { }
   public virtual void Affect(GameObject target, GameObject caster) { }

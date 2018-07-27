@@ -9,16 +9,17 @@ public enum TargetType
   Self
 }
 
-public abstract class UnitAction : ScriptableObject
+public abstract class Ability : ScriptableObject
 {
   [SerializeField] protected Blocker castTimeBlocker;
   [SerializeField] protected float castTime;
-  [SerializeField] protected float performActionTime;
+  [SerializeField] protected float finishedCastTime;
 
-  [SerializeField] protected List<ActionEffect> actionEffects;
+  [SerializeField] protected List<AbilityEffect> abilityEffects;
   public TargetType targetType;
   public float cooldown = 1f;
   public bool requireLineOfSight;
+
   // These are not required if TargetType is self
   // use an editor script for this
   public float range;
@@ -26,7 +27,7 @@ public abstract class UnitAction : ScriptableObject
   [Range(15, 100)]
   public float scanRange = 15f;
 
-  protected float tryPerformBuffer = 0.25f;
+  protected float tryCastBufferTime = 0.25f;
 
   protected GameObject caster;
   protected StatisticsController casterStats;
@@ -37,24 +38,24 @@ public abstract class UnitAction : ScriptableObject
   void OnEnable()
   {
     lastCast = 0f;
-    performActionTime = 0f;
+    finishedCastTime = 0f;
     environmentLayer = LayerMask.NameToLayer("Environment");
     scanRange = scanRange < range ? range : scanRange;
   }
 
   public bool onCooldown { get { return Time.time < lastCast; } }
-  public bool readyToPerform { get { return Time.time > performActionTime; } }
+  public bool readyToCast { get { return Time.time > finishedCastTime; } }
 
-  public virtual void SetupAction(GameObject casterObject)
+  public virtual void SetupAbility(GameObject casterObject)
   {
     caster = casterObject;
     casterStats = caster.GetComponent<StatisticsController>();
     casterBlockerController = caster.GetComponent<BlockerController>();
   }
 
-  public virtual void StartPerform()
+  public virtual void PrepareCast()
   {
-    performActionTime = Time.time + castTime;
+    finishedCastTime = Time.time + castTime;
     if (castTimeBlocker) casterBlockerController.AddBlocker(castTimeBlocker);
   }
 
@@ -64,12 +65,12 @@ public abstract class UnitAction : ScriptableObject
     if (castTimeBlocker) casterBlockerController.RemoveBlocker(castTimeBlocker);
   }
 
-  public virtual bool TryPerform(GameObject target)
+  public virtual bool TryCast(GameObject target)
   {
     if (requireLineOfSight)
     {
       if (caster.GetComponent<AITargeter>().hasLineOfSight) return true;
-      lastCast = Time.time + tryPerformBuffer;
+      lastCast = Time.time + tryCastBufferTime;
       return false;
     }
     return true;

@@ -1,26 +1,10 @@
 ################################################
 #										  NOW  										 #
 ################################################
-+ Remove AITargetingSettings
-+ Add these to AITargeter-behaviour
-+ Rename to Lastinteractionwithtarget
-+ Move LoS logic to this one
-+ Raycast i overlapsphere
-+ CheckLineOfSight improved
-
-# Target
-- Move targetstats from statisticscontroller to AITargeter 
-  Target is an AI only thing
-	
-- Remove TargetStats
-- Remove commented code in statisticscontroller
-
 # Action
 - Rename to ability
 
-
 - Diska ur shaken
-- Fixa högtalare
 	
 	
 # GameControls

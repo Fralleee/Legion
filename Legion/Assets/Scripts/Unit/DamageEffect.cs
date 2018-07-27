@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Actions/Effects/Damage")]
-public class DamageEffect : ActionEffect
+public class DamageEffect : AbilityEffect
 {
   public override void Affect(GameObject target, GameObject caster)
   {
