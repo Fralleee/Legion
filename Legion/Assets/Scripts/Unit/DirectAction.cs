@@ -8,9 +8,6 @@ public class DirectAction : Ability
   public override void Perform(GameObject target)
   {
     base.Perform(target);
-    foreach (var effect in abilityEffects)
-    {
-      effect.Affect(target, caster);
-    }
+    foreach (var effect in abilityEffects) effect.Affect(target, caster);
   }
 }

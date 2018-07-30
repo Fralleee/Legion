@@ -39,7 +39,7 @@ public class AIAbilityController : MonoBehaviour
 
     blockerController = GetComponent<BlockerController>();
     targeter = GetComponent<AITargeter>();
-    targeter.SetStoppingDistance(mainAttack.range - 0.5f);
+    targeter.SetStoppingDistance(mainAttack.range - 1f);
 
     allAbilities.Add(Instantiate(mainAttack));
     foreach (Ability ability in inputAbilities) allAbilities.Add(Instantiate(ability));
