@@ -1,12 +1,12 @@
 ################################################
 #										  NOW  										 #
 ################################################
-# Action
-- Rename to ability
+# AI animations
+- Movement animations (should just require forward, maybe turning?)
+- Use Root motion or not?
+- Attack animation for ranged and melee
+- Create new unit that uses ranged
 
-- Diska ur shaken
-	
-	
 # GameControls
 - LiveStart: Spawn soldiers from buildings
   Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
@@ -14,7 +14,6 @@
 	After small delay add the old model and slowly apply dissolve to make it visible
 
 	
-# AI animations
 
 
 # ActionController (player)
