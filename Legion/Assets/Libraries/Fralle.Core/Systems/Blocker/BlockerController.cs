@@ -12,7 +12,10 @@ public class BlockerController : MonoBehaviour
 
   void Awake()
   {
-    if (blockerList == null) blockerList = ScriptableObject.CreateInstance<BlockerList>();
+    if (blockerList == null)
+    {
+      blockerList = ScriptableObject.CreateInstance<BlockerList>();
+    }
   }
 
   public void AddBlocker(Blocker blocker)
@@ -25,10 +28,10 @@ public class BlockerController : MonoBehaviour
     blockerList.blockers.RemoveIfExists(blocker);
   }
 
-  public bool ContainsBlocker(bool? physics = false, bool? camera = false, bool? movement = false, bool? actions = false, bool? production = false)
+  public bool ContainsBlocker(bool? physics = null, bool? camera = null, bool? movement = null, bool? actions = null, bool? production = null)
   {
     return blockerList.blockers.Any(x =>
-    physics.HasValue ? x.Physics == physics.Value :
+    physics.HasValue ? (x.Physics == physics.Value) :
     camera.HasValue ? x.Camera == camera.Value :
     movement.HasValue ? x.Movement == movement.Value :
     actions.HasValue ? x.Actions == actions.Value :

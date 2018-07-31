@@ -41,8 +41,8 @@ public class AITargeter : MonoBehaviour, ITarget
   }
   void Update()
   {
-    if(target) Debug.Log(name + " has target " + target.name);
-    else Debug.LogWarning(name + " has no target");
+    //if(target) Debug.Log(name + " has target " + target.name);
+    //else Debug.LogWarning(name + " has no target");
 
     if (requireNewTarget)
     {

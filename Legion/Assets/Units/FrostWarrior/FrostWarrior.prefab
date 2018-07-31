@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 114238967658583240}
   - component: {fileID: 114187086310551350}
   - component: {fileID: 114519310200425964}
+  - component: {fileID: 114994731200409382}
   m_Layer: 0
   m_Name: FrostWarrior
   m_TagString: Untagged
@@ -1554,6 +1555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd97de2f45fe30a4ba132728e552f1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnBlocker: {fileID: 11400000, guid: b4893833f929b1e4d85117f2958c0475, type: 2}
 --- !u!114 &114519310200425964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1598,6 +1600,56 @@ MonoBehaviour:
   armor: 0
   health: 0
   maxHealth: 0
+--- !u!114 &114994731200409382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450951494954290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed0ce8a263ef754c97277519a2e8796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: Round Start
+    gameEvent: {fileID: 11400000, guid: 024907ad57fc00549b0fa734b48ea542, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114679224856838668}
+          m_MethodName: AddBlocker
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: b4893833f929b1e4d85117f2958c0475,
+              type: 2}
+            m_ObjectArgumentAssemblyTypeName: Blocker, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - name: Round Live
+    gameEvent: {fileID: 11400000, guid: 8bed17a95a9b77f4f8b8fdc97b88f8cf, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114679224856838668}
+          m_MethodName: RemoveBlocker
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: b4893833f929b1e4d85117f2958c0475,
+              type: 2}
+            m_ObjectArgumentAssemblyTypeName: Blocker, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!136 &136627686654513906
 CapsuleCollider:
   m_ObjectHideFlags: 1

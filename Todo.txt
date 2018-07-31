@@ -2,8 +2,19 @@
 #										  NOW  										 #
 ################################################
 # GameControls
-+ OnEvent: Spawn soldiers from buildings
-- OnEvent: Should remove graphics part och character.
+
++ OnRoundStart: Spawn soldiers from buildings
++ OnRoundStart: Should remove graphics part och character.
+- OnRoundStart: Should add a temporary blocker which waits for Animation: Idle before letting go
+
+- Better targetIsDead check
+  Unit waits for next LoS-check to determine if they should check for new target
+	Instead all attacking units should be notified immediately
+
+- Change render pipeline
+- OnRoundStart: Apply dissolve shader to building graphics
+- OnRoundStart: Start a timer that slowly removes dissolve from building graphics
+
 
 - LiveUpdate: 
 	After small delay add the old model and slowly apply dissolve to make it visible

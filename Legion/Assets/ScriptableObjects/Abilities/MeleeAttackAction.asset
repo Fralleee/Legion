@@ -19,5 +19,5 @@ MonoBehaviour:
   targetType: 0
   cooldown: 2
   requireLineOfSight: 1
-  range: 4
+  range: 2
   scanRange: 15

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(AITargeter))]
 public class AIMotor : MonoBehaviour
 {
+  [SerializeField] Blocker spawnBlocker;
+
   NavMeshAgent agent;
   BlockerController blockerController;
   AITargeter targeter;
@@ -29,6 +32,7 @@ public class AIMotor : MonoBehaviour
   {
     agent = GetComponent<NavMeshAgent>();
     blockerController = GetComponent<BlockerController>();
+    blockerController.AddBlocker(spawnBlocker);
     targeter = GetComponent<AITargeter>();
   }
 

@@ -10,7 +10,8 @@ public class Spawner : MonoBehaviour
   public void SpawnUnit()
   {
     buildingUnitGraphics.SetActive(false);
-    Instantiate(unitPrefab, transform.position, transform.rotation);
+    GameObject instance = Instantiate(unitPrefab, transform.position, transform.rotation);
+    instance.name = unitPrefab.name;
   }
 
   public void Reset()
