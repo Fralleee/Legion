@@ -7,18 +7,26 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Dissolve
-  m_Shader: {fileID: 4800000, guid: df778dfc69de7fb48809501a413b8bbf, type: 3}
-  m_ShaderKeywords: _USE_GRADIENT_ON
+  m_Shader: {fileID: 4800000, guid: 7ae71afe2c21ff449bdf25fccd01dc84, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture_155699A6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AO:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Albedo:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -46,6 +54,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissiveTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Gradient:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,10 +75,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fb1f27a421140a14bb9b23adeb924b68, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -78,7 +94,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _noiseTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -86,6 +110,7 @@ Material:
     - Vector1_5F682335: 0.05
     - Vector1_667E564: -0.21
     - Vector1_68C5C62B: 0
+    - Vector1_710448D6: 0.1
     - Vector1_971D46E8: 0.01
     - Vector1_D3EA06BB: 30
     - Vector1_D7263EC0: 15
@@ -95,32 +120,50 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DisplaceAmount: 0.4
+    - _DisplaceAmount: 0
+    - _DissolveAmount: -4.9
     - _DissolveVal: 0.55
     - _DstBlend: 0
-    - _EdgeSize: 0.2
+    - _EdgeSize: 0.159
+    - _EffectAmount: 0.2
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
+    - _InvFade: 7.95
     - _LineWidth: 0.041
     - _Metallic: 0
-    - _NoiseStrength: 0.4
+    - _MovementSpeed: 0.75
+    - _NoiseSize: 1
+    - _NoiseStrength: 0
+    - _NormalSacle: 0.5
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RimPower: 3
+    - _Scale: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
-    - _Use_Gradient: 1
+    - _Use_Gradient: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _speed: 1
+    - _vertOffset: 1
     m_Colors:
     - Color_16FC7F41: {r: 32, g: 0, b: 12.565445, a: 0}
     - Color_57725705: {r: 0, g: 5.145098, b: 16, a: 0}
+    - Color_B11E0E63: {r: 0.4438857, g: 0.7075472, b: 0.4713053, a: 0}
+    - Color_D028D1AD: {r: 1.498039, g: 0.5411765, b: 0, a: 0}
+    - Vector2_6987868C: {r: 1, g: 3, b: 0, a: 0}
+    - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EdgeColor1: {r: 1, g: 1, b: 1, a: 1}
-    - _Emission: {r: 0, g: 0, b: 0, a: 0}
+    - _Color2: {r: 0, g: 0, b: 0, a: 0}
+    - _Direction: {r: 0, g: 1, b: 0, a: 0}
+    - _EdgeColor1: {r: 1354.2229, g: 724.43506, b: 0, a: 1}
+    - _Emission: {r: 1024, g: 0, b: 566.2118, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 1, g: 1, b: 1, a: 1}
     - _LineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Position: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

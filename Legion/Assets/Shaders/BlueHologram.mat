@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Hologram
-  m_Shader: {fileID: 4800000, guid: 99674942937b6d04986fa87322554dd8, type: 3}
+  m_Name: BlueHologram
+  m_Shader: {fileID: 4800000, guid: 7ae71afe2c21ff449bdf25fccd01dc84, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture_155699A6:
-        m_Texture: {fileID: 2800000, guid: 5668dde7b29930040babee8dc3b1e18d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 23463e45a62d6b9489a742afa61b1276, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture_168EF44A:
@@ -73,7 +73,8 @@ Material:
     m_Floats:
     - Vector1_5F682335: 0.01
     - Vector1_667E564: 0.499
-    - Vector1_710448D6: 0.1
+    - Vector1_6BA813AB: 0.25
+    - Vector1_710448D6: 0
     - Vector1_D7263EC0: 25
     - _AlphaClip: 0
     - _Blend: 0
@@ -98,8 +99,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_16FC7F41: {r: 23.968628, g: 0, b: 9.411765, a: 0}
-    - Color_B11E0E63: {r: 0.504717, g: 1, b: 0.90711623, a: 0}
-    - Color_D028D1AD: {r: 1.2998208, g: 0, b: 1.4980391, a: 0}
+    - Color_B11E0E63: {r: 0.28773582, g: 0.7345195, b: 1, a: 1}
+    - Color_D028D1AD: {r: 2.9960785, g: 0.76862746, b: 0, a: 0}
     - Vector2_6987868C: {r: 1, g: 3, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
