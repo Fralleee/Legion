@@ -472,11 +472,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4856862403119206}
+  - component: {fileID: 114779296962949570}
   - component: {fileID: 114352856862291188}
   - component: {fileID: 114536246694347946}
-  - component: {fileID: 114779296962949570}
   - component: {fileID: 65310202775959126}
   - component: {fileID: 54156315267908678}
+  - component: {fileID: 114720460815442114}
+  - component: {fileID: 114093201950615898}
   m_Layer: 11
   m_Name: FrostWarriorBuilding
   m_TagString: Untagged
@@ -1451,7 +1453,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702380236776734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.419164, y: 0.5, z: 9.305779}
+  m_LocalPosition: {x: 15.69112, y: 0.5, z: -14.838238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4531386672804762}
@@ -1643,6 +1645,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114093201950615898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702380236776734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed0ce8a263ef754c97277519a2e8796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: Round Start
+    gameEvent: {fileID: 11400000, guid: 024907ad57fc00549b0fa734b48ea542, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114720460815442114}
+          m_MethodName: SpawnUnit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &114352856862291188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1671,6 +1703,18 @@ MonoBehaviour:
   - {fileID: 23056570789891654}
   successMaterial: {fileID: 2100000, guid: f5fb2704dad25d54c8dd280755b29b8d, type: 2}
   errorMaterial: {fileID: 2100000, guid: 8fe80650b15a8ab4d91adfd9c1ff6b79, type: 2}
+--- !u!114 &114720460815442114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702380236776734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91047678df1d5de478fd6fefcd7f46a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitPrefab: {fileID: 1450951494954290, guid: 99ec8f067ac7b92448cb266b8b797280, type: 2}
 --- !u!114 &114779296962949570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1682,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3baa9978748aa4abce612806f32074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
+  isPlacedFromStart: 1
 --- !u!137 &137155961609419168
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

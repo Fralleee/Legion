@@ -1,16 +1,22 @@
-﻿   using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-  [SerializeField] GameObject unit;
+  [SerializeField] bool isPlacedFromStart;
 
-  public void Initiate(Transform parent)
+  void Awake()
   {
-    GetComponent<PlacementCollisionDetection>().SetDefaultMaterials();
+    if (isPlacedFromStart) Initiate();
+  }
+
+  public void Initiate(Transform parent = null)
+  {
+    if (!isPlacedFromStart) GetComponent<PlacementCollisionDetection>().SetDefaultMaterials();
     Destroy(GetComponent<PlacementCollisionDetection>());
     Destroy(GetComponent<Rigidbody>());
+    Destroy(GetComponent<SnapToGrid>());
     transform.parent = parent;
   }
 

@@ -1570,6 +1570,7 @@ MonoBehaviour:
   lineOfSightCheckCooldown: 0.25
   hostileScanRange: 15
   _currentTarget: {fileID: 0}
+  targetWidth: 0
 --- !u!114 &114679224856838668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1715,7 +1716,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
+  m_Speed: 4
   m_Acceleration: 500
   avoidancePriority: 0
   m_AngularSpeed: 900

@@ -84,7 +84,8 @@ public class AIAbilityController : MonoBehaviour
   void ClearAbility()
   {
     isCasting = false;
-    currentAbility = null;
+    currentAbility.Interrupt();
+    currentAbility = null;    
   }
 
   bool IsTargetInRange(GameObject target, float checkRange)

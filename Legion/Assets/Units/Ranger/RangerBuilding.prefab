@@ -561,11 +561,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4245356359936214}
+  - component: {fileID: 114428415066339212}
   - component: {fileID: 114936777660999382}
   - component: {fileID: 114009516958935854}
-  - component: {fileID: 114428415066339212}
   - component: {fileID: 65267034257441356}
   - component: {fileID: 54946863348034166}
+  - component: {fileID: 114430849080081256}
+  - component: {fileID: 114333234197657508}
   m_Layer: 11
   m_Name: RangerBuilding
   m_TagString: Untagged
@@ -1005,7 +1007,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1711405285186028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.116631, y: 0.5, z: 8.570853}
+  m_LocalPosition: {x: 12.890064, y: 0.5, z: -15.763675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4495515829254066}
@@ -1659,6 +1661,18 @@ MonoBehaviour:
   - {fileID: 23723958030978744}
   successMaterial: {fileID: 2100000, guid: f5fb2704dad25d54c8dd280755b29b8d, type: 2}
   errorMaterial: {fileID: 2100000, guid: 8fe80650b15a8ab4d91adfd9c1ff6b79, type: 2}
+--- !u!114 &114333234197657508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711405285186028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91047678df1d5de478fd6fefcd7f46a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitPrefab: {fileID: 1783934614919028, guid: 262f53bcf3ff7fd40b42972ff1825261, type: 2}
 --- !u!114 &114428415066339212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1670,7 +1684,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3baa9978748aa4abce612806f32074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
+  isPlacedFromStart: 1
+--- !u!114 &114430849080081256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711405285186028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed0ce8a263ef754c97277519a2e8796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: Round start
+    gameEvent: {fileID: 11400000, guid: 024907ad57fc00549b0fa734b48ea542, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114333234197657508}
+          m_MethodName: SpawnUnit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &114936777660999382
 MonoBehaviour:
   m_ObjectHideFlags: 1

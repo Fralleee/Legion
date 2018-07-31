@@ -41,6 +41,9 @@ public class AITargeter : MonoBehaviour, ITarget
   }
   void Update()
   {
+    if(target) Debug.Log(name + " has target " + target.name);
+    else Debug.LogWarning(name + " has no target");
+
     if (requireNewTarget)
     {
       GameObject target = LookForTargetInRange();
@@ -81,27 +84,29 @@ public class AITargeter : MonoBehaviour, ITarget
   }
   public void SetObjective(GameObject target)
   {
-    Debug.Log("New Objective: " + target.gameObject.name);
+    Debug.Log("NEW OBJECTIVE: " + target.gameObject.name);
     objective = target;
   }
   public void SetTarget(GameObject target)
   {
     targetWidth = target.GetComponent<Collider>().bounds.size.x / 2;
-    Debug.Log("New Target: " + target.gameObject.name);
+    Debug.Log("NEW TARGET: " + target.gameObject.name);
     SetStoppingDistance(baseStoppingDistance + targetWidth);
     currentTarget = target;
     _currentTarget = target;
   }
   public void CheckLineOfSight()
   {
+    lastLineOfSightCheck = Time.time + lineOfSightCheckCooldown;
     if (Vector3.Distance(transform.position, target.transform.position) <= stoppingDistance)
     {
-      lastLineOfSightCheck = Time.time + lineOfSightCheckCooldown;
       RaycastHit hit;
       if (TargetFinder.HasLineOfSightRadius(gameObject, target, out hit, stoppingDistance, 0.5f, environmentLayerMask | enemyLayerMask))
       {
         hasLineOfSight = hit.transform.gameObject.layer != environmentLayer;
+        return;
       }
     }
+    hasLineOfSight = false;
   }
 }

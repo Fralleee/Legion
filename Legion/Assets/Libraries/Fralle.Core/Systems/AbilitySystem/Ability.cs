@@ -77,7 +77,7 @@ public abstract class Ability : ScriptableObject
     return true;
   }
 
-  public virtual void Interrupt(GameObject caster)
+  public virtual void Interrupt()
   {
     lastCast = 0f;
     if (castTimeBlocker) casterBlockerController.RemoveBlocker(castTimeBlocker);
