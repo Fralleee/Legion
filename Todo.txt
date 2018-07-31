@@ -1,15 +1,15 @@
 ################################################
 #										  NOW  										 #
 ################################################
-# Create more scenes
-- Player testing scene (jumping obstacles, build area, target dummies, attack/dodge training)
-- Game test scene (game rules, win objectives e.t.c.)
-
 # GameControls
-- LiveStart: Spawn soldiers from buildings
++ OnEvent: Spawn soldiers from buildings
   Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
 - LiveUpdate: 
 	After small delay add the old model and slowly apply dissolve to make it visible
+
+# Create more scenes
+- Player testing scene (jumping obstacles, build area, target dummies, attack/dodge training)
+- Game test scene (game rules, win objectives e.t.c.)
 
 # AI animations
 - Movement animations (should just require forward, maybe turning?)
