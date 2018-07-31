@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a172a0a81c2d2d54f8b7f4f82e19a896, type: 3}
   m_Name: FrostWarriorAttrs
   m_EditorClassIdentifier: 
-  physicalPower: 10
+  physicalPower: 25
   magicalPower: 0
   health: 25
   armor: 1

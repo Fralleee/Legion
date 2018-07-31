@@ -8,9 +8,12 @@ public class AITargeter : MonoBehaviour, ITarget
   [SerializeField] float lineOfSightCheckCooldown = 0.25f;
   [Range(15, 100)] [SerializeField] float hostileScanRange = 15f;
 
+  public GameObject _currentTarget;
   public GameObject currentTarget { get; private set; }
   public GameObject objective { get; private set; }
   public GameObject target { get { return currentTarget ? currentTarget : objective; } }
+  public float targetWidth = 0f;
+  float baseStoppingDistance = 2f;
   public float stoppingDistance { get; private set; }
   public bool hasLineOfSight { get; set; }
   public float lastInteractionWithTarget { get; private set; }
@@ -21,7 +24,13 @@ public class AITargeter : MonoBehaviour, ITarget
   LayerMask environmentLayerMask;
   LayerMask enemyLayerMask;
   float lastLineOfSightCheck;
-  bool requireNewTarget { get { return Time.time > lastInteractionWithTarget || (currentTarget == null && Time.time > lastHostileScan); } }
+  bool requireNewTarget
+  {
+    get
+    {
+      return Time.time > lastInteractionWithTarget || (currentTarget == null && Time.time > lastHostileScan);
+    }
+  }
 
   void Start()
   {
@@ -58,15 +67,16 @@ public class AITargeter : MonoBehaviour, ITarget
     }
     return null;
   }
-
+  public void SetBaseStoppingDistance(float distance) { baseStoppingDistance = distance; }
   public void SetStoppingDistance(float distance) { stoppingDistance = distance; }
   public void SetLastInteractionWithTarget(float extraTime = 0) { lastInteractionWithTarget = Time.time + extraTime + targetSwitchEvaluationTime; }
   public void SetHostileScanRange(float maxRangeInActions) { hostileScanRange = Mathf.Clamp(Mathf.Max(hostileScanRange, maxRangeInActions), 15, 100); }
   public void SetLastHostileScan() { lastHostileScan = Time.time + targetScanCooldown; }
-  public void ClearTarget(GameObject target = null)
+  public void ClearDeadTarget(GameObject target = null)
   {
     if (target == currentTarget) currentTarget = null;
     else if (target == objective) objective = null;
+    hasLineOfSight = false;
     return;
   }
   public void SetObjective(GameObject target)
@@ -76,8 +86,11 @@ public class AITargeter : MonoBehaviour, ITarget
   }
   public void SetTarget(GameObject target)
   {
+    targetWidth = target.GetComponent<Collider>().bounds.size.x / 2;
     Debug.Log("New Target: " + target.gameObject.name);
+    SetStoppingDistance(baseStoppingDistance + targetWidth);
     currentTarget = target;
+    _currentTarget = target;
   }
   public void CheckLineOfSight()
   {

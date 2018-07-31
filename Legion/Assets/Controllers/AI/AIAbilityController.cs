@@ -18,15 +18,11 @@ public class AIAbilityController : MonoBehaviour
   AITargeter targeter;
 
   bool isBlocked { get { return blockerController.ContainsBlocker(actions: true); } }
-  bool actionIsValid
+  bool targetInRange
   {
     get
     {
-      if (targeter.currentTarget)
-      {
-        float distanceToTarget = Vector3.Distance(targeter.currentTarget.transform.position, transform.position);
-        if (currentAbility.range >= distanceToTarget) return true;
-      }
+      if (targeter.currentTarget) return IsTargetInRange(targeter.currentTarget, currentAbility.range);
       return false;
     }
   }
@@ -35,12 +31,12 @@ public class AIAbilityController : MonoBehaviour
 
   void Start()
   {
-    if(!mainAttack) Debug.LogWarning(gameObject.name + " is missing a mainAttack.");
+    if (!mainAttack) Debug.LogWarning(gameObject.name + " is missing a mainAttack.");
     if (!mainAttack.requireLineOfSight) Debug.LogWarning(gameObject.name + "'s mainAttack (" + mainAttack.name + ") does not require Line of Sight, this could cause issues.");
 
     blockerController = GetComponent<BlockerController>();
     targeter = GetComponent<AITargeter>();
-    targeter.SetStoppingDistance(mainAttack.range - 1f);
+    targeter.SetBaseStoppingDistance(mainAttack.range - 1f);
 
     allAbilities.Add(Instantiate(mainAttack));
     foreach (Ability ability in inputAbilities) allAbilities.Add(Instantiate(ability));
@@ -54,7 +50,7 @@ public class AIAbilityController : MonoBehaviour
   {
     if (isCasting && currentAbility)
     {
-      if (!actionIsValid) ClearAbility();
+      if (!targetInRange) ClearAbility();
       else if (currentAbility.readyToCast) Cast();
     }
     else if (!isBlocked && targeter.currentTarget) PrepareCast();
@@ -64,9 +60,7 @@ public class AIAbilityController : MonoBehaviour
   {
     List<Ability> availableAbilities = allAbilities.FindAll(x => !x.onCooldown);
     if (availableAbilities.Count == 0) return;
-
-    float distanceToTarget = Vector3.Distance(targeter.currentTarget.transform.position, transform.position);
-    availableAbilities = availableAbilities.FindAll(x => x.range >= distanceToTarget);
+    availableAbilities = availableAbilities.FindAll(x => IsTargetInRange(targeter.currentTarget, x.range));
     if (availableAbilities.Count == 0) return;
 
     foreach (Ability ability in availableAbilities)
@@ -93,4 +87,9 @@ public class AIAbilityController : MonoBehaviour
     currentAbility = null;
   }
 
+  bool IsTargetInRange(GameObject target, float checkRange)
+  {
+    float distanceToTarget = Vector3.Distance(target.transform.position, transform.position) - targeter.targetWidth;
+    return checkRange >= distanceToTarget;
+  }
 }

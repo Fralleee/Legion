@@ -336,6 +336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4522109750327354}
   - component: {fileID: 95782049500505110}
+  - component: {fileID: 136627686654513906}
   - component: {fileID: 195771836560334756}
   - component: {fileID: 114207510470654764}
   - component: {fileID: 114679224856838668}
@@ -1568,6 +1569,7 @@ MonoBehaviour:
   targetScanCooldown: 1
   lineOfSightCheckCooldown: 0.25
   hostileScanRange: 15
+  _currentTarget: {fileID: 0}
 --- !u!114 &114679224856838668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1595,6 +1597,19 @@ MonoBehaviour:
   armor: 0
   health: 0
   maxHealth: 0
+--- !u!136 &136627686654513906
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450951494954290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137180064562288272
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

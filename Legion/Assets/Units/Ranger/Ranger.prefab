@@ -1191,6 +1191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4450429676849908}
   - component: {fileID: 95015599757371248}
+  - component: {fileID: 136184394544976230}
   - component: {fileID: 195554902287708812}
   - component: {fileID: 114421227600561794}
   - component: {fileID: 114219982847200868}
@@ -3051,6 +3052,7 @@ MonoBehaviour:
   targetScanCooldown: 1
   lineOfSightCheckCooldown: 0.25
   hostileScanRange: 15
+  _currentTarget: {fileID: 0}
 --- !u!114 &114905955278491962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3064,6 +3066,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAttack: {fileID: 11400000, guid: 2250f5ca0dcc5934cb43022cd8113acf, type: 2}
   inputAbilities: []
+--- !u!136 &136184394544976230
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783934614919028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137236116963056032
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

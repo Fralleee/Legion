@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: MeleeAttackAction
   m_EditorClassIdentifier: 
   castTimeBlocker: {fileID: 11400000, guid: 551b04cdef4f51a48beb39cf592ccfed, type: 2}
-  castTime: 2
+  castTime: 0.5
   finishedCastTime: 0
   abilityEffects:
   - {fileID: 11400000, guid: c1a987c8a71babd4c9309556f7d45846, type: 2}

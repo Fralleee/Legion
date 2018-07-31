@@ -56,21 +56,18 @@ public abstract class Ability : ScriptableObject
 
   public virtual void PrepareCast()
   {
-    Debug.Log("PrepareCast");
     finishedCastTime = Time.time + castTime;
     if (castTimeBlocker) casterBlockerController.AddBlocker(castTimeBlocker);
   }
 
   public virtual void Perform(GameObject target)
   {
-    Debug.Log("Perform");
     lastCast = Time.time + cooldown;
     if (castTimeBlocker) casterBlockerController.RemoveBlocker(castTimeBlocker);
   }
 
   public virtual bool TryCast(GameObject target)
   {
-    Debug.Log("TryCast");
     if (requireLineOfSight)
     {
       if (caster.GetComponent<ITarget>().hasLineOfSight) return true;

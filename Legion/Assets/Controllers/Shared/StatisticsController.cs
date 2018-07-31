@@ -20,7 +20,7 @@ public class StatisticsController : MonoBehaviour
   void DelayedStart()
   {
     gameObject.layer = teamData.teamLayer;
-    if (targeter) targeter.SetObjective(teamData.objective);
+    if (targeter && teamData.objective) targeter.SetObjective(teamData.objective);
   }
 
 }
