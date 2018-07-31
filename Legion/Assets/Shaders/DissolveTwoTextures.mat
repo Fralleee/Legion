@@ -23,7 +23,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture_FD7B2720:
-        m_Texture: {fileID: 2800000, guid: 28ba174564f99ec48939c7e4b5ca99ac, type: 3}
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -68,7 +68,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_5F682335: 0
-    - Vector1_667E564: 0.248
+    - Vector1_667E564: 1
     - Vector1_D7263EC0: 25
     - _AlphaClip: 0
     - _Blend: 0

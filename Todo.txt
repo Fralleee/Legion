@@ -5,11 +5,9 @@
 
 + OnRoundStart: Spawn soldiers from buildings
 + OnRoundStart: Should remove graphics part och character.
-- OnRoundStart: Should add a temporary blocker which waits for Animation: Idle before letting go
++ OnRoundStart: Should add a temporary blocker which waits for event
 
-- Better targetIsDead check
-  Unit waits for next LoS-check to determine if they should check for new target
-	Instead all attacking units should be notified immediately
+
 
 - Change render pipeline
 - OnRoundStart: Apply dissolve shader to building graphics

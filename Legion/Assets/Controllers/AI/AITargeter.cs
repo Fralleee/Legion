@@ -4,7 +4,7 @@
 public class AITargeter : MonoBehaviour, ITarget
 {
   [SerializeField] float targetSwitchEvaluationTime = 4f;
-  [SerializeField] float targetScanCooldown = 1f;
+  [SerializeField] float targetScanCooldown = 10f;
   [SerializeField] float lineOfSightCheckCooldown = 0.25f;
   [Range(15, 100)] [SerializeField] float hostileScanRange = 15f;
 
