@@ -9,5 +9,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82c773732a7f4814f8e33ea18639169b, type: 3}
-  m_Name: RoundStart
+  m_Name: OnRoundStart
   m_EditorClassIdentifier: 

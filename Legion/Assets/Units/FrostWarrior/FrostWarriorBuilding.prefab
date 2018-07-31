@@ -1714,6 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91047678df1d5de478fd6fefcd7f46a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingUnitGraphics: {fileID: 1883544951578368}
   unitPrefab: {fileID: 1450951494954290, guid: 99ec8f067ac7b92448cb266b8b797280, type: 2}
 --- !u!114 &114779296962949570
 MonoBehaviour:

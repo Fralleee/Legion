@@ -3,7 +3,8 @@
 ################################################
 # GameControls
 + OnEvent: Spawn soldiers from buildings
-  Iterate through runtime sets (buildings) and replace the building character model with actual character and activate animation
+- OnEvent: Should remove graphics part och character.
+
 - LiveUpdate: 
 	After small delay add the old model and slowly apply dissolve to make it visible
 
