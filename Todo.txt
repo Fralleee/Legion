@@ -1,34 +1,32 @@
 ################################################
 #										  NOW  										 #
 ################################################
-# GameControls
 
-+ OnRoundStart: Spawn soldiers from buildings
-+ OnRoundStart: Should remove graphics part och character.
-+ OnRoundStart: Should add a temporary blocker which waits for event
+# AI
+- Replace current system with scriptableobjects type
+
+# Build system
+- Rename placeable
+
+# UI
+- Build UI should be activated based on Event/State
+  Build controls should be:
+	LMB: Upgrade
+	RMB: Sell
+	1-6: Basic units	
+	Q: Last unit
+	E: ???
+	R: Ultimate unit 1
+	F: Ultimate unit 2	
+- When a spell/building cannot be cast/afforded it should be red
 
 
-
-- Change render pipeline
-- OnRoundStart: Apply dissolve shader to building graphics
-- OnRoundStart: Start a timer that slowly removes dissolve from building graphics
-
-
-- LiveUpdate: 
-	After small delay add the old model and slowly apply dissolve to make it visible
-
-# Create more scenes
-- Player testing scene (jumping obstacles, build area, target dummies, attack/dodge training)
-- Game test scene (game rules, win objectives e.t.c.)
 
 # AI animations
+- Maybe have multiple animations (regular and BR)
 - Movement animations (should just require forward, maybe turning?)
 - Use Root motion or not?
 - Attack animation for ranged and melee
-
-
-	
-
 
 # ActionController (player)
 - Create caster behaviour, kind of same as Builder
@@ -39,12 +37,10 @@
 - Try reconstructing Launch as an ability instead
   Probably need an enum that says AbilityType [Default, Attack, Ultimate]
 
-	
 # Ability UI
 - Ability UI should have functionality Flashing, where it indicates with a pulsating glowing border and shine.
   
-	
-
+# Death ragdoll
 	
 	
 	
