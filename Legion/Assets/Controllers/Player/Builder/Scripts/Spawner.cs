@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
   [SerializeField] GameObject buildingUnitGraphics;
   [SerializeField] GameObject unitPrefab;
 
-  new Renderer graphicsRenderer;
+  Renderer graphicsRenderer;
   Material material;
   float time;
   bool regenerate;
@@ -34,7 +32,6 @@ public class Spawner : MonoBehaviour
   {
     if(regenerate)
     {
-      Debug.Log(time);
       time += Time.deltaTime * 0.1f;
       graphicsRenderer.material.SetFloat("Vector1_6BA813AB", Mathf.Lerp(0, 0.25f, time));
       if (time >= 1) regenerate = false;

@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class StatisticsController : MonoBehaviour
 {
-  public TeamData teamData;
-  public Attributes attributes;
+  //public TeamData teamData;
+  //public Attributes attributes;
 
-  AITargeter targeter;
+  //AITargeter targeter;
 
-  void Start()
-  {
-    targeter = GetComponent<AITargeter>();
-    Invoke("DelayedStart", 0.25f);
-  }
+  //void Start()
+  //{
+  //targeter = GetComponent<AITargeter>();
+  //Invoke("DelayedStart", 0.25f);
+  //}
 
   // This is required when testing, however in an actual game
   // there should be no need to delay since the game manager has already set up team data.
-  void DelayedStart()
-  {
-    gameObject.layer = teamData.teamLayer;
-    if (targeter && teamData.objective) targeter.SetObjective(teamData.objective);
-  }
+  //void DelayedStart()
+  //{
+  //  gameObject.layer = teamData.teamLayer;
+  //  if (targeter && teamData.objective) targeter.SetObjective(teamData.objective);
+  //}
 
 }

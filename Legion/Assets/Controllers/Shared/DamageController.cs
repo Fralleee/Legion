@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(StatisticsController))]
+//[RequireComponent(typeof(StatisticsController))]
 public class DamageController : MonoBehaviour
 {
+  [SerializeField] Attributes attributes;
   [HideInInspector] public float armor;
   [HideInInspector] public float health;
   [HideInInspector] public float maxHealth;
@@ -12,10 +13,15 @@ public class DamageController : MonoBehaviour
 
   void Awake()
   {
-    StatisticsController statisticsController = GetComponent<StatisticsController>();
-    health = statisticsController.attributes.health;
-    maxHealth = statisticsController.attributes.health;
-    armor = statisticsController.attributes.armor;
+    //StatisticsController statisticsController = GetComponent<StatisticsController>();
+    //health = statisticsController.attributes.health;
+    //maxHealth = statisticsController.attributes.health;
+    //armor = statisticsController.attributes.armor;
+    //damageReduction = 1 - armor / 10;
+
+    health = attributes.health;
+    maxHealth = attributes.health;
+    armor = attributes.armor;
     damageReduction = 1 - armor / 10;
   }
 
@@ -25,8 +31,8 @@ public class DamageController : MonoBehaviour
     health -= actualDamage;
     if (health <= 0)
     {
-      AITargeter ai = attacker.GetComponent<AITargeter>();
-      if (ai) ai.ClearDeadTarget(gameObject);
+      //AITargeter ai = attacker.GetComponent<AITargeter>();
+      //if (ai) ai.ClearDeadTarget(gameObject);
       Die();
     }
   }

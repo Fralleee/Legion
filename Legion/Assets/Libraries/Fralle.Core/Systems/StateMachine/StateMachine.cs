@@ -1,27 +1,4 @@
-﻿/*
- * Copyright (c) 2016 Made With Mosnter Love (Pty) Ltd
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to 
- * deal in the Software without restriction, including without limitation the 
- * rights to use, copy, modify, merge, publish, distribute, sublicense, 
- * and/or sell copies of the Software, and to permit persons to whom the 
- * Software is furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included 
- * in all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR 
- * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
- * OTHER DEALINGS IN THE SOFTWARE.
- */
-
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -125,7 +102,7 @@ public class StateMachine<T> : IStateMachine where T : struct, IConvertible, ICo
           else
           {
             targetState.hasEnterRoutine = false;
-            targetState.EnterCall = CreateDelegate<Action>(methods[i], component);
+            targetState.EnterCall = CreateDelegate<System.Action>(methods[i], component);
           }
           break;
         case "Exit":
@@ -137,23 +114,23 @@ public class StateMachine<T> : IStateMachine where T : struct, IConvertible, ICo
           else
           {
             targetState.hasExitRoutine = false;
-            targetState.ExitCall = CreateDelegate<Action>(methods[i], component);
+            targetState.ExitCall = CreateDelegate<System.Action>(methods[i], component);
           }
           break;
         case "Finally":
-          targetState.Finally = CreateDelegate<Action>(methods[i], component);
+          targetState.Finally = CreateDelegate<System.Action>(methods[i], component);
           break;
         case "Update":
-          targetState.Update = CreateDelegate<Action>(methods[i], component);
+          targetState.Update = CreateDelegate<System.Action>(methods[i], component);
           break;
         case "LateUpdate":
-          targetState.LateUpdate = CreateDelegate<Action>(methods[i], component);
+          targetState.LateUpdate = CreateDelegate<System.Action>(methods[i], component);
           break;
         case "FixedUpdate":
-          targetState.FixedUpdate = CreateDelegate<Action>(methods[i], component);
+          targetState.FixedUpdate = CreateDelegate<System.Action>(methods[i], component);
           break;
         case "OnCollisionEnter":
-          targetState.OnCollisionEnter = CreateDelegate<Action<Collision>>(methods[i], component);
+          targetState.OnCollisionEnter = CreateDelegate<System.Action<Collision>>(methods[i], component);
           break;
       }
     }

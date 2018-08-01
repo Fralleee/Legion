@@ -7,8 +7,9 @@ public class DamageEffect : AbilityEffect
 {
   public override void Affect(GameObject target, GameObject caster)
   {
-    DamageController targetDamageable = target.GetComponent<DamageController>();
-    StatisticsController statisticsController = caster.GetComponent<StatisticsController>();
-    targetDamageable.TakeDamage(statisticsController.attributes.physicalPower, caster);
+    Debug.LogWarning("DamageEffect: Missing code");
+    //DamageController targetDamageable = target.GetComponent<DamageController>();
+    //StatisticsController statisticsController = caster.GetComponent<StatisticsController>();
+    //targetDamageable.TakeDamage(statisticsController.attributes.physicalPower, caster);
   }
 }

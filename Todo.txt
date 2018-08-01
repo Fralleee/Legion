@@ -20,8 +20,6 @@
 	F: Ultimate unit 2	
 - When a spell/building cannot be cast/afforded it should be red
 
-
-
 # AI animations
 - Maybe have multiple animations (regular and BR)
 - Movement animations (should just require forward, maybe turning?)
