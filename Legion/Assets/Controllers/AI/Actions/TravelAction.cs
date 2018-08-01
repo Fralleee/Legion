@@ -12,7 +12,7 @@ public class TravelAction : Action
 
   void Travel(StateController controller)
   {
-    if (controller.objective)
+    if (controller.objective != null)
     {
       Debug.Log("We got objective, moving!");
       controller.navMeshAgent.speed = controller.travelSpeed;

@@ -7,7 +7,7 @@ public class TargetAlive : Decision
 {
   public override bool Decide(StateController controller)
   {
-    bool targetIsAlive = controller.currentTarget.gameObject.activeSelf;
+    bool targetIsAlive = controller.currentTarget.transform.gameObject.activeSelf;
     return targetIsAlive;
   }
 }
