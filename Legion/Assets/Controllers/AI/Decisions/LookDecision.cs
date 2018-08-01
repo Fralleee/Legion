@@ -11,12 +11,12 @@ public class LookDecision : Decision
   public override bool Decide(StateController controller)
   {
     bool targetInSight = Look(controller);
+    Debug.Log("Target in sight: " + targetInSight);
     return targetInSight;
   }
 
   bool Look(StateController controller)
-  {    
-    Gizmos.DrawWireSphere(controller.transform.position, controller.lookRange);
+  {
     Collider[] colliders = FindTargetsWithDamageable(controller.enemyLayerMask, controller.lookRange, controller.transform.position);
     foreach (Collider collider in colliders)
     {
@@ -41,12 +41,14 @@ public class LookDecision : Decision
       .OrderBy(x => (x.transform.position - position).sqrMagnitude)
       .ToArray();
   }
+
   bool HasLineOfSight(StateController controller, GameObject target, out RaycastHit hit, float range, LayerMask layerMask)
   {
     Ray ray = new Ray(controller.eyes.position, target.transform.position - controller.eyes.position);
     Debug.DrawRay(controller.eyes.position, target.transform.position - controller.eyes.position, losColor, 0.5f);
     return Physics.Raycast(ray, out hit, range, layerMask);
   }
+
   bool HasLineOfSightRadius(StateController controller, GameObject target, out RaycastHit hit, float range, float sphereCastRadius, LayerMask layerMask)
   {
     Ray ray = new Ray(controller.eyes.position, target.transform.position - controller.eyes.position);

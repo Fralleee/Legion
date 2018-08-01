@@ -9,8 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36704df4d0249cd488203ce8937baf9f, type: 3}
-  m_Name: Battle
+  m_Name: Peaceful
   m_EditorClassIdentifier: 
-  actions: []
-  transitions: []
-  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  actions:
+  - {fileID: 11400000, guid: 13248ed564a46094684ac197ab1da480, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: ba5ad4e974ac2674a80bb3ac8f147d39, type: 2}
+    trueState: {fileID: 11400000, guid: 762e626c14f031c4b8e8024371c9033d, type: 2}
+    falseState: {fileID: 11400000}
+  sceneGizmoColor: {r: 0.47970828, g: 1, b: 0.4481132, a: 1}

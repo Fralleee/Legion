@@ -28,19 +28,20 @@ public class StateController : MonoBehaviour
   // Ability
   public List<Ability> hostileAbilities = new List<Ability>();
 
-
-
   void Awake()
   {
     navMeshAgent = GetComponent<NavMeshAgent>();
   }
 
-  public void SetupAI()
-  {
-  }
-
   void Update()
   {
+    Debug.Log("objective == null: " + (objective == null));
+    Debug.Log("teamData.objective: " + teamData.objective);
+    if (objective == null && teamData.objective)
+    {
+      objective = new Target(teamData.objective.transform);
+      Debug.Log(objective);
+    }
     currentState.UpdateState(this);
   }
 
@@ -49,7 +50,7 @@ public class StateController : MonoBehaviour
     if (currentState != null && eyes != null)
     {
       Gizmos.color = currentState.sceneGizmoColor;
-      Gizmos.DrawWireSphere(eyes.position, lookRange); // Maybe should be scan range
+      Gizmos.DrawWireSphere(eyes.position, lookRange);
     }
   }
 

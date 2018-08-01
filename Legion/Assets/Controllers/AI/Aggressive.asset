@@ -11,6 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36704df4d0249cd488203ce8937baf9f, type: 3}
   m_Name: Aggressive
   m_EditorClassIdentifier: 
-  actions: []
-  transitions: []
-  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  actions:
+  - {fileID: 11400000, guid: c0de92ab419a78b40851a794131148b0, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: d3491602beec1c14282e04ee5591a198, type: 2}
+    trueState: {fileID: 11400000}
+    falseState: {fileID: 11400000, guid: 8c65826e0c86aa84c9778cc3321e9255, type: 2}
+  - decision: {fileID: 11400000, guid: 6887475f8d891274691339b6031058fa, type: 2}
+    trueState: {fileID: 11400000, guid: 040c6bb335938824a89b0f0edad568b6, type: 2}
+    falseState: {fileID: 11400000}
+  sceneGizmoColor: {r: 1, g: 0.6472525, b: 0, a: 1}

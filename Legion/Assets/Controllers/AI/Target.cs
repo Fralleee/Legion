@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Target : Transform
+public class Target
 {
-  public float width;
+  public Transform transform;
+  public string name;
+  public float width = 0.5f;
   public Target(Transform t)
   {
-    Collider collider = t.GetComponent<Collider>();
-    if (collider) width = collider.bounds.size.x / 2;
-    else Debug.LogError("Collider is missing on " + t.name);
+    transform = t;
+    width = t.GetComponent<Collider>().bounds.size.x / 2;
+    name = t.name;
   }
 }

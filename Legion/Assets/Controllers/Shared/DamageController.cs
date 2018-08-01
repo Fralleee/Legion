@@ -11,6 +11,8 @@ public class DamageController : MonoBehaviour
   [HideInInspector] public float maxHealth;
   float damageReduction;
 
+  public float width;
+
   void Awake()
   {
     //StatisticsController statisticsController = GetComponent<StatisticsController>();
@@ -23,6 +25,8 @@ public class DamageController : MonoBehaviour
     maxHealth = attributes.health;
     armor = attributes.armor;
     damageReduction = 1 - armor / 10;
+
+    width = GetComponent<Collider>().bounds.size.x / 2;
   }
 
   public void TakeDamage(float damage, GameObject attacker)

@@ -16,15 +16,15 @@ public class TargetInRange : Decision
     List<Ability> availableAbilities = controller.hostileAbilities.FindAll(x => !x.onCooldown);
     if (availableAbilities.Count == 0) return false;
 
-    availableAbilities = availableAbilities.FindAll(x => IsTargetInRange(controller.transform, controller.target, controller.targetWidth, x.range));
+    availableAbilities = availableAbilities.FindAll(x => IsTargetInRange(controller, controller.target, controller.targetWidth, x.range));
     if (availableAbilities.Count == 0) return false;
 
     return true;
   }
 
-  bool IsTargetInRange(Transform origin, Target target, float targetWidth, float checkRange)
+  bool IsTargetInRange(StateController controller, Transform target, float targetWidth, float checkRange)
   {
-    float distanceToTarget = Vector3.Distance(target.position, origin.position) - target.width;
+    float distanceToTarget = Vector3.Distance(target.position, controller.transform.position) - controller.targetWidth;
     return checkRange >= distanceToTarget;
   }
 }
