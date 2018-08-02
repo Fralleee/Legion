@@ -1,6 +1,12 @@
 ################################################
 #										  NOW  										 #
 ################################################
+# SNACKA ME MAARTEN
+- VPN
+- Teams
+- Outlook
+
+
 # Changes
 - Abilities should track their own shit:
   - AbilityType (projectile, direct, target ... <- use inheritance)
