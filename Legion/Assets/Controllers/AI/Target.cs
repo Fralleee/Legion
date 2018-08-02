@@ -5,6 +5,8 @@ public class Target
   public Transform transform;
   public string name;
   public float width = 0.5f;
+
+  
   public Target(Transform t)
   {
     transform = t;
