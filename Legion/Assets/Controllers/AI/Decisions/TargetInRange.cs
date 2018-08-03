@@ -8,7 +8,6 @@ public class TargetInRange : Decision
   public override bool Decide(StateController controller)
   {
     bool targetInRange = IsTargetInRange(controller);
-    Debug.Log("targetInRange: " + targetInRange);
     return targetInRange;
   }
 

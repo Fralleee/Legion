@@ -13,15 +13,11 @@ public class AbilityHostileAction : Action
     AICaster caster = controller.GetComponent<AICaster>();
     if (!caster.IsBlocked)
     {
-      foreach (Ability ability in caster.SecondaryAbilities.FindAll(x => x.targetType == TargetType.HOSTILE))
+      foreach (Ability ability in caster.SecondaryAbilities.FindAll(x => x.targetType == TargetType.HOSTILE && x.IsReady))
       {
-        if (caster.TryCast(ability))
-        {
-          return;
-        }
+        if (caster.TryCast(ability)) return;
       }
-
-      caster.TryCast(caster.MainAbility);
+      if(caster.MainAbility.IsReady) caster.TryCast(caster.MainAbility);
     }
   }
 }

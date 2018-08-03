@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e434eb5ddf520840a7f4aa551da1e51, type: 3}
+  m_Name: DieLange
+  m_EditorClassIdentifier: 
+  AbilityName: Die Lange
+  IsMainAbility: 0
+  RequireLineOfSight: 1
+  targetType: 3
+  TargetPriority: 1
+  AbilityRange: 20
+  MinAmount: 1
+  MaxAmount: 1
+  TargetScanRate: 0.5
+  Cooldown: 2
+  WindupTime: 0.5
+  RecoveryTime: 0.1
+  lastTargetScan: 0
+  lastLoSCheck: 0
+  losScanRate: 0.25
+  targetReceiver: 1
+  aoeRadius: 1
+  locationEffect: {fileID: 0}

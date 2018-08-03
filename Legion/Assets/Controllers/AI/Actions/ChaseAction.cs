@@ -12,7 +12,7 @@ public class ChaseAction : Action
 
   void Chase(StateController controller)
   {
-    if (!controller.targeter.CurrentTarget)
+    if (controller.IsBlocked || !controller.targeter.CurrentTarget)
     {
       controller.navMeshAgent.isStopped = true;
       return;

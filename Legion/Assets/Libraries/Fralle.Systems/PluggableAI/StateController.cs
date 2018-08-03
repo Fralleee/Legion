@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(AITargeter))]
+[RequireComponent(typeof(AICaster))]
+[RequireComponent(typeof(BlockerController))]
 public class StateController : MonoBehaviour
 {
   public TeamData teamData;
@@ -19,11 +21,15 @@ public class StateController : MonoBehaviour
   [HideInInspector] public AITargeter targeter;
   [HideInInspector] public AICaster caster;
 
+  BlockerController blockerController;
+  public bool IsBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
+
   void Awake()
   {
     navMeshAgent = GetComponent<NavMeshAgent>();
     targeter = GetComponent<AITargeter>();
     caster = GetComponent<AICaster>();
+    blockerController = GetComponent<BlockerController>();
     Debug.LogWarning("Code in Update that should be moved to decision.");
   }
 

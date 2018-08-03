@@ -12,11 +12,13 @@ public class TravelAction : Action
 
   void Travel(StateController controller)
   {
-    if (controller.targeter.Objective)
+    if (controller.IsBlocked || !controller.targeter.Objective)
     {
-      controller.navMeshAgent.speed = controller.travelSpeed;
-      controller.navMeshAgent.SetDestination(controller.targeter.Objective.transform.position);
-      controller.navMeshAgent.isStopped = false;
+      controller.navMeshAgent.isStopped = true;
+      return;
     }
+    controller.navMeshAgent.speed = controller.travelSpeed;
+    controller.navMeshAgent.SetDestination(controller.targeter.Objective.transform.position);
+    controller.navMeshAgent.isStopped = false;
   }
 }

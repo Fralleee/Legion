@@ -8,7 +8,6 @@ public class TargetAlive : Decision
   public override bool Decide(StateController controller)
   {
     bool targetIsAlive = AliveCheck(controller);
-    Debug.Log("Target is alive: " + targetIsAlive);
     return targetIsAlive;
   }
 

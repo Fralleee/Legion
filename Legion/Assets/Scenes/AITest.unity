@@ -182,7 +182,8 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: b21e890a6af6b1b4ea314c7851b9555d,
         type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114035741773334508, guid: c1983a8c486f8b64a9fe0d98b54d7849, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: c1983a8c486f8b64a9fe0d98b54d7849, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &7547670
@@ -1008,7 +1009,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainAbility: {fileID: 11400000, guid: 356d39279ed48eb429dde612fc618ce1, type: 2}
-  SecondaryAbilities: []
+  SecondaryAbilities:
+  - {fileID: 11400000, guid: d8e21eb04f142cc4e932071c2e7a6306, type: 2}
   blocker: {fileID: 11400000, guid: 551b04cdef4f51a48beb39cf592ccfed, type: 2}
 --- !u!114 &1411427887
 MonoBehaviour:

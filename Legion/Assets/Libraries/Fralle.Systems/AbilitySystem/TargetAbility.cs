@@ -24,7 +24,7 @@ public class TargetAbility : Ability
         break;
       case TargetReceiver.LOCATION:
         throw new NotImplementedException();
-        //LocationCast(target.transform.position);
+      //LocationCast(target.transform.position);
       default:
         TargetCast(target);
         break;
@@ -36,7 +36,6 @@ public class TargetAbility : Ability
     DamageController damageController = target.GetComponent<DamageController>();
     if (damageController != null)
     {
-      lastAction = Time.time;
       var rnd = new System.Random();
       int amount = rnd.Next(MinAmount, MaxAmount);
       damageController.TakeDamage(amount, Caster);

@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a172a0a81c2d2d54f8b7f4f82e19a896, type: 3}
   m_Name: KingGolemAttrs
   m_EditorClassIdentifier: 
-  physicalPower: 20
-  magicalPower: 0
-  health: 100
-  armor: 3
+  PhysicalPower: 0
+  MagicalPower: 0
+  MaxHealth: 1000
+  Health: 1000
+  Armor: 10

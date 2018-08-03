@@ -1,32 +1,11 @@
+Check blocker when moving
+
+Test ability with long windup and recovery but very short cooldown
+Ability should not be cast multiple time before the timers are complete
+
 
 # Changes
-- Abilities should track their own shit:
-  - AbilityType (projectile, direct, target ... <- use inheritance)
-  - TargetFinding (use extension classes)
-	- TargetPriority
-	- Timers: cooldown, windup, recovery, lastCast, scanRate, losScanRate (better names for these)...
-	- Statistics: range, min amount, max amount, effectsList?
-  
-	Three types of target: 
-	- Objective (travel target, main objective of unit, last prioritized when casting)
-	- MainTarget (target that is focused by mainAttack and most damage spells, chase target)
-	- CurrentTarget (target currently focused by heal, other spells with different priority)
-	
-  DamageAbilities should always prioritize mainAttack-target
-	
-	
-- Replace current system with scriptableobjects type
-
-
 - Use different types of target priority (distance, health, armorType e.t.c.)
-
-- Create a static class that looks for targets by using extensions
-
-- Remove old code if not needed
-
-
-
-
 
 
 # Build system

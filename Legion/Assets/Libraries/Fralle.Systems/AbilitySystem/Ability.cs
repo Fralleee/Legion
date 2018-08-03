@@ -27,13 +27,13 @@ public abstract class Ability : ScriptableObject
   [HideInInspector] public float lastTargetScan = 0;
   [HideInInspector] public float lastLoSCheck = 0;
   [HideInInspector] public float losScanRate = 0.25f;
-  
+
   public bool IsReady { get { return Time.time > lastAction; } }
 
   public virtual void Setup(GameObject caster)
   {
     Caster = caster;
-    lastAction = -Cooldown;
+    lastAction = 0;
     lastLoSCheck = 0;
     lastTargetScan = 0;
   }

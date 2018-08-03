@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AITargeter))]
+[RequireComponent(typeof(BlockerController))]
 public class AICaster : MonoBehaviour
 {
   public Ability MainAbility;
@@ -45,14 +46,10 @@ public class AICaster : MonoBehaviour
 
   public bool TryCast(Ability ability)
   {
-    if (IsBlocked) return false;
-    if (!ability.IsReady) return false;
     GameObject target = ability.FindTargets(targeter);
     if (target == null) return false;
 
-    Debug.Log("Successfully casting: " + ability.name);
     blockerController.AddBlocker(blocker);
-    Debug.Log("IsBlocked: " + IsBlocked);
     StartCoroutine(Cast(ability, target));
     return true;
   }
