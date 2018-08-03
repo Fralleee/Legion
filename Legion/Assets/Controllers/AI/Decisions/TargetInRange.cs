@@ -7,24 +7,31 @@ public class TargetInRange : Decision
 {
   public override bool Decide(StateController controller)
   {
-    bool targetInRange = InRange(controller);
+    bool targetInRange = IsTargetInRange(controller);
+    Debug.Log("targetInRange: " + targetInRange);
     return targetInRange;
   }
 
-  bool InRange(StateController controller)
+  bool IsTargetInRange(StateController controller)
   {
-    List<Ability> availableAbilities = controller.hostileAbilities.FindAll(x => !x.onCooldown);
-    if (availableAbilities.Count == 0) return false;
+    AITargeter targeter = controller.targeter;
 
-    availableAbilities = availableAbilities.FindAll(x => IsTargetInRange(controller, controller.target, x.range));
-    if (availableAbilities.Count == 0) return false;
+    if (!targeter.MainTarget) return false;
+    if (!targeter.PerformLoSCheck) return targeter.lastLosResult;
 
-    return true;
-  }
+    targeter.lastLosCheck = Time.time + targeter.losCheckRate;
+    Vector3 currentPosition = controller.transform.position;
+    AICaster caster = controller.caster;
 
-  bool IsTargetInRange(StateController controller, Target target, float checkRange)
-  {
-    float distanceToTarget = Vector3.Distance(target.transform.position, controller.transform.position) - target.width;
-    return checkRange >= distanceToTarget;
+    if (caster.MainAbility.RequireLineOfSight)
+    {
+      targeter.lastLosResult = TargetScanner.ObjectInLineOfSight(targeter.MainTarget, currentPosition, caster.MainAbility.AbilityRange);
+    }
+    else
+    {
+      targeter.lastLosResult = caster.MainAbility.AbilityRange >= Vector3.Distance(targeter.MainTarget.transform.position, currentPosition) - targeter.MainTarget.Width;
+    }
+
+    return targeter.lastLosResult;
   }
 }

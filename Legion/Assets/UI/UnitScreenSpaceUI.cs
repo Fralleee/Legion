@@ -14,8 +14,8 @@ public class UnitScreenSpaceUI : MonoBehaviour
     healthBarValue = GetComponentInChildren<ImageFillSetter>();
     if(healthBarValue)
     {
-      healthBarValue.Variable.ConstantValue = damageController.health;
-      healthBarValue.Max.ConstantValue = damageController.maxHealth;
+      healthBarValue.Variable.ConstantValue = damageController.Health;
+      healthBarValue.Max.ConstantValue = damageController.MaxHealth;
     }
   }
 
@@ -23,8 +23,8 @@ public class UnitScreenSpaceUI : MonoBehaviour
   {
     if (healthBarValue)
     {
-      healthBarValue.Variable.ConstantValue = damageController.health;
-      healthBarValue.Max.ConstantValue = damageController.maxHealth;
+      healthBarValue.Variable.ConstantValue = damageController.Health;
+      healthBarValue.Max.ConstantValue = damageController.MaxHealth;
     }
   }
 

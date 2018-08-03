@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -11,6 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36704df4d0249cd488203ce8937baf9f, type: 3}
   m_Name: Battle
   m_EditorClassIdentifier: 
-  actions: []
-  transitions: []
+  actions:
+  - {fileID: 11400000, guid: 3f3dbfabb3fddd34db9a97b2a164b099, type: 2}
+  - {fileID: 11400000, guid: 74cb1cebafe1252479ea28fc87619995, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: d3491602beec1c14282e04ee5591a198, type: 2}
+    trueState: {fileID: 11400000, guid: e2c56fa0fe3748741851d4692e257500, type: 2}
+    falseState: {fileID: 11400000, guid: 8c65826e0c86aa84c9778cc3321e9255, type: 2}
+  - decision: {fileID: 11400000, guid: 6887475f8d891274691339b6031058fa, type: 2}
+    trueState: {fileID: 11400000, guid: e2c56fa0fe3748741851d4692e257500, type: 2}
+    falseState: {fileID: 11400000, guid: 762e626c14f031c4b8e8024371c9033d, type: 2}
   sceneGizmoColor: {r: 1, g: 0, b: 0, a: 1}

@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -16,5 +16,5 @@ MonoBehaviour:
   transitions:
   - decision: {fileID: 11400000, guid: ba5ad4e974ac2674a80bb3ac8f147d39, type: 2}
     trueState: {fileID: 11400000, guid: 762e626c14f031c4b8e8024371c9033d, type: 2}
-    falseState: {fileID: 11400000}
-  sceneGizmoColor: {r: 0.47970828, g: 1, b: 0.4481132, a: 1}
+    falseState: {fileID: 11400000, guid: e2c56fa0fe3748741851d4692e257500, type: 2}
+  sceneGizmoColor: {r: 0.05673766, g: 1, b: 0, a: 1}

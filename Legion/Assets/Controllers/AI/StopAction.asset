@@ -8,11 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3b9af7dfb195c743891a984d9cc0484, type: 3}
-  m_Name: ActionBlocker
-  m_EditorClassIdentifier: 
-  Physics: 0
-  Camera: 0
-  Movement: 1
-  Abilities: 1
-  Production: 0
+  m_Script: {fileID: 11500000, guid: f15474ca01e1b5b47a4f7b0a4f740da8, type: 3}
+  m_Name: StopAction
+  m_EditorClassIdentifier: Assembly-CSharp::Stopaction

@@ -183,6 +183,6 @@ public class CharacterLaunch : MonoBehaviour
   void DeActivateLaunchParticles() { foreach (var effect in launchParticles) effect.Stop(); }
   void RemoveMovementBlock() { blockerController.RemoveBlocker(blocker); }
 
-  public bool isBlocked { get { return blockerController.ContainsBlocker(actions: true); } }
+  public bool isBlocked { get { return blockerController.ContainsBlocker(abilities: true); } }
 
 }

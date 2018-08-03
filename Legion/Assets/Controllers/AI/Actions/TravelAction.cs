@@ -12,16 +12,11 @@ public class TravelAction : Action
 
   void Travel(StateController controller)
   {
-    if (controller.objective != null)
+    if (controller.targeter.Objective)
     {
-      Debug.Log("We got objective, moving!");
       controller.navMeshAgent.speed = controller.travelSpeed;
-      controller.navMeshAgent.SetDestination(controller.objective.transform.position);
+      controller.navMeshAgent.SetDestination(controller.targeter.Objective.transform.position);
       controller.navMeshAgent.isStopped = false;
-    }
-    else
-    {
-      Debug.Log("No objective!");
     }
   }
 }

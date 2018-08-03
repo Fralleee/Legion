@@ -6,34 +6,27 @@ using UnityEngine;
 public class DamageController : MonoBehaviour
 {
   [SerializeField] Attributes attributes;
-  [HideInInspector] public float armor;
-  [HideInInspector] public float health;
-  [HideInInspector] public float maxHealth;
+  [HideInInspector] public float Armor;
+  [HideInInspector] public float Health;
+  [HideInInspector] public float MaxHealth;
   float damageReduction;
-
   public float width;
+  public float PercentageHealth { get { return Health / MaxHealth; } }
 
   void Awake()
   {
-    //StatisticsController statisticsController = GetComponent<StatisticsController>();
-    //health = statisticsController.attributes.health;
-    //maxHealth = statisticsController.attributes.health;
-    //armor = statisticsController.attributes.armor;
-    //damageReduction = 1 - armor / 10;
-
-    health = attributes.health;
-    maxHealth = attributes.health;
-    armor = attributes.armor;
-    damageReduction = 1 - armor / 10;
-
-    width = GetComponent<Collider>().bounds.size.x / 2;
+    Armor = attributes.Armor;
+    Health = attributes.Health;
+    MaxHealth = attributes.MaxHealth;
+    damageReduction = 1 - Armor / 10;
   }
 
   public void TakeDamage(float damage, GameObject attacker)
   {
     float actualDamage = damage * damageReduction;
-    health -= actualDamage;
-    if (health <= 0)
+    Debug.Log(gameObject.name + " took " + actualDamage + " damage.");
+    Health -= actualDamage;
+    if (Health <= 0)
     {
       //AITargeter ai = attacker.GetComponent<AITargeter>();
       //if (ai) ai.ClearDeadTarget(gameObject);
@@ -46,5 +39,7 @@ public class DamageController : MonoBehaviour
     Debug.Log(gameObject.name + " died!");
     Destroy(gameObject);
   }
+
+
 
 }

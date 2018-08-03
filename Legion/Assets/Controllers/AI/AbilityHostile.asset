@@ -8,11 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3b9af7dfb195c743891a984d9cc0484, type: 3}
-  m_Name: ActionBlocker
+  m_Script: {fileID: 11500000, guid: 4a7d12fe780043d46906e1ae3917266d, type: 3}
+  m_Name: AbilityHostile
   m_EditorClassIdentifier: 
-  Physics: 0
-  Camera: 0
-  Movement: 1
-  Abilities: 1
-  Production: 0

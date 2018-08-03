@@ -12,8 +12,13 @@ public class ChaseAction : Action
 
   void Chase(StateController controller)
   {
+    if (!controller.targeter.CurrentTarget)
+    {
+      controller.navMeshAgent.isStopped = true;
+      return;
+    }
     controller.navMeshAgent.speed = controller.chasingSpeed;
-    controller.navMeshAgent.SetDestination(controller.currentTarget.transform.position);
+    controller.navMeshAgent.SetDestination(controller.targeter.CurrentTarget.transform.position);
     controller.navMeshAgent.isStopped = false;
   }
 }

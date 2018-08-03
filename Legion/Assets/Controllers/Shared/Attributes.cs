@@ -6,10 +6,11 @@ using UnityEngine;
 public class Attributes : ScriptableObject
 {
   [Header("Offensive")]
-  public float physicalPower;
-  public float magicalPower;
+  public float PhysicalPower;
+  public float MagicalPower;
 
   [Header("Defensive")]
-  public float health = 1;
-  public float armor;
+  public float MaxHealth = 1;
+  public float Health = 1;
+  public float Armor;
 }

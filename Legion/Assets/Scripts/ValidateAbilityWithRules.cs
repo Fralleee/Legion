@@ -18,7 +18,7 @@ public class ValidateAbilityWithRules : MonoBehaviour
   {
     if (imageSettings)
     {
-      if (blockerController.ContainsBlocker(actions: true)) imageSettings.readyColor = Color.gray;
+      if (blockerController.ContainsBlocker(abilities: true)) imageSettings.readyColor = Color.gray;
       else imageSettings.readyColor = Color.white;
     }
   }
