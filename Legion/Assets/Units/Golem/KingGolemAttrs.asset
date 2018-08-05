@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PhysicalPower: 0
   MagicalPower: 0
-  MaxHealth: 1000
-  Health: 1000
-  Armor: 10
+  MaxHealth: 250
+  Health: 150
+  Armor: 1

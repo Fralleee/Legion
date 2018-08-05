@@ -13,6 +13,8 @@ public class AICaster : MonoBehaviour
   BlockerController blockerController;
   [SerializeField] Blocker blocker;
 
+  public bool AIMagicAttack1;
+
   public bool IsBlocked { get { return blockerController.ContainsBlocker(abilities: true); } }
 
   void Start()
@@ -56,9 +58,12 @@ public class AICaster : MonoBehaviour
 
   public IEnumerator Cast(Ability ability, GameObject target)
   {
+    AIMagicAttack1 = true;
+    Debug.Log(AIMagicAttack1);
     if (!target)
     {
       blockerController.RemoveBlocker(blocker);
+      AIMagicAttack1 = false;
       yield break;
     }
 
@@ -67,11 +72,13 @@ public class AICaster : MonoBehaviour
 
     if (!target)
     {
+      AIMagicAttack1 = false;
       blockerController.RemoveBlocker(blocker);
       yield break;
     }
 
     ability.Cast(target);
+    AIMagicAttack1 = false;
     yield return new WaitForSeconds(ability.RecoveryTime);
     blockerController.RemoveBlocker(blocker);
   }

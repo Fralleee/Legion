@@ -20,9 +20,9 @@ MonoBehaviour:
   MinAmount: 3
   MaxAmount: 6
   TargetScanRate: 0.5
-  Cooldown: 0.25
-  WindupTime: 0.25
-  RecoveryTime: 0.25
+  Cooldown: 4
+  WindupTime: 0.75
+  RecoveryTime: 1
   lastTargetScan: 13.134919
   lastLoSCheck: 0
   losScanRate: 0.25
