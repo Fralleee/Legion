@@ -18,10 +18,10 @@ MonoBehaviour:
   TargetPriority: 1
   AbilityRange: 20
   MinAmount: 1
-  MaxAmount: 1
+  MaxAmount: 20
   TargetScanRate: 0.5
   Cooldown: 2
-  WindupTime: 2
+  WindupTime: 3
   RecoveryTime: 0.75
   lastTargetScan: 0
   lastLoSCheck: 0
