@@ -1152,8 +1152,6 @@ MonoBehaviour:
   SecondaryAbilities:
   - {fileID: 11400000, guid: d8e21eb04f142cc4e932071c2e7a6306, type: 2}
   blocker: {fileID: 11400000, guid: 551b04cdef4f51a48beb39cf592ccfed, type: 2}
-  AIMagicAttack1: 0
-  LargeCast1: 0
 --- !u!114 &1411427887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,7 +1202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 105656624}
-  lookAtTargetPosition: {x: 0, y: 0, z: 0}
+  lookAtTargetPosition: {x: 1, y: 0, z: 0}
   lookAtCoolTime: 0.2
   lookAtHeatTime: 0.2
   looking: 1
