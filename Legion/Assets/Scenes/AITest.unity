@@ -974,11 +974,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamData: {fileID: 11400000, guid: 96e2cf6cee2a2e34887c8df8eeac2afd, type: 2}
   stateTimeElapsed: 0
-  currentState: {fileID: 11400000, guid: 8c65826e0c86aa84c9778cc3321e9255, type: 2}
+  currentState: {fileID: 11400000, guid: 1b6d70e845bf0ec45a0f07ce6bd13497, type: 2}
   remainState: {fileID: 11400000, guid: e2c56fa0fe3748741851d4692e257500, type: 2}
   navMeshAgent: {fileID: 0}
   travelSpeed: 3
   chasingSpeed: 4
+  wanderTimer: 0
   targeter: {fileID: 0}
   caster: {fileID: 0}
 --- !u!114 &1411427886

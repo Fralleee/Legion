@@ -17,6 +17,7 @@ public class StateController : MonoBehaviour
   [HideInInspector] public NavMeshAgent navMeshAgent;
   public float travelSpeed = 4f;
   public float chasingSpeed = 6f;
+  public float wanderTimer;
 
   [HideInInspector] public AITargeter targeter;
   [HideInInspector] public AICaster caster;

@@ -74,8 +74,8 @@ public static class TargetScanner
   {
     Vector3 direction = target.position - position;
     RaycastHit hit;
-    Debug.DrawRay(position, direction, Color.red, 0.5f);
-    if (Physics.Raycast(position, direction, out hit, range))
+    Debug.DrawRay(position.WithY(1.5f), direction, Color.red, 0.5f);
+    if (Physics.Raycast(position.WithY(1.5f), direction, out hit, range))
     {
       return hit.collider.gameObject.layer == target.gameObject.layer;
     }

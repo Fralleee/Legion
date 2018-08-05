@@ -24,12 +24,10 @@ public class DamageController : MonoBehaviour
   public void TakeDamage(float damage, GameObject attacker)
   {
     float actualDamage = damage * damageReduction;
-    Debug.Log(gameObject.name + " took " + actualDamage + " damage.");
+    Debug.Log(gameObject.name + " took " + actualDamage + " damage from " + attacker.name);
     Health -= actualDamage;
     if (Health <= 0)
     {
-      //AITargeter ai = attacker.GetComponent<AITargeter>();
-      //if (ai) ai.ClearDeadTarget(gameObject);
       Die();
     }
   }

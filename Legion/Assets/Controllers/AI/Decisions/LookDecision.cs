@@ -9,14 +9,17 @@ public class LookDecision : Decision
 {
   public override bool Decide(StateController controller)
   {
-    return Look(controller);
+    bool foundHostile = Look(controller);
+    return foundHostile;
   }
 
   bool Look(StateController controller)
   {
     AITargeter targeter = controller.GetComponent<AITargeter>();
-    if (targeter.MainTarget) return true;
-    return targeter.FindHostiles();
+    bool mainTargetAlive = targeter.MainTarget && targeter.MainTarget.gameObject && targeter.MainTarget.gameObject.activeSelf;
+    if (mainTargetAlive) return true;
+    bool findHostilesResult = targeter.FindHostiles();
+    return findHostilesResult;
   }
 
 }
