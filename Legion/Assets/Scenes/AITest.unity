@@ -1024,6 +1024,33 @@ MonoBehaviour:
   losCheckRate: 0.25
   lastLosCheck: 0
   lastLosResult: 0
+--- !u!114 &1411427888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1411427884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef7be1f529f1c74d9ff967fdcec0480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1411427896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1411427884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113534d7fc32b1b46a5218a5295aa8b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 105656624}
+  lookAtTargetPosition: {x: 0, y: 0, z: 0}
+  lookAtCoolTime: 0.2
+  lookAtHeatTime: 0.2
+  looking: 1
 --- !u!1001 &1523608901
 Prefab:
   m_ObjectHideFlags: 0
