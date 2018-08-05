@@ -22,6 +22,5 @@ public class AIAnimationUpdater : MonoBehaviour
     Vector3 movement = transform.TransformDirection(navMeshAgent.velocity);
     animator.SetFloat("Vertical", Mathf.Abs(movement.x), .1f, Time.deltaTime);
     animator.SetFloat("Horizontal", Mathf.Abs(movement.z), .1f, Time.deltaTime);
-    animator.SetBool("AIMagicAttack1", caster.AIMagicAttack1);
   }
 }

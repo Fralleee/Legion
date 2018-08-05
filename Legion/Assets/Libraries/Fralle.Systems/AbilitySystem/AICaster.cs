@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CastAnimation
+{
+  QuickCast1,
+  LargeCast1
+}
+
 [RequireComponent(typeof(AITargeter))]
 [RequireComponent(typeof(BlockerController))]
 public class AICaster : MonoBehaviour
@@ -12,8 +18,7 @@ public class AICaster : MonoBehaviour
   AITargeter targeter;
   BlockerController blockerController;
   [SerializeField] Blocker blocker;
-
-  public bool AIMagicAttack1;
+  Animator animator;
 
   public bool IsBlocked { get { return blockerController.ContainsBlocker(abilities: true); } }
 
@@ -21,6 +26,7 @@ public class AICaster : MonoBehaviour
   {
     targeter = GetComponent<AITargeter>();
     blockerController = GetComponent<BlockerController>();
+    animator = GetComponentInChildren<Animator>();
     Initialize();
   }
 
@@ -58,12 +64,11 @@ public class AICaster : MonoBehaviour
 
   public IEnumerator Cast(Ability ability, GameObject target)
   {
-    AIMagicAttack1 = true;
-    Debug.Log(AIMagicAttack1);
+    animator.SetBool(ability.Animation.ToString(), true);
     if (!target)
     {
       blockerController.RemoveBlocker(blocker);
-      AIMagicAttack1 = false;
+      animator.SetBool(ability.Animation.ToString(), false);
       yield break;
     }
 
@@ -72,17 +77,14 @@ public class AICaster : MonoBehaviour
 
     if (!target)
     {
-      AIMagicAttack1 = false;
+      animator.SetBool(ability.Animation.ToString(), false);
       blockerController.RemoveBlocker(blocker);
       yield break;
     }
 
     ability.Cast(target);
-    AIMagicAttack1 = false;
+    animator.SetBool(ability.Animation.ToString(), false);
     yield return new WaitForSeconds(ability.RecoveryTime);
     blockerController.RemoveBlocker(blocker);
   }
-
-  //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((CurrentTarget.transform.position - transform.position).normalized), Time.deltaTime * 4f);
-  //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((CurrentTarget.transform.position - transform.position).normalized), Time.deltaTime * 4f);
 }

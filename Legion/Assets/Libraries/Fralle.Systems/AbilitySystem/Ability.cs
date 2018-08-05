@@ -28,6 +28,8 @@ public abstract class Ability : ScriptableObject
   [HideInInspector] public float lastLoSCheck = 0;
   [HideInInspector] public float losScanRate = 0.25f;
 
+  public CastAnimation Animation;
+
   public bool IsReady { get { return Time.time > lastAction; } }
 
   public virtual void Setup(GameObject caster)
