@@ -5,16 +5,13 @@ using UnityEngine.AI;
 
 public class AIAnimationUpdater : MonoBehaviour
 {
-
   NavMeshAgent navMeshAgent;
   Animator animator;
-  AICaster caster;
 
   void Start()
   {
     navMeshAgent = GetComponent<NavMeshAgent>();
     animator = GetComponentInChildren<Animator>();
-    caster = GetComponentInChildren<AICaster>();
   }
 
   void Update()
