@@ -21,10 +21,10 @@ public class DamageController : MonoBehaviour
     damageReduction = 1 - Armor / 10;
   }
 
-  public void TakeDamage(float damage, GameObject attacker)
+  public void TakeDamage(float damage, GameObject attacker, string abilityName)
   {
     float actualDamage = damage * damageReduction;
-    Debug.Log(gameObject.name + " took " + actualDamage + " damage from " + attacker.name);
+    Debug.Log(gameObject.name + " took " + actualDamage + " damage from " + attacker.name + "'s " + abilityName);
     Health -= actualDamage;
     if (Health <= 0)
     {

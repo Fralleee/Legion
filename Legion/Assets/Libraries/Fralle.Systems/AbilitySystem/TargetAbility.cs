@@ -38,7 +38,7 @@ public class TargetAbility : Ability
     {
       var rnd = new System.Random();
       int amount = rnd.Next(MinAmount, MaxAmount);
-      damageController.TakeDamage(amount, Caster);
+      damageController.TakeDamage(amount, Caster, AbilityName);
     }
   }
 
