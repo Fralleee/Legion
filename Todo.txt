@@ -1,5 +1,6 @@
 - Eyes are not used as of now, implement their usage
 - Remove LookAt-script
+- Add LoS to find targets
 
 # Build system
 - Rename placeable
