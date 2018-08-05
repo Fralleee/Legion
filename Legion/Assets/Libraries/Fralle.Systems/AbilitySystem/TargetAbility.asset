@@ -20,13 +20,13 @@ MonoBehaviour:
   MinAmount: 3
   MaxAmount: 6
   TargetScanRate: 0.5
-  Cooldown: 2
-  WindupTime: 0.75
+  Cooldown: 4
+  WindupTime: 0.5
   RecoveryTime: 0.25
   lastTargetScan: 13.134919
   lastLoSCheck: 0
   losScanRate: 0.25
-  Animation: 0
+  Animation: 2
   targetReceiver: 1
   aoeRadius: 1
   locationEffect: {fileID: 0}

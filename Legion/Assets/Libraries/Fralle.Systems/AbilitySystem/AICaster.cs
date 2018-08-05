@@ -6,7 +6,8 @@ using UnityEngine;
 public enum CastAnimation
 {
   QuickCast1,
-  LargeCast1
+  LargeCast1,
+  SpellCast
 }
 
 [RequireComponent(typeof(AITargeter))]
@@ -82,9 +83,11 @@ public class AICaster : MonoBehaviour
       yield break;
     }
 
+    animator.SetTrigger("ReleaseCast");
     ability.Cast(target);
-    animator.SetBool(ability.Animation.ToString(), false);
+
     yield return new WaitForSeconds(ability.RecoveryTime);
+    animator.SetBool(ability.Animation.ToString(), false);
     blockerController.RemoveBlocker(blocker);
   }
 }

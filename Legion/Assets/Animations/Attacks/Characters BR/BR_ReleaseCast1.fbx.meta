@@ -103,7 +103,7 @@ ModelImporter:
     400094: Toes_R
     400096: UpperLeg_L
     400098: UpperLeg_R
-    7400000: AI_Large_MagicAttack1
+    7400000: BR_ReleaseCast1
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -134,10 +134,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: AI_Large_MagicAttack1
+      name: BR_ReleaseCast1
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 80
+      firstFrame: 30
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

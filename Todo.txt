@@ -1,15 +1,5 @@
-
 - Eyes are not used as of now, implement their usage
 - Remove LookAt-script
-
-# CastAnimation
-- Each animation should have an AnimationEvent that triggers the ability cast instead of relying on timers'
-  How to make this work dynamically with windup timer and such :S
-
-
-# Changes
-- Use different types of target priority (distance, health, armorType e.t.c.)
-
 
 # Build system
 - Rename placeable
