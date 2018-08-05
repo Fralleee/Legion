@@ -21,7 +21,9 @@ public abstract class Ability : ScriptableObject
   [Header("Ability Cast Timers")]
   public float Cooldown = 2;
   public float WindupTime = 1;
-  public float RecoveryTime = 0.25f;
+
+  [Range(0.5f, 5)]
+  public float RecoveryTime = 0.5f;
 
   [HideInInspector] protected float lastAction = 0;
   [HideInInspector] public float lastTargetScan = 0;

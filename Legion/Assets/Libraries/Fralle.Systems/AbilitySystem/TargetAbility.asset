@@ -22,7 +22,7 @@ MonoBehaviour:
   TargetScanRate: 0.5
   Cooldown: 4
   WindupTime: 0.5
-  RecoveryTime: 0.25
+  RecoveryTime: 0.5
   lastTargetScan: 13.134919
   lastLoSCheck: 0
   losScanRate: 0.25

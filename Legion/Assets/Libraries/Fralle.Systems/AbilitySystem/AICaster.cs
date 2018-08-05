@@ -86,8 +86,10 @@ public class AICaster : MonoBehaviour
     animator.SetTrigger("ReleaseCast");
     ability.Cast(target);
 
-    yield return new WaitForSeconds(ability.RecoveryTime);
+    yield return new WaitForSeconds(0.1f);
     animator.SetBool(ability.Animation.ToString(), false);
+    yield return new WaitForSeconds(Math.Max(ability.RecoveryTime, 0.5f) - 0.1f);
+    
     blockerController.RemoveBlocker(blocker);
   }
 }
