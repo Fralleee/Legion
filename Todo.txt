@@ -1,3 +1,6 @@
+---------------------------------------------------------------------------------------------
+# Day 1
+---------------------------------------------------------------------------------------------
 # Small fixes
 - Eyes are not used as of now, implement their usage
 - Remove LookAt-script
@@ -14,15 +17,26 @@
 - Rename placeable
 
 # Organize Fralle.Systems (should only contain reusable independent generic code)
+---------------------------------------------------------------------------------------------
 
+
+---------------------------------------------------------------------------------------------
+# Day 2
+---------------------------------------------------------------------------------------------
 # Build/spawn/attack flow
 - Build a test scene for this flow
 - Apply builders teamData to building
 - Unit should get team data from building that spawns it
 - Unit should work without getting teamdata (maybe become neutral?)
 - Complete the flow from build building => spawn unit => attack enemies
+---------------------------------------------------------------------------------------------
 
+
+---------------------------------------------------------------------------------------------
+# Day 3-4
+---------------------------------------------------------------------------------------------
 # UI
+- Organize scripts used for UI (better names, and generic usage)
 - Build UI should be activated based on Event/State
   Build controls should be:
 	LMB: Upgrade
@@ -34,7 +48,12 @@
 	F: Ultimate unit 2	
 - When a spell/building cannot be cast/afforded it should be red
 - Ability UI should have functionality Flashing, where it indicates with a pulsating glowing border and shine.
+---------------------------------------------------------------------------------------------
 
+
+---------------------------------------------------------------------------------------------
+# Day 5
+---------------------------------------------------------------------------------------------
 # Animations
 - Organize animations (wizard, units, shared)
   Animations should be both BR and Regular
@@ -43,7 +62,12 @@
 	Sword attack animation
 	
 # Death ragdolls
+---------------------------------------------------------------------------------------------
 
+
+---------------------------------------------------------------------------------------------
+# Day 6-7
+---------------------------------------------------------------------------------------------
 # Caster (player)
 - Create caster behaviour, kind of same as Builder
 - Make castable scriptableobject
@@ -52,8 +76,12 @@
   - Spell prefab (ISpell)  
 - Try reconstructing Launch as an ability instead
   Probably need an enum that says AbilityType [Default, Attack, Ultimate]
+---------------------------------------------------------------------------------------------
 
 	
+---------------------------------------------------------------------------------------------
+# Day 8
+---------------------------------------------------------------------------------------------
 # Launch & Siege
 - Implement Siege-mode
 - When using an ultimate, make the sky turn dark
@@ -63,9 +91,14 @@
 	
 # Armor/damage types
 - Use scriptableobjects, ryan hipple => elements talk (unite 2017)
+---------------------------------------------------------------------------------------------
 
 	
 
+	
+	
+	
+	
 ################################################
 #										LATER											 #
 ################################################
