@@ -13,6 +13,8 @@
 # Build system
 - Rename placeable
 
+# Organize Fralle.Systems (should only contain reusable independent generic code)
+
 # Build/spawn/attack flow
 - Build a test scene for this flow
 - Apply builders teamData to building
@@ -33,12 +35,14 @@
 - When a spell/building cannot be cast/afforded it should be red
 - Ability UI should have functionality Flashing, where it indicates with a pulsating glowing border and shine.
 
-# AI animations
+# Animations
 - Organize animations (wizard, units, shared)
   Animations should be both BR and Regular
 - Attack animation for ranged and melee
   Bow animation
 	Sword attack animation
+	
+# Death ragdolls
 
 # Caster (player)
 - Create caster behaviour, kind of same as Builder
@@ -49,7 +53,6 @@
 - Try reconstructing Launch as an ability instead
   Probably need an enum that says AbilityType [Default, Attack, Ultimate]
 
-# Death ragdolls
 	
 # Launch & Siege
 - Implement Siege-mode
