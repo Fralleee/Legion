@@ -17,6 +17,8 @@
 - Rename placeable
 
 # Organize Fralle.Systems (should only contain reusable independent generic code)
+
+- Change folder structure
 ---------------------------------------------------------------------------------------------
 
 
