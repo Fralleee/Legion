@@ -18,7 +18,32 @@
 
 # Organize Fralle.Systems (should only contain reusable independent generic code)
 
-- Change folder structure
+# Change folder structure
+http://blog.theknightsofunity.com/7-ways-keep-unity-project-organized/
+
+Don’t try to move context-specific assets to the general directories. 
+For instance, if there are materials generated from the model, 
+don’t move them to Materials directory because later you won’t know where these come from.
+
+- Libraries
+- Animations
+- Audio
+	- Music
+	- SFX
+- Materials
+- Models
+- Plugins
+- Prefabs
+- Resources
+- Textures
+- Sandbox (Use Sandbox directory for any experiments you’re not entirely sure about)
+  E.g. NewAbilitySiege, AnimationTesting	 
+- Scenes
+	- Levels
+	- Other
+- Scripts
+	- Editor
+- Shaders
 ---------------------------------------------------------------------------------------------
 
 
