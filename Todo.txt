@@ -32,7 +32,7 @@ don’t move them to Materials directory because later you won’t know where th
 	- SFX
 - Materials
 - Models
-- Plugins
+- Plugins (probuilder, textmesh pro, e.t.c)
 - Prefabs
 - Resources
 - Textures
@@ -44,6 +44,16 @@ don’t move them to Materials directory because later you won’t know where th
 - Scripts
 	- Editor
 - Shaders
+
+#Scene structure
+- Management
+- GUI
+- Cameras
+- Lights
+- World
+	- Terrain
+	- Props
+- _Dynamic
 ---------------------------------------------------------------------------------------------
 
 
