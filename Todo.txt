@@ -66,6 +66,8 @@ don’t move them to Materials directory because later you won’t know where th
 - Unit should get team data from building that spawns it
 - Unit should work without getting teamdata (maybe become neutral?)
 - Complete the flow from build building => spawn unit => attack enemies
+
+# Use a pluggable state manager for game manager
 ---------------------------------------------------------------------------------------------
 
 
@@ -100,7 +102,6 @@ don’t move them to Materials directory because later you won’t know where th
 	
 # Death ragdolls
 ---------------------------------------------------------------------------------------------
-
 
 ---------------------------------------------------------------------------------------------
 # Day 6-7
