@@ -1,30 +1,14 @@
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
+- Upgrade unity to 2018.2
+- Test the shader example project
 - Import shaders from bookmark
 - Test the autoreferencer script
 
----------------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------------
-# Day 1
----------------------------------------------------------------------------------------------
-# Small fixes
 - Eyes are not used as of now, implement their usage
 - Remove LookAt-script
 - Add LoS to find targets
-
-# Abilities
-- Add particles to spell cast
-- ReleaseCast should have different implementations:
-  Projectile (hand in front)
-	AOE	(both hands up in the air)
-	DirectTarget (hand up in the air)
-
-# Build system
-- Rename placeable
-
-# Organize Fralle.Systems (should only contain reusable independent generic code)
 
 # Change folder structure
 http://blog.theknightsofunity.com/7-ways-keep-unity-project-organized/
@@ -62,6 +46,23 @@ don’t move them to Materials directory because later you won’t know where th
 	- Terrain
 	- Props
 - _Dynamic
+---------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------
+# Day 1
+---------------------------------------------------------------------------------------------
+# Abilities
+- Add particles to spell cast
+- ReleaseCast should have different implementations:
+  Projectile (hand in front)
+	AOE	(both hands up in the air)
+	DirectTarget (hand up in the air)
+
+# Build system
+- Rename placeable
+
+# Organize Fralle.Systems (should only contain reusable independent generic code)
+
 ---------------------------------------------------------------------------------------------
 
 
