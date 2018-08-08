@@ -15,6 +15,7 @@ public class AIMotor : MonoBehaviour
 
   void Awake()
   {
+    blockerController = GetComponent<BlockerController>();
     navMeshAgent = GetComponent<NavMeshAgent>();
   }
 }
