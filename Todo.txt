@@ -1,56 +1,23 @@
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
-- Upgrade unity to 2018.2
-- Test the shader example project
-- Import shaders from bookmark
-- Test the autoreferencer script
+# Build system
+- Rename placeable
 
-- Eyes are not used as of now, implement their usage
-- Remove LookAt-script
-- Add LoS to find targets
-
-# Change folder structure
-http://blog.theknightsofunity.com/7-ways-keep-unity-project-organized/
-
-Don’t try to move context-specific assets to the general directories. 
-For instance, if there are materials generated from the model, 
-don’t move them to Materials directory because later you won’t know where these come from.
-
-- Libraries
-- Animations
-- Audio
-	- Music
-	- SFX
-- Materials
-- Models
-- Plugins (probuilder, textmesh pro, e.t.c)
-- Prefabs
-- Resources
-- Textures
-- Sandbox (Use Sandbox directory for any experiments you’re not entirely sure about)
-  E.g. NewAbilitySiege, AnimationTesting	 
-- Scenes
-	- Levels
-	- Other
-- Scripts
-	- Editor
-- Shaders
-
-#Scene structure
-- Management
-- GUI
-- Cameras
-- Lights
-- World
-	- Terrain
-	- Props
-- _Dynamic
+# Organize Fralle.Systems (should only contain reusable independent generic code)
 ---------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------
 # Day 1
 ---------------------------------------------------------------------------------------------
+- Remove LookAt-script
+- Upgrade unity to 2018.2
+- Test the shader example project
+- Import shaders from bookmark
+- Test the autoreferencer script
+- Eyes are not used as of now, implement their usage
+- Add LoS to find targets
+
 # Abilities
 - Add particles to spell cast
 - ReleaseCast should have different implementations:
@@ -58,10 +25,6 @@ don’t move them to Materials directory because later you won’t know where th
 	AOE	(both hands up in the air)
 	DirectTarget (hand up in the air)
 
-# Build system
-- Rename placeable
-
-# Organize Fralle.Systems (should only contain reusable independent generic code)
 
 ---------------------------------------------------------------------------------------------
 
@@ -141,7 +104,8 @@ don’t move them to Materials directory because later you won’t know where th
 ---------------------------------------------------------------------------------------------
 
 	
-
+# Targeting
+- Every time we set a unit as a target (MainTarget) maybe we should listens to its DeathEvent
 	
 	
 	
