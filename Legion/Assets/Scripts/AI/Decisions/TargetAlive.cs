@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/TargetAlive")]
-public class TargetAlive : AIDecision
+[CreateAssetMenu(menuName = "PluggableFSM/Decisions/TargetAlive")]
+public class TargetAlive : Decision
 {
-  public override bool Decide(AIStateController controller)
+  public override bool Decide(IStateController controller)
   {
     bool targetIsAlive = AliveCheck(controller);
     return targetIsAlive;
   }
 
-  bool AliveCheck(AIStateController ai)
+  bool AliveCheck(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     GameObject target = ai.targeter.CurrentTarget;
     bool targetIsAlive = target && target.gameObject && target.gameObject.activeSelf;
     return targetIsAlive;

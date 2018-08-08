@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Chase")]
-public class ChaseAction : AIAction
+[CreateAssetMenu(menuName = "PluggableFSM/Actions/Chase")]
+public class ChaseAction : Action
 {
-  public override void Act(AIStateController controller)
+  public override void Act(IStateController controller)
   {
     Chase(controller);
   }
 
-  void Chase(AIStateController ai)
+  void Chase(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     if (ai.IsBlocked || !ai.targeter.CurrentTarget)
     {
       ai.motor.navMeshAgent.isStopped = true;

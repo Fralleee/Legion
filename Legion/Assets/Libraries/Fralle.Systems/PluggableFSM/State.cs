@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/State")]
-public class AIState : ScriptableObject
+[CreateAssetMenu(menuName = "PluggableFSM/State")]
+public class State : ScriptableObject
 {
-  public AIAction[] actions;
-  public AITransition[] transitions;
+  public Action[] actions;
+  public Transition[] transitions;
   public Color sceneGizmoColor = Color.grey;
 
-  public void UpdateState(AIStateController controller)
+  public void UpdateState(IStateController controller)
   {
     DoActions(controller);
     CheckTransitions(controller);
   }
 
-  void DoActions(AIStateController controller)
+  void DoActions(IStateController controller)
   {
     for (int i = 0; i < actions.Length; i++)
     {
@@ -23,7 +23,7 @@ public class AIState : ScriptableObject
     }
   }
 
-  void CheckTransitions(AIStateController controller)
+  void CheckTransitions(IStateController controller)
   {
     for (int i = 0; i < transitions.Length; i++)
     {

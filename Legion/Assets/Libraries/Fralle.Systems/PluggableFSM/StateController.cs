@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class FSMStateController : MonoBehaviour
+public class StateController : MonoBehaviour, IStateController
 {
   [HideInInspector] public float stateTimeElapsed;
-  public FSMState currentState;
-  public FSMState remainState;
+  public State currentState;
+  public State remainState;
   
   void Update()
   {
@@ -21,7 +21,7 @@ public class FSMStateController : MonoBehaviour
     }
   }
 
-  public void TransitionToState(FSMState nextState)
+  public void TransitionToState(State nextState)
   {
     if (nextState != remainState)
     {

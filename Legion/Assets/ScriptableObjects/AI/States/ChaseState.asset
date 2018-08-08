@@ -8,16 +8,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7ae57db6b4aaa4db25c2bb3a71481e, type: 3}
-  m_Name: ChasingState
+  m_Script: {fileID: 11500000, guid: 36704df4d0249cd488203ce8937baf9f, type: 3}
+  m_Name: ChaseState
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: c0de92ab419a78b40851a794131148b0, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: d3491602beec1c14282e04ee5591a198, type: 2}
-    trueState: {fileID: 11400000, guid: c63f915dd4772c74d8ddea0a246a3539, type: 2}
-    falseState: {fileID: 11400000, guid: 8d05a37c5d38c25469398f24620da784, type: 2}
+    trueState: {fileID: 11400000, guid: 55ac80b091590c74fa43a24158768e0a, type: 2}
+    falseState: {fileID: 11400000, guid: 0e5c03984ddd2a84a83601ba83be0239, type: 2}
   - decision: {fileID: 11400000, guid: 6887475f8d891274691339b6031058fa, type: 2}
-    trueState: {fileID: 11400000, guid: a61668069d728e4408e082960206b09f, type: 2}
-    falseState: {fileID: 11400000, guid: c63f915dd4772c74d8ddea0a246a3539, type: 2}
-  sceneGizmoColor: {r: 1, g: 0.72604626, b: 0, a: 1}
+    trueState: {fileID: 11400000, guid: 55304c730ddd1404caf1b98805efa624, type: 2}
+    falseState: {fileID: 11400000, guid: 55ac80b091590c74fa43a24158768e0a, type: 2}
+  sceneGizmoColor: {r: 1, g: 0.8798679, b: 0, a: 1}

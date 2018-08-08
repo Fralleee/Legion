@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Stop")]
-public class StopAction : AIAction
+[CreateAssetMenu(menuName = "PluggableFSM/Actions/Stop")]
+public class StopAction : Action
 {
-  public override void Act(AIStateController controller)
+  public override void Act(IStateController controller)
   {
     Stop(controller);
   }
 
-  void Stop(AIStateController ai)
+  void Stop(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     ai.motor.navMeshAgent.isStopped = true;
   }
 }

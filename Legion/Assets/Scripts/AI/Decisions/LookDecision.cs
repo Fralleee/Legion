@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/Look")]
-public class LookDecision : AIDecision
+[CreateAssetMenu(menuName = "PluggableFSM/Decisions/Look")]
+public class LookDecision : Decision
 {
-  public override bool Decide(AIStateController controller)
+  public override bool Decide(IStateController controller)
   {
     bool foundHostile = Look(controller);
     return foundHostile;
   }
 
-  bool Look(AIStateController ai)
+  bool Look(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     AITargeter targeter = ai.targeter;
     bool mainTargetAlive = targeter.MainTarget && targeter.MainTarget.gameObject && targeter.MainTarget.gameObject.activeSelf;
     if (mainTargetAlive) return true;

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/TargetInRange")]
-public class TargetInRange : AIDecision
+[CreateAssetMenu(menuName = "PluggableFSM/Decisions/TargetInRange")]
+public class TargetInRange : Decision
 {
-  public override bool Decide(AIStateController controller)
+  public override bool Decide(IStateController controller)
   {
     bool targetInRange = IsTargetInRange(controller);
     return targetInRange;
   }
 
-  bool IsTargetInRange(AIStateController ai)
+  bool IsTargetInRange(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     AITargeter targeter = ai.targeter;
 
     if (!targeter.MainTarget) return false;

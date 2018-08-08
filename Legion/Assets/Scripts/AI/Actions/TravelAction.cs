@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Travel")]
-public class TravelAction : AIAction
+[CreateAssetMenu(menuName = "PluggableFSM/Actions/Travel")]
+public class TravelAction : Action
 {
-  public override void Act(AIStateController controller)
+  public override void Act(IStateController controller)
   {
     Travel(controller);
   }
 
-  void Travel(AIStateController ai)
+  void Travel(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     if (ai.IsBlocked || !ai.targeter.Objective)
     {
       ai.motor.navMeshAgent.isStopped = true;

@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/AbilityHostile")]
-public class AbilityHostileAction : AIAction
+[CreateAssetMenu(menuName = "PluggableFSM/Actions/AbilityHostile")]
+public class AbilityHostileAction : Action
 {
-  public override void Act(AIStateController controller)
+  public override void Act(IStateController controller)
   {
     AbilityCast(controller);
   }
 
-  void AbilityCast(AIStateController ai)
+  void AbilityCast(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     AICaster caster = ai.caster;
     if (!caster.IsBlocked)
     {

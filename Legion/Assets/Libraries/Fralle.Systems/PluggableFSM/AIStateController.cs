@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(AITargeter))]
 [RequireComponent(typeof(AIMotor))]
 [RequireComponent(typeof(AICaster))]
 [RequireComponent(typeof(BlockerController))]
-public class AIStateController : MonoBehaviour
+public class AIStateController : MonoBehaviour, IStateController
 {
   [HideInInspector] public float stateTimeElapsed;
-  public AIState currentState;
-  public AIState remainState;
+  public State currentState;
+  public State remainState;
 
   public TeamData teamData;
   [HideInInspector] public AITargeter targeter;
@@ -43,7 +42,7 @@ public class AIStateController : MonoBehaviour
     }
   }
 
-  public void TransitionToState(AIState nextState)
+  public void TransitionToState(State nextState)
   {
     if (nextState != remainState)
     {

@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Wander")]
-public class WanderAction : AIAction
+[CreateAssetMenu(menuName = "PluggableFSM/Actions/Wander")]
+public class WanderAction : Action
 {
-  public override void Act(AIStateController controller)
+  public override void Act(IStateController controller)
   {
     Wander(controller);
   }
 
-  void Wander(AIStateController ai)
+  void Wander(IStateController isc)
   {
+    AIStateController ai = (AIStateController)isc;
     if (ai.motor.IsBlocked)
     {
       ai.motor.navMeshAgent.isStopped = true;
