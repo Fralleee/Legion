@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// REPLACE THIS
 public enum CastAnimation
 {
   QuickCast1,
@@ -12,45 +12,19 @@ public enum CastAnimation
 
 [RequireComponent(typeof(AITargeter))]
 [RequireComponent(typeof(BlockerController))]
-public class AICaster : MonoBehaviour
+public class AICaster : AbilityCaster
 {
-  public Ability MainAbility;
-  public List<Ability> SecondaryAbilities;
-  AITargeter targeter;
   BlockerController blockerController;
   [SerializeField] Blocker blocker;
   Animator animator;
 
   public bool IsBlocked { get { return blockerController.ContainsBlocker(abilities: true); } }
 
-  void Start()
+  protected override void Start()
   {
-    targeter = GetComponent<AITargeter>();
+    base.Start();
     blockerController = GetComponent<BlockerController>();
     animator = GetComponentInChildren<Animator>();
-    Initialize();
-  }
-
-  void Initialize()
-  {
-    int aggroRange = 0;
-
-    MainAbility = Instantiate(MainAbility);
-    MainAbility.IsMainAbility = true;
-    MainAbility.Setup(gameObject);
-    aggroRange = Math.Max(aggroRange, MainAbility.AbilityRange);
-
-    List<Ability> instanceAbilities = new List<Ability>();
-    foreach (Ability ability in SecondaryAbilities)
-    {
-      Ability abilityInstance = Instantiate(ability);
-      abilityInstance.IsMainAbility = false;
-      abilityInstance.Setup(gameObject);
-      instanceAbilities.Add(abilityInstance);
-      if (ability.targetType == TargetType.HOSTILE) aggroRange = Math.Max(aggroRange, ability.AbilityRange);
-    }
-    SecondaryAbilities = instanceAbilities;
-    targeter.SetAggroRange(aggroRange);
   }
 
   public bool TryCast(Ability ability)

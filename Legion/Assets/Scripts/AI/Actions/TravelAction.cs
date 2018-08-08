@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PluggableAI/Actions/Travel")]
-public class TravelAction : Action
+public class TravelAction : AIAction
 {
-  public override void Act(StateController controller)
+  public override void Act(AIStateController controller)
   {
     Travel(controller);
   }
 
-  void Travel(StateController controller)
+  void Travel(AIStateController ai)
   {
-    if (controller.IsBlocked || !controller.targeter.Objective)
+    if (ai.IsBlocked || !ai.targeter.Objective)
     {
-      controller.navMeshAgent.isStopped = true;
+      ai.motor.navMeshAgent.isStopped = true;
       return;
     }
-    controller.navMeshAgent.speed = controller.travelSpeed;
-    controller.navMeshAgent.SetDestination(controller.targeter.Objective.transform.position);
-    controller.navMeshAgent.isStopped = false;
+    ai.motor.navMeshAgent.speed = ai.motor.travelSpeed;
+    ai.motor.navMeshAgent.SetDestination(ai.targeter.Objective.transform.position);
+    ai.motor.navMeshAgent.isStopped = false;
   }
 }

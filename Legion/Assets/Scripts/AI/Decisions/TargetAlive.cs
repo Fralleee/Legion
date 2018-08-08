@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PluggableAI/Decisions/TargetAlive")]
-public class TargetAlive : Decision
+public class TargetAlive : AIDecision
 {
-  public override bool Decide(StateController controller)
+  public override bool Decide(AIStateController controller)
   {
     bool targetIsAlive = AliveCheck(controller);
     return targetIsAlive;
   }
 
-  bool AliveCheck(StateController controller)
+  bool AliveCheck(AIStateController ai)
   {
-    GameObject target = controller.targeter.CurrentTarget;
+    GameObject target = ai.targeter.CurrentTarget;
     bool targetIsAlive = target && target.gameObject && target.gameObject.activeSelf;
     return targetIsAlive;
   }

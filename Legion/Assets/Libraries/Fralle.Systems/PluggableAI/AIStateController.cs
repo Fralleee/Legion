@@ -1,34 +1,27 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(AITargeter))]
+[RequireComponent(typeof(AIMotor))]
 [RequireComponent(typeof(AICaster))]
 [RequireComponent(typeof(BlockerController))]
-public class StateController : MonoBehaviour
+public class AIStateController : MonoBehaviour
 {
-  public TeamData teamData;
-
   [HideInInspector] public float stateTimeElapsed;
-  public State currentState;
-  public State remainState;
+  public AIState currentState;
+  public AIState remainState;
 
-  // Movement
-  [HideInInspector] public NavMeshAgent navMeshAgent;
-  public float travelSpeed = 4f;
-  public float chasingSpeed = 6f;
-  public float wanderTimer;
-
+  public TeamData teamData;
   [HideInInspector] public AITargeter targeter;
+  [HideInInspector] public AIMotor motor;
   [HideInInspector] public AICaster caster;
-
   BlockerController blockerController;
   public bool IsBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
 
   void Awake()
   {
-    navMeshAgent = GetComponent<NavMeshAgent>();
     targeter = GetComponent<AITargeter>();
+    motor = GetComponent<AIMotor>();
     caster = GetComponent<AICaster>();
     blockerController = GetComponent<BlockerController>();
     Debug.LogWarning("Code in Update that should be moved to decision.");
@@ -46,11 +39,11 @@ public class StateController : MonoBehaviour
     if (currentState != null)
     {
       Gizmos.color = currentState.sceneGizmoColor;
-      Gizmos.DrawSphere(transform.position, targeter ? targeter.LookRange : 15f);
+      Gizmos.DrawSphere(transform.position, 15f);
     }
   }
 
-  public void TransitionToState(State nextState)
+  public void TransitionToState(AIState nextState)
   {
     if (nextState != remainState)
     {

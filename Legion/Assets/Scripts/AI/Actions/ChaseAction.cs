@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PluggableAI/Actions/Chase")]
-public class ChaseAction : Action
+public class ChaseAction : AIAction
 {
-  public override void Act(StateController controller)
+  public override void Act(AIStateController controller)
   {
     Chase(controller);
   }
 
-  void Chase(StateController controller)
+  void Chase(AIStateController ai)
   {
-    if (controller.IsBlocked || !controller.targeter.CurrentTarget)
+    if (ai.IsBlocked || !ai.targeter.CurrentTarget)
     {
-      controller.navMeshAgent.isStopped = true;
+      ai.motor.navMeshAgent.isStopped = true;
       return;
     }
-    controller.navMeshAgent.speed = controller.chasingSpeed;
-    controller.navMeshAgent.SetDestination(controller.targeter.CurrentTarget.transform.position);
-    controller.navMeshAgent.isStopped = false;
+    ai.motor.navMeshAgent.speed = ai.motor.chasingSpeed;
+    ai.motor.navMeshAgent.SetDestination(ai.targeter.CurrentTarget.transform.position);
+    ai.motor.navMeshAgent.isStopped = false;
   }
 }

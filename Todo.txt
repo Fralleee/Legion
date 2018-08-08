@@ -1,26 +1,25 @@
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
-# Build system
-- Rename placeable
-
-# Organize Fralle.Systems (should only contain reusable independent generic code)
 ---------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------
 # Day 1
 ---------------------------------------------------------------------------------------------
+- Rename placeable
 - Remove LookAt-script
-- Upgrade unity to 2018.2
+
 - Test the shader example project
 - Import shaders from bookmark
 - Test the autoreferencer script
+
 - Eyes are not used as of now, implement their usage
 - Add LoS to find targets
 
+
 # Abilities
 - Add particles to spell cast
-- ReleaseCast should have different implementations:
+- ReleaseCast should have different implementations (replace CastAnimation enum with this)
   Projectile (hand in front)
 	AOE	(both hands up in the air)
 	DirectTarget (hand up in the air)
@@ -86,6 +85,7 @@
   - Spell prefab (ISpell)  
 - Try reconstructing Launch as an ability instead
   Probably need an enum that says AbilityType [Default, Attack, Ultimate]
+- Maybe refactor launch to use PluggableFSM
 ---------------------------------------------------------------------------------------------
 
 	

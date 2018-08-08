@@ -8,16 +8,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36704df4d0249cd488203ce8937baf9f, type: 3}
+  m_Script: {fileID: 11500000, guid: ba7ae57db6b4aaa4db25c2bb3a71481e, type: 3}
   m_Name: TravelState
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: 13248ed564a46094684ac197ab1da480, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: ba5ad4e974ac2674a80bb3ac8f147d39, type: 2}
-    trueState: {fileID: 11400000, guid: 762e626c14f031c4b8e8024371c9033d, type: 2}
-    falseState: {fileID: 11400000, guid: e2c56fa0fe3748741851d4692e257500, type: 2}
   - decision: {fileID: 11400000, guid: 0f656cf063c28264688538add14d7f37, type: 2}
-    trueState: {fileID: 11400000, guid: e2c56fa0fe3748741851d4692e257500, type: 2}
-    falseState: {fileID: 11400000, guid: 1b6d70e845bf0ec45a0f07ce6bd13497, type: 2}
-  sceneGizmoColor: {r: 0.05673766, g: 1, b: 0, a: 1}
+    trueState: {fileID: 11400000, guid: c63f915dd4772c74d8ddea0a246a3539, type: 2}
+    falseState: {fileID: 11400000, guid: ae76bed698351424c9dcd98e3cf15959, type: 2}
+  - decision: {fileID: 11400000, guid: ba5ad4e974ac2674a80bb3ac8f147d39, type: 2}
+    trueState: {fileID: 11400000, guid: 20cd6c64034de2b42b7b5eac8383c064, type: 2}
+    falseState: {fileID: 11400000, guid: c63f915dd4772c74d8ddea0a246a3539, type: 2}
+  sceneGizmoColor: {r: 0.05724919, g: 1, b: 0, a: 1}

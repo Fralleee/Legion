@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AITargeter : MonoBehaviour
+public class AITargeter : AbilityTargeter
 {
-  const float TARGET_SCAN_RATE = 0.5f;
-  const int MIN_AGGRO_RANGE = 15;
-
   [Header("Look origin")]
   public Transform Eyes;
 
@@ -17,21 +14,12 @@ public class AITargeter : MonoBehaviour
 
   [Header("Floats")]
   public float LookRange = 15f;
-  public float TargetWidth = 0.5f;
-  float lastScan;
 
   [Header("Target Information")]
   public string CurrentTargetString;
   public string MainTargetString;
   public string ObjectiveString;
-  public Target CurrentTarget;
-  public Target MainTarget;
-  public Target Objective;
 
-  [HideInInspector] public float losCheckRate = 0.25f;
-  [HideInInspector] public float lastLosCheck;
-  [HideInInspector] public bool lastLosResult;
-  public bool PerformLoSCheck { get { return Time.time > lastLosCheck; } }
 
   public void SetCurrentTarget(GameObject go)
   {
@@ -71,5 +59,4 @@ public class AITargeter : MonoBehaviour
     ObjectiveString = Objective ? Objective.name : "None";
   }
 
-  //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((CurrentTarget.transform.position - transform.position).normalized), Time.deltaTime * 4f);
 }
