@@ -1,10 +1,9 @@
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
-- Rename placeable
 
-- Test the shader example project
-- Import shaders from bookmark
+- Test the shaders on frostwarrior
+
 - Test the autoreferencer script
 
 - Eyes are not used as of now, implement their usage
@@ -32,6 +31,7 @@
 # Day 2
 ---------------------------------------------------------------------------------------------
 # Build/spawn/attack flow
+- Rename placeable
 - Build a test scene for this flow
 - Apply builders teamData to building
 - Unit should get team data from building that spawns it
