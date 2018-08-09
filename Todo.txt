@@ -1,11 +1,10 @@
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
-
-- Test the shaders on frostwarrior
++ Test the shaders on frostwarrior
++ Try removing animation overblabla
 
 - Test the autoreferencer script
-
 - Eyes are not used as of now, implement their usage
 - Add LoS to find targets
 

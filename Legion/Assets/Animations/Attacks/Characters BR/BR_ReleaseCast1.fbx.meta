@@ -136,7 +136,7 @@ ModelImporter:
     - serializedVersion: 16
       name: BR_ReleaseCast1
       takeName: mixamo.com
-      firstFrame: 30
+      firstFrame: 13
       lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2a0c63e684c45b34f9fa24a439b0d9ce
+guid: e68c4cf0151284b4aa5b7c40e4893705
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -239,8 +239,9 @@ ModelImporter:
     400230: wing_ext_r
     400232: wing_main_l
     400234: wing_main_r
-    7400000: Primary_Fire_A_Slow_V1
+    7400000: Primary_Fire_A_Fast_V1
     9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -270,12 +271,12 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Primary_Fire_A_Slow_V1
+      name: Primary_Fire_A_Fast_V1
       takeName: Unreal Take
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 24
       wrapMode: 0
-      orientationOffsetY: 40
+      orientationOffsetY: 5
       level: 0
       cycleOffset: 0
       loop: 0
@@ -285,9 +286,9 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
+      keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -773,13 +774,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Primary_Fire_A_Slow_V1(Clone)
+    - name: Primary_Fire_A_Fast_V1(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: root
-      parentName: Primary_Fire_A_Slow_V1(Clone)
+      parentName: Primary_Fire_A_Fast_V1(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
