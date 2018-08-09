@@ -4,22 +4,12 @@ using UnityEngine;
 
 public class AITargeter : AbilityTargeter
 {
-  [Header("Look origin")]
-  public Transform Eyes;
-
   [Header("Layer masks")]
   public LayerMask EnvironmentLayerMask;
   public LayerMask EnemyLayerMask;
   public int EnemyLayer;
 
-  [Header("Floats")]
-  public float LookRange = 15f;
-
-  [Header("Target Information")]
-  public string CurrentTargetString;
-  public string MainTargetString;
-  public string ObjectiveString;
-
+  [HideInInspector] public float LookRange = 15f;
 
   public void SetCurrentTarget(GameObject go)
   {
@@ -35,12 +25,10 @@ public class AITargeter : AbilityTargeter
   public void SetObjective(GameObject go)
   {
     if (!go) return;
-    Debug.Log("New Objective: " + go.name);
     CurrentTarget = new Target(go);
     Objective = new Target(go);
   }
   public void SetAggroRange(int range) { LookRange = Mathf.Max(range, MIN_AGGRO_RANGE); }
-
   public bool FindHostiles()
   {
     if (Time.time > lastScan)
@@ -51,12 +39,4 @@ public class AITargeter : AbilityTargeter
     }
     return false;
   }
-
-  void Update()
-  {
-    CurrentTargetString = CurrentTarget ? CurrentTarget.name : "None";
-    MainTargetString = MainTarget ? MainTarget.name : "None";
-    ObjectiveString = Objective ? Objective.name : "None";
-  }
-
 }
