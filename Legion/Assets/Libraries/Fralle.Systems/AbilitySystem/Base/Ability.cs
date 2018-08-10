@@ -44,48 +44,39 @@ public abstract class Ability : ScriptableObject
 
   public virtual void Cast(GameObject target) { lastAction = Time.time + Cooldown; }
 
-  public GameObject FindTargets(AITargeter targeter)
+  public GameObject FindTarget(AITargeter targeter)
   {
     Vector3 currentPosition = targeter.transform.position;
-    if (targeter.MainTarget && IsMainAbility)
-    {
-      if (RequireLineOfSight && Time.time > lastLoSCheck)
-      {
-        lastLoSCheck = Time.time + losScanRate;
-        bool inLineOfSight = TargetScanner.ObjectInLineOfSight(targeter.MainTarget, currentPosition, AbilityRange);
-        if (inLineOfSight) return targeter.MainTarget;
-      }
-      else if (Vector3.Distance(targeter.MainTarget.transform.position, currentPosition) < AbilityRange) return targeter.MainTarget;
-      return null;
-    }
-
+    if (targeter.MainTarget && IsMainAbility) return ValidateMainTarget(targeter);
     if (targetType == TargetType.SELF) return Caster;
     if ((Time.time < lastTargetScan + TargetScanRate)) return null;
 
     lastTargetScan = Time.time;
-    int searchLayer = 0;
-    switch (targetType)
+    int searchLayer = targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
+    return TargetScanner.FindTarget(Caster.transform, AbilityRange, searchLayer, RequireLineOfSight, TargetPriority);
+    //Collider[] validTargets = Physics.OverlapSphere(currentPosition, AbilityRange, searchLayer);
+    //if (RequireLineOfSight && validTargets.Length > 0) validTargets = TargetScanner.ObjectsInLineOfSight(validTargets, currentPosition, AbilityRange);
+    //if (validTargets.Length > 0)
+    //{
+    //  switch (TargetPriority)
+    //  {
+    //    case TargetPriority.NEAREST:
+    //      return TargetScanner.PrioritizeByDistance(validTargets, currentPosition);
+    //    case TargetPriority.LOWHEALTH:
+    //      return TargetScanner.PrioritizeByHealth(validTargets);
+    //  }
+    //}
+    //return null;
+  }
+  public GameObject ValidateMainTarget(AITargeter targeter)
+  {
+    if (RequireLineOfSight && Time.time > lastLoSCheck)
     {
-      case TargetType.FRIENDLY:
-        searchLayer = 1 << targeter.gameObject.layer;
-        break;
-      case TargetType.HOSTILE:
-        searchLayer = 1 << targeter.EnemyLayer;
-        break;
+      lastLoSCheck = Time.time + losScanRate;
+      bool inLineOfSight = TargetScanner.LineOfSightLayer(targeter.MainTarget, targeter.transform, AbilityRange);
+      if (inLineOfSight) return targeter.MainTarget;
     }
-
-    Collider[] validTargets = Physics.OverlapSphere(currentPosition, AbilityRange, searchLayer);
-    if (RequireLineOfSight && validTargets.Length > 0) validTargets = TargetScanner.ObjectsInLineOfSight(validTargets, currentPosition, AbilityRange);
-    if (validTargets.Length > 0)
-    {
-      switch (TargetPriority)
-      {
-        case TargetPriority.NEAREST:
-          return TargetScanner.PrioritizeByDistance(validTargets, currentPosition);
-        case TargetPriority.LOWHEALTH:
-          return TargetScanner.PrioritizeByHealth(validTargets);
-      }
-    }
+    else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < AbilityRange) return targeter.MainTarget;
     return null;
   }
 }

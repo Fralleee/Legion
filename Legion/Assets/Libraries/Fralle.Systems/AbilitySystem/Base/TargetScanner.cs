@@ -1,4 +1,5 @@
 ﻿using Fralle;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,27 @@ using UnityEngine;
 
 public static class TargetScanner
 {
+  public static GameObject FindTarget(Transform caster, float range, int layerMask, bool requireLineOfSight = false, TargetPriority targetPriority = TargetPriority.NEAREST)
+  {
+    Collider[] validTargets = Physics.OverlapSphere(caster.position, range, layerMask)
+        .Where(x => !requireLineOfSight || LineOfSightLayer(x.transform, caster, range))
+        .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - caster.position))
+        .ToArray();
+    if (validTargets.Length > 0)
+    {
+      switch (targetPriority)
+      {
+        case TargetPriority.NEAREST:
+          // Remake these
+          return PrioritizeByDistance(validTargets, caster.position);
+        case TargetPriority.LOWHEALTH:
+          // Remake these
+          return PrioritizeByHealth(validTargets);
+      }
+      return validTargets[0].gameObject;
+    }
+    return null;
+  }
   public static bool FindHostiles(AITargeter targeter)
   {
     GameObject potentialTarget = null;
@@ -27,19 +49,19 @@ public static class TargetScanner
   }
   public static bool FindHostilesLinq(AITargeter targeter)
   {
-    GameObject potentialTarget = null;
     int searchLayer = 1 << targeter.EnemyLayer;
     Collider[] validTargets = Physics.OverlapSphere(targeter.transform.position, targeter.LookRange, searchLayer);
     if (validTargets.Length > 0)
     {
       validTargets = validTargets
+        // Uncomment this
         //.Where(x => LineOfSightLayer(x.transform, targeter.transform, targeter.LookRange))
         .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - targeter.transform.position))
         .ToArray();
       if (validTargets.Length > 0)
       {
-        targeter.SetMainTarget(potentialTarget);
-        targeter.SetCurrentTarget(potentialTarget);
+        targeter.SetMainTarget(validTargets[0].gameObject);
+        targeter.SetCurrentTarget(validTargets[0].gameObject);
         return true;
       }
     }
@@ -73,6 +95,39 @@ public static class TargetScanner
     return false;
   }
 
+  public static GameObject PrioritizeByHealth(Collider[] validTargets)
+  {
+    GameObject bestTarget = null;
+    float leastHealth = Mathf.Infinity;
+    foreach (Collider potentialTarget in validTargets)
+    {
+      DamageController damageController = potentialTarget.GetComponent<DamageController>();
+      if (damageController && damageController.PercentageHealth < 1)
+      {
+        if (damageController.Health < leastHealth)
+        {
+          leastHealth = damageController.Health;
+          bestTarget = potentialTarget.gameObject;
+        }
+      }
+    }
+    return bestTarget;
+  }
+  public static GameObject PrioritizeByDistance(Collider[] validTargets, Vector3 currentPosition)
+  {
+    GameObject bestTarget = null;
+    float closestDistanceSqr = Mathf.Infinity;
+    foreach (Collider potentialTarget in validTargets)
+    {
+      float dSqrToTarget = Vector3.SqrMagnitude(potentialTarget.transform.position - currentPosition);
+      if (dSqrToTarget < closestDistanceSqr)
+      {
+        closestDistanceSqr = dSqrToTarget;
+        bestTarget = potentialTarget.gameObject;
+      }
+    }
+    return bestTarget;
+  }
 
 
   #region Old (obsolete?) stuff
@@ -144,39 +199,6 @@ public static class TargetScanner
       }
     }
     return returnColliders.ToArray();
-  }
-  public static GameObject PrioritizeByHealth(Collider[] validTargets)
-  {
-    GameObject bestTarget = null;
-    float leastHealth = Mathf.Infinity;
-    foreach (Collider potentialTarget in validTargets)
-    {
-      DamageController damageController = potentialTarget.GetComponent<DamageController>();
-      if (damageController && damageController.PercentageHealth < 1)
-      {
-        if (damageController.Health < leastHealth)
-        {
-          leastHealth = damageController.Health;
-          bestTarget = potentialTarget.gameObject;
-        }
-      }
-    }
-    return bestTarget;
-  }
-  public static GameObject PrioritizeByDistance(Collider[] validTargets, Vector3 currentPosition)
-  {
-    GameObject bestTarget = null;
-    float closestDistanceSqr = Mathf.Infinity;
-    foreach (Collider potentialTarget in validTargets)
-    {
-      float dSqrToTarget = Vector3.SqrMagnitude(potentialTarget.transform.position - currentPosition);
-      if (dSqrToTarget < closestDistanceSqr)
-      {
-        closestDistanceSqr = dSqrToTarget;
-        bestTarget = potentialTarget.gameObject;
-      }
-    }
-    return bestTarget;
   }
   #endregion
 }

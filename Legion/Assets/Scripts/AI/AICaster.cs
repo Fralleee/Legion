@@ -29,7 +29,7 @@ public class AICaster : AbilityCaster
 
   public bool TryCast(Ability ability)
   {
-    GameObject target = ability.FindTargets(targeter);
+    GameObject target = ability.FindTarget(targeter);
     if (target == null) return false;
 
     blockerController.AddBlocker(blocker);

@@ -1,8 +1,6 @@
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
-+ Add LoS to find targets
-+ Update targetscanner + ability
 
 - Ensure that Linq-solution works
   Should find the closets target with clear line of sight
@@ -11,9 +9,10 @@
 	Perform targetscan with both ways & compare overhead
 	Remember that FindHostiles(nonLinq) does not raycast
 
-- Create generic LineOfSight method
-  Params: TargetLayerMask = null, ObstacleLayerMask = null
-  Options: DirectHit, LayerHit, NonObstacleHit (requires TargetLayerMask + ObstacleLayerMask)
+- If everything works
+  - Add LoS back to FindHostilesLinq (uncomment)
+  - remove commented code in ability + targetscanner
+	- Refactor so everything uses the new LoS-checkers
 	
 ---------------------------------------------------------------------------------------------
 
