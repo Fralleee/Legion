@@ -1,7 +1,20 @@
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
-- Add LoS to find targets
++ Add LoS to find targets
++ Update targetscanner + ability
+
+- Ensure that Linq-solution works
+  Should find the closets target with clear line of sight
+
+- Benchmark performance (Linq vs For)?
+	Perform targetscan with both ways & compare overhead
+	Remember that FindHostiles(nonLinq) does not raycast
+
+- Create generic LineOfSight method
+  Params: TargetLayerMask = null, ObstacleLayerMask = null
+  Options: DirectHit, LayerHit, NonObstacleHit (requires TargetLayerMask + ObstacleLayerMask)
+	
 ---------------------------------------------------------------------------------------------
 
 

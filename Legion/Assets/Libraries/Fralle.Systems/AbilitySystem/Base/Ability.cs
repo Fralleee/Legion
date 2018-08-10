@@ -44,4 +44,48 @@ public abstract class Ability : ScriptableObject
 
   public virtual void Cast(GameObject target) { lastAction = Time.time + Cooldown; }
 
+  public GameObject FindTargets(AITargeter targeter)
+  {
+    Vector3 currentPosition = targeter.transform.position;
+    if (targeter.MainTarget && IsMainAbility)
+    {
+      if (RequireLineOfSight && Time.time > lastLoSCheck)
+      {
+        lastLoSCheck = Time.time + losScanRate;
+        bool inLineOfSight = TargetScanner.ObjectInLineOfSight(targeter.MainTarget, currentPosition, AbilityRange);
+        if (inLineOfSight) return targeter.MainTarget;
+      }
+      else if (Vector3.Distance(targeter.MainTarget.transform.position, currentPosition) < AbilityRange) return targeter.MainTarget;
+      return null;
+    }
+
+    if (targetType == TargetType.SELF) return Caster;
+    if ((Time.time < lastTargetScan + TargetScanRate)) return null;
+
+    lastTargetScan = Time.time;
+    int searchLayer = 0;
+    switch (targetType)
+    {
+      case TargetType.FRIENDLY:
+        searchLayer = 1 << targeter.gameObject.layer;
+        break;
+      case TargetType.HOSTILE:
+        searchLayer = 1 << targeter.EnemyLayer;
+        break;
+    }
+
+    Collider[] validTargets = Physics.OverlapSphere(currentPosition, AbilityRange, searchLayer);
+    if (RequireLineOfSight && validTargets.Length > 0) validTargets = TargetScanner.ObjectsInLineOfSight(validTargets, currentPosition, AbilityRange);
+    if (validTargets.Length > 0)
+    {
+      switch (TargetPriority)
+      {
+        case TargetPriority.NEAREST:
+          return TargetScanner.PrioritizeByDistance(validTargets, currentPosition);
+        case TargetPriority.LOWHEALTH:
+          return TargetScanner.PrioritizeByHealth(validTargets);
+      }
+    }
+    return null;
+  }
 }

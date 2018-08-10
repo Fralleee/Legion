@@ -1,6 +1,7 @@
 ﻿using Fralle;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class TargetScanner
@@ -24,7 +25,57 @@ public static class TargetScanner
       return false;
     }
   }
+  public static bool FindHostilesLinq(AITargeter targeter)
+  {
+    GameObject potentialTarget = null;
+    int searchLayer = 1 << targeter.EnemyLayer;
+    Collider[] validTargets = Physics.OverlapSphere(targeter.transform.position, targeter.LookRange, searchLayer);
+    if (validTargets.Length > 0)
+    {
+      validTargets = validTargets
+        //.Where(x => LineOfSightLayer(x.transform, targeter.transform, targeter.LookRange))
+        .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - targeter.transform.position))
+        .ToArray();
+      if (validTargets.Length > 0)
+      {
+        targeter.SetMainTarget(potentialTarget);
+        targeter.SetCurrentTarget(potentialTarget);
+        return true;
+      }
+    }
 
+    targeter.SetMainTarget(null);
+    targeter.SetCurrentTarget(targeter.Objective);
+    return false;
+  }
+  public static bool LineOfSightDirect(Transform caster, Transform target, float range)
+  {
+    Vector3 direction = target.position - caster.position;
+    RaycastHit hit;
+    Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
+    if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range)) return hit.collider.gameObject == target.gameObject;
+    return false;
+  }
+  public static bool LineOfSightLayer(Transform caster, Transform target, float range)
+  {
+    Vector3 direction = target.position - caster.position;
+    RaycastHit hit;
+    Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
+    if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range)) return hit.collider.gameObject.layer == target.gameObject.layer;
+    return false;
+  }
+  public static bool LineOfSightUnObstructed(Transform caster, Transform target, float range, int targetLayer, LayerMask targetMask, LayerMask obstacleMask)
+  {
+    Vector3 direction = target.position - caster.position;
+    RaycastHit hit;
+    Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
+    if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range, targetMask | obstacleMask)) return hit.collider.gameObject.layer == targetLayer;
+    return false;
+  }
+
+
+
+  #region Old (obsolete?) stuff
   public static GameObject FindTargets(this Ability ability, AITargeter targeter)
   {
     Vector3 currentPosition = targeter.transform.position;
@@ -69,7 +120,6 @@ public static class TargetScanner
     }
     return null;
   }
-
   public static bool ObjectInLineOfSight(Transform target, Vector3 position, float range)
   {
     Vector3 direction = target.position - position;
@@ -95,7 +145,6 @@ public static class TargetScanner
     }
     return returnColliders.ToArray();
   }
-
   public static GameObject PrioritizeByHealth(Collider[] validTargets)
   {
     GameObject bestTarget = null;
@@ -129,5 +178,5 @@ public static class TargetScanner
     }
     return bestTarget;
   }
-
+  #endregion
 }
