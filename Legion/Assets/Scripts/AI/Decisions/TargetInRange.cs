@@ -20,16 +20,15 @@ public class TargetInRange : Decision
     if (!targeter.PerformLoSCheck) return targeter.lastLosResult;
 
     targeter.lastLosCheck = Time.time + targeter.losCheckRate;
-    Vector3 currentPosition = ai.transform.position;
     AICaster caster = ai.caster;
 
     if (caster.MainAbility.RequireLineOfSight)
     {
-      targeter.lastLosResult = TargetScanner.ObjectInLineOfSight(targeter.MainTarget, currentPosition, caster.MainAbility.AbilityRange);
+      targeter.lastLosResult = TargetScanner.LineOfSightLayer(targeter.MainTarget, caster.transform, caster.MainAbility.AbilityRange);
     }
     else
     {
-      targeter.lastLosResult = caster.MainAbility.AbilityRange >= Vector3.Distance(targeter.MainTarget.transform.position, currentPosition) - targeter.MainTarget.Width;
+      targeter.lastLosResult = caster.MainAbility.AbilityRange >= Vector3.Distance(targeter.MainTarget.transform.position, caster.transform.position) - targeter.MainTarget.Width;
     }
 
     return targeter.lastLosResult;

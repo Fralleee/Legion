@@ -23,6 +23,10 @@ MonoBehaviour:
   Cooldown: 2
   WindupTime: 3
   RecoveryTime: 0.75
+  castingEffect: {fileID: 198831932393201358, guid: 796167805e7a6e447a5f633cdcd2daee,
+    type: 2}
+  effects:
+  - {fileID: 11400000, guid: 53cdaacea0a3fca43ba9baf86d917463, type: 2}
   lastTargetScan: 0
   lastLoSCheck: 0
   losScanRate: 0.25

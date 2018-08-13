@@ -1,32 +1,23 @@
 ---------------------------------------------------------------------------------------------
-# Day 0
----------------------------------------------------------------------------------------------
-
-- Ensure that Linq-solution works
-  Should find the closets target with clear line of sight
-
-- Benchmark performance (Linq vs For)?
-	Perform targetscan with both ways & compare overhead
-	Remember that FindHostiles(nonLinq) does not raycast
-
-- If everything works
-  - Add LoS back to FindHostilesLinq (uncomment)
-  - remove commented code in ability + targetscanner
-	- Refactor so everything uses the new LoS-checkers
-	
----------------------------------------------------------------------------------------------
-
-
----------------------------------------------------------------------------------------------
 # Day 1
 ---------------------------------------------------------------------------------------------
+
 # Abilities
-- Add particles to spell cast
++ Add particles to onHit
++ Add particles to the ability
++ Add onhit particles on effect
++ Add localscaling to effects
+
+- Add lot of code to base effect instead of derived damage effect
+  Move damage effect to derived folder
+  More cleanup in folders
+
 - ReleaseCast should have different implementations (replace CastAnimation enum with this)
   Projectile (hand in front)
 	AOE	(both hands up in the air)
 	DirectTarget (hand up in the air)
 
+- When target moves out of sight the spell casting is not interrupted
 
 ---------------------------------------------------------------------------------------------
 

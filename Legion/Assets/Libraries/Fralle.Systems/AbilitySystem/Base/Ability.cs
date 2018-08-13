@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class Ability : ScriptableObject
 {
@@ -24,12 +25,18 @@ public abstract class Ability : ScriptableObject
 
   [Range(0.5f, 5)]
   public float RecoveryTime = 0.5f;
+  [Space(10)]
+
+  [Header("Ability Effects")]
+  public ParticleSystem castingEffect;
+  public List<AbilityEffect> effects = new List<AbilityEffect>();
 
   [HideInInspector] protected float lastAction = 0;
   [HideInInspector] public float lastTargetScan = 0;
   [HideInInspector] public float lastLoSCheck = 0;
   [HideInInspector] public float losScanRate = 0.25f;
 
+  [Space(10)]
   public CastAnimation Animation;
 
   public bool IsReady { get { return Time.time > lastAction; } }

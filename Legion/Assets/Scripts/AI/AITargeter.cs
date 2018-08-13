@@ -34,7 +34,7 @@ public class AITargeter : AbilityTargeter
     if (Time.time > lastScan)
     {
       lastScan = Time.time + TARGET_SCAN_RATE;
-      bool hasFound = TargetScanner.FindHostiles(this);
+      bool hasFound = TargetScanner.FindHostilesLinq(this);
       return hasFound;
     }
     return false;

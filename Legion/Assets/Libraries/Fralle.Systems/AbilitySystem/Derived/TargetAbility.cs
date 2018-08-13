@@ -33,12 +33,9 @@ public class TargetAbility : Ability
 
   void TargetCast(GameObject target)
   {
-    DamageController damageController = target.GetComponent<DamageController>();
-    if (damageController != null)
+    foreach (AbilityEffect effect in effects)
     {
-      var rnd = new System.Random();
-      int amount = rnd.Next(MinAmount, MaxAmount);
-      damageController.TakeDamage(amount, Caster, AbilityName);
+      effect.Affect(this, target);
     }
   }
 

@@ -17,6 +17,7 @@ public class AICaster : AbilityCaster
   BlockerController blockerController;
   [SerializeField] Blocker blocker;
   Animator animator;
+  Transform effectsHolder;
 
   public bool IsBlocked { get { return blockerController.ContainsBlocker(abilities: true); } }
 
@@ -25,6 +26,7 @@ public class AICaster : AbilityCaster
     base.Start();
     blockerController = GetComponent<BlockerController>();
     animator = GetComponentInChildren<Animator>();
+    effectsHolder = transform.Find("EffectsHolder");
   }
 
   public bool TryCast(Ability ability)
@@ -40,6 +42,9 @@ public class AICaster : AbilityCaster
   public IEnumerator Cast(Ability ability, GameObject target)
   {
     animator.SetBool(ability.Animation.ToString(), true);
+
+    ParticleSystem castingEffect = Instantiate(ability.castingEffect, effectsHolder);
+    castingEffect.Play();
     if (!target)
     {
       blockerController.RemoveBlocker(blocker);
@@ -58,12 +63,22 @@ public class AICaster : AbilityCaster
     }
 
     animator.SetTrigger("ReleaseCast");
+    ExplodeCastingParticles(castingEffect);
     ability.Cast(target);
 
-    yield return new WaitForSeconds(0.1f);
+    yield return new WaitForSeconds(Math.Max(ability.RecoveryTime, 0.5f));
     animator.SetBool(ability.Animation.ToString(), false);
-    yield return new WaitForSeconds(Math.Max(ability.RecoveryTime, 0.5f) - 0.1f);
-    
+
     blockerController.RemoveBlocker(blocker);
+  }
+
+  void ExplodeCastingParticles(ParticleSystem castingEffect)
+  {
+    ParticleSystem.MainModule main = castingEffect.main;
+    main.startLifetime = 0.35f;
+    main.startSpeed = 3;
+    main.gravityModifier = 0.25f;
+    castingEffect.Emit(50);
+    Destroy(castingEffect.gameObject, castingEffect.main.startLifetime.constant);
   }
 }

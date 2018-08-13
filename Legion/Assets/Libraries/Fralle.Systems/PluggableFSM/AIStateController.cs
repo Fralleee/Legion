@@ -38,7 +38,7 @@ public class AIStateController : MonoBehaviour, IStateController
     if (currentState != null)
     {
       Gizmos.color = currentState.sceneGizmoColor;
-      Gizmos.DrawSphere(transform.position, 15f);
+      Gizmos.DrawWireSphere(transform.position, 15f);
     }
   }
 
