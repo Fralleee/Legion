@@ -7,10 +7,8 @@
 + Add particles to the ability
 + Add onhit particles on effect
 + Add localscaling to effects
-
-- Add lot of code to base effect instead of derived damage effect
-  Move damage effect to derived folder
-  More cleanup in folders
++ Add lot of code to base effect instead of derived damage effect
++ Move damage effect to derived folder
 
 - ReleaseCast should have different implementations (replace CastAnimation enum with this)
   Projectile (hand in front)
@@ -26,6 +24,7 @@
 # Day 2
 ---------------------------------------------------------------------------------------------
 # Build/spawn/attack flow
+- GameManager to use PluggableFSM
 - Rename placeable
 - Build a test scene for this flow
 - Apply builders teamData to building
