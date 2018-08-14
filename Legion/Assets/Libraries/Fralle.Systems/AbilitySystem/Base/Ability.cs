@@ -28,6 +28,7 @@ public abstract class Ability : ScriptableObject
   [Space(10)]
 
   [Header("Ability Effects")]
+  public CastAnimations CastAnimation = CastAnimations.DirectTrigger;
   public ParticleSystem castingEffect;
   public List<AbilityEffect> effects = new List<AbilityEffect>();
 
@@ -36,8 +37,6 @@ public abstract class Ability : ScriptableObject
   [HideInInspector] public float lastLoSCheck = 0;
   [HideInInspector] public float losScanRate = 0.25f;
 
-  [Space(10)]
-  public CastAnimation Animation;
 
   public bool IsReady { get { return Time.time > lastAction; } }
 
@@ -61,19 +60,6 @@ public abstract class Ability : ScriptableObject
     lastTargetScan = Time.time;
     int searchLayer = targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
     return TargetScanner.FindTarget(Caster.transform, AbilityRange, searchLayer, RequireLineOfSight, TargetPriority);
-    //Collider[] validTargets = Physics.OverlapSphere(currentPosition, AbilityRange, searchLayer);
-    //if (RequireLineOfSight && validTargets.Length > 0) validTargets = TargetScanner.ObjectsInLineOfSight(validTargets, currentPosition, AbilityRange);
-    //if (validTargets.Length > 0)
-    //{
-    //  switch (TargetPriority)
-    //  {
-    //    case TargetPriority.NEAREST:
-    //      return TargetScanner.PrioritizeByDistance(validTargets, currentPosition);
-    //    case TargetPriority.LOWHEALTH:
-    //      return TargetScanner.PrioritizeByHealth(validTargets);
-    //  }
-    //}
-    //return null;
   }
   public GameObject ValidateMainTarget(AITargeter targeter)
   {

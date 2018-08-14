@@ -9,11 +9,14 @@
 + Add localscaling to effects
 + Add lot of code to base effect instead of derived damage effect
 + Move damage effect to derived folder
-
-- ReleaseCast should have different implementations (replace CastAnimation enum with this)
-  Projectile (hand in front)
-	AOE	(both hands up in the air)
-	DirectTarget (hand up in the air)
++ All abilities use same cast animation
++ AbilityTypes should be matched towards different releasecasts
+  Projectile (hand in front) 					- AimedCastTrigger
+	AOE	(both hands up in the air)			-	AreaCastTrigger
+	DirectTarget (hand up in the air)		-	DirectCastTrigger
+- Move TargetAbility editor code into Editor folder
+	
+- Add these animations
 
 - When target moves out of sight the spell casting is not interrupted
 

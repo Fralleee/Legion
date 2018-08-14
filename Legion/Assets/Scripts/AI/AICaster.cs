@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine;
 
 // REPLACE THIS
-public enum CastAnimation
+public enum CastAnimations
 {
-  QuickCast1,
-  LargeCast1,
-  SpellCast
+  AimedTrigger,
+  AreaTrigger,
+  DirectTrigger
 }
 
 [RequireComponent(typeof(AITargeter))]
@@ -41,14 +41,14 @@ public class AICaster : AbilityCaster
 
   public IEnumerator Cast(Ability ability, GameObject target)
   {
-    animator.SetBool(ability.Animation.ToString(), true);
+    animator.SetBool("Casting", true);
 
     ParticleSystem castingEffect = Instantiate(ability.castingEffect, effectsHolder);
     castingEffect.Play();
     if (!target)
     {
       blockerController.RemoveBlocker(blocker);
-      animator.SetBool(ability.Animation.ToString(), false);
+      animator.SetBool(ability.CastAnimation.ToString(), false);
       yield break;
     }
 
@@ -57,17 +57,17 @@ public class AICaster : AbilityCaster
 
     if (!target)
     {
-      animator.SetBool(ability.Animation.ToString(), false);
+      animator.SetBool("Casting", false);
       blockerController.RemoveBlocker(blocker);
       yield break;
     }
 
-    animator.SetTrigger("ReleaseCast");
+    animator.SetTrigger(ability.CastAnimation.ToString());
     ExplodeCastingParticles(castingEffect);
     ability.Cast(target);
 
     yield return new WaitForSeconds(Math.Max(ability.RecoveryTime, 0.5f));
-    animator.SetBool(ability.Animation.ToString(), false);
+    animator.SetBool("Casting", false);
 
     blockerController.RemoveBlocker(blocker);
   }
