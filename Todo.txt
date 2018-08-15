@@ -1,3 +1,17 @@
++ Add FacingCamera to Fralle.Core
++ Add MatchEditorCamera to Fralle.Core
+
+- Test project dark & stormy
+- Try adding it to Legion
+
+- Diagonalize ability icons a bit depending where they at
+
+- Maybe try building Fralle.core as package?
+  Investigate
+
+
+
+
 ---------------------------------------------------------------------------------------------
 # Day 1
 ---------------------------------------------------------------------------------------------
