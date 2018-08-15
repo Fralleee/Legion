@@ -76,7 +76,7 @@ MonoBehaviour:
       reflectionCubemapSize: 128
       reflectionCacheCompressed: 0
       planarReflectionCacheCompressed: 0
-      skyReflectionSize: 256
+      skyReflectionSize: 128
       skyLightingOverrideLayerMask:
         serializedVersion: 2
         m_Bits: 0
