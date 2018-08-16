@@ -1,8 +1,10 @@
+INFO:
+Added two blockers to ability, different abilities might not block movement when casting/recovering
+Remake GameManagement entirely (should use PluggableFSM)
+Try intergrating FralleUnity into project instead of using Libraries-code.
 
 
-- Generalize everything in FralleUnity to work independently or with eachother (not project files)
-
-
+TODO:
 - Diagonalize ability icons a bit depending where they at
 
 ---------------------------------------------------------------------------------------------

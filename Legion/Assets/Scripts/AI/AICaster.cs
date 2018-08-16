@@ -1,34 +1,50 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-// REPLACE THIS
-public enum CastAnimations
-{
-  AimedTrigger,
-  AreaTrigger,
-  DirectTrigger
-}
 
 [RequireComponent(typeof(AITargeter))]
 [RequireComponent(typeof(BlockerController))]
-public class AICaster : AbilityCaster
+public class AICaster : MonoBehaviour
 {
-  BlockerController blockerController;
   [SerializeField] Blocker blocker;
+  public Ability MainAbility;
+  public List<Ability> SecondaryAbilities;
+  public bool IsBlocked { get { return blockerController.ContainsBlocker(abilities: true); } }
+
+  AITargeter targeter;
+  BlockerController blockerController;
   Animator animator;
   Transform effectsHolder;
 
-  public bool IsBlocked { get { return blockerController.ContainsBlocker(abilities: true); } }
-
-  protected override void Start()
+  void Start()
   {
-    base.Start();
+    targeter = GetComponent<AITargeter>();
     blockerController = GetComponent<BlockerController>();
     animator = GetComponentInChildren<Animator>();
     effectsHolder = transform.Find("EffectsHolder");
+    Initialize();
   }
+  void Initialize()
+  {
+    int aggroRange = 0;
+    MainAbility = Instantiate(MainAbility);
+    MainAbility.IsMainAbility = true;
+    MainAbility.Setup(gameObject);
+    aggroRange = Math.Max(aggroRange, MainAbility.AbilityRange);
 
+    List<Ability> instanceAbilities = new List<Ability>();
+    foreach (Ability ability in SecondaryAbilities)
+    {
+      Ability abilityInstance = Instantiate(ability);
+      abilityInstance.IsMainAbility = false;
+      abilityInstance.Setup(gameObject);
+      instanceAbilities.Add(abilityInstance);
+      if (ability.targetType == TargetType.HOSTILE) aggroRange = Math.Max(aggroRange, ability.AbilityRange);
+    }
+    SecondaryAbilities = instanceAbilities;
+    targeter.SetAggroRange(aggroRange);
+  }
   public bool TryCast(Ability ability)
   {
     GameObject target = ability.FindTarget(targeter);
@@ -38,7 +54,6 @@ public class AICaster : AbilityCaster
     StartCoroutine(Cast(ability, target));
     return true;
   }
-
   public IEnumerator Cast(Ability ability, GameObject target)
   {
     animator.SetBool("Casting", true);
@@ -71,7 +86,6 @@ public class AICaster : AbilityCaster
 
     blockerController.RemoveBlocker(blocker);
   }
-
   void ExplodeCastingParticles(ParticleSystem castingEffect)
   {
     ParticleSystem.MainModule main = castingEffect.main;

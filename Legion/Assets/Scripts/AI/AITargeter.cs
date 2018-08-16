@@ -1,9 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class AITargeter : AbilityTargeter
+public class AITargeter : MonoBehaviour
 {
+  const float TARGET_SCAN_RATE = 0.5f;
+  const int MIN_AGGRO_RANGE = 15;
+
+  public Target CurrentTarget { get; set; }
+  public Target MainTarget { get; set; }
+  public Target Objective { get; set; }
+  public bool PerformLoSCheck { get { return Time.time > lastLosCheck; } }
+  [HideInInspector] public float lastScan { get; set; }
+  [HideInInspector] public float lastLosCheck { get; set; }
+  [HideInInspector] public bool lastLosResult { get; set; }
+  [HideInInspector] public float losCheckRate = 0.25f;
+
   [Header("Layer masks")]
   public LayerMask EnvironmentLayerMask;
   public LayerMask EnemyLayerMask;

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public static class TargetScanner
 {
+  // Find
   public static GameObject FindTarget(Transform caster, float range, int layerMask, bool requireLineOfSight = false, TargetPriority targetPriority = TargetPriority.NEAREST)
   {
     Collider[] validTargets = Physics.OverlapSphere(caster.position, range, layerMask)
@@ -50,6 +51,8 @@ public static class TargetScanner
     targeter.SetCurrentTarget(targeter.Objective);
     return false;
   }
+
+  // Line of sight
   public static bool LineOfSightDirect(Transform caster, Transform target, float range)
   {
     Vector3 direction = target.position - caster.position;
@@ -74,6 +77,8 @@ public static class TargetScanner
     if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range, targetMask | obstacleMask)) return hit.collider.gameObject.layer == targetLayer;
     return false;
   }
+
+  // Priority
   public static GameObject PrioritizeByHealth(Collider[] validTargets)
   {
     GameObject bestTarget = null;
@@ -106,5 +111,29 @@ public static class TargetScanner
       }
     }
     return bestTarget;
+  }
+
+  // Ability specific
+  public static GameObject FindTargetForAbility(Ability ability, AITargeter targeter)
+  {
+    Vector3 currentPosition = targeter.transform.position;
+    if (targeter.MainTarget && ability.IsMainAbility) return ValidateMainTarget(ability, targeter);
+    if (ability.targetType == TargetType.SELF) return targeter.gameObject;
+    if ((Time.time < ability.lastTargetScan + ability.TargetScanRate)) return null;
+
+    ability.lastTargetScan = Time.time;
+    int searchLayer = ability.targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
+    return TargetScanner.FindTarget(targeter.transform, ability.AbilityRange, searchLayer, ability.RequireLineOfSight, ability.TargetPriority);
+  }
+  public static GameObject ValidateMainTarget(Ability ability, AITargeter targeter)
+  {
+    if (ability.RequireLineOfSight && Time.time > ability.lastLoSCheck)
+    {
+      ability.lastLoSCheck = Time.time + ability.losScanRate;
+      bool inLineOfSight = TargetScanner.LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.AbilityRange);
+      if (inLineOfSight) return targeter.MainTarget;
+    }
+    else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.AbilityRange) return targeter.MainTarget;
+    return null;
   }
 }
