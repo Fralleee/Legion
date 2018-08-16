@@ -1,9 +1,7 @@
 
-+ Create Repo for Fralle.core
-- Add Fralle.core code into repo and build
 
-- Separate Fralle.systems into separate systems
-- Create repos and build dll
+- Generalize everything in FralleUnity to work independently or with eachother (not project files)
+
 
 - Diagonalize ability icons a bit depending where they at
 
