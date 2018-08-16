@@ -1,9 +1,11 @@
+
++ Create Repo for Fralle.core
+- Add Fralle.core code into repo and build
+
+- Separate Fralle.systems into separate systems
+- Create repos and build dll
+
 - Diagonalize ability icons a bit depending where they at
-- Maybe try building Fralle.core as package?
-  Investigate
-
-
-
 
 ---------------------------------------------------------------------------------------------
 # Day 1
