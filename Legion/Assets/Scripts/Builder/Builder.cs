@@ -18,7 +18,7 @@ public class Builder : MonoBehaviour
   [SerializeField] BuildingList availableBuildings;
   [SerializeField] ActiveBuildingList activeBuildings;
 
-  [SerializeField] GameData gameData;
+  //[SerializeField] GameData gameData;
 
   Vector3 location;
 

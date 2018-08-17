@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fralle;
 
 [CreateAssetMenu(menuName = "PluggableFSM/Decisions/ObjectiveAlive")]
 public class ObjectiveAlive : Decision

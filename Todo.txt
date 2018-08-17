@@ -1,3 +1,9 @@
+
+- Create AIMainAbility
+- Add ValidateCast to AIAbility
+  - Check targetAlive && distance || LoS depending on requirements
+
+
 INFO:
 Added two blockers to ability, different abilities might not block movement when casting/recovering
 Remake GameManagement entirely (should use PluggableFSM)

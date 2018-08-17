@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Fralle;
 
 [CreateAssetMenu(menuName = "PluggableFSM/Actions/Wander")]
 public class WanderAction : Action

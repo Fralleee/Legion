@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fralle;
 
 [CreateAssetMenu(menuName = "PluggableFSM/Actions/Travel")]
 public class TravelAction : Action

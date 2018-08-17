@@ -114,26 +114,25 @@ public static class TargetScanner
   }
 
   // Ability specific
-  public static GameObject FindTargetForAbility(Ability ability, AITargeter targeter)
+  public static GameObject FindTargetForAbility(AIAbility ability, AITargeter targeter)
   {
     Vector3 currentPosition = targeter.transform.position;
-    if (targeter.MainTarget && ability.IsMainAbility) return ValidateMainTarget(ability, targeter);
     if (ability.targetType == TargetType.SELF) return targeter.gameObject;
-    if ((Time.time < ability.lastTargetScan + ability.TargetScanRate)) return null;
+    if ((Time.time < ability.lastTargetScan + ability.targetScanRate)) return null;
 
     ability.lastTargetScan = Time.time;
     int searchLayer = ability.targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
-    return TargetScanner.FindTarget(targeter.transform, ability.AbilityRange, searchLayer, ability.RequireLineOfSight, ability.TargetPriority);
+    return FindTarget(targeter.transform, ability.abilityRange, searchLayer, ability.requireLineOfSight, ability.targetPriority);
   }
-  public static GameObject ValidateMainTarget(Ability ability, AITargeter targeter)
+  public static GameObject ValidateMainTarget(AIAbility ability, AITargeter targeter)
   {
-    if (ability.RequireLineOfSight && Time.time > ability.lastLoSCheck)
+    if (ability.requireLineOfSight && Time.time > ability.lastLoSCheck)
     {
       ability.lastLoSCheck = Time.time + ability.losScanRate;
-      bool inLineOfSight = TargetScanner.LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.AbilityRange);
+      bool inLineOfSight = LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.abilityRange);
       if (inLineOfSight) return targeter.MainTarget;
     }
-    else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.AbilityRange) return targeter.MainTarget;
+    else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.abilityRange) return targeter.MainTarget;
     return null;
   }
 }

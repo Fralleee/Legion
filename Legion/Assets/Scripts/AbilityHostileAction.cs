@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Fralle;
 
 [CreateAssetMenu(menuName = "PluggableFSM/Actions/AbilityHostile")]
 public class AbilityHostileAction : Action
@@ -14,11 +15,11 @@ public class AbilityHostileAction : Action
     AICaster caster = ai.caster;
     if (!caster.IsBlocked)
     {
-      foreach (Ability ability in caster.SecondaryAbilities.FindAll(x => x.targetType == TargetType.HOSTILE && x.IsReady))
+      foreach (AIAbility ability in caster.SecondaryAbilities.FindAll(x => x.targetType == TargetType.HOSTILE && x.isReady))
       {
         if (caster.TryCast(ability)) return;
       }
-      if(caster.MainAbility.IsReady) caster.TryCast(caster.MainAbility);
+      if(caster.MainAbility.isReady) caster.TryCast();
     }
   }
 }
