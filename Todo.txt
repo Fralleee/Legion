@@ -1,47 +1,38 @@
+---------------------------------------------------------------------------------------------
+# Day 0
+---------------------------------------------------------------------------------------------
+# Abilities : Spells
+Projectile (hand in front) 					- Aimed
+AOE	(both hands up in the air)			-	Area
+DirectTarget (hand up in the air)		-	Direct
 
-- Create AIMainAbility
-- Add ValidateCast to AIAbility
-  - Check targetAlive && distance || LoS depending on requirements
-
-
-INFO:
-Added two blockers to ability, different abilities might not block movement when casting/recovering
-Remake GameManagement entirely (should use PluggableFSM)
-Try intergrating FralleUnity into project instead of using Libraries-code.
-
-
-TODO:
 - Diagonalize ability icons a bit depending where they at
 
----------------------------------------------------------------------------------------------
-# Day 1
----------------------------------------------------------------------------------------------
+- Ensure that AITest is not broken / fix AITest	
 
-# Abilities
-+ Add particles to onHit
-+ Add particles to the ability
-+ Add onhit particles on effect
-+ Add localscaling to effects
-+ Add lot of code to base effect instead of derived damage effect
-+ Move damage effect to derived folder
-+ All abilities use same cast animation
-+ AbilityTypes should be matched towards different releasecasts
-  Projectile (hand in front) 					- AimedCastTrigger
-	AOE	(both hands up in the air)			-	AreaCastTrigger
-	DirectTarget (hand up in the air)		-	DirectCastTrigger
-- Move TargetAbility editor code into Editor folder
-	
 - Add these animations
 
 - When target moves out of sight the spell casting is not interrupted
 
+
 ---------------------------------------------------------------------------------------------
 
+---------------------------------------------------------------------------------------------
+# Day 1
+---------------------------------------------------------------------------------------------
+# Abilities : Melee
+- Create melee ability
+- Equip character with a weapon
+- Add animations 
+- Melee attack should be able to be single target or Area
+- Animation + hit trigger should sync
+- Ensure that melee attack can hit large units 
+---------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------
 # Day 2
 ---------------------------------------------------------------------------------------------
-# Build/spawn/attack flow
+# GameManagement: Build/spawn/attack flow
 - GameManager to use PluggableFSM
 - Rename placeable
 - Build a test scene for this flow
