@@ -457,8 +457,6 @@ GameObject:
   - component: {fileID: 4029117792393160}
   - component: {fileID: 95347058581738560}
   - component: {fileID: 136542452598400552}
-  - component: {fileID: 114035741773334508}
-  - component: {fileID: 114245427579626382}
   m_Layer: 14
   m_Name: Orange Golem
   m_TagString: Untagged
@@ -1512,33 +1510,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114035741773334508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1619578070938272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8952f5685188af342bd40d9ae17bd53a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114245427579626382
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1619578070938272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7991ebc0388e79548b167181e4037982, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 0}
-  Armor: 0
-  Health: 0
-  MaxHealth: 0
-  width: 0
 --- !u!136 &136542452598400552
 CapsuleCollider:
   m_ObjectHideFlags: 1

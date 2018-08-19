@@ -1,0 +1,6 @@
+QWER = Spells
+Space = AutoAttack
+B = Recall
+K/L = Kill Unit
+DF/T = Control Speed
+C = Switch Cameras

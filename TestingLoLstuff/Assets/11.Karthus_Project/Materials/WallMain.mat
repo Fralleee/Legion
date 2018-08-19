@@ -1,0 +1,356 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: WallMain
+  m_Shader: {fileID: 4800000, guid: 9919eba9ff6bdda46bfc7a24235cfb3b, type: 3}
+  m_ShaderKeywords: _HASCOLORGRADIENTMASK_ON _HASCOLORGRADIENT_ON _HASDISTORTION_ON
+    _HASEMISSIVETEXTURE_ON _HASINTERSECTIONDEPTH_ON _HASNOISEEMISSIVE_ON _HASNOISEOPACITY_ON
+    _HASNOISE_ON _HASSECONDARYNOISE_ON _ISFIRSTPANUV1_ON _ISPANUV1_ON _SAMEDISTORTIONASOPACITY_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MainTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 5f3dfead1c20ec84790a370f4d33dbb4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: 6733f888b044f2b4b8a666dd067b73a7, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissiveTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 0b82eda9dbf8b6b4996d3ecce490986d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ColorGradient
+        second:
+          m_Texture: {fileID: 2800000, guid: 3bdeaf1216a9e674c9ac59c59e538661, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ColorGradientMask
+        second:
+          m_Texture: {fileID: 2800000, guid: 5f3dfead1c20ec84790a370f4d33dbb4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SecondaryNoise
+        second:
+          m_Texture: {fileID: 2800000, guid: 832d9632ca6c98440afb3695dbe1d34c, type: 3}
+          m_Scale: {x: 3, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _IntersectionTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 5f3dfead1c20ec84790a370f4d33dbb4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DistortionTexture
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
+          name: _Cutoff
+        second: 0.5
+      data:
+        first:
+          name: _FinalOpacity
+        second: 1.3
+      data:
+        first:
+          name: _HitPower
+        second: 0
+      data:
+        first:
+          name: _Parallax
+        second: 0.02
+      data:
+        first:
+          name: _ZWrite
+        second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.5
+      data:
+        first:
+          name: _BumpScale
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
+        second: 0
+      data:
+        first:
+          name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _U_Speed
+        second: 0.5
+      data:
+        first:
+          name: _V_Speed
+        second: 0
+      data:
+        first:
+          name: _DiffusePower
+        second: 2
+      data:
+        first:
+          name: _EmissivePower
+        second: 0.2
+      data:
+        first:
+          name: _HasNoise
+        second: 1
+      data:
+        first:
+          name: _HasEmissiveTexture
+        second: 1
+      data:
+        first:
+          name: _EmissiveTextureValue
+        second: 2
+      data:
+        first:
+          name: _Depth
+        second: 0.2
+      data:
+        first:
+          name: _EmissiveIntensity
+        second: 2.5
+      data:
+        first:
+          name: _OpacityIntensity
+        second: 0.6
+      data:
+        first:
+          name: _NoisePower
+        second: 0.5
+      data:
+        first:
+          name: _HasNoiseEmissive
+        second: 1
+      data:
+        first:
+          name: _HasNoiseOpacity
+        second: 1
+      data:
+        first:
+          name: _HasOpacityDepth
+        second: 0
+      data:
+        first:
+          name: _HasEmissiveDepth
+        second: 0
+      data:
+        first:
+          name: _FresnelExp
+        second: 0.5
+      data:
+        first:
+          name: _HasOpacityFresnel
+        second: 0
+      data:
+        first:
+          name: _HasEmissiveFresnel
+        second: 0
+      data:
+        first:
+          name: _FresnelPower
+        second: 1.2
+      data:
+        first:
+          name: _Is_ScreenSpace
+        second: 0
+      data:
+        first:
+          name: _HasColorGradient
+        second: 1
+      data:
+        first:
+          name: _HasColorGradientMask
+        second: 1
+      data:
+        first:
+          name: _ColorMaskIntensity
+        second: 0.54
+      data:
+        first:
+          name: _U_Speed_2
+        second: 0
+      data:
+        first:
+          name: _V_Speed_2
+        second: -0.25
+      data:
+        first:
+          name: _IsPanUV1
+        second: 1
+      data:
+        first:
+          name: _IsFirstPanUV1
+        second: 1
+      data:
+        first:
+          name: _HasSecondaryNoise
+        second: 1
+      data:
+        first:
+          name: _SecondaryNoisePower
+        second: 7
+      data:
+        first:
+          name: _IntersectionDepth
+        second: 1
+      data:
+        first:
+          name: _node_8155
+        second: 0
+      data:
+        first:
+          name: _HasIntersectionDepth
+        second: 1
+      data:
+        first:
+          name: _IntersectionStrength
+        second: 5
+      data:
+        first:
+          name: _HasDistortion
+        second: 1
+      data:
+        first:
+          name: _SameDistortionAsOpacity
+        second: 1
+      data:
+        first:
+          name: _DistortionStrength
+        second: 0.06
+    m_Colors:
+      data:
+        first:
+          name: _EmissionColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Color
+        second: {r: 0.6838235, g: 1, b: 0.90841794, a: 1}
+      data:
+        first:
+          name: _HitColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _IntersectionColor
+        second: {r: 0.2352941, g: 0.81014186, b: 1, a: 1}

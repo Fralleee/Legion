@@ -1,0 +1,3 @@
+Left Click to rotate.
+Scroll to zoom.
+Middle Button to pan.

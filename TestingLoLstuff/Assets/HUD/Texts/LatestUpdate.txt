@@ -1,0 +1,8 @@
+Update Log:
+
+Version 0.24
+
+- Fixed a bunch of issues.
+- Added Lux's R passive refresh.
+- Fixed the outline issues. By removing them.
+- Added better environment.

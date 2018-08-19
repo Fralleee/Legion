@@ -1,0 +1,422 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!200 &20000000
+ShaderVariantCollection:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BasicShaders_01
+  m_Shaders:
+    data:
+      first: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
+            SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+            _DETAIL_MULX2 _EMISSION
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
+            _DETAIL_MULX2 _EMISSION
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+            _ALPHAPREMULTIPLY_ON
+          passType: 4
+        - keywords: DIRECTIONAL SHADOWS_OFF
+          passType: 5
+        - keywords: POINT SHADOWS_OFF
+          passType: 5
+        - keywords: DIRECTIONAL SHADOWS_OFF _DETAIL_MULX2
+          passType: 5
+        - keywords: DIRECTIONAL SHADOWS_OFF _ALPHAPREMULTIPLY_ON
+          passType: 5
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+        - keywords: SHADOWS_DEPTH _ALPHAPREMULTIPLY_ON
+          passType: 8
+        - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF
+          passType: 10
+        - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF UNITY_HDR_ON
+          passType: 10
+        - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF _DETAIL_MULX2
+            _EMISSION
+          passType: 10
+        - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF UNITY_HDR_ON
+            _DETAIL_MULX2 _EMISSION
+          passType: 10
+        - keywords: 
+          passType: 11
+    data:
+      first: {fileID: 74, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+        - keywords: UNITY_HDR_ON
+          passType: 0
+    data:
+      first: {fileID: 69, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+        - keywords: DIRECTIONAL SHADOWS_OFF
+          passType: 0
+        - keywords: DIRECTIONAL SHADOWS_SCREEN
+          passType: 0
+        - keywords: DIRECTIONAL SHADOWS_SCREEN UNITY_HDR_ON
+          passType: 0
+    data:
+      first: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL
+          passType: 5
+    data:
+      first: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF
+          passType: 4
+        - keywords: DIRECTIONAL
+          passType: 5
+    data:
+      first: {fileID: 104, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: UNITY_COLORSPACE_GAMMA _SUNDISK_SIMPLE
+          passType: 0
+    data:
+      first: {fileID: 207, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: SOFTPARTICLES_ON
+          passType: 0
+        - keywords: SOFTPARTICLES_OFF
+          passType: 0
+    data:
+      first: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 02ee67862f5c1b04e9a26b561c6e92df, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 0305bd6d27da3f34aab23fcf48b178d7, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 035547fbdf481c1418dd1563c6d54416, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 1713087a4adcaaf4abc39ad2b5964cb6, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 2e13b729f33508f46af7c896f97e2069, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 2e615b309069fbc4e936d475ba7a8421, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 32611e5769f2a4b4c9501292ae6851b2, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 387771517a676d7449aea3dfddbf91cd, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 403674aa5288a6a42b35fc687ba267bb, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 4476d25302c39d44ebdfce76a2356ec2, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 563e3d14ec6264b45ac124fb4f013185, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 5e9fc20b710754e4ba28e9a231d98d21, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 68e404c9b9d8bcb43ae16b720f568d5d, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 6cba38a71cbe5294fb1130d36e8d4c79, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 73bf868cf1ac44942a50ad79b95dbd5d, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 784003c21c905af41b064703f03f1c59, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 79ac8c96e2380ab4c95f0b82b1fa467a, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 7b4c41b683ca8ad448c7113bb6ab8105, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 809978809ac63d045bbd28ef072b246d, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 8a9d51301dd7780409b1efe71968e692, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 94f0512681dc3b741bc7ae6cc1bb7f8d, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: 974935f61c429694abc3e6aea3e26d77, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: a4242cb75d2e7334e87c1992bbac6a0e, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: c9adf3f3f8ef57a4eb542fc6d219dc21, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: e4be1e442cd9ca84c95bf44395a31e43, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: f67a97fb72b38df448ecf7c6fe157b30, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: fe911396de8278141bfa1c80057e1420, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: c0c098dd36db49746abcb007452cb18d, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+    data:
+      first: {fileID: 4800000, guid: 108a71f5282b7fc41b77170b152bea5c, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+    data:
+      first: {fileID: 4800000, guid: 078f111577ad9174a8676ad0e8720c6e, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+    data:
+      first: {fileID: 4800000, guid: 6f1418cffd12146f2a83be795f6fa5a7, type: 3}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 4800000, guid: e2b71ac575b8f4544a0cdca45c7d1c72, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+    data:
+      first: {fileID: 4800000, guid: 6b9e791c7f7cc954fb298de5f50462c2, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+    data:
+      first: {fileID: 4800000, guid: 3cb6d88a1dd14dd4b9c2bcbc001d5483, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL
+          passType: 5
+    data:
+      first: {fileID: 4800000, guid: 4b8704988c1eb0a4a8b819d61c9b0a09, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+    data:
+      first: {fileID: 4800000, guid: ba3b9fb0aafdf5b47a6638d21c9d342a, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: 5e20b2e995acb774ca9869d00c032d5d, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
+          passType: 4
+        - keywords: DIRECTIONAL SHADOWS_OFF
+          passType: 5
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: 3a8db043365282542b2237f12c7ba9d5, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
+            SHADOWS_OFF
+          passType: 4
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: 853c206e3162a184e81a383babf153b1, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
+            SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL SHADOWS_OFF
+          passType: 5
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: 9919eba9ff6bdda46bfc7a24235cfb3b, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
+            SHADOWS_OFF
+          passType: 4
+    data:
+      first: {fileID: 4800000, guid: e5492a6f60db0dc4ea7c765c607b8d86, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL
+          passType: 5
+        - keywords: POINT
+          passType: 5
+        - keywords: DIRECTIONAL SHADOWS_OFF
+          passType: 5
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: a8b24019b5e09ce49ace50bcc13e6f88, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
+          passType: 4
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 LIGHTMAP_OFF
+            SHADOWS_OFF
+          passType: 4
+        - keywords: DIRECTIONAL
+          passType: 5
+        - keywords: DIRECTIONAL FOG_EXP2
+          passType: 5
+        - keywords: DIRECTIONAL FOG_EXP2 SHADOWS_OFF
+          passType: 5
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: 831ff62571ee2d640af7cbbc73bfbe81, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DUMMY DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF
+            SHADOWS_OFF
+          passType: 4

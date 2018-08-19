@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: c3c2e29e8186f5248bb549799c20b36f
+timeCreated: 1468386181
+licenseType: Free
+ShaderImporter:
+  defaultTextures:
+  - _TrailTexture: {fileID: 2800000, guid: 3c57a54ede1a9e545bb2f0ca97cd7cd2, type: 3}
+  - _Mask: {fileID: 2800000, guid: 8a3eab01d8154c74d918e3a795b573d5, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

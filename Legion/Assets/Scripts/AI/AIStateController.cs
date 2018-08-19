@@ -1,12 +1,6 @@
 ﻿using Fralle;
 using UnityEngine;
 
-// TEmporary
-public class TeamData : ScriptableObject
-{
-  public GameObject objective;
-}
-
 [RequireComponent(typeof(AITargeter))]
 [RequireComponent(typeof(AIMotor))]
 [RequireComponent(typeof(AICaster))]

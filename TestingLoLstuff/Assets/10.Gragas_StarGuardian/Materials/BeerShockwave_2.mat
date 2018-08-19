@@ -1,0 +1,299 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BeerShockwave_2
+  m_Shader: {fileID: 4800000, guid: c3c2e29e8186f5248bb549799c20b36f, type: 3}
+  m_ShaderKeywords: _HASNOISEEMISSIVE_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MainTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: ca4086e21505c6e468c57da08cd635fe, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: 6733f888b044f2b4b8a666dd067b73a7, type: 3}
+          m_Scale: {x: 3, y: 3}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Mask
+        second:
+          m_Texture: {fileID: 2800000, guid: 8a3eab01d8154c74d918e3a795b573d5, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ColorMask
+        second:
+          m_Texture: {fileID: 2800000, guid: c68cbd6d141692d419e2b75dade87084, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _TrailTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 7840fc72ac4c87e48a0e0e795d05af5f, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ColorGradient
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ColorGradientMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
+          name: _Cutoff
+        second: 0.5
+      data:
+        first:
+          name: _Glow
+        second: 1.5
+      data:
+        first:
+          name: _Depth
+        second: 0.4
+      data:
+        first:
+          name: _FinalOpacity
+        second: 1
+      data:
+        first:
+          name: _Parallax
+        second: 0.02
+      data:
+        first:
+          name: _ZWrite
+        second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.5
+      data:
+        first:
+          name: _BumpScale
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
+        second: 0
+      data:
+        first:
+          name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _Intensity
+        second: 0.8
+      data:
+        first:
+          name: _U_Speed
+        second: 0
+      data:
+        first:
+          name: _V_Speed
+        second: 0
+      data:
+        first:
+          name: _MaskPower
+        second: 4
+      data:
+        first:
+          name: _MainPower
+        second: 2
+      data:
+        first:
+          name: _EmissiveIntensity
+        second: 0.5
+      data:
+        first:
+          name: _OpacityIntensity
+        second: 0.5
+      data:
+        first:
+          name: _NoisePower
+        second: 0.25
+      data:
+        first:
+          name: _HasNoiseEmissive
+        second: 1
+      data:
+        first:
+          name: _HasNoiseOpacity
+        second: 0
+      data:
+        first:
+          name: _HasOpacityDepth
+        second: 0
+      data:
+        first:
+          name: _HasEmissiveDepth
+        second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: _FresnelExp
+        second: 0.5
+      data:
+        first:
+          name: _HasOpacityFresnel
+        second: 0
+      data:
+        first:
+          name: _HasEmissiveFresnel
+        second: 0
+      data:
+        first:
+          name: _FresnelPower
+        second: 1.2
+      data:
+        first:
+          name: _V_Offset
+        second: -1.5
+      data:
+        first:
+          name: _U_Offset
+        second: 0
+      data:
+        first:
+          name: _Is_ScreenSpace
+        second: 0
+      data:
+        first:
+          name: _HasColorGradient
+        second: 0
+      data:
+        first:
+          name: _HasColorGradientMask
+        second: 0
+      data:
+        first:
+          name: _ColorMaskIntensity
+        second: 1
+      data:
+        first:
+          name: _ColorValue
+        second: 1.5
+    m_Colors:
+      data:
+        first:
+          name: _EmissionColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 0.8014706, b: 0.99452335, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

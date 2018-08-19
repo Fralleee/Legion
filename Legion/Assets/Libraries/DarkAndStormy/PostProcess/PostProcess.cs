@@ -161,7 +161,6 @@ public class PostProcess : MonoBehaviour
         int _screenX = source.width;
         int _screenY = source.height;
 
-        Vector2 _screenSize = new Vector2(source.width, source.height);
         Vector2 _screenSizeHalf = new Vector2(source.width / 2, source.height / 2);
         Vector2 _screenSizeQuarter = new Vector2(source.width / 4, source.height / 4);
         Vector2 _screenSizeEighth = new Vector2(source.width / 8, source.height / 8);

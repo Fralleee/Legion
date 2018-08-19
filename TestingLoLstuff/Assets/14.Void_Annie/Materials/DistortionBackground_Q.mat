@@ -1,0 +1,223 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: DistortionBackground_Q
+  m_Shader: {fileID: 4800000, guid: 4b8704988c1eb0a4a8b819d61c9b0a09, type: 3}
+  m_ShaderKeywords: _HASNOISEEMISSIVE_ON _HASNOISEOPACITY_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _ColorGradient
+      second:
+        m_Texture: {fileID: 2800000, guid: e81d9a5b1fe0414489324c1a2e05e207, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ColorGradientMask
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DistortionTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: 7161241d22ac6c047bd6f8d555820206, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _IntersectionTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: 23180e75018665c48957d0377e0abffb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: 05480393dc5ab994bb65b94ea2bc2068, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MaskTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: 14754e5257c26df4f9b1be4905a23ac1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Noise
+      second:
+        m_Texture: {fileID: 2800000, guid: a261eaad0da2df64e88e479bc59024e8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ParallaxTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: 0cf59af7f00e7e842baa908fbf676fce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SecondaryNoise
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SecondaryParallaxTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: ae80670bc90215b4ba9f32857b2f96b9, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_2266
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_4999
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_5523
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _ColorMaskIntensity
+      second: 1
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Depth
+      second: 0
+    - first:
+        name: _DissolvePower
+      second: 0.2
+    - first:
+        name: _DistortionStrength
+      second: 0.1
+    - first:
+        name: _DistortionValue
+      second: 0.5
+    - first:
+        name: _EmissiveIntensity
+      second: 4
+    - first:
+        name: _FinalOpacity
+      second: 2
+    - first:
+        name: _FresnelExp
+      second: 0.5
+    - first:
+        name: _FresnelPower
+      second: 1.2
+    - first:
+        name: _FresnelValue
+      second: 1.25
+    - first:
+        name: _Glow
+      second: 1.5
+    - first:
+        name: _HasColorGradient
+      second: 0
+    - first:
+        name: _HasColorGradientMask
+      second: 0
+    - first:
+        name: _HasDistortion
+      second: 0
+    - first:
+        name: _HasEmissiveDepth
+      second: 0
+    - first:
+        name: _HasEmissiveFresnel
+      second: 0
+    - first:
+        name: _HasIntersectionDepth
+      second: 0
+    - first:
+        name: _HasNoiseEmissive
+      second: 1
+    - first:
+        name: _HasNoiseOpacity
+      second: 1
+    - first:
+        name: _HasOpacityDepth
+      second: 0
+    - first:
+        name: _HasOpacityFresnel
+      second: 0
+    - first:
+        name: _HasSecondaryNoise
+      second: 0
+    - first:
+        name: _Height
+      second: -10
+    - first:
+        name: _IntersectionDepth
+      second: 0.25
+    - first:
+        name: _IntersectionStrength
+      second: 1
+    - first:
+        name: _IsFirstPanUV1
+      second: 0
+    - first:
+        name: _Is_ScreenSpace
+      second: 0
+    - first:
+        name: _MainHeight
+      second: -15
+    - first:
+        name: _NoisePower
+      second: 3
+    - first:
+        name: _OpacityIntensity
+      second: 4
+    - first:
+        name: _OpacityMultiplier
+      second: 2
+    - first:
+        name: _SameDistortionAsOpacity
+      second: 0
+    - first:
+        name: _SecondaryHeight
+      second: -35
+    - first:
+        name: _SecondaryNoisePower
+      second: 1
+    - first:
+        name: _SecondaryTextureIntensity
+      second: 0.5
+    - first:
+        name: _U_Speed
+      second: 0.009
+    - first:
+        name: _U_Speed_2
+      second: 0.12
+    - first:
+        name: _V_Speed
+      second: -0.012
+    - first:
+        name: _V_Speed_2
+      second: -0.08
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _IntersectionColor
+      second: {r: 1, g: 1, b: 1, a: 1}

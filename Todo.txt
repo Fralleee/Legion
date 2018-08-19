@@ -1,18 +1,25 @@
+- Diska
+- Samla ihop skräp
+- Tömma kyl
+- Slänga
+- Projector spell indicator (add this to later todo)
+- Better health bar (animated, add this to later todo)
+- Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
+
 ---------------------------------------------------------------------------------------------
 # Day 0
 ---------------------------------------------------------------------------------------------
 # Abilities : Spells
-Projectile (hand in front) 					- Aimed
-AOE	(both hands up in the air)			-	Area
-DirectTarget (hand up in the air)		-	Direct
 
-- Diagonalize ability icons a bit depending where they at
+- Rotate towards target
 
-- Ensure that AITest is not broken / fix AITest	
+- Download animations
 
-- Add these animations
+- Create different spells in which these triggers are utilized
 
-- When target moves out of sight the spell casting is not interrupted
+Projectile (hand in front) 				- Aimed
+AOE	(both hands up in the air)			- Area
+DirectTarget (hand up in the air)		- Direct
 
 
 ---------------------------------------------------------------------------------------------
@@ -49,6 +56,7 @@ DirectTarget (hand up in the air)		-	Direct
 # Day 3-4
 ---------------------------------------------------------------------------------------------
 # UI
+- Diagonalize ability icons a bit depending where they at
 - Organize scripts used for UI (better names, and generic usage)
 - Build UI should be activated based on Event/State
   Build controls should be:

@@ -17,9 +17,15 @@ public class AbilityHostileAction : Action
     {
       foreach (AIAbility ability in caster.SecondaryAbilities.FindAll(x => x.targetType == TargetType.HOSTILE && x.isReady))
       {
-        if (caster.TryCast(ability)) return;
+        if (caster.TryCast(ability))
+        {
+          return;
+        }
       }
-      if(caster.MainAbility.isReady) caster.TryCast();
+      if (caster.MainAbility.isReady)
+      {
+        caster.TryCast();
+      }
     }
   }
 }

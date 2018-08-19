@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Stars
+  m_Shader: {fileID: 4800000, guid: d9cdabb131ca09242badbb8feead5fe9, type: 3}
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _CutoutMask_1
+      second:
+        m_Texture: {fileID: 2800000, guid: 25549e8703b3a14438ec5342ec5d960c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _CutoutMask_2
+      second:
+        m_Texture: {fileID: 2800000, guid: 25549e8703b3a14438ec5342ec5d960c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DetailAlbedoMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DetailMask
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _DetailNormalMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Diffuse
+      second:
+        m_Texture: {fileID: 2800000, guid: 2677426b5b1875b4ab6375c50450a958, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _EmissionMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _EmissiveMask
+      second:
+        m_Texture: {fileID: 2800000, guid: 95d634bb1bef1324daf03107d819ef87, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _FixedAlpha
+      second:
+        m_Texture: {fileID: 2800000, guid: e553cd08df0dc314cac3644bc3ae20b4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: fc4f73bf00bb7124d91d4bba581a8204, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MetallicGlossMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Noise
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _OcclusionMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ParallaxMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _AlphaValue
+      second: 1
+    - first:
+        name: _BumpScale
+      second: 1
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Depth
+      second: 0.2
+    - first:
+        name: _DetailNormalMapScale
+      second: 1
+    - first:
+        name: _Diffuse_Tile_U
+      second: 7
+    - first:
+        name: _Diffuse_Tile_V
+      second: 3
+    - first:
+        name: _DstBlend
+      second: 0
+    - first:
+        name: _EmissiveIntensity
+      second: 2
+    - first:
+        name: _EmissiveValue
+      second: 0
+    - first:
+        name: _FinalEmissive
+      second: 1
+    - first:
+        name: _FinalMix
+      second: 1
+    - first:
+        name: _FinalOpacity
+      second: 1
+    - first:
+        name: _FresnelExp
+      second: 1
+    - first:
+        name: _FresnelPower
+      second: 1.5
+    - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
+        name: _Glossiness
+      second: 0.5
+    - first:
+        name: _GlossyReflections
+      second: 1
+    - first:
+        name: _HasEmissiveDepth
+      second: 0
+    - first:
+        name: _HasNoiseEmissive
+      second: 0
+    - first:
+        name: _HasNoiseOpacity
+      second: 0
+    - first:
+        name: _HasOpacityDepth
+      second: 0
+    - first:
+        name: _Mask1_Intensity
+      second: 1
+    - first:
+        name: _Mask1_Tile_U
+      second: 1
+    - first:
+        name: _Mask1_Tile_V
+      second: 1
+    - first:
+        name: _Mask2_Intensity
+      second: 1
+    - first:
+        name: _Mask2_Tile_U
+      second: 1
+    - first:
+        name: _Mask2_Tile_V
+      second: 1
+    - first:
+        name: _Metallic
+      second: 0
+    - first:
+        name: _Mode
+      second: 0
+    - first:
+        name: _NoisePower
+      second: 3
+    - first:
+        name: _OcclusionStrength
+      second: 1
+    - first:
+        name: _OpacityIntensity
+      second: 0.2
+    - first:
+        name: _Parallax
+      second: 0.02
+    - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
+    - first:
+        name: _SrcBlend
+      second: 1
+    - first:
+        name: _UVSec
+      second: 0
+    - first:
+        name: _U_Speed
+      second: 0.1
+    - first:
+        name: _V_Speed
+      second: 0.15
+    - first:
+        name: _ZWrite
+      second: 1
+    - first:
+        name: _isScreenSpace
+      second: 0
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _DiffuseColor
+      second: {r: 0.7279412, g: 0.4514564, b: 0.1552228, a: 1}
+    - first:
+        name: _EmissionColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _EmissiveColor
+      second: {r: 0.9705882, g: 0.6992961, b: 0.2141003, a: 1}

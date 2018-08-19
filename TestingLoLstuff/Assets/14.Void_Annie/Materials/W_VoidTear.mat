@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: W_VoidTear
+  m_Shader: {fileID: 4800000, guid: 6b9e791c7f7cc954fb298de5f50462c2, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTexture
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MaskTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: c7df8a512bd93f74c968a17adf6ad17e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Noise
+      second:
+        m_Texture: {fileID: 2800000, guid: 7ce814002f670ab4f8f0b8d711366ddd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ParallaxTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: 05480393dc5ab994bb65b94ea2bc2068, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SecondaryParallaxTexture
+      second:
+        m_Texture: {fileID: 2800000, guid: ae80670bc90215b4ba9f32857b2f96b9, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_2266
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_4999
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_5523
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Depth
+      second: 0
+    - first:
+        name: _DissolvePower
+      second: 5
+    - first:
+        name: _FinalOpacity
+      second: 0.8
+    - first:
+        name: _Glow
+      second: 0.8
+    - first:
+        name: _Height
+      second: -10
+    - first:
+        name: _MainHeight
+      second: -50
+    - first:
+        name: _SecondaryHeight
+      second: -35
+    - first:
+        name: _SecondaryTextureIntensity
+      second: 1
+    - first:
+        name: _U_Speed
+      second: 0.009
+    - first:
+        name: _U_Speed_2
+      second: -0.015
+    - first:
+        name: _V_Speed
+      second: -0.012
+    - first:
+        name: _V_Speed_2
+      second: 0.02
+    m_Colors: []

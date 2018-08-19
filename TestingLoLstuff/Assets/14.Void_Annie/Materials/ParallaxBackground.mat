@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ParallaxBackground
+  m_Shader: {fileID: 4800000, guid: 6b9e791c7f7cc954fb298de5f50462c2, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTexture
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: 4e362c7529ad9e348a08f6c8add9cfc0, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 0cf59af7f00e7e842baa908fbf676fce, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MaskTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 4060374bf7a395a439ff8b38c93584ba, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SecondaryParallaxTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: ae80670bc90215b4ba9f32857b2f96b9, type: 3}
+          m_Scale: {x: 2.5, y: 2.5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_2266
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_4999
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_5523
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: 0.5
+      data:
+        first:
+          name: _FinalOpacity
+        second: 2
+      data:
+        first:
+          name: _Glow
+        second: 3
+      data:
+        first:
+          name: _Depth
+        second: 0
+      data:
+        first:
+          name: _U_Speed
+        second: 0.009
+      data:
+        first:
+          name: _V_Speed
+        second: -0.012
+      data:
+        first:
+          name: _U_Speed_2
+        second: -0.015
+      data:
+        first:
+          name: _V_Speed_2
+        second: 0.02
+      data:
+        first:
+          name: _DissolvePower
+        second: 0.2
+      data:
+        first:
+          name: _MainHeight
+        second: -15
+      data:
+        first:
+          name: _SecondaryHeight
+        second: -35
+      data:
+        first:
+          name: _SecondaryTextureIntensity
+        second: 2
+      data:
+        first:
+          name: _Height
+        second: -10
+    m_Colors: {}

@@ -688,12 +688,6 @@ GameObject:
   - component: {fileID: 95015599757371248}
   - component: {fileID: 136184394544976230}
   - component: {fileID: 195554902287708812}
-  - component: {fileID: 114421227600561794}
-  - component: {fileID: 114219982847200868}
-  - component: {fileID: 114529531505770598}
-  - component: {fileID: 114335432173359846}
-  - component: {fileID: 114658216638068484}
-  - component: {fileID: 114514507746657144}
   - component: {fileID: 114622387899156194}
   m_Layer: 0
   m_Name: Ranger
@@ -1572,19 +1566,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114219982847200868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783934614919028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71fdfccfe257f834ea11f6fca0a01ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockerList: {fileID: 0}
-  currentRules: {fileID: 0}
 --- !u!114 &114261167917532438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1635,28 +1616,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114335432173359846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783934614919028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd97de2f45fe30a4ba132728e552f1a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114421227600561794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783934614919028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8952f5685188af342bd40d9ae17bd53a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114448987051554478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1673,72 +1632,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114514507746657144
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783934614919028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed0ce8a263ef754c97277519a2e8796, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventAndResponses:
-  - name: Round Start
-    gameEvent: {fileID: 11400000, guid: 024907ad57fc00549b0fa734b48ea542, type: 2}
-    response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114219982847200868}
-          m_MethodName: AddBlocker
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: b4893833f929b1e4d85117f2958c0475,
-              type: 2}
-            m_ObjectArgumentAssemblyTypeName: Blocker, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Round Live
-    gameEvent: {fileID: 11400000, guid: 8bed17a95a9b77f4f8b8fdc97b88f8cf, type: 2}
-    response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114219982847200868}
-          m_MethodName: RemoveBlocker
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: b4893833f929b1e4d85117f2958c0475,
-              type: 2}
-            m_ObjectArgumentAssemblyTypeName: Blocker, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
---- !u!114 &114529531505770598
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783934614919028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7991ebc0388e79548b167181e4037982, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 0}
-  Armor: 0
-  Health: 0
-  MaxHealth: 0
-  width: 0
 --- !u!114 &114556308216692192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1771,33 +1664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ac9389f466d2842b473f293e761a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114658216638068484
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1783934614919028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121d3f1c0df14294690e136bd1238527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Eyes: {fileID: 0}
-  EnvironmentLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  EnemyLayer: 0
-  LookRange: 15
-  TargetWidth: 0.5
-  CurrentTargetString: 
-  MainTargetString: 
-  ObjectiveString: 
-  losCheckRate: 0.25
-  lastLosCheck: 0
-  lastLosResult: 0
 --- !u!114 &114716968269029694
 MonoBehaviour:
   m_ObjectHideFlags: 1
