@@ -7,7 +7,8 @@
 - Slänga
 
 
-
+- Figure out why the BarbarianGiants start swinging from a distance
+- Figure out why navmeshobstacle enhances unitspeed
 
 
 ---------------------------------------------------------------------------------------------

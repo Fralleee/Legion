@@ -18,6 +18,8 @@ public class AIStateController : MonoBehaviour, IStateController
   BlockerController blockerController;
   public bool IsBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
 
+  [SerializeField] public string CurrentTarget;
+
   void Awake()
   {
     targeter = GetComponent<AITargeter>();
@@ -32,6 +34,8 @@ public class AIStateController : MonoBehaviour, IStateController
     // This code should be an action/decision 
     if (targeter.Objective == null && teamData.objective) targeter.SetObjective(teamData.objective);
     currentState.UpdateState(this);
+
+    if (targeter.CurrentTarget) CurrentTarget = targeter.CurrentTarget.name;
   }
 
   void OnDrawGizmos()
@@ -39,7 +43,7 @@ public class AIStateController : MonoBehaviour, IStateController
     if (currentState != null)
     {
       Gizmos.color = currentState.sceneGizmoColor;
-      Gizmos.DrawWireSphere(transform.position, 15f);
+      Gizmos.DrawWireSphere(transform.position, targeter ? targeter.LookRange : 15f);
     }
   }
 

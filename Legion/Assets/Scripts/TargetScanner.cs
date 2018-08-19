@@ -11,7 +11,7 @@ public static class TargetScanner
   public static GameObject FindTarget(Transform caster, float range, int layerMask, bool requireLineOfSight = false, TargetPriority targetPriority = TargetPriority.NEAREST)
   {
     Collider[] validTargets = Physics.OverlapSphere(caster.position, range, layerMask)
-        .Where(x => !requireLineOfSight || LineOfSightLayer(x.transform, caster, range))
+        .Where(x => !requireLineOfSight || LineOfSightLayer(x.transform, caster, range, "FindTarget"))
         .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - caster.position))
         .ToArray();
     if (validTargets.Length > 0)
@@ -19,10 +19,8 @@ public static class TargetScanner
       switch (targetPriority)
       {
         case TargetPriority.NEAREST:
-          // Remake these
           return PrioritizeByDistance(validTargets, caster.position);
         case TargetPriority.LOWHEALTH:
-          // Remake these
           return PrioritizeByHealth(validTargets);
       }
       return validTargets[0].gameObject;
@@ -36,7 +34,7 @@ public static class TargetScanner
     if (validTargets.Length > 0)
     {
       validTargets = validTargets
-        .Where(x => LineOfSightLayer(x.transform, targeter.transform, targeter.LookRange))
+        .Where(x => LineOfSightLayer(x.transform, targeter.transform, targeter.LookRange, "FindHostilesLinq"))
         .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - targeter.transform.position))
         .ToArray();
       if (validTargets.Length > 0)
@@ -55,26 +53,38 @@ public static class TargetScanner
   // Line of sight
   public static bool LineOfSightDirect(Transform caster, Transform target, float range)
   {
-    Vector3 direction = target.position - caster.position;
-    RaycastHit hit;
-    Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
-    if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range)) return hit.collider.gameObject == target.gameObject;
+    if (target && caster)
+    {
+      Vector3 direction = target.position - caster.position;
+      RaycastHit hit;
+      Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
+      if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range)) return hit.collider.gameObject == target.gameObject;
+    }
     return false;
   }
-  public static bool LineOfSightLayer(Transform caster, Transform target, float range)
+  public static bool LineOfSightLayer(Transform caster, Transform target, float range, string temporary)
   {
-    Vector3 direction = target.position - caster.position;
-    RaycastHit hit;
-    Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
-    if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range)) return hit.collider.gameObject.layer == target.gameObject.layer;
+    if (target && caster)
+    {
+      Vector3 direction = target.position - caster.position;
+      RaycastHit hit;
+      Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
+      if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range))
+      {
+        return hit.collider.gameObject.layer == target.gameObject.layer;
+      }
+    }
     return false;
   }
   public static bool LineOfSightUnObstructed(Transform caster, Transform target, float range, int targetLayer, LayerMask targetMask, LayerMask obstacleMask)
   {
-    Vector3 direction = target.position - caster.position;
-    RaycastHit hit;
-    Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
-    if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range, targetMask | obstacleMask)) return hit.collider.gameObject.layer == targetLayer;
+    if (target && caster)
+    {
+      Vector3 direction = target.position - caster.position;
+      RaycastHit hit;
+      Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
+      if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range, targetMask | obstacleMask)) return hit.collider.gameObject.layer == targetLayer;
+    }
     return false;
   }
 
@@ -119,20 +129,22 @@ public static class TargetScanner
     Vector3 currentPosition = targeter.transform.position;
     if (ability.targetType == TargetType.SELF) return targeter.gameObject;
     if ((Time.time < ability.lastTargetScan + ability.targetScanRate)) return null;
-
     ability.lastTargetScan = Time.time;
     int searchLayer = ability.targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
     return FindTarget(targeter.transform, ability.abilityRange, searchLayer, ability.requireLineOfSight, ability.targetPriority);
   }
   public static GameObject ValidateMainTarget(AIAbility ability, AITargeter targeter)
   {
-    if (ability.requireLineOfSight && Time.time > ability.lastLoSCheck)
+    if (targeter.MainTarget)
     {
-      ability.lastLoSCheck = Time.time + ability.losScanRate;
-      bool inLineOfSight = LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.abilityRange);
-      if (inLineOfSight) return targeter.MainTarget;
+      if (ability.requireLineOfSight && Time.time > ability.lastLoSCheck)
+      {
+        ability.lastLoSCheck = Time.time + ability.losScanRate;
+        bool inLineOfSight = LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.abilityRange, "ValidateMainTarget/" + ability.abilityName);
+        if (inLineOfSight) return targeter.MainTarget;
+      }
+      else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.abilityRange) return targeter.MainTarget;
     }
-    else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.abilityRange) return targeter.MainTarget;
     return null;
   }
 }
