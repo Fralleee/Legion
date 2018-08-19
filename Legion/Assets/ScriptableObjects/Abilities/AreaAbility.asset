@@ -14,7 +14,7 @@ MonoBehaviour:
   windupBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
   recoveryBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
   abilityName: Area Ability
-  abilityRange: 15
+  abilityRange: 77
   cooldown: 10
   windupTime: 1
   recoveryTime: 1

@@ -64,7 +64,7 @@ public class AICaster : MonoBehaviour
     if (!target) return false;
     if (ability.requireLineOfSight)
     {
-      return TargetScanner.LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.abilityRange, "IsValidCast/" + ability.abilityName);
+      return TargetScanner.LineOfSightLayer(targeter.transform, targeter.MainTarget, ability.abilityRange, ability);
     }
     return Vector3.Distance(target.transform.position, transform.position) < ability.abilityRange;
   }

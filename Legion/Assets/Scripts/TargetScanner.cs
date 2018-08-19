@@ -11,7 +11,7 @@ public static class TargetScanner
   public static GameObject FindTarget(Transform caster, float range, int layerMask, bool requireLineOfSight = false, TargetPriority targetPriority = TargetPriority.NEAREST)
   {
     Collider[] validTargets = Physics.OverlapSphere(caster.position, range, layerMask)
-        .Where(x => !requireLineOfSight || LineOfSightLayer(x.transform, caster, range, "FindTarget"))
+        .Where(x => !requireLineOfSight || LineOfSightLayer(caster, x.transform, range, null))
         .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - caster.position))
         .ToArray();
     if (validTargets.Length > 0)
@@ -34,7 +34,7 @@ public static class TargetScanner
     if (validTargets.Length > 0)
     {
       validTargets = validTargets
-        .Where(x => LineOfSightLayer(x.transform, targeter.transform, targeter.LookRange, "FindHostilesLinq"))
+        .Where(x => LineOfSightLayer(targeter.transform, x.transform, targeter.LookRange, null))
         .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - targeter.transform.position))
         .ToArray();
       if (validTargets.Length > 0)
@@ -62,7 +62,7 @@ public static class TargetScanner
     }
     return false;
   }
-  public static bool LineOfSightLayer(Transform caster, Transform target, float range, string temporary)
+  public static bool LineOfSightLayer(Transform caster, Transform target, float range, AIAbility ability)
   {
     if (target && caster)
     {
@@ -140,7 +140,7 @@ public static class TargetScanner
       if (ability.requireLineOfSight && Time.time > ability.lastLoSCheck)
       {
         ability.lastLoSCheck = Time.time + ability.losScanRate;
-        bool inLineOfSight = LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.abilityRange, "ValidateMainTarget/" + ability.abilityName);
+        bool inLineOfSight = LineOfSightLayer(targeter.transform, targeter.MainTarget, ability.abilityRange, ability);
         if (inLineOfSight) return targeter.MainTarget;
       }
       else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.abilityRange) return targeter.MainTarget;

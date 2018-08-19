@@ -25,21 +25,7 @@ public class TargetInRange : Decision
 
     if (caster.MainAbility.requireLineOfSight)
     {
-      targeter.lastLosResult = TargetScanner.LineOfSightLayer(targeter.MainTarget, caster.transform, caster.MainAbility.abilityRange, "TargetInRange.cs/" + caster.MainAbility.abilityName);
-      if(targeter.lastLosResult && Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) > caster.MainAbility.abilityRange && caster.MainAbility.abilityRange < 4f)
-      {
-        if (targeter.LookRange <= 20)
-        {
-          Debug.Log(
-          "Caster Name: " + caster.gameObject.name +
-          ", Target Name: " + targeter.MainTarget.name +
-          ", Distance: " + Vector3.Distance(targeter.MainTarget.transform.position, caster.transform.position) +
-        ", Ability: " + caster.MainAbility.abilityName +
-        ", Ability Range: " + caster.MainAbility.abilityRange +
-        ", IsInLos: " + targeter.lastLosResult
-        );
-        }
-      }
+      targeter.lastLosResult = TargetScanner.LineOfSightLayer(caster.transform, targeter.MainTarget, caster.MainAbility.abilityRange, caster.MainAbility);      
     }
     else
     {
