@@ -1,21 +1,14 @@
----------------------------------------------------------------------------------------------
-# Day 0
----------------------------------------------------------------------------------------------
+
+
+
 - Diska
 - Samla ihop skräp
 - Tömma kyl
 - Slänga
 
----------------------------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------------
-# Day 1
----------------------------------------------------------------------------------------------
-# Abilities : Melee
-- EditorScript (should only display CastAnimation if Windup === Spell)
-  Same with particle effects?
 
----------------------------------------------------------------------------------------------
+
 
 ---------------------------------------------------------------------------------------------
 # Day 2
@@ -75,6 +68,7 @@
   - Cooldown
   - Cost
   - Spell prefab (ISpell)  
+- Launch as mecanim state machine
 - Try reconstructing Launch as an ability instead
   Probably need an enum that says AbilityType [Default, Attack, Ultimate]
 - Maybe refactor launch to use PluggableFSM
