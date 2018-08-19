@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3279c97f5c3e1f649b02e04480ba180d
+guid: dfd0bc9ee6848884599c3f9e9fcc8c28
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -103,8 +103,9 @@ ModelImporter:
     400094: Toes_R
     400096: UpperLeg_L
     400098: UpperLeg_R
-    7400000: BR_ReleaseCast1
+    7400000: BR_Area
     9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -134,10 +135,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: BR_ReleaseCast1
+      name: BR_Area
       takeName: mixamo.com
-      firstFrame: 21
-      lastFrame: 60
+      firstFrame: 0
+      lastFrame: 48
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -151,15 +152,15 @@ ModelImporter:
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      bodyMask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
       curves: []
       events: []
       transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: feaea36448446504a85d188869c31a97, type: 2}
       additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:

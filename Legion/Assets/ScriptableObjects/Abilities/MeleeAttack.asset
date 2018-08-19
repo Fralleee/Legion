@@ -9,23 +9,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1681801600, guid: 341cd2833a0d5124986f55f48350811c, type: 3}
-  m_Name: DenLaange
+  m_Name: MeleeAttack
   m_EditorClassIdentifier: 
   windupBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
   recoveryBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
-  abilityName: LongRange
-  abilityRange: 15
-  cooldown: 4
-  windupTime: 1
+  abilityName: Melee
+  abilityRange: 2
+  cooldown: 2
+  windupTime: 0.9
   recoveryTime: 0.5
   effects:
   - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
-  windupAnimation: 0
+  windupAnimation: 1
   castAnimation: 0
-  windupEffect: {fileID: 198831932393201358, guid: 796167805e7a6e447a5f633cdcd2daee,
-    type: 2}
-  castingEffect: {fileID: 198667821953874352, guid: 0f55e693106e4f84294af8753fed68e9,
-    type: 2}
+  windupEffect: {fileID: 0}
+  castingEffect: {fileID: 0}
   lastAction: 0
   requireLineOfSight: 1
   targetScanRate: 0.5

@@ -1,26 +1,10 @@
+---------------------------------------------------------------------------------------------
+# Day 0
+---------------------------------------------------------------------------------------------
 - Diska
 - Samla ihop skräp
 - Tömma kyl
 - Slänga
-- Projector spell indicator (add this to later todo)
-- Better health bar (animated, add this to later todo)
-- Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
-
----------------------------------------------------------------------------------------------
-# Day 0
----------------------------------------------------------------------------------------------
-# Abilities : Spells
-
-- Rotate towards target
-
-- Download animations
-
-- Create different spells in which these triggers are utilized
-
-Projectile (hand in front) 				- Aimed
-AOE	(both hands up in the air)			- Area
-DirectTarget (hand up in the air)		- Direct
-
 
 ---------------------------------------------------------------------------------------------
 
@@ -28,12 +12,14 @@ DirectTarget (hand up in the air)		- Direct
 # Day 1
 ---------------------------------------------------------------------------------------------
 # Abilities : Melee
-- Create melee ability
-- Equip character with a weapon
-- Add animations 
++ Create melee ability
++ Equip character with a weapon
++ Add animations 
++ Animation + hit trigger should sync
++ Ensure that melee attack can hit large units 
+
 - Melee attack should be able to be single target or Area
-- Animation + hit trigger should sync
-- Ensure that melee attack can hit large units 
+
 ---------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------
@@ -122,10 +108,14 @@ DirectTarget (hand up in the air)		- Direct
 	
 	
 ################################################
-#										LATER											 #
+	Backlog
 ################################################
 	
 	
+- Projector spell indicator (add this to later todo)
+- Better health bar (animated, add this to later todo)
+- Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
+
 # Improve character
 - https://www.youtube.com/watch?v=C2wwxd8SnKY
 

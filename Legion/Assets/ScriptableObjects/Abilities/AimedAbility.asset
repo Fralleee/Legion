@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1681801600, guid: 341cd2833a0d5124986f55f48350811c, type: 3}
+  m_Name: AimedAbility
+  m_EditorClassIdentifier: 
+  windupBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
+  recoveryBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
+  abilityName: FrostWarrior MainAttack
+  abilityRange: 6
+  cooldown: 4
+  windupTime: 1
+  recoveryTime: 0.8
+  effects:
+  - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
+  windupAnimation: 0
+  castAnimation: 0
+  windupEffect: {fileID: 198294758960818636, guid: e0aba733ccb849d4c8f267240cffc6cf,
+    type: 2}
+  castingEffect: {fileID: 0}
+  lastAction: 0
+  requireLineOfSight: 1
+  targetScanRate: 0.5
+  targetType: 3
+  targetPriority: 1
+  lastTargetScan: 0
+  lastLoSCheck: 0
+  losScanRate: 0.25
+  targetReceiver: 1
+  aoeRadius: 1
+  locationEffect: {fileID: 0}

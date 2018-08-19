@@ -29,14 +29,15 @@ public class AICaster : MonoBehaviour
   {
     int aggroRange = 0;
     MainAbility = Instantiate(MainAbility);
-    MainAbility.Setup(gameObject);
+    MainAbility.Setup(gameObject, 1 << targeter.EnemyLayer);
     aggroRange = Math.Max(aggroRange, MainAbility.abilityRange);
 
     List<AIAbility> instanceAbilities = new List<AIAbility>();
     foreach (AIAbility ability in SecondaryAbilities)
     {
       AIAbility abilityInstance = Instantiate(ability);
-      abilityInstance.Setup(gameObject);
+      int targetLayer = ability.targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
+      abilityInstance.Setup(gameObject, targetLayer);
       instanceAbilities.Add(abilityInstance);
       if (ability.targetType == TargetType.HOSTILE) aggroRange = Math.Max(aggroRange, ability.abilityRange);
     }
@@ -64,6 +65,7 @@ public class AICaster : MonoBehaviour
     if (ability.requireLineOfSight) return TargetScanner.LineOfSightLayer(targeter.MainTarget, targeter.transform, ability.abilityRange);
     return Vector3.Distance(target.transform.position, transform.position) < ability.abilityRange;
   }
+
   public IEnumerator Cast(AIAbility ability, GameObject target)
   {
     // Windup
