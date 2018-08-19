@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: MeleeAOE
   abilityRange: 2
   cooldown: 2
-  windupTime: 0.9
+  windupTime: 0.95
   recoveryTime: 0.5
   effects:
   - {fileID: 11400000, guid: e206fcb8e6ccb37418d07da77a6e8e3d, type: 2}

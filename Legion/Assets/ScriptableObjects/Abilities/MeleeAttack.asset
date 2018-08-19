@@ -16,13 +16,13 @@ MonoBehaviour:
   abilityName: Melee
   abilityRange: 2
   cooldown: 2
-  windupTime: 0.9
+  windupTime: 0.95
   recoveryTime: 0.5
   effects:
   - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
   windupAnimation: 1
-  castAnimation: 0
   windupEffect: {fileID: 0}
+  castAnimation: 0
   castingEffect: {fileID: 0}
   lastAction: 0
   requireLineOfSight: 1

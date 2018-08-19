@@ -12,13 +12,8 @@
 # Day 1
 ---------------------------------------------------------------------------------------------
 # Abilities : Melee
-+ Create melee ability
-+ Equip character with a weapon
-+ Add animations 
-+ Animation + hit trigger should sync
-+ Ensure that melee attack can hit large units 
-
-- Melee attack should be able to be single target or Area
+- EditorScript (should only display CastAnimation if Windup === Spell)
+  Same with particle effects?
 
 ---------------------------------------------------------------------------------------------
 

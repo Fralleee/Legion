@@ -21,9 +21,9 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
   windupAnimation: 0
-  castAnimation: 1
   windupEffect: {fileID: 198831932393201358, guid: 796167805e7a6e447a5f633cdcd2daee,
     type: 2}
+  castAnimation: 1
   castingEffect: {fileID: 198667821953874352, guid: 0f55e693106e4f84294af8753fed68e9,
     type: 2}
   lastAction: 0
@@ -34,6 +34,7 @@ MonoBehaviour:
   lastTargetScan: 0
   lastLoSCheck: 0
   losScanRate: 0.25
-  targetReceiver: 1
-  aoeRadius: 1
-  locationEffect: {fileID: 0}
+  targetReceiver: 2
+  aoeRadius: 5
+  locationEffect: {fileID: 198646413869511722, guid: 1d480bc641ee0eb4bb7cef5689143728,
+    type: 2}
