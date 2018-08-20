@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 661564522, guid: 341cd2833a0d5124986f55f48350811c, type: 3}
-  m_Name: MajorDamageEffect
+  m_Name: MegaMajorDamageEffect
   m_EditorClassIdentifier: 
   onHitEffect: {fileID: 198284687590868568, guid: e24a6ce31d040f54b997a5abada84193,
     type: 2}
-  minAmount: 5
-  maxAmount: 10
+  minAmount: 15
+  maxAmount: 25

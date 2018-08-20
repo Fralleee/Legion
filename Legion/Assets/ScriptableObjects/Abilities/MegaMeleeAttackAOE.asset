@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1681801600, guid: 341cd2833a0d5124986f55f48350811c, type: 3}
+  m_Name: MegaMeleeAttackAOE
+  m_EditorClassIdentifier: 
+  windupBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
+  recoveryBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
+  abilityName: MeleeAOE
+  abilityRange: 3
+  cooldown: 1
+  windupTime: 0.95
+  recoveryTime: 0.2
+  effects:
+  - {fileID: 11400000, guid: 412d28bd02b19da4c80ad5b973f6c3fd, type: 2}
+  windupAnimation: 1
+  windupEffect: {fileID: 0}
+  castAnimation: 0
+  castingEffect: {fileID: 0}
+  lastAction: 0
+  requireLineOfSight: 1
+  targetScanRate: 0.5
+  targetType: 3
+  targetPriority: 1
+  lastTargetScan: 0
+  lastLoSCheck: 0
+  losScanRate: 0.25
+  targetReceiver: 2
+  aoeRadius: 10
+  locationEffect: {fileID: 198646413869511722, guid: 1d480bc641ee0eb4bb7cef5689143728,
+    type: 2}
