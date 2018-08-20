@@ -1,5 +1,4 @@
-- Figure out why navmeshobstacle enhances unitspeed
-
+- Fix navmeshobstacle problem
 
 ---------------------------------------------------------------------------------------------
 # Day 2
