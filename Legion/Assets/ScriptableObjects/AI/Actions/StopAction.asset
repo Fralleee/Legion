@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7748cc67e8fee6f459bc97f07b178d03, type: 3}
-  m_Name: RotateTowardsTarget Action
+  m_Script: {fileID: 11500000, guid: c0db89f8c6a14d14b850b0380382a0e4, type: 3}
+  m_Name: StopAction
   m_EditorClassIdentifier: 

@@ -1,5 +1,4 @@
-﻿using Fralle;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,11 +11,9 @@ public class AIMotor : MonoBehaviour
   public float wanderTimer = 5f;
   public bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
   public bool isRotationBlocked { get { return blockerController.ContainsBlocker(rotation: true); } }
-
   BlockerController blockerController;
   NavMeshAgent navMeshAgent;
   NavMeshObstacle navMeshObstacle;
-  NavMeshPath navMeshPath;
   IEnumerator coroutine;
   bool isRunningCoroutine;
 
@@ -25,7 +22,6 @@ public class AIMotor : MonoBehaviour
     blockerController = GetComponent<BlockerController>();
     navMeshAgent = GetComponent<NavMeshAgent>();
     navMeshObstacle = GetComponent<NavMeshObstacle>();
-    navMeshPath = new NavMeshPath();
     coroutine = ActivateAgent(0.25f);
   }
 
@@ -36,11 +32,8 @@ public class AIMotor : MonoBehaviour
 
   public void Move(Transform target, bool chasing = false)
   {
-    if (!target || isBlocked || Vector3.Distance(transform.position, target.position) <= navMeshAgent.stoppingDistance)
-    {
-      Stop();
-    }
-    else if (!isRunningCoroutine && navMeshObstacle.enabled)
+    if (!target) return;
+    if (!isRunningCoroutine && navMeshObstacle.enabled)
     {
       coroutine = ActivateAgent(0.25f);
       StartCoroutine(coroutine);
@@ -53,7 +46,7 @@ public class AIMotor : MonoBehaviour
     }
   }
 
-  void Stop()
+  public void Stop(Transform target)
   {
     if (navMeshAgent.enabled)
     {
@@ -66,16 +59,13 @@ public class AIMotor : MonoBehaviour
       navMeshAgent.enabled = false;
       navMeshObstacle.enabled = true;
     }
+    if (target) transform.LookAt(target.transform);
   }
 
   public void SimpleMove(Vector3 position)
   {
-    if (navMeshAgent.enabled)
-    {
-      navMeshAgent.SetDestination(position);
-    }
+    if (navMeshAgent.enabled) navMeshAgent.SetDestination(position);
   }
-
 
   IEnumerator ActivateAgent(float delay)
   {
@@ -85,11 +75,4 @@ public class AIMotor : MonoBehaviour
     navMeshAgent.enabled = true;
     isRunningCoroutine = false;
   }
-
-  bool CalculateNewPath(Vector3 position)
-  {
-    navMeshAgent.CalculatePath(position, navMeshPath);
-    return navMeshPath.status == NavMeshPathStatus.PathComplete;
-  }
-
 }
