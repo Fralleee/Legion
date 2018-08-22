@@ -29,6 +29,11 @@ public class AIStateController : MonoBehaviour, IStateController
     Debug.LogWarning("Code in Update that should be moved to decision.");
   }
 
+  void Start()
+  {
+    motor.SetStoppingDistance(caster.MainAbility.abilityRange);
+  }
+
   void Update()
   {
     // This code should be an action/decision 

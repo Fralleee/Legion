@@ -14,22 +14,13 @@ public class WanderAction : Action
 
   void Wander(IStateController isc)
   {
-    AIStateController ai = (AIStateController)isc;
-    if (ai.motor.IsBlocked)
-    {
-      ai.motor.navMeshAgent.isStopped = true;
-      return;
-    }
-
-    ai.motor.navMeshAgent.speed = ai.motor.travelSpeed;
-    ai.motor.navMeshAgent.isStopped = false;
+    AIStateController ai = (AIStateController)isc;    
     ai.motor.wanderTimer += Time.deltaTime;
     if (ai.motor.wanderTimer >= 5f)
     {
-      Vector3 newPos = RandomNavSphere(ai.transform.position, 10f, -1);
-      ai.motor.navMeshAgent.SetDestination(newPos);
-      ai.motor.navMeshAgent.stoppingDistance = 0.5f;
+      Vector3 newPos = RandomNavSphere(ai.transform.position, 10f, -1);      
       ai.motor.wanderTimer = 0;
+      ai.motor.SimpleMove(newPos);
     }
   }
   

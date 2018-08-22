@@ -11,20 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: -1681801600, guid: 341cd2833a0d5124986f55f48350811c, type: 3}
   m_Name: DirectAbility
   m_EditorClassIdentifier: 
-  windupBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
-  recoveryBlocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
-  abilityName: Direct Ability
-  abilityRange: 88
+  blocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
+  abilityRange: 10
   cooldown: 7
-  windupTime: 1
-  recoveryTime: 1
+  castTime: 1
   effects:
   - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
-  windupAnimation: 0
-  windupEffect: {fileID: 198294758960818636, guid: e0aba733ccb849d4c8f267240cffc6cf,
-    type: 2}
-  castAnimation: 2
-  castingEffect: {fileID: 0}
+  animationTrigger: 2
+  startEffect: {fileID: 0}
+  onCastEffect: {fileID: 0}
   lastAction: 0
   requireLineOfSight: 1
   targetScanRate: 0.5

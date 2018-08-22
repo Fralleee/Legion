@@ -14,13 +14,6 @@ public class ChaseAction : Action
   void Chase(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    if (ai.IsBlocked || !ai.targeter.CurrentTarget)
-    {
-      ai.motor.navMeshAgent.isStopped = true;
-      return;
-    }
-    ai.motor.navMeshAgent.speed = ai.motor.chasingSpeed;
-    ai.motor.navMeshAgent.SetDestination(ai.targeter.CurrentTarget.transform.position);
-    ai.motor.navMeshAgent.isStopped = false;
+    ai.motor.Move(ai.targeter.CurrentTarget, true);
   }
 }

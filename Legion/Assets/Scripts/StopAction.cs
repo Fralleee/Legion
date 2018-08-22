@@ -13,7 +13,7 @@ public class StopAction : Action
 
   void Stop(IStateController isc)
   {
-    AIStateController ai = (AIStateController)isc;
-    ai.motor.navMeshAgent.isStopped = true;
+    //AIStateController ai = (AIStateController)isc;
+    //ai.motor.StopAllCoroutines
   }
 }

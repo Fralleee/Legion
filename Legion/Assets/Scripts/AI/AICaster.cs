@@ -10,7 +10,7 @@ public class AICaster : MonoBehaviour
   public AIAbility MainAbility;
   public List<AIAbility> SecondaryAbilities;
 
-  public bool IsBlocked { get { return blockerController ? blockerController.ContainsBlocker(abilities: true) : false; } }
+  public bool isBlocked { get { return blockerController ? blockerController.ContainsBlocker(abilities: true) : false; } }
 
   AITargeter targeter;
   BlockerController blockerController;
@@ -64,46 +64,57 @@ public class AICaster : MonoBehaviour
     if (!target) return false;
     if (ability.requireLineOfSight)
     {
-      return TargetScanner.LineOfSightLayer(targeter.transform, targeter.MainTarget, ability.abilityRange, ability);
+      return TargetScanner.LineOfSightLayer(targeter.transform, targeter.CurrentTarget, ability.abilityRange, ability);
     }
     return Vector3.Distance(target.transform.position, transform.position) < ability.abilityRange;
   }
 
   public IEnumerator Cast(AIAbility ability, GameObject target)
   {
-    // Windup
+    blockerController.AddBlocker(ability.blocker);
     targeter.SetCurrentTarget(target);
-    animator.SetBool(ability.windupAnimation.ToString(), true);
-    blockerController.AddBlocker(ability.windupBlocker);
-    if (ability.windupEffect)
+    float castTime = ability.castTime;
+    animator.SetTrigger(ability.animationTrigger.ToString());
+
+    if (ability.startEffect)
     {
-      ParticleSystem windupEffect = Instantiate(ability.windupEffect, effectsHolder);
-      windupEffect.Play();
-      Destroy(windupEffect.gameObject, ability.windupTime);
+      ParticleSystem startEffect = Instantiate(ability.startEffect, effectsHolder);
+      startEffect.Play();
+      Destroy(startEffect.gameObject, ability.castTime);
     }
 
-    yield return new WaitForSeconds(ability.windupTime);
-    if (!isValidCast(ability, target))
+    while (castTime > 0)
     {
-      animator.SetBool(ability.windupAnimation.ToString(), false);
-      blockerController.RemoveBlocker(ability.windupBlocker);
-      yield break;
+      if (!isValidCast(ability, target))
+      {
+        // Check for interrupts
+        // Should also be interruptable from outside (other character stunning caster or something)
+        Debug.Log("Interrupted");
+        blockerController.RemoveBlocker(ability.blocker);
+        animator.SetTrigger("InterruptCast");
+        yield break;
+      }
+      castTime -= 0.25f;
+      yield return new WaitForSeconds(Mathf.Min(castTime, 0.25f));
     }
 
-    // Cast & Recovery
-    animator.SetTrigger(ability.castAnimation.ToString());
-    blockerController.RemoveBlocker(ability.windupBlocker);
-    blockerController.AddBlocker(ability.recoveryBlocker);
-    if (ability.castingEffect)
-    {
-      ParticleSystem castingEffect = Instantiate(ability.castingEffect, effectsHolder);
-      castingEffect.Play();
-      Destroy(castingEffect.gameObject, castingEffect.main.startLifetime.constant);
-    }
     ability.Cast(target);
+    float timeLeft = AnimationTimeLeft();
+    if (ability.onCastEffect)
+    {
+      ParticleSystem onCastEffect = Instantiate(ability.onCastEffect, effectsHolder);
+      onCastEffect.Play();
+      Destroy(onCastEffect.gameObject, Mathf.Max(onCastEffect.main.startLifetime.constant, timeLeft));
+    }
 
-    yield return new WaitForSeconds(Math.Max(ability.recoveryTime, 0.5f));
-    animator.SetBool(ability.windupAnimation.ToString(), false);
-    blockerController.RemoveBlocker(ability.recoveryBlocker);
+    yield return new WaitForSeconds(timeLeft);
+    blockerController.RemoveBlocker(ability.blocker);
+  }
+
+  float AnimationTimeLeft()
+  {
+    AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
+    AnimatorClipInfo[] myAnimatorClip = animator.GetCurrentAnimatorClipInfo(0);
+    return myAnimatorClip[0].clip.length * animationState.normalizedTime;
   }
 }

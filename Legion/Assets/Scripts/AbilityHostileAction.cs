@@ -13,7 +13,7 @@ public class AbilityHostileAction : Action
   {
     AIStateController ai = (AIStateController)isc;
     AICaster caster = ai.caster;
-    if (!caster.IsBlocked)
+    if (!caster.isBlocked)
     {
       foreach (AIAbility ability in caster.SecondaryAbilities.FindAll(x => x.targetType == TargetType.HOSTILE && x.isReady))
       {

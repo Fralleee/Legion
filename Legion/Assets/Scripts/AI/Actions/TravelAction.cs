@@ -14,13 +14,6 @@ public class TravelAction : Action
   void Travel(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    if (ai.IsBlocked || !ai.targeter.Objective)
-    {
-      ai.motor.navMeshAgent.isStopped = true;
-      return;
-    }
-    ai.motor.navMeshAgent.speed = ai.motor.travelSpeed;
-    ai.motor.navMeshAgent.SetDestination(ai.targeter.Objective.transform.position);
-    ai.motor.navMeshAgent.isStopped = false;
+    ai.motor.Move(ai.targeter.CurrentTarget);
   }
 }
