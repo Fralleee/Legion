@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 661564522, guid: 341cd2833a0d5124986f55f48350811c, type: 3}
   m_Name: DamageEffect
   m_EditorClassIdentifier: 
-  onHitEffect: {fileID: 198284687590868568, guid: e24a6ce31d040f54b997a5abada84193,
+  onHitEffect: {fileID: 198694231397964106, guid: 5d31a5b9b348544439d8079453188ecc,
     type: 2}
-  minAmount: 2
-  maxAmount: 5
+  minAmount: 3
+  maxAmount: 6

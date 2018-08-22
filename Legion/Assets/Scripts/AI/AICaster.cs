@@ -76,36 +76,35 @@ public class AICaster : MonoBehaviour
     float castTime = ability.castTime;
     animator.SetTrigger(ability.animationTrigger.ToString());
 
-    if (ability.startEffect)
-    {
-      ParticleSystem startEffect = Instantiate(ability.startEffect, effectsHolder);
-      startEffect.Play();
-      Destroy(startEffect.gameObject, ability.castTime);
-    }
+    //if (ability.startEffect)
+    //{
+    //  ParticleSystem startEffect = Instantiate(ability.startEffect, effectsHolder);
+    //  startEffect.Play();
+    //  Destroy(startEffect.gameObject, ability.castTime);
+    //}
 
     while (castTime > 0)
     {
+      castTime -= 0.5f;
+      yield return new WaitForSeconds(Mathf.Min(castTime, 0.5f));
       if (!isValidCast(ability, target))
       {
         // Check for interrupts
         // Should also be interruptable from outside (other character stunning caster or something)
-        Debug.Log("Interrupted");
         blockerController.RemoveBlocker(ability.blocker);
         animator.SetTrigger("InterruptCast");
         yield break;
       }
-      castTime -= 0.25f;
-      yield return new WaitForSeconds(Mathf.Min(castTime, 0.25f));
     }
 
     ability.Cast(target);
     float timeLeft = AnimationTimeLeft();
-    if (ability.onCastEffect)
-    {
-      ParticleSystem onCastEffect = Instantiate(ability.onCastEffect, effectsHolder);
-      onCastEffect.Play();
-      Destroy(onCastEffect.gameObject, Mathf.Max(onCastEffect.main.startLifetime.constant, timeLeft));
-    }
+    //if (ability.onCastEffect)
+    //{
+    //  ParticleSystem onCastEffect = Instantiate(ability.onCastEffect, effectsHolder);
+    //  onCastEffect.Play();
+    //  Destroy(onCastEffect.gameObject, Mathf.Max(onCastEffect.main.startLifetime.constant, timeLeft));
+    //}
 
     yield return new WaitForSeconds(timeLeft);
     blockerController.RemoveBlocker(ability.blocker);

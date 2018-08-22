@@ -22,7 +22,7 @@ MonoBehaviour:
   onCastEffect: {fileID: 0}
   lastAction: 0
   requireLineOfSight: 1
-  targetScanRate: 0.5
+  targetScanRate: 2
   targetType: 3
   targetPriority: 1
   lastTargetScan: 0
@@ -30,5 +30,5 @@ MonoBehaviour:
   losScanRate: 0.25
   targetReceiver: 2
   aoeRadius: 5
-  locationEffect: {fileID: 198646413869511722, guid: 1d480bc641ee0eb4bb7cef5689143728,
+  locationEffect: {fileID: 198943806322213404, guid: 6bc2a6e4bc7f76942a0073eaa0f4da4f,
     type: 2}

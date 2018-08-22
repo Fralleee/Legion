@@ -24,7 +24,7 @@ MonoBehaviour:
     type: 2}
   lastAction: 0
   requireLineOfSight: 1
-  targetScanRate: 0.5
+  targetScanRate: 2
   targetType: 3
   targetPriority: 1
   lastTargetScan: 0

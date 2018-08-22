@@ -30,7 +30,6 @@ public class AITargeter : MonoBehaviour
   public void SetMainTarget(GameObject go)
   {
     if (!go) return;
-    Debug.Log("New MainTarget: " + go.name);
     MainTarget = new Target(go);
   }
   public void SetObjective(GameObject go)
