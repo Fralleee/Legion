@@ -1,37 +1,44 @@
 ---------------------------------------------------------------------------------------------
 # Day 2
 ---------------------------------------------------------------------------------------------
+# Building
+- Kolla varför placementblocker inte funkar
+- Fixa med materialen
+- Går att stacka buildings utan att placera dem
+
+- Fixa shortcut på List
+
+- When a spell/building cannot be cast/afforded it should be red
+- Fixa så resten av UI:t funkar
+
+
+- Lägg in kod som används in till projekt
+- Ta bort resten
+- Ta bort gammal skum kod 
+
+
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------
+# Day 3-4
+---------------------------------------------------------------------------------------------
 # GameManagement: Build/spawn/attack flow
 - GameManager to use PluggableFSM
-- Rename placeable
+- Rename/remove(?) placeable
 - Build a test scene for this flow
 - Apply builders teamData to building
 - Unit should get team data from building that spawns it
 - Unit should work without getting teamdata (maybe become neutral?)
 - Complete the flow from build building => spawn unit => attack enemies
 
-# Use a pluggable state manager for game manager
 ---------------------------------------------------------------------------------------------
 
 
----------------------------------------------------------------------------------------------
-# Day 3-4
----------------------------------------------------------------------------------------------
-# UI
-- Diagonalize ability icons a bit depending where they at
-- Organize scripts used for UI (better names, and generic usage)
-- Build UI should be activated based on Event/State
-  Build controls should be:
-	LMB: Upgrade
-	RMB: Sell
-	1-6: Basic units	
-	Q: Last unit
-	E: ???
-	R: Ultimate unit 1
-	F: Ultimate unit 2	
-- When a spell/building cannot be cast/afforded it should be red
-- Ability UI should have functionality Flashing, where it indicates with a pulsating glowing border and shine.
----------------------------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------------------------

@@ -11,7 +11,6 @@ public class MovementTester : MonoBehaviour
   NavMeshAgent navMeshAgent;
   NavMeshObstacle navMeshObstacle;
   NavMeshPath navMeshPath;
-  IEnumerator coroutine;
   bool isRunningCoroutine;
   public bool IsBlocked { get { return blockerController ? blockerController.ContainsBlocker(abilities: true) : false; } }
 
@@ -21,7 +20,6 @@ public class MovementTester : MonoBehaviour
     navMeshAgent = GetComponent<NavMeshAgent>();
     navMeshObstacle = GetComponent<NavMeshObstacle>();
     navMeshPath = new NavMeshPath();
-    coroutine = ActivateAgent(0.25f);
   }
   void Update()
   {    
@@ -31,18 +29,17 @@ public class MovementTester : MonoBehaviour
       {
         if (isRunningCoroutine)
         {
-          StopCoroutine(coroutine);
+          StopCoroutine(ActivateAgent(0.25f));
           isRunningCoroutine = false;
         }
         navMeshAgent.enabled = false;
         navMeshObstacle.enabled = true;
       }
-      transform.LookAt(target.position.WithY(0));
+      transform.LookAtFlat(target);
     }
     else if (!isRunningCoroutine && navMeshObstacle.enabled)
     {
-      coroutine = ActivateAgent(0.25f);
-      StartCoroutine(coroutine);
+      StartCoroutine(ActivateAgent(0.25f));
     }
     else if (navMeshAgent.enabled)
     {

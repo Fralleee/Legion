@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onHitEffect: {fileID: 198694231397964106, guid: 5d31a5b9b348544439d8079453188ecc,
     type: 2}
-  minAmount: 3
-  maxAmount: 6
+  minAmount: 6
+  maxAmount: 13

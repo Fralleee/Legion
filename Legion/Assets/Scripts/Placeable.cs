@@ -20,7 +20,7 @@ public class Placeable : ScriptableObject
   public void Initiate(Transform parent)
   {
     instance = Instantiate(prefab, new Vector3(parent.position.x, 0, parent.position.z) + parent.transform.forward * 2, Quaternion.Euler(0,0,0));
-    instance.GetComponent<SnapToGrid>().parent = parent;
+    //instance.GetComponent<SnapToGrid>().parent = parent;
   }
 
   public void LockPosition()
@@ -38,7 +38,7 @@ public class Placeable : ScriptableObject
   {
     var parentBuildingRoot = GameObject.Find(name + "s buildings");
     if(!parentBuildingRoot) parentBuildingRoot = new GameObject(name + "s buildings");
-    instance.GetComponent<Building>().Initiate(parentBuildingRoot.transform);
+    //instance.GetComponent<Building>().Initiate(parentBuildingRoot.transform);
     instance = null;
   }
 

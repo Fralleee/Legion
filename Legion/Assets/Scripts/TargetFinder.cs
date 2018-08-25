@@ -15,15 +15,15 @@ public static class TargetFinder
 
   public static bool HasLineOfSight(GameObject origin, GameObject target, out RaycastHit hit, float range, LayerMask layerMask)
   {
-    Ray ray = new Ray(origin.transform.position.WithY(1), target.transform.position - origin.transform.position);
-    Debug.DrawRay(origin.transform.position.WithY(1), target.transform.position - origin.transform.position, Color.red, 0.5f);
+    Ray ray = new Ray(origin.transform.position.With(y: 1), target.transform.position - origin.transform.position);
+    Debug.DrawRay(origin.transform.position.With(y: 1), target.transform.position - origin.transform.position, Color.red, 0.5f);
     return Physics.Raycast(ray, out hit, range, layerMask);
   }
 
   public static bool HasLineOfSightRadius(GameObject origin, GameObject target, out RaycastHit hit, float range, float sphereCastRadius, LayerMask layerMask)
   {
-    Ray ray = new Ray(origin.transform.position.WithY(1), target.transform.position - origin.transform.position);
-    Debug.DrawRay(origin.transform.position.WithY(1), target.transform.position - origin.transform.position, Color.red, 0.5f);
+    Ray ray = new Ray(origin.transform.position.With(y:1), target.transform.position - origin.transform.position);
+    Debug.DrawRay(origin.transform.position.With(y: 1), target.transform.position - origin.transform.position, Color.red, 0.5f);
     return Physics.SphereCast(ray, sphereCastRadius, out hit, range, layerMask);
   }
 }

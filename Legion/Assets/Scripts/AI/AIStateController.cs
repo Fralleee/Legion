@@ -24,7 +24,6 @@ public class AIStateController : MonoBehaviour, IStateController
     motor = GetComponent<AIMotor>();
     caster = GetComponent<AICaster>();
     blockerController = GetComponent<BlockerController>();
-    Debug.LogWarning("Code in Update that should be moved to decision.");
   }
 
   void Start()
@@ -34,8 +33,6 @@ public class AIStateController : MonoBehaviour, IStateController
 
   void Update()
   {
-    // This code should be an action/decision 
-    if (targeter.Objective == null && teamData.objective) targeter.SetObjective(teamData.objective);
     currentState.UpdateState(this);
   }
 

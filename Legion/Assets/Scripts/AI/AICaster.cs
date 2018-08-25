@@ -75,14 +75,8 @@ public class AICaster : MonoBehaviour
     targeter.SetCurrentTarget(target);
     float castTime = ability.castTime;
     animator.SetTrigger(ability.animationTrigger.ToString());
-
-    //if (ability.startEffect)
-    //{
-    //  ParticleSystem startEffect = Instantiate(ability.startEffect, effectsHolder);
-    //  startEffect.Play();
-    //  Destroy(startEffect.gameObject, ability.castTime);
-    //}
-
+    ActivateEffect(ability.startEffect, ability.castTime);
+    
     while (castTime > 0)
     {
       castTime -= 0.5f;
@@ -99,12 +93,7 @@ public class AICaster : MonoBehaviour
 
     ability.Cast(target);
     float timeLeft = AnimationTimeLeft();
-    //if (ability.onCastEffect)
-    //{
-    //  ParticleSystem onCastEffect = Instantiate(ability.onCastEffect, effectsHolder);
-    //  onCastEffect.Play();
-    //  Destroy(onCastEffect.gameObject, Mathf.Max(onCastEffect.main.startLifetime.constant, timeLeft));
-    //}
+    ActivateEffect(ability.onCastEffect);
 
     yield return new WaitForSeconds(timeLeft);
     blockerController.RemoveBlocker(ability.blocker);
@@ -115,5 +104,15 @@ public class AICaster : MonoBehaviour
     AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
     AnimatorClipInfo[] myAnimatorClip = animator.GetCurrentAnimatorClipInfo(0);
     return myAnimatorClip[0].clip.length * animationState.normalizedTime;
+  }
+
+  void ActivateEffect(ParticleSystem effect, float time = -1f)
+  {
+    if (effect)
+    {
+      ParticleSystem onCastEffect = Instantiate(effect, effectsHolder);
+      onCastEffect.Play();
+      Destroy(onCastEffect.gameObject, time > 0 ? time : onCastEffect.main.startLifetime.constant);
+    }
   }
 }

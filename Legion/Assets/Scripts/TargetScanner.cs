@@ -57,8 +57,8 @@ public static class TargetScanner
     {
       Vector3 direction = target.position - caster.position;
       RaycastHit hit;
-      Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
-      if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range)) return hit.collider.gameObject == target.gameObject;
+      Debug.DrawRay(caster.position.With(y: 1.5f), direction, Color.red, 0.5f);
+      if (Physics.Raycast(caster.position.With(y: 1.5f), direction, out hit, range)) return hit.collider.gameObject == target.gameObject;
     }
     return false;
   }
@@ -68,8 +68,8 @@ public static class TargetScanner
     {
       Vector3 direction = target.position - caster.position;
       RaycastHit hit;
-      Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
-      if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range))
+      Debug.DrawRay(caster.position.With(y: 1.5f), direction, Color.red, 0.5f);
+      if (Physics.Raycast(caster.position.With(y: 1.5f), direction, out hit, range))
       {
         return hit.collider.gameObject.layer == target.gameObject.layer;
       }
@@ -82,8 +82,8 @@ public static class TargetScanner
     {
       Vector3 direction = target.position - caster.position;
       RaycastHit hit;
-      Debug.DrawRay(caster.position.WithY(1.5f), direction, Color.red, 0.5f);
-      if (Physics.Raycast(caster.position.WithY(1.5f), direction, out hit, range, targetMask | obstacleMask)) return hit.collider.gameObject.layer == targetLayer;
+      Debug.DrawRay(caster.position.With(y: 1.5f), direction, Color.red, 0.5f);
+      if (Physics.Raycast(caster.position.With(y: 1.5f), direction, out hit, range, targetMask | obstacleMask)) return hit.collider.gameObject.layer == targetLayer;
     }
     return false;
   }
