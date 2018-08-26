@@ -405,6 +405,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &2076521187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114816395804731736, guid: ae66c3d2647ad864d811288cee7cec41,
+    type: 2}
+  m_PrefabInternal: {fileID: 2114544772}
+  m_Script: {fileID: 11500000, guid: a723f0ecd7607b443978275cc776cb2a, type: 3}
 --- !u!1001 &2097112714
 Prefab:
   m_ObjectHideFlags: 0
@@ -556,6 +562,16 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -418.15857
       objectReference: {fileID: 0}
+    - target: {fileID: 114240312651308786, guid: ae66c3d2647ad864d811288cee7cec41,
+        type: 2}
+      propertyPath: panelHandler
+      value: 
+      objectReference: {fileID: 2076521187}
+    - target: {fileID: 114732373455175696, guid: ae66c3d2647ad864d811288cee7cec41,
+        type: 2}
+      propertyPath: panelHandler
+      value: 
+      objectReference: {fileID: 2076521187}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae66c3d2647ad864d811288cee7cec41, type: 2}
   m_IsPrefabAsset: 0

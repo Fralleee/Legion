@@ -8,14 +8,14 @@ public class ButtonHotkeyEvent : UnityEvent<int> { }
 
 public class ButtonHotkey : MonoBehaviour
 {
-  [SerializeField] bool requireCtrlKey = true;
   [SerializeField] KeyCode hotkey;
-  [SerializeField] ButtonHotkeyEvent OnClick;
   [SerializeField] DemoAnimManager demoAnimManager;
+  [SerializeField] PanelHandler panelHandler;
+  [SerializeField] ButtonHotkeyEvent OnClick;
 
-  void Update()
+  void LateUpdate()
   {
-    if (demoAnimManager.isOn && (requireCtrlKey && Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(hotkey))
+    if (demoAnimManager.isOn && panelHandler.currentPanelIndex == -1 && Input.GetKeyDown(hotkey))
     {
       OnClick.Invoke(0);
     }

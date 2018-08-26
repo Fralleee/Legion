@@ -2,8 +2,7 @@
 # Day 2
 ---------------------------------------------------------------------------------------------
 # Building
-- Fixa shortcut på List
-- Shortcuten öppnar upp UIt också. Måste kolla så UIt är aktivt för att shortcut ska funka.
+- Fixa så hotkeys syns i menyn
 
 
 - When a spell/building cannot be cast/afforded it should be red
