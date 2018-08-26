@@ -28,11 +28,16 @@ public class Building : MonoBehaviour
     gameObject.AddComponent<SetBuilding>();
     transform.parent = parent;
   }
-  public void SetBuilding(Transform parent = null)
+  public bool SetBuilding(Transform parent = null)
   {
-    Destroy(GetComponent<SetBuilding>());
-    transform.position = transform.position.Flat();
-    transform.parent = parent;
+    if(GetComponent<PlacementCollisionDetection>().allowedPlacement)
+    {
+      Destroy(GetComponent<SetBuilding>());
+      transform.position = transform.position.Flat();
+      transform.parent = parent;
+      return true;
+    }
+    return false;
   }
 
 }

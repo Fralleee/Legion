@@ -7,6 +7,7 @@ public class DemoAnimManager : MonoBehaviour
 
   [Header("ANIMATORS")]
   public Animator panelAnimator;
+  public PanelHandler panelHandler;
 
   [Header("ANIMATION STRINGS")]
   public string fadeInAnim;
@@ -15,7 +16,7 @@ public class DemoAnimManager : MonoBehaviour
   [Header("SETTINGS")]
   public string shortcutKey;
 
-  bool isOn;
+  public bool isOn;
 
   void Update()
   {
@@ -28,6 +29,7 @@ public class DemoAnimManager : MonoBehaviour
     {
       panelAnimator.Play(fadeOutAnim);
       isOn = false;
+      panelHandler.ResetPanels();
     }
     else if (isOn == false)
     {

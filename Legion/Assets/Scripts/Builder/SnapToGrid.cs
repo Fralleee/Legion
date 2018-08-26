@@ -3,7 +3,7 @@ using Fralle;
 
 public class SnapToGrid : MonoBehaviour
 {
-  float factor = 1f;
+  float factor = 1.5f;
   void Update()
   {
     if (transform.parent)

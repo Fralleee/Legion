@@ -20,13 +20,13 @@ public class PanelHandler : MonoBehaviour
   public string buttonFadeIn = "TP Open";
   public string buttonFadeOut = "TP Close";
 
-  GameObject currentPanel;
+  public GameObject currentPanel;
   GameObject nextPanel;
   GameObject currentButton;
   GameObject nextButton;
 
   [Header("SETTINGS")]
-  public int currentPanelIndex;
+  public int currentPanelIndex = -1;
   int currentButtonlIndex;
 
   Animator currentPanelAnimator;
@@ -48,12 +48,15 @@ public class PanelHandler : MonoBehaviour
   {
     if (newPanel != currentPanelIndex)
     {
-      currentPanel = panels[currentPanelIndex];
+      if (currentPanelIndex != -1)
+      {
+        currentPanel = panels[currentPanelIndex];
+        currentPanelAnimator = currentPanel.GetComponent<Animator>();
+        currentPanelAnimator.Play(panelFadeOut);
+      }
       currentPanelIndex = newPanel;
       nextPanel = panels[currentPanelIndex];
-      currentPanelAnimator = currentPanel.GetComponent<Animator>();
       nextPanelAnimator = nextPanel.GetComponent<Animator>();
-      currentPanelAnimator.Play(panelFadeOut);
       nextPanelAnimator.Play(panelFadeIn);
 
       if (buttons.Count > 0)
@@ -67,5 +70,15 @@ public class PanelHandler : MonoBehaviour
         nextButtonAnimator.Play(buttonFadeIn);
       }
     }
+  }
+
+  public void ResetPanels()
+  {
+    if (nextPanelAnimator) nextPanelAnimator.Play(panelFadeOut);
+    currentPanel = null;
+    currentPanelIndex = -1;
+    nextPanel = null;
+    currentPanelAnimator = null;
+    nextPanelAnimator = null;
   }
 }

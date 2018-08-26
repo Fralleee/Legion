@@ -18,14 +18,6 @@ public class PopulateUnitList : MonoBehaviour
       instance.GetComponent<SelectStoreUnit>().unit = units[i];
       instance.GetComponent<SelectStoreUnit>().keyCode = (KeyCode)i+49;
     }
-    //foreach (UnitBuilding unit in units)
-    //{
-    //  GameObject instance = Instantiate(unitPrefab, transform);
-    //  instance.transform.Find("Icon").GetComponent<Image>().sprite = unit.sprite;
-    //  instance.transform.Find("Text").GetComponent<Text>().text = unit.name;
-    //  instance.GetComponent<SelectStoreUnit>().unit = unit;
-    //  instance.GetComponent<SelectStoreUnit>().keyCode = 
-    //}
 	}	
 	
 }

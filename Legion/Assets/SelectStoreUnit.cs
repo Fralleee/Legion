@@ -19,7 +19,7 @@ public class SelectStoreUnit : MonoBehaviour
 
   void Update()
   {
-    if (Input.GetKeyDown(keyCode) && panelHandler.currentPanelIndex == 1)
+    if ((Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(keyCode)) && panelHandler.currentPanelIndex == 0)
     {
       OnClick();
     }

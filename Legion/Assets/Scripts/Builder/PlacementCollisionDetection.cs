@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlacementCollisionDetection : MonoBehaviour
 {
-  [SerializeField] List<Renderer> renderers = new List<Renderer>();
-  [SerializeField] Material successMaterial;
-  [SerializeField] Material errorMaterial;
+  Renderer[] renderers;
+  Material successMaterial;
+  Material errorMaterial;
 
   List<Material> defaultMaterials = new List<Material>();
   List<int> triggerList = new List<int>();
+  List<int> blockingLayers = new List<int>();
 
   bool allowedPosition;
   bool allowedTerrain;
@@ -17,29 +18,30 @@ public class PlacementCollisionDetection : MonoBehaviour
   {
     get
     {
-      return allowedPosition && allowedTerrain;
+      return triggerList.Count == 0;
     }
   }
 
   void Start()
   {
+    blockingLayers.Add(LayerMask.NameToLayer("Building"));
+    blockingLayers.Add(LayerMask.NameToLayer("Buildable"));
+    successMaterial = (Material)Resources.Load("Materials/SuccessMaterial");
+    errorMaterial = (Material)Resources.Load("Materials/ErrorMaterial");
+    renderers = GetComponentsInChildren<Renderer>();
     foreach (Renderer r in renderers) defaultMaterials.Add(r.material);
     SetMaterial();
   }
 
   void OnTriggerEnter(Collider other)
   {
-    triggerList.Add(other.gameObject.layer);
-    allowedPosition = !triggerList.Contains(LayerMask.NameToLayer("Placeable"));
-    allowedTerrain = triggerList.Contains(LayerMask.NameToLayer("Placeable Terrain"));
+    if (blockingLayers.Contains(other.gameObject.layer)) triggerList.Add(other.gameObject.layer);
     SetMaterial();
   }
 
   void OnTriggerExit(Collider other)
   {
-    triggerList.Remove(other.gameObject.layer);
-    allowedPosition = !triggerList.Contains(LayerMask.NameToLayer("Placeable"));
-    allowedTerrain = triggerList.Contains(LayerMask.NameToLayer("Placeable Terrain"));
+    if (blockingLayers.Contains(other.gameObject.layer)) triggerList.Remove(other.gameObject.layer);
     SetMaterial();
   }
 
@@ -50,7 +52,7 @@ public class PlacementCollisionDetection : MonoBehaviour
 
   public void SetDefaultMaterials()
   {
-    for (int i = 0; i < renderers.Count; i++) renderers[i].material = defaultMaterials[i];
+    for (int i = 0; i < renderers.Length; i++) renderers[i].material = defaultMaterials[i];
   }
 
 }

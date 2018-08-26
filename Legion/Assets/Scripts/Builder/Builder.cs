@@ -3,8 +3,11 @@
 public class Builder : MonoBehaviour
 {
   Building buildingInstance;
+  UnitBuilding recentBuilding;
   public void ActivateBuilding(UnitBuilding building)
   {
+    if(buildingInstance) Destroy(buildingInstance.gameObject);
+    recentBuilding = building;
     GameObject buildingGo = Instantiate(building.building);
     buildingInstance = buildingGo.GetComponent<Building>();
     buildingInstance.SetUnit(building.unit);
@@ -16,15 +19,22 @@ public class Builder : MonoBehaviour
   {
     if (buildingInstance)
     {
-      if (Input.GetMouseButton(0)) Build();
-      if (Input.GetMouseButton(1)) Cancel();
+      if (Input.GetMouseButtonDown(0))
+      {
+        if (Input.GetKey(KeyCode.LeftShift)) Build(true);
+        else Build();
+      }
+      if (Input.GetMouseButtonDown(1)) Cancel();
     }
   }
 
-  public void Build()
-  {
-    buildingInstance.SetBuilding();
-    buildingInstance = null;
+  public void Build(bool shouldReset = false)
+  {    
+    if(buildingInstance.SetBuilding())
+    {
+      buildingInstance = null;
+      if (shouldReset) ActivateBuilding(recentBuilding);
+    }
   }
 
   public void Cancel()

@@ -16,8 +16,8 @@ TagManager:
   - PostProcessing
   - Player
   - Environment
-  - Placeable
-  - Placeable Terrain
+  - Building
+  - Buildable
   - Team Blue
   - Team Orange
   - 

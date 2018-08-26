@@ -2,13 +2,12 @@
 # Day 2
 ---------------------------------------------------------------------------------------------
 # Building
-- Kolla varför placementblocker inte funkar
-- Fixa med materialen
-- Går att stacka buildings utan att placera dem
-
 - Fixa shortcut på List
+- Shortcuten öppnar upp UIt också. Måste kolla så UIt är aktivt för att shortcut ska funka.
+
 
 - When a spell/building cannot be cast/afforded it should be red
+
 - Fixa så resten av UI:t funkar
 
 
