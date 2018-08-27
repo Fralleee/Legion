@@ -1,24 +1,11 @@
 ---------------------------------------------------------------------------------------------
 # Day 2
 ---------------------------------------------------------------------------------------------
-# Building
-
-# Current menu
-- Work the same way as it currently does
-  No categories
-	Animate in unit types
-	Better layout
-
-- Add HotKeys as visible
-- When a spell/building cannot be cast/afforded it should be red
-- Fixa så resten av UI:t funkar
-
-- Lägg in kod som används in till projekt
-- Ta bort resten
-- Ta bort gammal skum kod 
-
-
-
+# Building Menu
+- Add cost to building
+- When a building cannot be afforded it should be red
+- Remove old code / old builder & old menu
+- Extract all code/assets used from Menu library
 ---------------------------------------------------------------------------------------------
 
 
