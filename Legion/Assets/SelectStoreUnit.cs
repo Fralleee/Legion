@@ -5,7 +5,6 @@ using UnityEngine;
 public class SelectStoreUnit : MonoBehaviour
 {
   DemoAnimManager demoAnimManager;
-  PanelHandler panelHandler;
   Builder builder;
   public UnitBuilding unit;
   public KeyCode keyCode;
@@ -13,16 +12,12 @@ public class SelectStoreUnit : MonoBehaviour
   void Start()
   {
     demoAnimManager = GetComponentInParent<DemoAnimManager>();
-    panelHandler = GetComponentInParent<PanelHandler>();
     builder = GetComponentInParent<Builder>();
   }
 
   void Update()
   {
-    if (Input.GetKeyDown(keyCode) && panelHandler.currentPanelIndex == 0)
-    {
-      OnClick();
-    }
+    if (demoAnimManager.isOn && Input.GetKeyDown(keyCode)) OnClick();
   }
 
   public void OnClick()

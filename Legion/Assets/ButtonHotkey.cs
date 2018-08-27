@@ -8,14 +8,18 @@ public class ButtonHotkeyEvent : UnityEvent<int> { }
 
 public class ButtonHotkey : MonoBehaviour
 {
-  [SerializeField] KeyCode hotkey;
-  [SerializeField] DemoAnimManager demoAnimManager;
-  [SerializeField] PanelHandler panelHandler;
+  [SerializeField] KeyCode hotkey;  
   [SerializeField] ButtonHotkeyEvent OnClick;
+  DemoAnimManager demoAnimManager;
+
+  void Start()
+  {
+    demoAnimManager = GetComponentInParent<DemoAnimManager>();
+  }
 
   void LateUpdate()
   {
-    if (demoAnimManager.isOn && panelHandler.currentPanelIndex == -1 && Input.GetKeyDown(hotkey))
+    if (demoAnimManager.isOn && Input.GetKeyDown(hotkey))
     {
       OnClick.Invoke(0);
     }

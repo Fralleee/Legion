@@ -9,15 +9,6 @@
 	Animate in unit types
 	Better layout
 
-# Future shop
-- Add category to Categories => "All"
-- Remove/refactor panelHandler
-- Add one panel named ShopResult and attach the script to it
-- Create different variations of ShopItem with two different buttonPrefabs
-- Add filterText
-- Add infoText
-- Couple everything
-
 - Add HotKeys as visible
 - When a spell/building cannot be cast/afforded it should be red
 - Fixa så resten av UI:t funkar

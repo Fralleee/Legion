@@ -7,7 +7,7 @@ public class DemoAnimManager : MonoBehaviour
 
   [Header("ANIMATORS")]
   public Animator panelAnimator;
-  public PanelHandler panelHandler;
+  //public PanelHandler panelHandler;
 
   [Header("ANIMATION STRINGS")]
   public string fadeInAnim;
@@ -29,7 +29,7 @@ public class DemoAnimManager : MonoBehaviour
     {
       panelAnimator.Play(fadeOutAnim);
       isOn = false;
-      panelHandler.ResetPanels();
+      //panelHandler.ResetPanels();
     }
     else if (isOn == false)
     {
