@@ -2,13 +2,25 @@
 # Day 2
 ---------------------------------------------------------------------------------------------
 # Building
-- Fixa så hotkeys syns i menyn
 
+# Current menu
+- Work the same way as it currently does
+  No categories
+	Animate in unit types
+	Better layout
 
+# Future shop
+- Add category to Categories => "All"
+- Remove/refactor panelHandler
+- Add one panel named ShopResult and attach the script to it
+- Create different variations of ShopItem with two different buttonPrefabs
+- Add filterText
+- Add infoText
+- Couple everything
+
+- Add HotKeys as visible
 - When a spell/building cannot be cast/afforded it should be red
-
 - Fixa så resten av UI:t funkar
-
 
 - Lägg in kod som används in till projekt
 - Ta bort resten
