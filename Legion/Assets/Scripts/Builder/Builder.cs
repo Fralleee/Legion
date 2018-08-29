@@ -2,11 +2,13 @@
 
 public class Builder : MonoBehaviour
 {
+  [SerializeField] Projector gridProjector;
   Building buildingInstance;
   UnitBuilding recentBuilding;
   public void ActivateBuilding(UnitBuilding building)
   {
-    if(buildingInstance) Destroy(buildingInstance.gameObject);
+    gridProjector.enabled = true;
+    if (buildingInstance) Destroy(buildingInstance.gameObject);
     recentBuilding = building;
     GameObject buildingGo = Instantiate(building.building);
     buildingInstance = buildingGo.GetComponent<Building>();
@@ -32,6 +34,7 @@ public class Builder : MonoBehaviour
   {    
     if(buildingInstance.SetBuilding())
     {
+      gridProjector.enabled = false;
       buildingInstance = null;
       if (shouldReset) ActivateBuilding(recentBuilding);
     }

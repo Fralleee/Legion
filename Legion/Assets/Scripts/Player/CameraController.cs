@@ -18,12 +18,10 @@ public class CameraController : MonoBehaviour
   const float Y_ANGLE_MAX = 60f;
   float currentX;
   float currentY;
-
   int layerMask;
-
   BlockerController blockerController;
-
   bool isBlocked { get { return blockerController.ContainsBlocker(camera: true); } }
+  bool isActive = true;
 
   void Start()
   {
@@ -44,7 +42,6 @@ public class CameraController : MonoBehaviour
   void Update()
   {
     GatherInput();
-
     Vector3 newPosition;
     Vector3 dir = new Vector3(0, 0, -distance);
     Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);

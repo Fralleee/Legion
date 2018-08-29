@@ -11,18 +11,16 @@ public class CharacterMotor : MonoBehaviour
   public float jumpPower = 50f;
   [HideInInspector] public CharacterController controller;
 
-  Animator animator;
   Vector3 movement;
   float vSpeed = 0;
 
   BlockerController blockerController;
 
-  bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
+  public bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
 
   void Start()
   {
     controller = GetComponent<CharacterController>();
-    animator = GetComponentInChildren<Animator>();
     blockerController = GetComponent<BlockerController>();
   }
 
@@ -37,8 +35,6 @@ public class CharacterMotor : MonoBehaviour
         movement.y = vSpeed;
         controller.Move(movement * Time.deltaTime);
       }
-      animator.SetFloat("Vertical", 0, .1f, Time.deltaTime);
-      animator.SetFloat("Horizontal", 0, .1f, Time.deltaTime);
       return;
     }
     float movementVertical = Input.GetAxisRaw("Vertical");
@@ -58,14 +54,6 @@ public class CharacterMotor : MonoBehaviour
     if (useGravity) vSpeed += Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
     movement.y = vSpeed;
     controller.Move(movement * Time.deltaTime);
-    UpdateAnimator();
-  }
-
-  void UpdateAnimator()
-  {
-    animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"), .1f, Time.deltaTime);
-    animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"), .1f, Time.deltaTime);
-    animator.SetBool("Grounded", controller.isGrounded);
   }
 
 }

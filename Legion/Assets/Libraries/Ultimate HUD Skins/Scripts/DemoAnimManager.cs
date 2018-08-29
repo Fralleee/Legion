@@ -7,7 +7,6 @@ public class DemoAnimManager : MonoBehaviour
 
   [Header("ANIMATORS")]
   public Animator panelAnimator;
-  //public PanelHandler panelHandler;
 
   [Header("ANIMATION STRINGS")]
   public string fadeInAnim;
@@ -17,6 +16,7 @@ public class DemoAnimManager : MonoBehaviour
   public string shortcutKey;
 
   public bool isOn;
+  [SerializeField] BoolVariable isMenuOpen;
 
   void Update()
   {
@@ -28,12 +28,13 @@ public class DemoAnimManager : MonoBehaviour
     if (isOn == true)
     {
       panelAnimator.Play(fadeOutAnim);
+      isMenuOpen.currentValue = false;
       isOn = false;
-      //panelHandler.ResetPanels();
     }
     else if (isOn == false)
     {
       panelAnimator.Play(fadeInAnim);
+      isMenuOpen.currentValue = true;
       isOn = true;
     }
   }
