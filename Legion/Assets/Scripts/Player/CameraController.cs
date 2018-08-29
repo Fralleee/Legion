@@ -41,6 +41,7 @@ public class CameraController : MonoBehaviour
 
   void Update()
   {
+    if (Input.GetKeyDown(KeyCode.Escape)) Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
     GatherInput();
     Vector3 newPosition;
     Vector3 dir = new Vector3(0, 0, -distance);

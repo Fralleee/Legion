@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348d8e84f39e54648bae4956c6c1bf77, type: 3}
   m_Name: RedDemon
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
   sprite: {fileID: 21300000, guid: adfdc64fdfeb07b4c8e17d36337af2f4, type: 3}
   goldCost: 10
   woodCost: 25

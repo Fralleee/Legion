@@ -1,13 +1,22 @@
 ---------------------------------------------------------------------------------------------
 # Day 3-4
 ---------------------------------------------------------------------------------------------
+# Small fixes
+- Dude runs to fast diagonally
+- Separate script for cursor lockstate
+  Reference it from menu
+  
 # GameManagement: Build/spawn/attack flow
-- GameManager to use PluggableFSM
-- Rename/remove(?) placeable
+- Create GameManager GO
+  Add GameManager script
+  Add StateController 
+
 - Build a test scene for this flow
+
 - Apply builders teamData to building
 - Unit should get team data from building that spawns it
 - Unit should work without getting teamdata (maybe become neutral?)
+
 - Complete the flow from build building => spawn unit => attack enemies
 
 ---------------------------------------------------------------------------------------------

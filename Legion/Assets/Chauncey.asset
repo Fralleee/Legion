@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348d8e84f39e54648bae4956c6c1bf77, type: 3}
   m_Name: Chauncey
   m_EditorClassIdentifier: 
-  type: 1
+  type: 5
   sprite: {fileID: 21300000, guid: ea9597d4783d0d740ae048ddc0ec39de, type: 3}
   goldCost: 255
   woodCost: 0

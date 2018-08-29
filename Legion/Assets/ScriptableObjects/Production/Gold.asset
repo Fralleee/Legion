@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 1087651006, guid: 2bd314b4a831941498f517e802e08e4c, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
-  defaultValue: 25
-  currentValue: 25
+  defaultValue: 100
+  currentValue: 100
