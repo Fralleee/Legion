@@ -1,11 +1,6 @@
 ---------------------------------------------------------------------------------------------
 # Day 3-4
 ---------------------------------------------------------------------------------------------
-# Small fixes
-- Dude runs to fast diagonally
-- Separate script for cursor lockstate
-  Reference it from menu
-  
 # GameManagement: Build/spawn/attack flow
 - Create GameManager GO
   Add GameManager script

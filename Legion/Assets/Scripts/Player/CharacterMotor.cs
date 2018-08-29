@@ -44,7 +44,7 @@ public class CharacterMotor : MonoBehaviour
     movement = new Vector3(movementHorizontal, 0, movementVertical) * movementMultiplier;
     movement = transform.TransformDirection(movement);
     movement *= speed;
-
+    movement = Vector3.ClampMagnitude(movement, speed);
     if (controller.isGrounded)
     {
       vSpeed = -1;
