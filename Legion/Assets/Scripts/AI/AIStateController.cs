@@ -26,7 +26,7 @@ public class AIStateController : MonoBehaviour, IStateController
   void Start()
   {
     GameManager.DestroyUnits += Despawn;
-    motor.SetStoppingDistance(caster.MainAbility.abilityRange);
+    motor.SetStoppingDistance(caster.MainAbility.range);
   }
   void Update()
   {

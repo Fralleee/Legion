@@ -14,6 +14,6 @@ public class StopAction : Action
   void Stop(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    ai.motor.Stop(ai.targeter.CurrentTarget);
+    ai.motor.Stop(ai.targeter.currentTarget);
   }
 }

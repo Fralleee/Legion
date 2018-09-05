@@ -11,7 +11,7 @@ public static class TargetScanner
   public static GameObject FindTarget(Transform caster, float range, int layerMask, bool requireLineOfSight = false, TargetPriority targetPriority = TargetPriority.NEAREST)
   {
     Collider[] validTargets = Physics.OverlapSphere(caster.position, range, layerMask)
-        .Where(x => !requireLineOfSight || LineOfSightLayer(caster, x.transform, range, null))
+        .Where(x => !requireLineOfSight || LineOfSightLayer(caster, x.transform, range))
         .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - caster.position))
         .ToArray();
     if (validTargets.Length > 0)
@@ -34,19 +34,15 @@ public static class TargetScanner
     if (validTargets.Length > 0)
     {
       validTargets = validTargets
-        .Where(x => LineOfSightLayer(targeter.transform, x.transform, targeter.LookRange, null))
+        .Where(x => LineOfSightLayer(targeter.transform, x.transform, targeter.LookRange))
         .OrderBy(x => Vector3.SqrMagnitude(x.transform.position - targeter.transform.position))
         .ToArray();
       if (validTargets.Length > 0)
       {
-        targeter.SetMainTarget(validTargets[0].gameObject);
-        targeter.SetCurrentTarget(validTargets[0].gameObject);
+        targeter.mainTarget = new Target(validTargets[0].gameObject);
         return true;
       }
     }
-
-    targeter.SetMainTarget(null);
-    targeter.SetCurrentTarget(targeter.Objective);
     return false;
   }
 
@@ -62,7 +58,7 @@ public static class TargetScanner
     }
     return false;
   }
-  public static bool LineOfSightLayer(Transform caster, Transform target, float range, AIAbility ability)
+  public static bool LineOfSightLayer(Transform caster, Transform target, float range)
   {
     if (target && caster)
     {
@@ -124,27 +120,27 @@ public static class TargetScanner
   }
 
   // Ability specific
-  public static GameObject FindTargetForAbility(AIAbility ability, AITargeter targeter)
-  {
-    Vector3 currentPosition = targeter.transform.position;
-    if (ability.targetType == TargetType.SELF) return targeter.gameObject;
-    if ((Time.time < ability.lastTargetScan + ability.targetScanRate)) return null;
-    ability.lastTargetScan = Time.time;
-    int searchLayer = ability.targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
-    return FindTarget(targeter.transform, ability.abilityRange, searchLayer, ability.requireLineOfSight, ability.targetPriority);
-  }
-  public static GameObject ValidateMainTarget(AIAbility ability, AITargeter targeter)
-  {
-    if (targeter.MainTarget)
-    {
-      if (ability.requireLineOfSight && Time.time > ability.lastLoSCheck)
-      {
-        ability.lastLoSCheck = Time.time + ability.losScanRate;
-        bool inLineOfSight = LineOfSightLayer(targeter.transform, targeter.MainTarget, ability.abilityRange, ability);
-        if (inLineOfSight) return targeter.MainTarget;
-      }
-      else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.abilityRange) return targeter.MainTarget;
-    }
-    return null;
-  }
+  //public static GameObject FindTargetForAbility(Ability ability, AITargeter targeter)
+  //{
+  //  Vector3 currentPosition = targeter.transform.position;
+  //  if (ability.targetType == TargetType.SELF) return targeter.gameObject;
+  //  if ((Time.time < ability.lastTargetScan + ability.targetScanRate)) return null;
+  //  ability.lastTargetScan = Time.time;
+  //  int searchLayer = ability.targetType == TargetType.FRIENDLY ? 1 << targeter.gameObject.layer : 1 << targeter.EnemyLayer;
+  //  return FindTarget(targeter.transform, ability.abilityRange, searchLayer, ability.requireLineOfSight, ability.targetPriority);
+  //}
+  //public static GameObject ValidateMainTarget(Ability ability, AITargeter targeter)
+  //{
+  //  if (targeter.MainTarget)
+  //  {
+  //    if (ability.requireLineOfSight && Time.time > ability.lastLoSCheck)
+  //    {
+  //      ability.lastLoSCheck = Time.time + ability.losScanRate;
+  //      bool inLineOfSight = LineOfSightLayer(targeter.transform, targeter.MainTarget, ability.abilityRange, ability);
+  //      if (inLineOfSight) return targeter.MainTarget;
+  //    }
+  //    else if (Vector3.Distance(targeter.MainTarget.transform.position, targeter.transform.position) < ability.abilityRange) return targeter.MainTarget;
+  //  }
+  //  return null;
+  //}
 }

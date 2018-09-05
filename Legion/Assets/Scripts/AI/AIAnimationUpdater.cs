@@ -16,6 +16,6 @@ public class AIAnimationUpdater : MonoBehaviour
 
   void Update()
   {
-    animator.SetFloat("Vertical", navMeshAgent.velocity.magnitude, .1f, Time.deltaTime);
+    if (navMeshAgent) animator.SetFloat("Vertical", navMeshAgent.velocity.magnitude, .1f, Time.deltaTime);
   }
 }

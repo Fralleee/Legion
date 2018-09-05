@@ -15,11 +15,11 @@ public class AbilityHostileAction : Action
     AICaster caster = ai.caster;
     if (!caster.isBlocked)
     {
-      foreach (AIAbility ability in caster.SecondaryAbilities.FindAll(x => x.targetType == TargetType.HOSTILE && x.isReady))
+      foreach (Ability ability in caster.abilities.FindAll(x => x.targetTeam == AbilityTargetTeam.Hostile && x.isReady))
       {
         if (caster.TryCast(ability)) return;
       }
-      if (caster.MainAbility.isReady) caster.TryCast();
+      if (caster.MainAbility.isReady) caster.TryCast(caster.MainAbility);
     }
   }
 }

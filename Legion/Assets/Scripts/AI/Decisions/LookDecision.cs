@@ -16,12 +16,13 @@ public class LookDecision : Decision
   bool Look(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    AITargeter targeter = ai.targeter;
-    bool mainTargetAlive = targeter.MainTarget && targeter.MainTarget.gameObject && targeter.MainTarget.gameObject.activeSelf;
+    
+    bool mainTargetAlive = ai.targeter.mainTarget && ai.targeter.mainTarget.gameObject && ai.targeter.mainTarget.gameObject.activeSelf;
     if (mainTargetAlive && ai.caster.MainAbility.lastAction + 4f > Time.time) return true;
-
-    bool findHostilesResult = targeter.FindHostiles();
+    
+    bool findHostilesResult = ai.targeter.FindTarget(ai.caster.MainAbility);
     if (findHostilesResult) ai.caster.MainAbility.lastAction = Time.time;
+    Debug.Log(findHostilesResult);
     return findHostilesResult;
   }
 

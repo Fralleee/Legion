@@ -14,6 +14,6 @@ public class TravelAction : Action
   void Travel(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    ai.motor.Move(ai.targeter.CurrentTarget);
+    ai.motor.Move(ai.targeter.currentTarget);
   }
 }

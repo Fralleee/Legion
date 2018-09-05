@@ -28,7 +28,7 @@ public class Building : MonoBehaviour
   {
     unitInstance = Instantiate(unit, unitPlacement.position, Quaternion.identity, transform);
     unitInstance.AddComponent<LockedPosition>();
-    unitInstance.GetComponent<AITargeter>().SetupTeam(teamSettings);
+    //unitInstance.GetComponent<AITargeter>().SetupTeam(teamSettings);
   }
 
   public void SetUnit(GameObject newUnit) { unit = newUnit; }

@@ -15,7 +15,7 @@ public class TargetAlive : Decision
   bool AliveCheck(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    GameObject target = ai.targeter.CurrentTarget;
+    GameObject target = ai.targeter.currentTarget;
     bool targetIsAlive = target && target.gameObject && target.gameObject.activeSelf;
     return targetIsAlive;
   }
