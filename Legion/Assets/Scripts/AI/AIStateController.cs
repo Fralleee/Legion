@@ -10,8 +10,6 @@ public class AIStateController : MonoBehaviour, IStateController
   [HideInInspector] public float stateTimeElapsed;
   public State currentState;
   public State remainState;
-
-  public TeamData teamData;
   [HideInInspector] public AITargeter targeter;
   [HideInInspector] public AIMotor motor;
   [HideInInspector] public AICaster caster;
@@ -25,15 +23,19 @@ public class AIStateController : MonoBehaviour, IStateController
     caster = GetComponent<AICaster>();
     blockerController = GetComponent<BlockerController>();
   }
-
   void Start()
   {
+    GameManager.DestroyUnits += Despawn;
     motor.SetStoppingDistance(caster.MainAbility.abilityRange);
   }
-
   void Update()
   {
     currentState.UpdateState(this);
+  }
+  void Despawn()
+  {
+    GameManager.DestroyUnits -= Despawn;
+    Destroy(gameObject);
   }
 
   void OnDrawGizmos()
@@ -44,7 +46,6 @@ public class AIStateController : MonoBehaviour, IStateController
       Gizmos.DrawWireSphere(transform.position, targeter ? targeter.LookRange : 15f);
     }
   }
-
   public void TransitionToState(State nextState)
   {
     if (nextState != remainState)
@@ -53,13 +54,11 @@ public class AIStateController : MonoBehaviour, IStateController
       OnExitState();
     }
   }
-
   public bool CheckIfCountDownElapsed(float duration)
   {
     stateTimeElapsed += Time.deltaTime;
     return (stateTimeElapsed >= duration);
   }
-
   void OnExitState()
   {
     stateTimeElapsed = 0;

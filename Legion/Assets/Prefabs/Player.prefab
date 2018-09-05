@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 114910637737284626}
   - component: {fileID: 114068487664905646}
   - component: {fileID: 114821620220820588}
+  - component: {fileID: 114566918128365602}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -3036,7 +3037,6 @@ MonoBehaviour:
   fadeInAnim: LO Fade-in
   fadeOutAnim: LO Fade-out
   shortcutKey: b
-  isOn: 0
   isMenuOpen: {fileID: 11400000, guid: 1532ddea190f2a84fa8c5962df4a3f0e, type: 2}
 --- !u!114 &114368790110008470
 MonoBehaviour:
@@ -3213,6 +3213,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114566918128365602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109992263044688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2c025bc315119478780de1d5b950dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMenuOpen: {fileID: 11400000, guid: 1532ddea190f2a84fa8c5962df4a3f0e, type: 2}
 --- !u!114 &114590588719751040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3415,7 +3427,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: {fileID: 11400000, guid: 1532ddea190f2a84fa8c5962df4a3f0e, type: 2}
   behaviours:
-  - {fileID: 114368790110008470}
   - {fileID: 114135888183596068}
   - {fileID: 114910637737284626}
 --- !u!114 &114843914178808522
@@ -3628,6 +3639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cc3c39d6d27b44ca00d3edd3e4287f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamSettings: {fileID: 11400000, guid: 47515aeeb8d270e4caa7fb81ab808c0c, type: 2}
   gridProjector: {fileID: 119298016939330508}
 --- !u!114 &114917546195916674
 MonoBehaviour:

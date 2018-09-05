@@ -15,8 +15,7 @@ public class DemoAnimManager : MonoBehaviour
   [Header("SETTINGS")]
   public string shortcutKey;
 
-  public bool isOn;
-  [SerializeField] BoolVariable isMenuOpen;
+  public BoolVariable isMenuOpen;
 
   void Update()
   {
@@ -25,17 +24,15 @@ public class DemoAnimManager : MonoBehaviour
 
   public void AnimatePanel()
   {
-    if (isOn == true)
+    if (isMenuOpen.currentValue)
     {
       panelAnimator.Play(fadeOutAnim);
       isMenuOpen.currentValue = false;
-      isOn = false;
     }
-    else if (isOn == false)
+    else
     {
       panelAnimator.Play(fadeInAnim);
       isMenuOpen.currentValue = true;
-      isOn = true;
     }
   }
 }

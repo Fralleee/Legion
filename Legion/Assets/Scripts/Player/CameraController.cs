@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
 
   [SerializeField] float distance = 10f;
   [SerializeField] float cameraSmoothTime = 1f;
+  [SerializeField] BoolVariable isMenuOpen;
 
   Vector3 velocity = Vector3.zero;
   const float Y_ANGLE_MIN = -25f;
@@ -32,7 +33,7 @@ public class CameraController : MonoBehaviour
 
   void GatherInput()
   {
-    if (isBlocked) return;
+    if (isBlocked || isMenuOpen.currentValue) return;
     distance -= Input.GetAxis("Mouse ScrollWheel") * 5;
     currentX += Input.GetAxis("Mouse X");
     currentY -= Input.GetAxis("Mouse Y");

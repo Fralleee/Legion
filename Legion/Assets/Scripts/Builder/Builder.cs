@@ -2,24 +2,41 @@
 
 public class Builder : MonoBehaviour
 {
+  [SerializeField] TeamSettings teamSettings;
   [SerializeField] Projector gridProjector;
   Building buildingInstance;
   UnitBuilding recentBuilding;
+  bool canBuild;
+
+  void Awake()
+  {
+    GameManager.EnableBuilding += EnableBuilding;
+    GameManager.DisableBuilding += DisableBuilding;
+  }
+
+  void EnableBuilding() { canBuild = true; }
+  void DisableBuilding()
+  {
+    canBuild = false;
+    Cancel();
+  }
+
   public void ActivateBuilding(UnitBuilding building)
   {
+    if (!canBuild) return;
     gridProjector.enabled = true;
     if (buildingInstance) Destroy(buildingInstance.gameObject);
     recentBuilding = building;
     GameObject buildingGo = Instantiate(building.building);
     buildingInstance = buildingGo.GetComponent<Building>();
     buildingInstance.SetUnit(building.unit);
-    buildingInstance.Activate();
+    buildingInstance.Activate(teamSettings);
     buildingInstance.GetComponent<Building>().MoveBuilding(transform);
   }
 
   void Update()
   {
-    if (buildingInstance)
+    if (buildingInstance && canBuild)
     {
       if (Input.GetMouseButtonDown(0))
       {
@@ -31,8 +48,8 @@ public class Builder : MonoBehaviour
   }
 
   public void Build(bool shouldReset = false)
-  {    
-    if(buildingInstance.SetBuilding())
+  {
+    if (buildingInstance.SetBuilding())
     {
       gridProjector.enabled = false;
       buildingInstance = null;
@@ -42,6 +59,7 @@ public class Builder : MonoBehaviour
 
   public void Cancel()
   {
-    Destroy(buildingInstance.gameObject);
+    gridProjector.enabled = false;
+    if (buildingInstance) Destroy(buildingInstance.gameObject);
   }
 }

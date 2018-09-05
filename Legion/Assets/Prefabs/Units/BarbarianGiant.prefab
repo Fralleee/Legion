@@ -288,7 +288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1394535901227362
 GameObject:
   m_ObjectHideFlags: 1
@@ -1232,7 +1232,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1430530653360000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.26, y: 0.5, z: -14.17187}
+  m_LocalPosition: {x: -0.22, y: -7.1033225e-18, z: 1.5995259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4029004624605760}
@@ -1749,7 +1749,6 @@ MonoBehaviour:
   stateTimeElapsed: 0
   currentState: {fileID: 11400000, guid: 00ae06c4e0edefb4ea792ae88646ffc3, type: 2}
   remainState: {fileID: 11400000, guid: 18c7362a5abd1d5449366f7409a8cd4a, type: 2}
-  teamData: {fileID: 11400000, guid: c893aac1df2c45c47ad6286a74023e45, type: 2}
   targeter: {fileID: 0}
   motor: {fileID: 0}
   caster: {fileID: 0}
@@ -1801,6 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: f6a1ad9987825404fb69de9dc59805e2, type: 2}
+  healthBar: {fileID: 1392760839349066}
   Armor: 0
   Health: 0
   MaxHealth: 0

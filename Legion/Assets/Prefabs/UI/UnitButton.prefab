@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12713eb066b2cf447a670b1a8e17067b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMenuOpen: {fileID: 11400000, guid: 1532ddea190f2a84fa8c5962df4a3f0e, type: 2}
   unit: {fileID: 0}
   keyCode: 0
 --- !u!114 &114208680819097522

@@ -36,8 +36,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1015484169646650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.00021743307, y: -0.99972105, z: 0.021303939, w: 0.010196337}
+  m_LocalPosition: {x: -0.057899, y: 1.5, z: 5.3520737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,8 +51,8 @@ Camera:
   m_GameObject: {fileID: 1015484169646650}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0.46170264, b: 0.8584906, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -102,7 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
-  cameraSmoothTime: 0.25
+  cameraSmoothTime: 0.1
+  isMenuOpen: {fileID: 11400000, guid: 1532ddea190f2a84fa8c5962df4a3f0e, type: 2}
 --- !u!114 &114644215243137208
 MonoBehaviour:
   m_ObjectHideFlags: 1

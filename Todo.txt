@@ -1,27 +1,52 @@
 ---------------------------------------------------------------------------------------------
-# Day 3-4
+# Day 1
 ---------------------------------------------------------------------------------------------
-# GameManagement: Build/spawn/attack flow
-- Create GameManager GO
-  Add GameManager script
-  Add StateController 
+# Data driven Ability System
 
-- Build a test scene for this flow
 
-- Apply builders teamData to building
-- Unit should get team data from building that spawns it
-- Unit should work without getting teamdata (maybe become neutral?)
+##  Create the following abilities. They all should work on both AI and player
 
-- Complete the flow from build building => spawn unit => attack enemies
++ Target Ability 		=> Active, Target, Hostile
++ Heal 					=> Active, Target, Friendly
++ Extra movement speed 	=> Passive, Target, Self
++ Bolt 					=> Active, Direction, Hostile
 
-- Only draw healthbars when unit gets damaged
+- Death ray 			=> Channel, Direction, Hostile
+- AOE 					=> Active, Location, Hostile
+- Healing Aura 			=> Toggle, Location, Friendly
+
+- Life Leech 			=> Channel, Target, Hostile
+
+## 
+
+
+- AbilityRequirement as ScriptableObject
+
+- Find equal terms and generalize
+
+- Create targetfinders and such for both AI and Player
+  Try to share as much logic as possible
+  
+- Projector spell indicator (add this to later todo)
+
 ---------------------------------------------------------------------------------------------
 
 
 
+---------------------------------------------------------------------------------------------
+# Day 2
+---------------------------------------------------------------------------------------------
+# AI to use DDAS
+- Make it work
+  If a spell is on target area, use the current targets position to cast it
+  If a spell is projective, use the direction toward current target to cast it
 
 ---------------------------------------------------------------------------------------------
-# Day 5
+
+
+
+---------------------------------------------------------------------------------------------
+# Day 3
 ---------------------------------------------------------------------------------------------
 # Animations
 - Organize animations (wizard, units, shared)
@@ -33,50 +58,41 @@
 # Death ragdolls
 ---------------------------------------------------------------------------------------------
 
+
+
 ---------------------------------------------------------------------------------------------
-# Day 6-7
+# Day 4
 ---------------------------------------------------------------------------------------------
-# Caster (player)
-- Create caster behaviour, kind of same as Builder
-- Make castable scriptableobject
-  - Cooldown
-  - Cost
-  - Spell prefab (ISpell)  
-- Launch as mecanim state machine
-- Try reconstructing Launch as an ability instead
-  Probably need an enum that says AbilityType [Default, Attack, Ultimate]
-- Maybe refactor launch to use PluggableFSM
+# Ultimates
+- Refactor Launch to be used as Mecanim or FSM 
+- When using an ultimate, make the sky turn dark
+- Sometimes it bugs when landing on uneven terrain
+---------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------
+# Day 5
+---------------------------------------------------------------------------------------------
+# Ultimates
+- Build siege as Mecanim or FSM
+  A lot of particle effects! 
 ---------------------------------------------------------------------------------------------
 
 	
----------------------------------------------------------------------------------------------
-# Day 8
----------------------------------------------------------------------------------------------
-# Launch & Siege
-- Implement Siege-mode
-- When using an ultimate, make the sky turn dark
-  A lot of particle effects! 	
-- Figure out why you get blocked sometimes
-- Sometimes it bugs when landing on uneven terrain
 	
+---------------------------------------------------------------------------------------------
+# Day 6
+---------------------------------------------------------------------------------------------
 # Armor/damage types
 - Use scriptableobjects, ryan hipple => elements talk (unite 2017)
 ---------------------------------------------------------------------------------------------
-
-	
-# Targeting
-- Every time we set a unit as a target (MainTarget) maybe we should listens to its DeathEvent
-	
 	
 	
 	
 ################################################
 	Backlog
 ################################################
-	
-	
-- Projector spell indicator (add this to later todo)
-- Better health bar (animated, add this to later todo)
 - Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
 
 # Improve character
@@ -85,16 +101,17 @@
 # En liten stuga men stor som en mansion innuti, kör portaltricket
 
 # DamageController
-- Implement damage directions
-  Animate accordingly
+- Implement damage directions - Animate accordingly
+
+# Sounds
+- Damage
+- Effect
+- Hit
   
+
 # Controller
 - Turn when above certain degree (45deg-)
   Otherwise turn characters upper body towards direction
-
-# UI 
-- Split up canvases
-- Optimizations https://unity3d.com/how-to/unity-ui-optimization-tips
 	
 # InventorySystem
 - Kolla unitegrejerna

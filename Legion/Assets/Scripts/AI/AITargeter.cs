@@ -32,12 +32,17 @@ public class AITargeter : MonoBehaviour
     if (!go) return;
     MainTarget = new Target(go);
   }
-  public void SetObjective(GameObject go)
+  public void SetupTeam(TeamSettings teamSettings)
   {
-    if (!go) return;
-    CurrentTarget = new Target(go);
-    Objective = new Target(go);
+    if (!teamSettings.MainObjective) Debug.LogWarning("No Objective in team settings");
+    CurrentTarget = new Target(teamSettings.MainObjective);
+    Objective = new Target(teamSettings.MainObjective);
+    gameObject.layer = teamSettings.teamLayer;
+    EnemyLayer = teamSettings.enemyLayer;
+    EnemyLayerMask = 1 << teamSettings.enemyLayer;
+    EnvironmentLayerMask = 1 << LayerMask.NameToLayer("Environment");
   }
+
   public void SetAggroRange(int range) { LookRange = Mathf.Max(range, MIN_AGGRO_RANGE); }
   public bool FindHostiles()
   {
