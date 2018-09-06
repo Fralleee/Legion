@@ -54,4 +54,19 @@ public abstract class Ability : ScriptableObject
   }
 
   public virtual void Cast(bool selfCast = false) { lastAction = Time.time + cooldown; }
+  public virtual bool Test(Transform target)
+  {
+    bool targetIsAlive = target && target.gameObject && target.gameObject.activeSelf;
+    if (!targetIsAlive) return false;
+
+    LayerMask targetMask = 1 << targetLayer;
+    LayerMask environmentMask = 1 << environmentLayer;
+    switch (requireLineOfSight)
+    {
+      case AbilityLineOfSight.Target: return TargetingHelpers.LineOfSightUnObstructed(owner.transform, target, range, targetMask, environmentMask);
+      case AbilityLineOfSight.Team: return TargetingHelpers.LineOfSightLayer(owner.transform, target, range, targetMask, environmentMask);
+      case AbilityLineOfSight.NotRequired: return Vector3.Distance(owner.transform.position, target.position) < range;
+      default: return false;
+    }
+  }
 }

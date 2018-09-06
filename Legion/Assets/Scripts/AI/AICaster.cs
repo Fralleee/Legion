@@ -48,8 +48,9 @@ public class AICaster : AbilityCaster
         yield break;
       }
     }
-    yield return Recovery(ability);
+    ability.ApplyEffects(targeter.currentTarget);
     GameObject instance = Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
+    yield return Recovery(ability);
   }
   public override IEnumerator PointCast(PointAbility ability)
   {
@@ -82,16 +83,14 @@ public class AICaster : AbilityCaster
     {
       castTime -= 0.5f;
       yield return new WaitForSeconds(Mathf.Min(castTime, 0.5f));
-
-      // Check for interrupts
-      // Should also be interruptable from outside (other character stunning caster or something)
-      Debug.Log("Need to test ability. LineOfSight, TargetAlive. E.t.c.");
-      //if (!ability.Test(RequirementType.Casting, targeter.currentTarget, false))
-      //{
-      //  blockerController.RemoveBlocker(ability.blocker);
-      //  animator.SetTrigger("InterruptCast");
-      //  yield return false;
-      //}
+      if (!ability.Test(targeter.currentTarget))
+      {
+        // Check for interrupts
+        // Should also be interruptable from outside (other character stunning caster or something)
+        blockerController.RemoveBlocker(ability.blocker);
+        animator.SetTrigger("InterruptCast");
+        yield return false;
+      }
     }
     yield return true;
   }

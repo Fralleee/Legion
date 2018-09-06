@@ -4,6 +4,7 @@ public class Target
 {
   const float INACTIVITY_TIME = 4f;
 
+  public DamageController damageController;
   public GameObject gameObject;
   public Transform transform;
   public Vector3 position;
@@ -26,6 +27,7 @@ public class Target
     Width = t.GetComponent<Collider>().bounds.size.x / 2;
     name = t.name;
     lastAttack = Time.time;
+    damageController = t.GetComponent<DamageController>();
   }
 
   public Target(GameObject go)
@@ -36,6 +38,7 @@ public class Target
     Width = go.GetComponent<Collider>().bounds.size.x / 2;
     name = go.name;
     lastAttack = Time.time;
+    damageController = go.GetComponent<DamageController>();
   }
 
 }

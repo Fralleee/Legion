@@ -6,6 +6,7 @@ using UnityEngine;
 public class TargetAbility : Ability
 {
   public GameObject prefab;
+
   public override void Cast(bool selfCast = false)
   {
     base.Cast(selfCast);
@@ -15,4 +16,20 @@ public class TargetAbility : Ability
     }
     else Debug.LogWarning("No owner on Ability: " + name);
   }
+
+  public void ApplyEffects(GameObject target)
+  {
+    if (!transferEffectsToPrefab)
+    {
+      foreach (AbilityEffect effect in effects)
+      {
+        effect.Affect(this, target);
+      }
+    }
+    else
+    {
+      Debug.Log("Transfer effects to prefab: Not implemented");
+    }
+  }
+
 }

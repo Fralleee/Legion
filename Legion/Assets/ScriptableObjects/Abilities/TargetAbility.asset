@@ -17,11 +17,13 @@ MonoBehaviour:
   cooldown: 2
   castTime: 1
   transferEffectsToPrefab: 0
+  requireLineOfSight: 1
+  priority: 2
   targetTeam: 0
   castType: 0
   targetType: 0
-  requirements: []
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
   animationTrigger: 2
   startEffect: {fileID: 0}
   onCastEffect: {fileID: 0}
