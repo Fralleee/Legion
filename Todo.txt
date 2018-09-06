@@ -3,21 +3,7 @@
 ---------------------------------------------------------------------------------------------
 # Targetfinder
 - MainAttack + SecondAttack should always use MainTarget
-  MainTarget rules must be followed (4 sec retarget prioritize other target)
-
-
-# AbilityRequirements
-- AbilityRequirements must be remade for this
-
-
-# Prioritizing targets
-- Integrate som solution for Prioritizing targets
-  PrioByHealth, PrioByDistance, PrioNewTarget e.t.c.
-
-	
-# Target Class
-- Look into this
-
+  As of now they will use normal Cast which finds targets again
 
 ---------------------------------------------------------------------------------------------
 

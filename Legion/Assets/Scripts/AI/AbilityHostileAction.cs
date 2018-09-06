@@ -25,7 +25,7 @@ public class AbilityHostileAction : Action
       }
       else if (caster.secondaryAttack && caster.secondaryAttack.isReady)
       {
-        caster.mainAttack.Cast(false);
+        caster.secondaryAttack.Cast(false);
       }
     }
   }
