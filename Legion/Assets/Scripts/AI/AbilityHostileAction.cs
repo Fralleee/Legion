@@ -19,7 +19,14 @@ public class AbilityHostileAction : Action
       {
         if (caster.TryCast(ability)) return;
       }
-      if (caster.MainAbility.isReady) caster.TryCast(caster.MainAbility);
+      if (caster.mainAttack.isReady)
+      {
+        caster.mainAttack.Cast(false);
+      }
+      else if (caster.secondaryAttack && caster.secondaryAttack.isReady)
+      {
+        caster.mainAttack.Cast(false);
+      }
     }
   }
 }

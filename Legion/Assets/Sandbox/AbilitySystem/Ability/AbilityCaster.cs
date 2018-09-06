@@ -8,6 +8,8 @@ public abstract class AbilityCaster : MonoBehaviour
   [HideInInspector] public int hostileLayer;
   [HideInInspector] public int friendlyLayer;
 
+  public Ability mainAttack;
+  public Ability secondaryAttack;
   public List<Ability> abilities;
   protected ITargeter targeter;
 
@@ -20,29 +22,10 @@ public abstract class AbilityCaster : MonoBehaviour
 
   protected virtual void Start()
   {
-    HandlePassiveAbilities();
-    abilities = HandleAbilities();
-  }
-
-  void HandlePassiveAbilities()
-  {
-    foreach (Ability ability in abilities.Where(x => x.castType == AbilityCastType.Passive))
-    {
-      Ability instance = Instantiate(ability);
-      instance.Setup(this);
-      TargetCast((TargetAbility)instance, true);
-    }
-  }
-  List<Ability> HandleAbilities()
-  {
-    List<Ability> copies = new List<Ability>();
-    foreach (Ability ability in abilities.Where(x => x.castType != AbilityCastType.Passive))
-    {
-      Ability instance = Instantiate(ability);
-      instance.Setup(this);
-      copies.Add(instance);
-    }
-    return copies;
+    mainAttack = mainAttack.Setup(this);
+    if (secondaryAttack) secondaryAttack = secondaryAttack.Setup(this);
+    abilities.Where(x => x.castType == AbilityCastType.Passive).ToList().ForEach(x => TargetCast((TargetAbility)x.Setup(this), true));
+    abilities.Where(x => x.castType != AbilityCastType.Passive).ToList().ForEach(x => x = x.Setup(this));
   }
 
   public abstract bool TryCast(Ability ability, bool selfCast = false);

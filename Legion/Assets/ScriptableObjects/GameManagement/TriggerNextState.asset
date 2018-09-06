@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1917643442, guid: 2bd314b4a831941498f517e802e08e4c, type: 3}
-  m_Name: New Trigger Variable
+  m_Name: TriggerNextState
   m_EditorClassIdentifier: 
   defaultValue: 0

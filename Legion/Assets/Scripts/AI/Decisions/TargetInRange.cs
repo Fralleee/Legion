@@ -17,21 +17,12 @@ public class TargetInRange : Decision
     AIStateController ai = (AIStateController)isc;
     AITargeter targeter = ai.targeter;
 
-    if (!targeter.mainTarget) return false;
-    if (!targeter.PerformLoSCheck) return targeter.lastLosResult;
+    if (!targeter.mainTarget)
+    {
+      return false;
+    }
 
-    targeter.lastLosCheck = Time.time + targeter.losCheckRate;
-    AICaster caster = ai.caster;
-
-    //if (caster.MainAbility.requireLineOfSight)
-    //{
-    //  targeter.lastLosResult = TargetScanner.LineOfSightLayer(caster.transform, targeter.MainTarget, caster.MainAbility.range);      
-    //}
-    //else
-    //{
-      targeter.lastLosResult = caster.MainAbility.range >= Vector3.Distance(targeter.mainTarget.transform.position, caster.transform.position) - targeter.mainTarget.Width;
-    //}
-
-    return targeter.lastLosResult;
+    bool lineOfSight = targeter.LineOfSightMainTarget(ai.caster.mainAttack);
+    return lineOfSight;
   }
 }

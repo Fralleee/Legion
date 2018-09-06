@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,8 +152,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114260990959242622, guid: ef43bae6a9ff43c42a2784606f8b1a1d, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef43bae6a9ff43c42a2784606f8b1a1d, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &778380863
@@ -327,11 +326,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114561078611824584, guid: 156928815164f574dad70c19cdcfd467,
-        type: 2}
-      propertyPath: SecondaryAbilities.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4010719569378012, guid: 156928815164f574dad70c19cdcfd467, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -364,37 +358,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4010719569378012, guid: 156928815164f574dad70c19cdcfd467, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 136964016640497016, guid: 156928815164f574dad70c19cdcfd467,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114561078611824584, guid: 156928815164f574dad70c19cdcfd467,
-        type: 2}
-      propertyPath: MainAbility
-      value: 
-      objectReference: {fileID: 11400000, guid: 7564be40d5e71bc46befaef287b291c4,
-        type: 2}
-    - target: {fileID: 4226088466079608, guid: 156928815164f574dad70c19cdcfd467, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 136964016640497016, guid: 156928815164f574dad70c19cdcfd467,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 195388217460295456, guid: 156928815164f574dad70c19cdcfd467,
-        type: 2}
-      propertyPath: m_BaseOffset
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114042732637659386, guid: 156928815164f574dad70c19cdcfd467, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156928815164f574dad70c19cdcfd467, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1166522964

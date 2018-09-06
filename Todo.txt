@@ -1,37 +1,28 @@
 ---------------------------------------------------------------------------------------------
 # Day 1
 ---------------------------------------------------------------------------------------------
-# Data driven Ability System
+# Targetfinder
+- MainAttack + SecondAttack should always use MainTarget
+  MainTarget rules must be followed (4 sec retarget prioritize other target)
 
 
-##  Create the following abilities. They all should work on both AI and player
-
-+ Target Ability 		=> Active, Target, Hostile
-+ Heal 					=> Active, Target, Friendly
-+ Extra movement speed 	=> Passive, Target, Self
-+ Bolt 					=> Active, Direction, Hostile
-
-- Death ray 			=> Channel, Direction, Hostile
-- AOE 					=> Active, Location, Hostile
-- Healing Aura 			=> Toggle, Location, Friendly
-
-- Life Leech 			=> Channel, Target, Hostile
-
-## 
+# AbilityRequirements
+- AbilityRequirements must be remade for this
 
 
-- AbilityRequirement as ScriptableObject
+# Prioritizing targets
+- Integrate som solution for Prioritizing targets
+  PrioByHealth, PrioByDistance, PrioNewTarget e.t.c.
 
-- Find equal terms and generalize
+	
+# Target Class
+- Look into this
 
-- Create targetfinders and such for both AI and Player
-  Try to share as much logic as possible
-  
-- Projector spell indicator (add this to later todo)
 
 ---------------------------------------------------------------------------------------------
 
 
+- Projector spell indicator (add this to later todo)
 
 ---------------------------------------------------------------------------------------------
 # Day 2

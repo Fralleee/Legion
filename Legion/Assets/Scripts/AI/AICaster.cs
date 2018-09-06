@@ -1,50 +1,41 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(AITargeter))]
-[RequireComponent(typeof(BlockerController))]
 public class AICaster : AbilityCaster
 {
-  public Ability MainAbility;
+  public Dictionary<int, float> nextCasts;
   public bool isBlocked { get { return blockerController ? blockerController.ContainsBlocker(abilities: true) : false; } }
+
   BlockerController blockerController;
   Animator animator;
   Transform effectsHolder;
-
-  Dictionary<int, float> nextCasts = new Dictionary<int, float>();
+  AIAnimationUpdater aIAnimationUpdater;
 
   protected override void Start()
   {
     base.Start();
+    nextCasts = new Dictionary<int, float>();
     blockerController = GetComponent<BlockerController>();
     animator = GetComponentInChildren<Animator>();
+    aIAnimationUpdater = GetComponent<AIAnimationUpdater>();
     effectsHolder = transform.Find("EffectsHolder");
-    Initialize();
-  }
 
-  void Initialize()
-  {
-    MainAbility = Instantiate(MainAbility);
-    MainAbility.Setup(this);
+    float maxRange = Mathf.Max(
+      mainAttack.range,
+      secondaryAttack ? secondaryAttack.range : 15f,
+      abilities.Count > 0 ? abilities.Max(x => x.range) : 15f
+    );
+    ((AITargeter)targeter).SetAggroRange((int)maxRange);
   }
-
 
   public override bool TryCast(Ability ability, bool selfCast = false)
   {
     bool foundTarget = targeter.FindTarget(ability);
-    if (foundTarget && targeter.currentTarget)
-    {
-      if (!(targeter.currentTarget.gameObject.layer == friendlyLayer && ability.targetTeam == AbilityTargetTeam.Ally)) return false;
-      if (!(targeter.currentTarget.gameObject.layer == hostileLayer && ability.targetTeam == AbilityTargetTeam.Hostile)) return false;
-      bool result = ability.Test(RequirementType.Casting, targeter.currentTarget, selfCast);
-      return result;
-    }
-    return false;
+    return foundTarget && targeter.currentTarget;
   }
-
-
   public override IEnumerator TargetCast(TargetAbility ability, bool selfCast = false)
   {
     CoroutineWithResponse cwr = new CoroutineWithResponse(this, Windup(ability));
@@ -81,7 +72,6 @@ public class AICaster : AbilityCaster
     }
     yield return Recovery(ability);
   }
-
   public IEnumerator Windup(Ability ability)
   {
     blockerController.AddBlocker(ability.blocker);
@@ -92,32 +82,28 @@ public class AICaster : AbilityCaster
     {
       castTime -= 0.5f;
       yield return new WaitForSeconds(Mathf.Min(castTime, 0.5f));
-      if (!ability.Test(RequirementType.Casting, targeter.currentTarget, false))
-      {
-        // Check for interrupts
-        // Should also be interruptable from outside (other character stunning caster or something)
-        blockerController.RemoveBlocker(ability.blocker);
-        animator.SetTrigger("InterruptCast");
-        yield return false;
-      }
+
+      // Check for interrupts
+      // Should also be interruptable from outside (other character stunning caster or something)
+      Debug.Log("Need to test ability. LineOfSight, TargetAlive. E.t.c.");
+      //if (!ability.Test(RequirementType.Casting, targeter.currentTarget, false))
+      //{
+      //  blockerController.RemoveBlocker(ability.blocker);
+      //  animator.SetTrigger("InterruptCast");
+      //  yield return false;
+      //}
     }
     yield return true;
   }
   public IEnumerator Recovery(Ability ability)
   {
-    float timeLeft = AnimationTimeLeft();
+    float timeLeft = aIAnimationUpdater.AnimationTimeLeft();
     ActivateEffect(ability.onCastEffect);
     yield return new WaitForSeconds(timeLeft);
     blockerController.RemoveBlocker(ability.blocker);
   }
 
-
-  float AnimationTimeLeft()
-  {
-    AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
-    AnimatorClipInfo[] myAnimatorClip = animator.GetCurrentAnimatorClipInfo(0);
-    return myAnimatorClip[0].clip.length * animationState.normalizedTime;
-  }
+  // Move this to ParticleManager with pooling e.t.c.
   void ActivateEffect(ParticleSystem effect, float time = -1f)
   {
     if (effect)

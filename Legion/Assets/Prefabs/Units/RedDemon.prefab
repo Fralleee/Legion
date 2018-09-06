@@ -328,7 +328,6 @@ GameObject:
   - component: {fileID: 136964016640497016}
   - component: {fileID: 195388217460295456}
   - component: {fileID: 208042116069114880}
-  - component: {fileID: 114042732637659386}
   - component: {fileID: 114144653384439598}
   - component: {fileID: 114914358451658006}
   - component: {fileID: 114561078611824584}
@@ -336,6 +335,7 @@ GameObject:
   - component: {fileID: 114251225183133240}
   - component: {fileID: 114902198267257922}
   - component: {fileID: 114221518102322354}
+  - component: {fileID: 114659425509110826}
   m_Layer: 14
   m_Name: RedDemon
   m_TagString: Untagged
@@ -897,8 +897,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1356817518166032}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.9182186, y: -1.3108972e-18, z: 0.2951878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4257734292700716}
@@ -1066,7 +1066,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096289457346078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4611622614139744}
@@ -1639,22 +1639,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114042732637659386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356817518166032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1037084631, guid: 341cd2833a0d5124986f55f48350811c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 11400000, guid: f6a1ad9987825404fb69de9dc59805e2, type: 2}
-  healthBar: {fileID: 1994386035416980}
-  Armor: 0
-  Health: 0
-  MaxHealth: 0
 --- !u!114 &114144653384439598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1666,7 +1650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3524e54cfcac3444998a699912e46535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  losCheckRate: 0.25
   EnvironmentLayerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -1797,10 +1780,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987bb1beb91bee6468865b48ccbf1b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainAbility: {fileID: 11400000, guid: 1f25ff0cec0536b409a5cc3b2150dffc, type: 2}
-  SecondaryAbilities:
-  - {fileID: 11400000, guid: ab3f96898ed176244b7839f4ba3e1c9a, type: 2}
-  - {fileID: 11400000, guid: e8d8dd28bbb254c488acc35fb15156ba, type: 2}
+  hostileLayer: 0
+  friendlyLayer: 0
+  mainAttack: {fileID: 11400000, guid: 7564be40d5e71bc46befaef287b291c4, type: 2}
+  secondaryAttack: {fileID: 0}
+  abilities: []
 --- !u!114 &114637925487182076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1828,6 +1812,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114659425509110826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356817518166032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50aed19fb030ffc48a68b96886a1f141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: {fileID: 11400000, guid: 13a98d89cf305ec468aff37db7d6d2ee, type: 2}
+  healthBar: {fileID: 1994386035416980}
+  Armor: 0
+  Health: 0
+  MaxHealth: 0
 --- !u!114 &114780571640835124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1898,7 +1898,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137022206099333594
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2013,7 +2013,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.08
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!208 &208042116069114880

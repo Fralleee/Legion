@@ -18,4 +18,11 @@ public class AIAnimationUpdater : MonoBehaviour
   {
     if (navMeshAgent) animator.SetFloat("Vertical", navMeshAgent.velocity.magnitude, .1f, Time.deltaTime);
   }
+
+  public float AnimationTimeLeft()
+  {
+    AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
+    AnimatorClipInfo[] myAnimatorClip = animator.GetCurrentAnimatorClipInfo(0);
+    return myAnimatorClip[0].clip.length * animationState.normalizedTime;
+  }
 }
