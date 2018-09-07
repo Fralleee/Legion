@@ -69,7 +69,10 @@ public class AICaster : AbilityCaster
     yield return cwr.coroutine;
     if ((bool)cwr.result)
     {
-      GameObject instance = Instantiate(ability.prefab, transform.position + transform.forward, transform.rotation);
+      GameObject instance = Instantiate(ability.prefab, transform.position + transform.up + transform.forward, transform.rotation);
+      instance.layer = LayerMask.NameToLayer("Orange Spawns");
+      instance.GetComponent<AbilityProjectile>().ability = ability;
+      if (ability.transferEffectsToPrefab) instance.GetComponent<AbilityProjectile>().effects = ability.effects;
     }
     yield return Recovery(ability);
   }
@@ -96,7 +99,7 @@ public class AICaster : AbilityCaster
   }
   public IEnumerator Recovery(Ability ability)
   {
-    float timeLeft = aIAnimationUpdater.AnimationTimeLeft();
+    float timeLeft = Mathf.Max(aIAnimationUpdater.AnimationTimeLeft(), 1f);
     ActivateEffect(ability.onCastEffect);
     yield return new WaitForSeconds(timeLeft);
     blockerController.RemoveBlocker(ability.blocker);

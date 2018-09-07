@@ -8,20 +8,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e286d3a0e03106048b686a251c79c73a, type: 3}
-  m_Name: TargetAbility
+  m_Script: {fileID: 11500000, guid: 9089237de53a2594a907d3c712dbfddf, type: 3}
+  m_Name: DirectionAbility
   m_EditorClassIdentifier: 
-  blocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
+  blocker: {fileID: 0}
   image: {fileID: 0}
   range: 15
-  cooldown: 5
+  cooldown: 2
   castTime: 1
-  transferEffectsToPrefab: 0
+  transferEffectsToPrefab: 1
   requireLineOfSight: 1
   priority: 2
   targetTeam: 0
   castType: 0
-  targetType: 0
+  targetType: 1
   effects:
   - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
   animationTrigger: 2
@@ -31,4 +31,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   environmentLayer: 0
   targetLayer: 0
-  prefab: {fileID: 1152508871241106, guid: e24a6ce31d040f54b997a5abada84193, type: 2}
+  prefab: {fileID: 1204636591658670, guid: b31acd8b1224e1840b794f3fef427364, type: 2}

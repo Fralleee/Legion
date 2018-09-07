@@ -1,10 +1,13 @@
 ---------------------------------------------------------------------------------------------
 # Day 1
 ---------------------------------------------------------------------------------------------
-# Targetfinder
-- MainAttack + SecondAttack should always use MainTarget
-  As of now they will use normal Cast which finds targets again
+# Direction ability
++ Create direction ability
 
+- Fix the animation - To quick pullback
+- Remove old code
+
+- Fix that Spawned Abilities get instantiated with correct layer and stuff
 ---------------------------------------------------------------------------------------------
 
 

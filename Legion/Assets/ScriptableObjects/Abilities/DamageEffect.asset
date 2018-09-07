@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: DamageEffect
   m_EditorClassIdentifier: 
   onHitEffect: {fileID: 0}
-  minAmount: 5
-  maxAmount: 55
+  minAmount: 4
+  maxAmount: 8
