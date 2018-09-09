@@ -9,7 +9,6 @@ public class PointAbility : Ability
   public override void Cast(bool selfCast = false)
   {
     Debug.LogWarning("Dont forget about transferEffectsToPrefab");
-    base.Cast(selfCast);
     if (owner) owner.PointCast(this);
     else Debug.LogWarning("No owner on Ability: " + name);
   }

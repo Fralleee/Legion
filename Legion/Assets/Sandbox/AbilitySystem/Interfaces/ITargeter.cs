@@ -8,4 +8,5 @@ public interface ITargeter
   Target mainTarget { get; set; }
   Target objective { get; set; }
   bool FindTarget(Ability ability);
+  int GetTargetLayer(AbilityTargetTeam targetTeam);
 }

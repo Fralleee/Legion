@@ -5,18 +5,13 @@ using UnityEngine;
 
 public abstract class AbilityCaster : MonoBehaviour
 {
-  [HideInInspector] public int hostileLayer;
-  [HideInInspector] public int friendlyLayer;
-
   public Ability mainAttack;
   public Ability secondaryAttack;
   public List<Ability> abilities;
-  protected ITargeter targeter;
+  public ITargeter targeter;
 
   protected virtual void Awake()
   {
-    hostileLayer = LayerMask.NameToLayer("Targets");
-    friendlyLayer = gameObject.layer;
     targeter = GetComponent<ITargeter>();
   }
 
@@ -24,8 +19,12 @@ public abstract class AbilityCaster : MonoBehaviour
   {
     mainAttack = mainAttack.Setup(this);
     if (secondaryAttack) secondaryAttack = secondaryAttack.Setup(this);
+    for (int i = 0; i < abilities.Count; i++)
+    {
+      abilities[i] = abilities[i].Setup(this);
+    }
     abilities.Where(x => x.castType == AbilityCastType.Passive).ToList().ForEach(x => TargetCast((TargetAbility)x.Setup(this), true));
-    abilities.Where(x => x.castType != AbilityCastType.Passive).ToList().ForEach(x => x = x.Setup(this));
+    abilities.Where(x => x.castType != AbilityCastType.Passive).Select(x => x.Setup(this));
   }
 
   public abstract bool TryCast(Ability ability, bool selfCast = false);

@@ -9,7 +9,6 @@ public class TargetAbility : Ability
 
   public override void Cast(bool selfCast = false)
   {
-    base.Cast(selfCast);
     if (owner)
     {
       owner.StartCoroutine(owner.TargetCast(this, selfCast));

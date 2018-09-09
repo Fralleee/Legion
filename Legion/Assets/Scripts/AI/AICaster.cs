@@ -47,10 +47,11 @@ public class AICaster : AbilityCaster
         Instantiate(ability.prefab, transform.position, Quaternion.identity, transform);
         yield break;
       }
+      ability.ApplyEffects(targeter.currentTarget);
+      ability.PerformedCast();
+      GameObject instance = Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
+      yield return Recovery(ability);
     }
-    ability.ApplyEffects(targeter.currentTarget);
-    GameObject instance = Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
-    yield return Recovery(ability);
   }
   public override IEnumerator PointCast(PointAbility ability)
   {
@@ -70,11 +71,12 @@ public class AICaster : AbilityCaster
     if ((bool)cwr.result)
     {
       GameObject instance = Instantiate(ability.prefab, transform.position + transform.up + transform.forward, transform.rotation);
-      instance.layer = LayerMask.NameToLayer("Orange Spawns");
+      instance.layer = gameObject.layer;
       instance.GetComponent<AbilityProjectile>().ability = ability;
       if (ability.transferEffectsToPrefab) instance.GetComponent<AbilityProjectile>().effects = ability.effects;
+      ability.PerformedCast();
+      yield return Recovery(ability);
     }
-    yield return Recovery(ability);
   }
   public IEnumerator Windup(Ability ability)
   {
@@ -93,6 +95,7 @@ public class AICaster : AbilityCaster
         blockerController.RemoveBlocker(ability.blocker);
         animator.SetTrigger("InterruptCast");
         yield return false;
+        yield break;
       }
     }
     yield return true;

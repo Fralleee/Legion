@@ -1780,11 +1780,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987bb1beb91bee6468865b48ccbf1b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hostileLayer: 0
-  friendlyLayer: 0
   mainAttack: {fileID: 11400000, guid: 7564be40d5e71bc46befaef287b291c4, type: 2}
-  secondaryAttack: {fileID: 11400000, guid: ca1b76753f1b0c54abbf7e340398fa2c, type: 2}
-  abilities: []
+  secondaryAttack: {fileID: 0}
+  abilities:
+  - {fileID: 11400000, guid: ca1b76753f1b0c54abbf7e340398fa2c, type: 2}
 --- !u!114 &114637925487182076
 MonoBehaviour:
   m_ObjectHideFlags: 1

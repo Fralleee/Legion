@@ -9,6 +9,7 @@ public enum AbilityPriority { LowHealth, HighHealth, Nearest, Furthest, UseCaste
 public enum AbilityTargetTeam { Hostile, Ally }
 public enum AbilityCastType { Active, Passive, Toggle, Channel }
 public enum AbilityTargetType { Target, Direction, Point }
+public enum AnimationTrigger { Swing, Slash, Cast }
 
 public abstract class Ability : ScriptableObject
 {
@@ -49,11 +50,12 @@ public abstract class Ability : ScriptableObject
     instance.owner = caster;
     instance.lastAction = 0;
     instance.environmentLayer = LayerMask.NameToLayer("Environment");
-    instance.targetLayer = targetTeam == AbilityTargetTeam.Hostile ? caster.hostileLayer : caster.friendlyLayer;
+    instance.targetLayer = caster.targeter.GetTargetLayer(targetTeam);
     return instance;
   }
 
-  public virtual void Cast(bool selfCast = false) { lastAction = Time.time + cooldown; }
+  public abstract void Cast(bool selfCast = false);
+  public virtual void PerformedCast() { lastAction = Time.time + cooldown; }
   public virtual bool Test(Transform target)
   {
     bool targetIsAlive = target && target.gameObject && target.gameObject.activeSelf;
@@ -63,9 +65,21 @@ public abstract class Ability : ScriptableObject
     LayerMask environmentMask = 1 << environmentLayer;
     switch (requireLineOfSight)
     {
-      case AbilityLineOfSight.Target: return TargetingHelpers.LineOfSightUnObstructed(owner.transform, target, range, targetMask, environmentMask);
-      case AbilityLineOfSight.Team: return TargetingHelpers.LineOfSightLayer(owner.transform, target, range, targetMask, environmentMask);
-      case AbilityLineOfSight.NotRequired: return Vector3.Distance(owner.transform.position, target.position) < range;
+      case AbilityLineOfSight.Target:
+        {
+          bool result = TargetingHelpers.LineOfSightUnObstructed(owner.transform, target, range, targetMask, environmentMask);
+          return result;
+        }
+      case AbilityLineOfSight.Team:
+        {
+          bool result = TargetingHelpers.LineOfSightLayer(owner.transform, target, range, targetMask, environmentMask);
+          return result;
+        }
+      case AbilityLineOfSight.NotRequired:
+        {
+          bool result = Vector3.Distance(owner.transform.position, target.position) < range;
+          return result;
+        }
       default: return false;
     }
   }

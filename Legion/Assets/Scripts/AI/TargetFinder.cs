@@ -14,6 +14,8 @@ public static class TargetingHelpers
   public static DamageController[] FindTargetsInRange(LayerMask layerMask, float maxRange, Vector3 position)
   {
     Collider[] colliders = Physics.OverlapSphere(position, maxRange, layerMask);
+    DamageController[] targets2 = colliders.OfType<DamageController>().ToArray();
+    DamageController[] targets3 = colliders.OfType<DamageController>().Where(x => x.GetComponent<DamageController>()).ToArray();
     DamageController[] targets = colliders.Where(x => x.GetComponent<DamageController>()).Select(x => x.GetComponent<DamageController>()).ToArray();
     return targets;
   }
@@ -75,7 +77,7 @@ public static class TargetingHelpers
     Vector3 direction = target.position - caster.position;
     RaycastHit hit;
     Debug.DrawRay(caster.position, direction, Color.red, 0.5f);
-    if (Physics.Raycast(caster.position, direction, out hit, range, targetMask | environmentMask)) return hit.collider.gameObject.layer == target.gameObject.layer;
+    if (Physics.Raycast(caster.position + caster.up, direction, out hit, range, targetMask | environmentMask)) return hit.collider.gameObject.layer == target.gameObject.layer;
     return false;
   }
 
@@ -93,10 +95,11 @@ public static class TargetingHelpers
   public static bool LineOfSightUnObstructed(Transform caster, Transform target, float range, LayerMask targetMask, LayerMask environmentMask)
   {
     if (!target || !caster) return false;
-    Vector3 direction = target.position - caster.position;
+    Vector3 direction = Vector3.Normalize(target.position - caster.position);
     RaycastHit hit;
-    Debug.DrawRay(caster.position, direction, Color.red, 0.5f);
-    if (Physics.Raycast(caster.position, direction, out hit, range, targetMask | environmentMask)) return hit.collider.gameObject == target.gameObject;
+    Vector3 origin = caster.position + caster.up;
+    Debug.DrawRay(origin, direction, Color.red, 0.5f);
+    if (Physics.Raycast(origin, direction, out hit, range, targetMask | environmentMask)) return hit.collider.gameObject == target.gameObject;
     return false;
   }
 }

@@ -3,9 +3,9 @@ using Fralle;
 
 public class AITargeter : MonoBehaviour, ITargeter
 {
-  const float TARGET_SCAN_RATE = 0.5f;  
+  const float TARGET_SCAN_RATE = 0.5f;
   const int MIN_AGGRO_RANGE = 15;
-  const float LOS_CHECK_RATE = 0.25f;
+  const float LOS_CHECK_RATE = 0.5f;
 
   public Target currentTarget { get; set; }
   public Target mainTarget { get; set; }
@@ -21,7 +21,8 @@ public class AITargeter : MonoBehaviour, ITargeter
   public int EnemyLayer;
 
   [HideInInspector] public float LookRange = 15f;
-  
+
+  public int GetTargetLayer(AbilityTargetTeam targetTeam) { return targetTeam == AbilityTargetTeam.Hostile ? EnemyLayer : gameObject.layer; }
   public void SetAggroRange(int range) { LookRange = Mathf.Max(range, MIN_AGGRO_RANGE); }
   public bool FindMainTarget(Ability ability)
   {
@@ -46,13 +47,14 @@ public class AITargeter : MonoBehaviour, ITargeter
     if (targets.Length == 0) return false;
     targets = TargetingHelpers.OrderTargetsByPriority(targets, transform, ability.priority);
     DamageController target = TargetingHelpers.ValidateTargetsLineOfSight(targets, transform, ability);
+    if (!target) return false;
     currentTarget = new Target(target.gameObject);
-    return false;
+    return true;
   }
 
   public bool LineOfSightMainTarget(Ability ability)
   {
-    if(PerformLoSCheck)
+    if (PerformLoSCheck)
     {
       lastLosCheck = Time.time + LOS_CHECK_RATE;
       lastLosResult = TargetingHelpers.LineOfSightUnObstructed(ability.owner.transform, mainTarget, ability.range, EnemyLayerMask, EnvironmentLayerMask);

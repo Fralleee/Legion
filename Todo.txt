@@ -1,25 +1,37 @@
 ---------------------------------------------------------------------------------------------
-# Day 1
----------------------------------------------------------------------------------------------
-# Direction ability
-+ Create direction ability
-
-- Fix the animation - To quick pullback
-- Remove old code
-
-- Fix that Spawned Abilities get instantiated with correct layer and stuff
+# Day 1 - 2
 ---------------------------------------------------------------------------------------------
 
+# Important bugfixes
+- Check how often we try to trycast
+- MainAbility should not be required
+
+# Ensure that all abilities work
++ Target Ability 						=> 	Active, Target, Hostile
++ Bolt 									=> 	Active, Direction, Hostile
+- Heal 									=> 	Active, Target, Friendly
+- Extra movement speed 					=> 	Passive, Target, Self
+- AOE 									=> 	Active, Location, Hostile
+- Add melee attack again
+
+# Continue development
+- Remake FindTargets/TargetScanner
+  Save timers and such in AICaster.nextCast dictionary
+  Remake everything, ensure that targets get put in correct format and property
+
+- Move MainAttack to AbilityCaster
+- When casting MainAbility we probably need to make alterations
+  Should not look for new target every time only if we have no successfull attack latest 4 seconds
+  Also use mainTarget instead of currentTarget
+  
+- Configure pivot point on unit
+
+- When it works: Implement this into FralleUnity
+  As a part of Battle-library
+  Or maybe not? Actually move all FralleUnity code into Legion
+  Extract only when moving on to new project
 
 - Projector spell indicator (add this to later todo)
-
----------------------------------------------------------------------------------------------
-# Day 2
----------------------------------------------------------------------------------------------
-# AI to use DDAS
-- Make it work
-  If a spell is on target area, use the current targets position to cast it
-  If a spell is projective, use the direction toward current target to cast it
 
 ---------------------------------------------------------------------------------------------
 
@@ -31,9 +43,10 @@
 # Animations
 - Organize animations (wizard, units, shared)
   Animations should be both BR and Regular
+  
 - Attack animation for ranged and melee
   Bow animation
-	Sword attack animation
+  Sword attack animation
 	
 # Death ragdolls
 ---------------------------------------------------------------------------------------------

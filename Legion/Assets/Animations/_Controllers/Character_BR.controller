@@ -26,13 +26,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Swing
+  - m_Name: Slash
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Slash
+  - m_Name: Swing
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -151,8 +151,8 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 4
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101083432271624248
@@ -657,16 +657,16 @@ AnimatorStateMachine:
     m_Position: {x: 504, y: 132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102003450956639298}
-    m_Position: {x: 204, y: 120, z: 0}
+    m_Position: {x: 204, y: 288, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102987734005828474}
     m_Position: {x: -216, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102396907938431994}
-    m_Position: {x: -216, y: 204, z: 0}
+    m_Position: {x: -396, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102039482600903670}
-    m_Position: {x: -216, y: 264, z: 0}
+    m_Position: {x: -204, y: 384, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102269342653772074}
     m_Position: {x: 204, y: 60, z: 0}
@@ -679,8 +679,8 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -192, y: 144, z: 0}
-  m_EntryPosition: {x: 264, y: 192, z: 0}
-  m_ExitPosition: {x: 264, y: 264, z: 0}
+  m_AnyStatePosition: {x: -156, y: 180, z: 0}
+  m_EntryPosition: {x: 228, y: 516, z: 0}
+  m_ExitPosition: {x: 228, y: 552, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102003450956639298}
