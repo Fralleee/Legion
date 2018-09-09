@@ -4,7 +4,8 @@
 
 # Important bugfixes
 - Check how often we try to trycast
-- MainAbility should not be required
+  Both Ability array and Main/second-Attack
+
 
 # Ensure that all abilities work
 + Target Ability 						=> 	Active, Target, Hostile

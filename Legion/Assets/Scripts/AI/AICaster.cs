@@ -36,6 +36,12 @@ public class AICaster : AbilityCaster
     bool foundTarget = targeter.FindTarget(ability);
     return foundTarget && targeter.currentTarget;
   }
+  public bool TryCastMainTarget(Ability ability)
+  {
+    bool validTarget = ability.Test(targeter.mainTarget);
+    return validTarget;
+  }
+
   public override IEnumerator TargetCast(TargetAbility ability, bool selfCast = false)
   {
     CoroutineWithResponse cwr = new CoroutineWithResponse(this, Windup(ability));
