@@ -16,8 +16,8 @@ public class DamageEffect : AbilityEffect
     if (damageController)
     {
       System.Random rnd = new System.Random();
-      int amount = rnd.Next(minAmount, maxAmount);
-      damageController.TakeDamage(amount, ability.owner.gameObject, ability.name);
+      int amount = rnd.Next(-maxAmount, -minAmount);
+      damageController.ChangeHealth(amount, ability.owner.gameObject, ability.name);
     }
     else Debug.LogWarning("Target is missing DamageController: " + target.name);
 

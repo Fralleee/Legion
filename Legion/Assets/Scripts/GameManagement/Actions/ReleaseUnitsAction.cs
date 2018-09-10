@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableFSM/Game/Actions/Release Units")]
+[CreateAssetMenu(menuName = "Match/Actions/Release Units")]
 public class ReleaseUnitsAction : Action
 {
   public override void Act(IStateController controller)

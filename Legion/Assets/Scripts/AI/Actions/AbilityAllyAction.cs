@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Fralle;
 
-[CreateAssetMenu(menuName = "PluggableFSM/Actions/AbilityAlly")]
+[CreateAssetMenu(menuName = "AI/Actions/AbilityAlly")]
 public class AbilityAllyAction : Action
 {
   public override void Act(IStateController controller)

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9089237de53a2594a907d3c712dbfddf, type: 3}
   m_Name: DirectionAbility
   m_EditorClassIdentifier: 
-  blocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
+  blocker: {fileID: 11400000, guid: c9635f202fbd974409d0cb229682f82d, type: 2}
   image: {fileID: 0}
   range: 15
   cooldown: 2
@@ -19,6 +19,7 @@ MonoBehaviour:
   transferEffectsToPrefab: 1
   requireLineOfSight: 1
   priority: 2
+  targetRequirement: 0
   targetTeam: 0
   castType: 0
   targetType: 1

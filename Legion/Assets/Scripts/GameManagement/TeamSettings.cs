@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game Management/Team Settings")]
+[CreateAssetMenu(menuName = "Match/Team Settings")]
 public class TeamSettings : ScriptableObject
 {
   public enum Team { Blue, Orange }

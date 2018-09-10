@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Fralle;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableFSM/Decisions/TargetInRange")]
+[CreateAssetMenu(menuName = "AI/Decisions/TargetInRange")]
 public class TargetInRange : Decision
 {
   public override bool Decide(IStateController controller)

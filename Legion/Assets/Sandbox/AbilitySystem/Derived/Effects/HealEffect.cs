@@ -17,7 +17,7 @@ public class HealEffect : AbilityEffect
     {
       System.Random rnd = new System.Random();
       int amount = rnd.Next(minAmount, maxAmount);
-      damageController.HealDamage(amount, ability.owner.gameObject, ability.name);
+      damageController.ChangeHealth(amount, ability.owner.gameObject, ability.name);
     }
     else Debug.LogWarning("Target is missing DamageController: " + target.name);
 

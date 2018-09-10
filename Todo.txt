@@ -2,20 +2,19 @@
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
 # Other
+- Planning: Healing should have an animated bar aswell as damage has
+
 - Apply particle effects to display abilities better
 - Healing should have an animated bar aswell as damage has
-  TakeDamage and HealDamage should be concatinated into one method => AffectHealth (?)
-- Clean up CreateAssetMenu
 	
 
 # Ensure that all abilities work
 + Target Ability 						=> 	Active, Target, Hostile
 + Bolt 											=> 	Active, Direction, Hostile
-- Heal 											=> 	Active, Target, Friendly
-
++ Heal 											=> 	Active, Target, Friendly
 - Extra movement speed 			=> 	Passive, Target, Self
 - AOE 											=> 	Active, Location, Hostile
-- Add melee attack again
+- Add melee attack again		=> 	Active, Target, Hostile
 
 # Continue development
 - Projector spell indicator (add this to later todo)

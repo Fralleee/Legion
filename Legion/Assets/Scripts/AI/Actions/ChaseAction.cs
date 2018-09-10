@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableFSM/Actions/Chase")]
+[CreateAssetMenu(menuName = "AI/Actions/Chase")]
 public class ChaseAction : Action
 {
   public override void Act(IStateController controller)

@@ -1,7 +1,7 @@
 ﻿using Fralle;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableFSM/Game/Actions/Disable Building")]
+[CreateAssetMenu(menuName = "Match/Actions/Disable Building")]
 public class DisableBuildingAction : Action
 {
   public override void Act(IStateController controller)

@@ -13,7 +13,7 @@ public enum UnitType
   SIEGE
 }
 
-[CreateAssetMenu(menuName="Shop/Unit")]
+[CreateAssetMenu(menuName="Match/Units/ShopButton")]
 public class UnitBuilding : ScriptableObject
 {
   public UnitType type = UnitType.WARRIOR;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Fralle;
 
-[CreateAssetMenu(menuName = "PluggableFSM/Actions/Wander")]
+[CreateAssetMenu(menuName = "AI/Actions/Wander")]
 public class WanderAction : Action
 {
   public override void Act(IStateController controller)

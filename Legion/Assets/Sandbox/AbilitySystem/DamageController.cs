@@ -30,11 +30,12 @@ public class DamageController : MonoBehaviour
     OnHealthChange(Health, MaxHealth, false);
   }
 
-  public void TakeDamage(float damage, GameObject attacker, string abilityName)
+  public void ChangeHealth(float amount, GameObject affector, string abilityName)
   {
     if (healthBar) healthBar.SetActive(true);
-    float actualDamage = damage * damageReduction;
-    Health -= actualDamage;
+
+    if(amount < 0) amount = amount * damageReduction;
+    Health += amount;
 
     if (Health > 0) OnHealthChange(Health, MaxHealth, true);
     else if (Health <= 0 && !attributes.resetHealth) Die();
@@ -43,14 +44,6 @@ public class DamageController : MonoBehaviour
       Health = MaxHealth;
       OnHealthChange(Health, MaxHealth, false);
     }
-  }
-
-  public void HealDamage(float amount, GameObject healer, string abilityName)
-  {
-    if (healthBar) healthBar.SetActive(true);
-    float actualAmount = amount;
-    Health += actualAmount;
-    OnHealthChange(Mathf.Clamp(Health, 0, MaxHealth), MaxHealth, true);    
   }
 
   void Die()

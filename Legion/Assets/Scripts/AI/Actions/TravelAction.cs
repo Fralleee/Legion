@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fralle;
 
-[CreateAssetMenu(menuName = "PluggableFSM/Actions/Travel")]
+[CreateAssetMenu(menuName = "AI/Actions/Travel")]
 public class TravelAction : Action
 {
   public override void Act(IStateController controller)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Stats/Attributes")]
+[CreateAssetMenu(menuName = "Match/Units/Attributes")]
 public class Attributes : ScriptableObject
 {
   [Header("Offensive")]
