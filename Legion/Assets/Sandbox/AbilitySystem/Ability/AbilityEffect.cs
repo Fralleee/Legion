@@ -11,8 +11,8 @@ public abstract class AbilityEffect : ScriptableObject
     if (onHitEffect)
     {
       ParticleSystem onHit = Instantiate(onHitEffect, target.transform.position.With(y: target.transform.localScale.y), Quaternion.identity);
-      onHit.transform.localScale = target.transform.localScale;
-      Destroy(onHit.gameObject, onHit.main.startLifetime.constant);
+      onHit.transform.localScale = target.transform.localScale;      
+      Destroy(onHit.gameObject, onHit.main.duration);
     }
     else Debug.LogWarning("No OnHitEffect for Effect: " + name);
   }

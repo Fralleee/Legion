@@ -32,4 +32,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   environmentLayer: 0
   targetLayer: 0
-  prefab: {fileID: 1152508871241106, guid: e24a6ce31d040f54b997a5abada84193, type: 2}
+  prefab: {fileID: 0}

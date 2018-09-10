@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091525bdf4381ec43a7473e75e4392f0, type: 3}
   m_Name: HealEffect
   m_EditorClassIdentifier: 
-  onHitEffect: {fileID: 0}
+  onHitEffect: {fileID: 198192109540902094, guid: 3a0a17389576df84d8b22c71e3fcd4c7,
+    type: 2}
   minAmount: 6
   maxAmount: 12
