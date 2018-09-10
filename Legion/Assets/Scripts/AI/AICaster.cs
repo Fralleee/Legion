@@ -11,11 +11,13 @@ public class AICaster : AbilityCaster
   Animator animator;
   Transform effectsHolder;
   AIAnimationUpdater aIAnimationUpdater;
+  AIMotor motor;
 
   protected override void Start()
   {
     base.Start();
     blockerController = GetComponent<BlockerController>();
+    motor = GetComponent<AIMotor>();
     animator = GetComponentInChildren<Animator>();
     aIAnimationUpdater = GetComponent<AIAnimationUpdater>();
     effectsHolder = transform.Find("EffectsHolder");
@@ -34,6 +36,7 @@ public class AICaster : AbilityCaster
     bool foundTarget = targeter.FindTarget(ability);
     return foundTarget && targeter.currentTarget;
   }
+
   public bool TryCastMainTarget(Ability ability)
   {
     bool validTarget = ability.Test(targeter.mainTarget);
@@ -46,14 +49,9 @@ public class AICaster : AbilityCaster
     yield return cwr.coroutine;
     if ((bool)cwr.result)
     {
-      if (selfCast)
-      {
-        Instantiate(ability.prefab, transform.position, Quaternion.identity, transform);
-        yield break;
-      }
       ability.ApplyEffects(targeter.currentTarget);
       ability.PerformedCast();
-      GameObject instance = Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
+      if(ability.prefab) Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
       yield return Recovery(ability);
     }
   }
@@ -85,6 +83,7 @@ public class AICaster : AbilityCaster
   public IEnumerator Windup(Ability ability)
   {
     blockerController.AddBlocker(ability.blocker);
+    motor.turnTowardsTarget = targeter.currentTarget;
     float castTime = ability.castTime;
     animator.SetTrigger(ability.animationTrigger.ToString());
     ActivateEffect(ability.startEffect, ability.castTime);
@@ -96,6 +95,7 @@ public class AICaster : AbilityCaster
       {
         // Check for interrupts
         // Should also be interruptable from outside (other character stunning caster or something)
+        motor.turnTowardsTarget = null;
         blockerController.RemoveBlocker(ability.blocker);
         animator.SetTrigger("InterruptCast");
         yield return false;
@@ -109,6 +109,7 @@ public class AICaster : AbilityCaster
     float timeLeft = Mathf.Max(aIAnimationUpdater.AnimationTimeLeft(), 1f);
     ActivateEffect(ability.onCastEffect);
     yield return new WaitForSeconds(timeLeft);
+    motor.turnTowardsTarget = null;
     blockerController.RemoveBlocker(ability.blocker);
   }
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public enum AbilityLineOfSight { Team, Target, NotRequired }
 public enum AbilityPriority { LowHealth, HighHealth, Nearest, Furthest, UseCasterPriority, None }
+public enum AbilityTargetRequirement { None, DamagedHealth }
 public enum AbilityTargetTeam { Hostile, Ally }
 public enum AbilityCastType { Active, Passive, Toggle, Channel }
 public enum AbilityTargetType { Target, Direction, Point }
@@ -24,6 +25,7 @@ public abstract class Ability : ScriptableObject
   public bool transferEffectsToPrefab;
   public AbilityLineOfSight requireLineOfSight = AbilityLineOfSight.Target;
   public AbilityPriority priority = AbilityPriority.Nearest;
+  public AbilityTargetRequirement targetRequirement = AbilityTargetRequirement.None;
   public AbilityTargetTeam targetTeam = AbilityTargetTeam.Hostile;
   public AbilityCastType castType = AbilityCastType.Active;
   public AbilityTargetType targetType = AbilityTargetType.Target;
@@ -60,6 +62,7 @@ public abstract class Ability : ScriptableObject
   {
     bool targetIsAlive = target && target.gameObject && target.gameObject.activeSelf;
     if (!targetIsAlive) return false;
+    if (targetTeam == AbilityTargetTeam.Ally && target == owner.transform) return true;
 
     LayerMask targetMask = 1 << targetLayer;
     LayerMask environmentMask = 1 << environmentLayer;

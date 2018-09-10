@@ -14,9 +14,10 @@ public class HealthBar : MonoBehaviour
     GetComponentInParent<DamageController>().OnHealthChange += HandleHealthChange;
   }
 
-  void HandleHealthChange(float currentHealth, float maxHealth)
+  void HandleHealthChange(float currentHealth, float maxHealth, bool animate)
   {
-    StartCoroutine(AnimateChange(currentHealth / maxHealth));
+    if(animate) StartCoroutine(AnimateChange(currentHealth / maxHealth));
+    else changeIndicator.fillAmount = currentHealth / maxHealth;
     foregroundImage.fillAmount = currentHealth / maxHealth;
   }
 

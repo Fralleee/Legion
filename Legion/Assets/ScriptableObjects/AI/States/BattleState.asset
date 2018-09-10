@@ -11,9 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 2116401103, guid: 340b92e4208ff294e94598e8bcf986e5, type: 3}
   m_Name: BattleState
   m_EditorClassIdentifier: 
+  enterStateActions: []
   actions:
   - {fileID: 11400000, guid: 3f3dbfabb3fddd34db9a97b2a164b099, type: 2}
   - {fileID: 11400000, guid: 74cb1cebafe1252479ea28fc87619995, type: 2}
+  - {fileID: 11400000, guid: ead7c8c2ffa03ef4a9d84ed7d907a244, type: 2}
+  exitStateActions: []
   transitions:
   - decision: {fileID: 11400000, guid: 6887475f8d891274691339b6031058fa, type: 2}
     trueState: {fileID: 11400000, guid: 18c7362a5abd1d5449366f7409a8cd4a, type: 2}

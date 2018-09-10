@@ -14,8 +14,6 @@ public static class TargetingHelpers
   public static DamageController[] FindTargetsInRange(LayerMask layerMask, float maxRange, Vector3 position)
   {
     Collider[] colliders = Physics.OverlapSphere(position, maxRange, layerMask);
-    DamageController[] targets2 = colliders.OfType<DamageController>().ToArray();
-    DamageController[] targets3 = colliders.OfType<DamageController>().Where(x => x.GetComponent<DamageController>()).ToArray();
     DamageController[] targets = colliders.Where(x => x.GetComponent<DamageController>()).Select(x => x.GetComponent<DamageController>()).ToArray();
     return targets;
   }
@@ -41,6 +39,18 @@ public static class TargetingHelpers
     }
   }
 
+
+  public static DamageController[] CheckRequirements(DamageController[] array, AbilityTargetRequirement requirement = AbilityTargetRequirement.None)
+  {
+    if (array.Length == 0) return array;
+    switch (requirement)
+    {
+      case AbilityTargetRequirement.None: return array;
+      case AbilityTargetRequirement.DamagedHealth: return array.Where(x => x.Health < x.MaxHealth).ToArray();
+      default: return array;
+    }
+  }
+
   /// <summary>
   /// Validates array and ability and returnes a target if matched
   /// </summary>
@@ -54,7 +64,8 @@ public static class TargetingHelpers
     LayerMask environmentMask = 1 << ability.environmentLayer;
     switch (ability.requireLineOfSight)
     {
-      case AbilityLineOfSight.Target: return array.First(x => LineOfSightUnObstructed(transform, x.transform, ability.range, targetMask, environmentMask));
+      case AbilityLineOfSight.Target:
+        return array.First(x => x.transform == transform || LineOfSightUnObstructed(transform, x.transform, ability.range, targetMask, environmentMask));
       case AbilityLineOfSight.Team: return array.First(x => LineOfSightLayer(transform, x.transform, ability.range, targetMask, environmentMask));
       case AbilityLineOfSight.NotRequired: return array.First();
       default: return null;
@@ -95,11 +106,14 @@ public static class TargetingHelpers
   public static bool LineOfSightUnObstructed(Transform caster, Transform target, float range, LayerMask targetMask, LayerMask environmentMask)
   {
     if (!target || !caster) return false;
-    Vector3 direction = Vector3.Normalize(target.position - caster.position);
+    Vector3 direction = target.position - caster.position;
     RaycastHit hit;
     Vector3 origin = caster.position + caster.up;
     Debug.DrawRay(origin, direction, Color.red, 0.5f);
-    if (Physics.Raycast(origin, direction, out hit, range, targetMask | environmentMask)) return hit.collider.gameObject == target.gameObject;
+    if (Physics.Raycast(origin, direction, out hit, range, targetMask | environmentMask))
+    {
+      return hit.collider.gameObject == target.gameObject;
+    }
     return false;
   }
 }

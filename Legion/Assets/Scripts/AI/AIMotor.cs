@@ -11,6 +11,7 @@ public class AIMotor : MonoBehaviour
   public float wanderTimer = 5f;
   public bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
   public bool isRotationBlocked { get { return blockerController.ContainsBlocker(rotation: true); } }
+  public Transform turnTowardsTarget; 
   BlockerController blockerController;
   NavMeshAgent navMeshAgent;
   NavMeshObstacle navMeshObstacle;
@@ -23,6 +24,11 @@ public class AIMotor : MonoBehaviour
     navMeshAgent = GetComponent<NavMeshAgent>();
     navMeshObstacle = GetComponent<NavMeshObstacle>();
     coroutine = ActivateAgent(0.25f);
+  }
+
+  void Update()
+  {
+    if(turnTowardsTarget) transform.LookAt(turnTowardsTarget);
   }
 
   public void SetStoppingDistance(float distance)

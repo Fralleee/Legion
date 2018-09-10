@@ -11,8 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 2116401103, guid: 340b92e4208ff294e94598e8bcf986e5, type: 3}
   m_Name: WanderState
   m_EditorClassIdentifier: 
+  enterStateActions: []
   actions:
   - {fileID: 11400000, guid: ad74656670fe51f45bbef85049d79fc3, type: 2}
+  - {fileID: 11400000, guid: ead7c8c2ffa03ef4a9d84ed7d907a244, type: 2}
+  exitStateActions: []
   transitions:
   - decision: {fileID: 11400000, guid: ba5ad4e974ac2674a80bb3ac8f147d39, type: 2}
     trueState: {fileID: 11400000, guid: 56078dce940a6374e808367d595e36a4, type: 2}

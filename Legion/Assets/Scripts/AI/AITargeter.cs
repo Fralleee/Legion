@@ -44,7 +44,9 @@ public class AITargeter : MonoBehaviour, ITargeter
   public bool FindTarget(Ability ability)
   {
     DamageController[] targets = TargetingHelpers.FindTargetsInRange(1 << ability.targetLayer, ability.range, transform.position);
+    targets = TargetingHelpers.CheckRequirements(targets, ability.targetRequirement);
     if (targets.Length == 0) return false;
+
     targets = TargetingHelpers.OrderTargetsByPriority(targets, transform, ability.priority);
     DamageController target = TargetingHelpers.ValidateTargetsLineOfSight(targets, transform, ability);
     if (!target) return false;
