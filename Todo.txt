@@ -2,11 +2,7 @@
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
 # Other
-- Planning: Healing should have an animated bar aswell as damage has
-
-- Apply particle effects to display abilities better
-- Healing should have an animated bar aswell as damage has
-	
+- Apply particle effects to display abilities better	
 
 # Ensure that all abilities work
 + Target Ability 						=> 	Active, Target, Hostile

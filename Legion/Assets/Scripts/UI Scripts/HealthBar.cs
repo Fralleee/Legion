@@ -7,6 +7,7 @@ public class HealthBar : MonoBehaviour
 {
   [SerializeField] Image foregroundImage;
   [SerializeField] Image changeIndicator;
+  float oldValue = 1f;
   float updateSpeedSeconds = 0.2f;
 
   void Awake()
@@ -16,23 +17,50 @@ public class HealthBar : MonoBehaviour
 
   void HandleHealthChange(float currentHealth, float maxHealth, bool animate)
   {
-    if(animate) StartCoroutine(AnimateChange(currentHealth / maxHealth));
-    else changeIndicator.fillAmount = currentHealth / maxHealth;
-    foregroundImage.fillAmount = currentHealth / maxHealth;
+    float percentage = currentHealth / maxHealth;
+    if (animate)
+    {
+      if(percentage < oldValue) StartCoroutine(AnimateHealthLoss(percentage));
+      else StartCoroutine(AnimateHealthGain(percentage));
+    }
+    else
+    {
+      changeIndicator.fillAmount = percentage;
+      foregroundImage.fillAmount = percentage;
+    }
+
+    oldValue = percentage;
   }
 
-  IEnumerator AnimateChange(float percentage)
+  IEnumerator AnimateHealthGain(float percentage)
   {
-    float beforeChange = changeIndicator.fillAmount;
-    float elapsed = -0.5f; // delay
+    changeIndicator.fillAmount = percentage;
+    changeIndicator.color = new Color(0.67f, 0.85f, 1f);
+    float beforeChange = foregroundImage.fillAmount;
+    float elapsed = -0.25f;
 
+    while (elapsed < updateSpeedSeconds)
+    {
+      elapsed += Time.deltaTime;
+      foregroundImage.fillAmount = Mathf.Lerp(beforeChange, percentage, elapsed / updateSpeedSeconds);
+      yield return null;
+    }
+
+    foregroundImage.fillAmount = percentage;
+  }
+
+  IEnumerator AnimateHealthLoss(float percentage)
+  {
+    foregroundImage.fillAmount = percentage;
+    changeIndicator.color = new Color(0.96f, 0.95f, 0.07f);
+    float beforeChange = changeIndicator.fillAmount;
+    float elapsed = -0.5f;
     while (elapsed < updateSpeedSeconds)
     {
       elapsed += Time.deltaTime;
       changeIndicator.fillAmount = Mathf.Lerp(beforeChange, percentage, elapsed / updateSpeedSeconds);
       yield return null;
     }
-
     changeIndicator.fillAmount = percentage;
   }
 

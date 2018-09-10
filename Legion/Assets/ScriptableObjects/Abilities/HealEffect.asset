@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: HealEffect
   m_EditorClassIdentifier: 
   onHitEffect: {fileID: 0}
-  minAmount: 3
-  maxAmount: 6
+  minAmount: 6
+  maxAmount: 12
