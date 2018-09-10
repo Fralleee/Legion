@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class AICaster : AbilityCaster
 {
-  public Dictionary<int, float> nextCasts;
   public bool isBlocked { get { return blockerController ? blockerController.ContainsBlocker(abilities: true) : false; } }
-
   BlockerController blockerController;
   Animator animator;
   Transform effectsHolder;
@@ -17,7 +15,6 @@ public class AICaster : AbilityCaster
   protected override void Start()
   {
     base.Start();
-    nextCasts = new Dictionary<int, float>();
     blockerController = GetComponent<BlockerController>();
     animator = GetComponentInChildren<Animator>();
     aIAnimationUpdater = GetComponent<AIAnimationUpdater>();
@@ -33,6 +30,7 @@ public class AICaster : AbilityCaster
 
   public override bool TryCast(Ability ability, bool selfCast = false)
   {
+    ability.lastAction = Time.time + 0.5f;
     bool foundTarget = targeter.FindTarget(ability);
     return foundTarget && targeter.currentTarget;
   }

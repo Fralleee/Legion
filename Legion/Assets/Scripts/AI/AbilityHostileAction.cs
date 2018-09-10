@@ -23,12 +23,12 @@ public class AbilityHostileAction : Action
           return;
         }
       }
-      
+
       if (caster.mainAttack.isReady && caster.TryCastMainTarget(caster.mainAttack))
       {
         caster.mainAttack.Cast(false);
       }
-      else if (caster.secondaryAttack && caster.TryCastMainTarget(caster.secondaryAttack) && caster.secondaryAttack.isReady)
+      else if (caster.secondaryAttack && caster.secondaryAttack.isReady && caster.TryCastMainTarget(caster.secondaryAttack))
       {
         caster.secondaryAttack.Cast(false);
       }
