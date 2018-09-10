@@ -2,8 +2,6 @@
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
 # Other
-- Apply particle effects to display abilities better	
-
 # Ensure that all abilities work
 + Target Ability 						=> 	Active, Target, Hostile
 + Bolt 											=> 	Active, Direction, Hostile
