@@ -65,9 +65,9 @@ public static class TargetingHelpers
     switch (ability.requireLineOfSight)
     {
       case AbilityLineOfSight.Target:
-        return array.First(x => x.transform == transform || LineOfSightUnObstructed(transform, x.transform, ability.range, targetMask, environmentMask));
-      case AbilityLineOfSight.Team: return array.First(x => LineOfSightLayer(transform, x.transform, ability.range, targetMask, environmentMask));
-      case AbilityLineOfSight.NotRequired: return array.First();
+        return array.FirstOrDefault(x => x.transform == transform || LineOfSightUnObstructed(transform, x.transform, ability.range, targetMask, environmentMask));
+      case AbilityLineOfSight.Team: return array.FirstOrDefault(x => LineOfSightLayer(transform, x.transform, ability.range, targetMask, environmentMask));
+      case AbilityLineOfSight.NotRequired: return array.FirstOrDefault();
       default: return null;
     }
   }
@@ -106,10 +106,10 @@ public static class TargetingHelpers
   public static bool LineOfSightUnObstructed(Transform caster, Transform target, float range, LayerMask targetMask, LayerMask environmentMask)
   {
     if (!target || !caster) return false;
-    Vector3 direction = target.position - caster.position;
+    Vector3 direction = (target.position - caster.position).normalized;
     RaycastHit hit;
-    Vector3 origin = caster.position + caster.up;
-    Debug.DrawRay(origin, direction, Color.red, 0.5f);
+    Vector3 origin = caster.position + Vector3.up;
+    Debug.DrawRay(origin, direction * range, Color.red, 0.5f);
     if (Physics.Raycast(origin, direction, out hit, range, targetMask | environmentMask))
     {
       return hit.collider.gameObject == target.gameObject;

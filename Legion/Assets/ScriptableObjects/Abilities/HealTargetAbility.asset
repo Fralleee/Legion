@@ -14,7 +14,7 @@ MonoBehaviour:
   blocker: {fileID: 11400000, guid: b1e088ae5574536488a550f4dba8b40c, type: 2}
   image: {fileID: 0}
   range: 15
-  cooldown: 1
+  cooldown: 5
   castTime: 1
   transferEffectsToPrefab: 0
   requireLineOfSight: 1

@@ -1,10 +1,6 @@
 ---------------------------------------------------------------------------------------------
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
-# Healing spell
-- RayCast does not hit on short range if standing sideways
-	
-	
 # Other
 - Apply particle effects to display abilities better
 - Healing should have an animated bar aswell as damage has

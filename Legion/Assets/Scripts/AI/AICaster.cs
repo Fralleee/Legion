@@ -40,6 +40,7 @@ public class AICaster : AbilityCaster
   public bool TryCastMainTarget(Ability ability)
   {
     bool validTarget = ability.Test(targeter.mainTarget);
+    targeter.currentTarget = targeter.mainTarget;
     return validTarget;
   }
 
@@ -50,7 +51,7 @@ public class AICaster : AbilityCaster
     if ((bool)cwr.result)
     {
       ability.ApplyEffects(targeter.currentTarget);
-      ability.PerformedCast();
+      ability.ApplyCooldown();
       if(ability.prefab) Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
       yield return Recovery(ability);
     }
@@ -73,10 +74,10 @@ public class AICaster : AbilityCaster
     if ((bool)cwr.result)
     {
       GameObject instance = Instantiate(ability.prefab, transform.position + transform.up + transform.forward, transform.rotation);
-      instance.layer = gameObject.layer;
+      instance.layer = targeter.GetSpawnLayer();
       instance.GetComponent<AbilityProjectile>().ability = ability;
       if (ability.transferEffectsToPrefab) instance.GetComponent<AbilityProjectile>().effects = ability.effects;
-      ability.PerformedCast();
+      ability.ApplyCooldown();
       yield return Recovery(ability);
     }
   }

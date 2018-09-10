@@ -19,10 +19,12 @@ public class AITargeter : MonoBehaviour, ITargeter
   public LayerMask EnvironmentLayerMask;
   public LayerMask EnemyLayerMask;
   public int EnemyLayer;
+  public int SpawnLayer;
 
   [HideInInspector] public float LookRange = 15f;
 
   public int GetTargetLayer(AbilityTargetTeam targetTeam) { return targetTeam == AbilityTargetTeam.Hostile ? EnemyLayer : gameObject.layer; }
+  public int GetSpawnLayer() { return SpawnLayer; }
   public void SetAggroRange(int range) { LookRange = Mathf.Max(range, MIN_AGGRO_RANGE); }
   public bool FindMainTarget(Ability ability)
   {
@@ -35,7 +37,6 @@ public class AITargeter : MonoBehaviour, ITargeter
         if (targets.Length == 0) return false;
         targets = TargetingHelpers.OrderTargetsByPriority(targets, transform, ability.priority);
         mainTarget = new Target(targets[0].gameObject);
-        currentTarget = mainTarget;
 
       }
     }
@@ -50,6 +51,7 @@ public class AITargeter : MonoBehaviour, ITargeter
     targets = TargetingHelpers.OrderTargetsByPriority(targets, transform, ability.priority);
     DamageController target = TargetingHelpers.ValidateTargetsLineOfSight(targets, transform, ability);
     if (!target) return false;
+
     currentTarget = new Target(target.gameObject);
     return true;
   }

@@ -57,7 +57,7 @@ public abstract class Ability : ScriptableObject
   }
 
   public abstract void Cast(bool selfCast = false);
-  public virtual void PerformedCast() { lastAction = Time.time + cooldown; }
+  public virtual void ApplyCooldown() { lastAction = Time.time + cooldown; }
   public virtual bool Test(Transform target)
   {
     bool targetIsAlive = target && target.gameObject && target.gameObject.activeSelf;

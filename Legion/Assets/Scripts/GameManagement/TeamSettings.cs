@@ -10,8 +10,8 @@ public class TeamSettings : ScriptableObject
   public GameObject MainObjective;
   public void Setup()
   {
-    teamLayer = LayerMask.NameToLayer(team == Team.Blue ? "Team Blue" : "Team Orange");
-    enemyLayer = LayerMask.NameToLayer(team == Team.Blue ? "Team Orange" : "Team Blue");
+    teamLayer = LayerMask.NameToLayer(team == Team.Blue ? "Blue" : "Orange");
+    enemyLayer = LayerMask.NameToLayer(team == Team.Blue ? "Orange" : "Blue");
     MainObjective = GameObject.Find(team == Team.Blue ? "Orange Golem" : "Blue Golem");
   }
   void OnEnable() { Setup(); }

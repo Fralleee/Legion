@@ -26,10 +26,12 @@ public class AbilityHostileAction : Action
 
       if (caster.mainAttack.isReady && caster.TryCastMainTarget(caster.mainAttack))
       {
+        ai.targeter.currentTarget = ai.targeter.mainTarget;
         caster.mainAttack.Cast(false);
       }
       else if (caster.secondaryAttack && caster.secondaryAttack.isReady && caster.TryCastMainTarget(caster.secondaryAttack))
       {
+        ai.targeter.currentTarget = ai.targeter.mainTarget;
         caster.secondaryAttack.Cast(false);
       }
 

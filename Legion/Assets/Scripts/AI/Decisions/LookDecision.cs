@@ -16,10 +16,9 @@ public class LookDecision : Decision
   bool Look(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    
     bool mainTargetAlive = ai.targeter.mainTarget && ai.targeter.mainTarget.gameObject && ai.targeter.mainTarget.gameObject.activeSelf;
     if (mainTargetAlive && ai.caster.mainAttack.lastAction + 4f > Time.time) return true;
-    
+
     bool findHostilesResult = ai.targeter.FindMainTarget(ai.caster.mainAttack);
     if (findHostilesResult) ai.caster.mainAttack.lastAction = Time.time;
     return findHostilesResult;

@@ -9,4 +9,5 @@ public interface ITargeter
   Target objective { get; set; }
   bool FindTarget(Ability ability);
   int GetTargetLayer(AbilityTargetTeam targetTeam);
+  int GetSpawnLayer();
 }
