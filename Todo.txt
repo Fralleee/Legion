@@ -1,26 +1,22 @@
 ---------------------------------------------------------------------------------------------
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
-# Other
-# Ensure that all abilities work
 + Target Ability 						=> 	Active, Target, Hostile
 + Bolt 											=> 	Active, Direction, Hostile
 + Heal 											=> 	Active, Target, Friendly
-- Extra movement speed 			=> 	Passive, Target, Self
-- AOE 											=> 	Active, Location, Hostile
-- Add melee attack again		=> 	Active, Target, Hostile
 
-# Continue development
-- Projector spell indicator (add this to later todo)
+- Extra movement speed 			=> 	Passive, Target, Self 		- Use ember effect
+
+- AOE 											=> 	Active, Location, Hostile - Use explosion effect
+
+- Add melee attack again		=> 	Active, Target, Hostile 	- Use animation only
+
+
+- Ensure that the player can cast all o these aswell
+
 - Organize scripts in Project 
   Ability System should move from sandbox
 
-	
-# Finally
-- When it works: Implement this into FralleUnity
-  As a part of Battle-library
-  Or maybe not? Actually move all FralleUnity code into Legion
-  Extract only when moving on to new project
 ---------------------------------------------------------------------------------------------
 
 
@@ -29,6 +25,8 @@
 # Day 3
 ---------------------------------------------------------------------------------------------
 # Health bar
+  Have default colors = red?
+	Use Color GameManager.instance.GetHealthColor()
   Color based on Team
 	Green = Ally
 	Red = Hostile
@@ -42,36 +40,31 @@
   Sword attack animation
 	
 # Death ragdolls
+# Projector spell indicator
 ---------------------------------------------------------------------------------------------
 
 
 
 ---------------------------------------------------------------------------------------------
-# Day 4
+# Day 4 - 5
 ---------------------------------------------------------------------------------------------
 # Ultimates
 - Refactor Launch to be used as Mecanim or FSM 
+  - Sometimes it bugs when landing on uneven terrain
+	
 - When using an ultimate, make the sky turn dark
-- Sometimes it bugs when landing on uneven terrain
----------------------------------------------------------------------------------------------
 
-
-
----------------------------------------------------------------------------------------------
-# Day 5
----------------------------------------------------------------------------------------------
-# Ultimates
 - Build siege as Mecanim or FSM
   A lot of particle effects! 
 ---------------------------------------------------------------------------------------------
 
-	
-	
+
 ---------------------------------------------------------------------------------------------
 # Day 6
 ---------------------------------------------------------------------------------------------
 # Armor/damage types
 - Use scriptableobjects, ryan hipple => elements talk (unite 2017)
+- Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
 ---------------------------------------------------------------------------------------------
 	
 	
@@ -79,7 +72,6 @@
 ################################################
 	Backlog
 ################################################
-- Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
 
 # Improve character
 - https://www.youtube.com/watch?v=C2wwxd8SnKY
