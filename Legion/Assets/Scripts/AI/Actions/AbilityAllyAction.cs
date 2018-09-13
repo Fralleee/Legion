@@ -13,16 +13,12 @@ public class AbilityAllyAction : Action
   {
     AIStateController ai = (AIStateController)isc;
     AICaster caster = ai.caster;
-    if (!caster.isBlocked)
+    if (caster.isBlocked) return;
+    foreach (Ability ability in caster.abilities.FindAll(x => x.targetTeam == AbilityTargetTeam.Ally && x.isReady))
     {
-      foreach (Ability ability in caster.abilities.FindAll(x => x.targetTeam == AbilityTargetTeam.Ally && x.isReady))
-      {
-        if (caster.TryCast(ability))
-        {
-          ability.Cast(false);
-          return;
-        }
-      }
+      if (!caster.TryCast(ability)) continue;
+      ability.Cast();
+      return;
     }
   }
 }

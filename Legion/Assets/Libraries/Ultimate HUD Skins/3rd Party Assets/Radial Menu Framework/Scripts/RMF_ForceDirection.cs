@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 
 [AddComponentMenu("Radial Menu Framework/RMF Force Direction")]
 [ExecuteInEditMode]
 public class RMF_ForceDirection : MonoBehaviour {
 
-    private RectTransform rt;
+  RectTransform rt;
 
-    [Tooltip("This will force this particular element to always have the specified absolute Z rotation. Use 0 for a straight upwards facing.")]
-    public float forcedZRotation = 0f;
+  [Tooltip("This will force this particular element to always have the specified absolute Z rotation. Use 0 for a straight upwards facing.")]
+    public float forcedZRotation;
 
-    private Vector3 rot = Vector3.zero;
+  Vector3 rot = Vector3.zero;
 
-    void Awake() {
+  void Awake() {
 
         rot.z = forcedZRotation;
         rt = GetComponent<RectTransform>();

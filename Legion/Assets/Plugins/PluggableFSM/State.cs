@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle
 {
@@ -19,19 +17,18 @@ namespace Fralle
 
     void DoActions(IStateController controller)
     {
-      for (int i = 0; i < actions.Length; i++)
+      foreach (Action t in actions)
       {
-        actions[i].Act(controller);
+        t.Act(controller);
       }
     }
 
     void CheckTransitions(IStateController controller)
     {
-      for (int i = 0; i < transitions.Length; i++)
+      foreach (Transition t in transitions)
       {
-        bool decisionSucceeded = transitions[i].decision.Decide(controller);
-        if (decisionSucceeded) controller.TransitionToState(transitions[i].trueState);
-        else controller.TransitionToState(transitions[i].falseState);
+        bool decisionSucceeded = t.decision.Decide(controller);
+        controller.TransitionToState(decisionSucceeded ? t.trueState : t.falseState);
       }
     }
   }

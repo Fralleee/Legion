@@ -2,7 +2,6 @@
 using UnityEngine.EventSystems;
 
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 
 
@@ -15,7 +14,7 @@ public class RMF_RadialMenu : MonoBehaviour {
     //public Image selectionFollowerImage;
 
     [Tooltip("Adjusts the radial menu for use with a gamepad or joystick. You might need to edit this script if you're not using the default horizontal and vertical input axes.")]
-    public bool useGamepad = false;
+    public bool useGamepad;
 
     [Tooltip("With lazy selection, you only have to point your mouse (or joystick) in the direction of an element to select it, rather than be moused over the element entirely.")]
     public bool useLazySelection = true;
@@ -35,25 +34,25 @@ public class RMF_RadialMenu : MonoBehaviour {
 
 
     [Tooltip("Controls the total angle offset for all elements. For example, if set to 45, all elements will be shifted +45 degrees. Good values are generally 45, 90, or 180")]
-    public float globalOffset = 0f;
+    public float globalOffset;
 
 
     [HideInInspector]
-    public float currentAngle = 0f; //Our current angle from the center of the radial menu.
+    public float currentAngle; //Our current angle from the center of the radial menu.
 
 
     [HideInInspector]
-    public int index = 0; //The current index of the element we're pointing at.
+    public int index; //The current index of the element we're pointing at.
 
-    private int elementCount;
+  int elementCount;
 
-    private float angleOffset; //The base offset. For example, if there are 4 elements, then our offset is 360/4 = 90
+  float angleOffset; //The base offset. For example, if there are 4 elements, then our offset is 360/4 = 90
 
-    private int previousActiveIndex = 0; //Used to determine which buttons to unhighlight in lazy selection.
+  int previousActiveIndex; //Used to determine which buttons to unhighlight in lazy selection.
 
-    private PointerEventData pointer;
+  PointerEventData pointer;
 
-    void Awake() {
+  void Awake() {
 
         pointer = new PointerEventData(EventSystem.current);
 
@@ -152,34 +151,37 @@ public class RMF_RadialMenu : MonoBehaviour {
     }
 
 
-    //Selects the button with the specified index.
-    private void selectButton(int i) {
+  //Selects the button with the specified index.
+  void selectButton(int i)
+  {
 
-          if (elements[i].active == false) {
+    if (elements[i].active == false)
+    {
 
-            elements[i].highlightThisElement(pointer); //Select this one
+      elements[i].highlightThisElement(pointer); //Select this one
 
-            if (previousActiveIndex != i) 
-                elements[previousActiveIndex].unHighlightThisElement(pointer); //Deselect the last one.
-            
+      if (previousActiveIndex != i)
+        elements[previousActiveIndex].unHighlightThisElement(pointer); //Deselect the last one.
 
-        }
-
-        previousActiveIndex = i;
 
     }
 
-    //Keeps angles between 0 and 360.
-    private float normalizeAngle(float angle) {
+    previousActiveIndex = i;
 
-        angle = angle % 360f;
+  }
 
-        if (angle < 0)
-            angle += 360;
+  //Keeps angles between 0 and 360.
+  float normalizeAngle(float angle)
+  {
 
-        return angle;
+    angle = angle % 360f;
 
-    }
+    if (angle < 0)
+      angle += 360;
+
+    return angle;
+
+  }
 
 
 }

@@ -13,28 +13,23 @@ public class AbilityHostileAction : Action
   {
     AIStateController ai = (AIStateController)isc;
     AICaster caster = ai.caster;
-    if (!caster.isBlocked)
+    if (caster.isBlocked) return;
+    foreach (Ability ability in caster.abilities.FindAll(x => x.targetTeam == AbilityTargetTeam.Hostile && x.isReady))
     {
-      foreach (Ability ability in caster.abilities.FindAll(x => x.targetTeam == AbilityTargetTeam.Hostile && x.isReady))
-      {
-        if (caster.TryCast(ability))
-        {
-          ability.Cast(false);
-          return;
-        }
-      }
+      if (!caster.TryCast(ability)) continue;
+      ability.Cast();
+      return;
+    }
 
-      if (caster.mainAttack.isReady && caster.TryCastMainTarget(caster.mainAttack))
-      {
-        ai.targeter.currentTarget = ai.targeter.mainTarget;
-        caster.mainAttack.Cast(false);
-      }
-      else if (caster.secondaryAttack && caster.secondaryAttack.isReady && caster.TryCastMainTarget(caster.secondaryAttack))
-      {
-        ai.targeter.currentTarget = ai.targeter.mainTarget;
-        caster.secondaryAttack.Cast(false);
-      }
-
+    if (caster.mainAttack.isReady && caster.TryCastMainTarget(caster.mainAttack))
+    {
+      ai.targeter.currentTarget = ai.targeter.mainTarget;
+      caster.mainAttack.Cast();
+    }
+    else if (caster.secondaryAttack && caster.secondaryAttack.isReady && caster.TryCastMainTarget(caster.secondaryAttack))
+    {
+      ai.targeter.currentTarget = ai.targeter.mainTarget;
+      caster.secondaryAttack.Cast();
     }
   }
 }

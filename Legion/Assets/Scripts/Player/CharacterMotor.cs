@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterMotor : MonoBehaviour
 {
@@ -12,7 +10,7 @@ public class CharacterMotor : MonoBehaviour
   [HideInInspector] public CharacterController controller;
 
   Vector3 movement;
-  float vSpeed = 0;
+  float vSpeed;
 
   BlockerController blockerController;
 

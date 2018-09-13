@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameState
@@ -40,11 +39,6 @@ public class GameData : ScriptableObject
   // Change this
   bool winCondition;
 
-  void CheckMatchConditions()
-  {
-    winCondition = true;
-  }
-
   public void NextState()
   {
     switch (state)
@@ -56,8 +50,7 @@ public class GameData : ScriptableObject
         state = GameState.Live;
         break;
       case GameState.Live:
-        if (winCondition) state = GameState.Ended;
-        else state = GameState.Preparation;
+        state = winCondition ? GameState.Ended : GameState.Preparation;
         break;
       case GameState.Ended:
         // Back to menu

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnEffect : MonoBehaviour {
 
@@ -9,7 +7,7 @@ public class SpawnEffect : MonoBehaviour {
     public AnimationCurve fadeIn;
 
     ParticleSystem ps;
-    float timer = 0;
+    float timer;
     Renderer _renderer;
 
     int shaderProperty;
@@ -20,7 +18,7 @@ public class SpawnEffect : MonoBehaviour {
         _renderer = GetComponent<Renderer>();
         ps = GetComponentInChildren <ParticleSystem>();
 
-        var main = ps.main;
+        ParticleSystem.MainModule main = ps.main;
         main.duration = spawnEffectTime;
 
         ps.Play();

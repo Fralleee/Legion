@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class FlyCam : MonoBehaviour
 {
@@ -9,8 +8,8 @@ public class FlyCam : MonoBehaviour
   public float slowMoveFactor = 0.25f;
   public float fastMoveFactor = 3;
 
-  private float rotationX = 0.0f;
-  private float rotationY = 0.0f;
+  float rotationX;
+  float rotationY;
 
   void Start()
   {

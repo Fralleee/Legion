@@ -1,6 +1,4 @@
 ﻿using Fralle;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Match/Actions/Respawn Units")]
@@ -8,10 +6,10 @@ public class RespawnUnitsAction : Action
 {
   public override void Act(IStateController controller)
   {
-    Respawn(controller);
+    Respawn();
   }
 
-  void Respawn(IStateController isc)
+  void Respawn()
   {
     GameManager.instance.PerformSpawnUnits();
   }

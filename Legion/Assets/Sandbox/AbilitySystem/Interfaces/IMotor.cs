@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IMotor
+﻿public interface IMotor
 {
   void ApplyModifier(float value);
 }

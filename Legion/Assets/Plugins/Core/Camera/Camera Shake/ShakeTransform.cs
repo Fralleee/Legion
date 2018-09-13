@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShakeTransform : MonoBehaviour
@@ -31,7 +30,7 @@ public class ShakeTransform : MonoBehaviour
       duration = data.duration;
       timeRemaining = duration;
 
-      float rand = 32.0f;
+      const float rand = 32.0f;
 
       noiseOffset.x = Random.Range(0.0f, rand);
       noiseOffset.y = Random.Range(0.0f, rand);
@@ -71,7 +70,7 @@ public class ShakeTransform : MonoBehaviour
   }
   public void AddShakeEvent(float amplitude, float frequency, float duration, AnimationCurve blendOverLifetime, ShakeTransformEventData.Target target)
   {
-    ShakeTransformEventData data = ShakeTransformEventData.CreateInstance<ShakeTransformEventData>();
+    ShakeTransformEventData data = ScriptableObject.CreateInstance<ShakeTransformEventData>();
     data.Init(amplitude, frequency, duration, blendOverLifetime, target);
 
     AddShakeEvent(data);

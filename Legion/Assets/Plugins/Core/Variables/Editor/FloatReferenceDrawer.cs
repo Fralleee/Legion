@@ -13,8 +13,7 @@ public class FloatReferenceDrawer : PropertyDrawer
   {
     if (popupStyle == null)
     {
-      popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
-      popupStyle.imagePosition = ImagePosition.ImageOnly;
+      popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions")) {imagePosition = ImagePosition.ImageOnly};
     }
 
     label = EditorGUI.BeginProperty(position, label, property);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 [AddComponentMenu("Post Process/Post Process")]
-[RequireComponent(typeof(UnityEngine.Camera))]
+[RequireComponent(typeof(Camera))]
 public class PostProcess : MonoBehaviour
 {
     enum Pass
@@ -46,22 +46,22 @@ public class PostProcess : MonoBehaviour
 
     public int GodRaySteps = 10;
 
-    private Material _postProcessMaterial;
+  Material _postProcessMaterial;
 
-    private RenderTexture _bloomThresholdTexture;
-    private RenderTexture _bloomThresholdTextureMip1;
-    private RenderTexture _bloomThresholdTextureMip2;
-    private RenderTexture _bloomBlurX;
-    private RenderTexture _bloomBlurY;
+  RenderTexture _bloomThresholdTexture;
+  RenderTexture _bloomThresholdTextureMip1;
+  RenderTexture _bloomThresholdTextureMip2;
+  RenderTexture _bloomBlurX;
+  RenderTexture _bloomBlurY;
 
-    private RenderTexture _godrayBlur1;
-    private RenderTexture _godrayBlur2;
+  RenderTexture _godrayBlur1;
+  RenderTexture _godrayBlur2;
 
-    private UnityEngine.Camera _thisCamera;
+  Camera _thisCamera;
 
-    private bool _initialized = false;    
+  bool _initialized;
 
-    void OnActivate()
+  void OnActivate()
     {
         OnEnable();
     }
@@ -75,7 +75,7 @@ public class PostProcess : MonoBehaviour
     {
         if (_initialized == false)
         {
-            _thisCamera = this.GetComponent<UnityEngine.Camera>();
+            _thisCamera = GetComponent<Camera>();
             _thisCamera.depthTextureMode = DepthTextureMode.Depth;
 
             //Create Post Process Material

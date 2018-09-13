@@ -1,6 +1,4 @@
 ﻿using Fralle;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Match/Actions/Release Units")]
@@ -8,10 +6,10 @@ public class ReleaseUnitsAction : Action
 {
   public override void Act(IStateController controller)
   {
-    Release(controller);
+    Release();
   }
 
-  void Release(IStateController isc)
+  void Release()
   {
     GameManager.instance.PerformReleaseUnits();
   }

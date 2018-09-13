@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
-using Fralle;
 
 public class AITargeter : MonoBehaviour, ITargeter
 {
-  const float TARGET_SCAN_RATE = 0.5f;
-  const int MIN_AGGRO_RANGE = 15;
-  const float LOS_CHECK_RATE = 0.5f;
+  const float TargetScanRate = 0.5f;
+  const int MinAggroRange = 15;
+  const float LosCheckRate = 0.5f;
 
   public Target currentTarget { get; set; }
   public Target mainTarget { get; set; }
   public Target objective { get; set; }
-  public bool PerformLoSCheck { get { return Time.time > lastLosCheck; } }
-  [HideInInspector] public float lastScan { get; set; }
-  [HideInInspector] public float lastLosCheck { get; set; }
-  [HideInInspector] public bool lastLosResult { get; set; }
+  public bool PerformLoSCheck { get { return Time.time > LastLosCheck; } }
+  [HideInInspector] public float LastScan { get; set; }
+  [HideInInspector] public float LastLosCheck { get; set; }
+  [HideInInspector] public bool LastLosResult { get; set; }
 
   [Header("Layer masks")]
   public LayerMask EnvironmentLayerMask;
@@ -25,21 +24,16 @@ public class AITargeter : MonoBehaviour, ITargeter
 
   public int GetTargetLayer(AbilityTargetTeam targetTeam) { return targetTeam == AbilityTargetTeam.Hostile ? EnemyLayer : gameObject.layer; }
   public int GetSpawnLayer() { return SpawnLayer; }
-  public void SetAggroRange(int range) { LookRange = Mathf.Max(range, MIN_AGGRO_RANGE); }
+  public void SetAggroRange(int range) { LookRange = Mathf.Max(range, MinAggroRange); }
   public bool FindMainTarget(Ability ability)
   {
-    if (Time.time > lastScan)
-    {
-      if (!mainTarget || mainTarget.lookForNewTarget)
-      {
-        lastScan = Time.time + TARGET_SCAN_RATE;
-        DamageController[] targets = TargetingHelpers.FindTargetsInRange(EnemyLayerMask, LookRange, transform.position);
-        if (targets.Length == 0) return false;
-        targets = TargetingHelpers.OrderTargetsByPriority(targets, transform, ability.priority);
-        mainTarget = new Target(targets[0].gameObject);
-
-      }
-    }
+    if (!(Time.time > LastScan)) return mainTarget;
+    if (mainTarget && !mainTarget.lookForNewTarget) return mainTarget;
+    LastScan = Time.time + TargetScanRate;
+    DamageController[] targets = TargetingHelpers.FindTargetsInRange(EnemyLayerMask, LookRange, transform.position);
+    if (targets.Length == 0) return false;
+    targets = TargetingHelpers.OrderTargetsByPriority(targets, transform, ability.priority);
+    mainTarget = new Target(targets[0].gameObject);
     return mainTarget;
   }
   public bool FindTarget(Ability ability)
@@ -58,11 +52,9 @@ public class AITargeter : MonoBehaviour, ITargeter
 
   public bool LineOfSightMainTarget(Ability ability)
   {
-    if (PerformLoSCheck)
-    {
-      lastLosCheck = Time.time + LOS_CHECK_RATE;
-      lastLosResult = TargetingHelpers.LineOfSightUnObstructed(ability.owner.transform, mainTarget, ability.range, EnemyLayerMask, EnvironmentLayerMask);
-    }
-    return lastLosResult;
+    if (!PerformLoSCheck) return LastLosResult;
+    LastLosCheck = Time.time + LosCheckRate;
+    LastLosResult = TargetingHelpers.LineOfSightUnObstructed(ability.owner.transform, mainTarget, ability.range, EnemyLayerMask, EnvironmentLayerMask);
+    return LastLosResult;
   }
 }

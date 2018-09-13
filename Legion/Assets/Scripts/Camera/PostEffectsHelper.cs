@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
@@ -74,14 +73,8 @@ namespace UnityStandardAssets.ImageEffects
         RenderTexture dest,
         Material material)
     {
-      float x1;
-      float x2;
-      float y1;
-      float y2;
-
       RenderTexture.active = dest;
-      bool invertY = true; // source.texelSize.y < 0.0ff;
-                           // Set up the simple Matrix
+      // Set up the simple Matrix
       GL.PushMatrix();
       GL.LoadOrtho();
 
@@ -90,20 +83,13 @@ namespace UnityStandardAssets.ImageEffects
         material.SetPass(i);
 
         float y1_; float y2_;
-        if (invertY)
-        {
-          y1_ = 1.0f; y2_ = 0.0f;
-        }
-        else
-        {
-          y1_ = 0.0f; y2_ = 1.0f;
-        }
+        y1_ = 1.0f; y2_ = 0.0f;
 
         // left
-        x1 = 0.0f;
-        x2 = 0.0f + 1.0f / (dest.width * 1.0f);
-        y1 = 0.0f;
-        y2 = 1.0f;
+        var x1 = 0.0f;
+        var x2 = 0.0f + 1.0f / (dest.width * 1.0f);
+        float y1 = 0.0f;
+        var y2 = 1.0f;
         GL.Begin(GL.QUADS);
 
         GL.TexCoord2(0.0f, y1_); GL.Vertex3(x1, y1, 0.1f);

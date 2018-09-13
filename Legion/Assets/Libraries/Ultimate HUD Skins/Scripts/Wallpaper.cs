@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +9,10 @@ public class Wallpaper : MonoBehaviour {
     public List<Sprite> ImageList = new List<Sprite>();
     public Sprite currentSprite;
 
-    private int wallpaperPrefs;
-    private int currentImageIndex = 0;
+  int wallpaperPrefs;
+  int currentImageIndex;
 
-    void Start ()
+  void Start ()
     {
         wallpaperPrefs = PlayerPrefs.GetInt("Wallpaper");
         currentImageIndex = wallpaperPrefs;

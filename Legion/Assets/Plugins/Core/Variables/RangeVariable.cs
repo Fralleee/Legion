@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Variables/Range")]
 public class RangeVariable : ScriptableObject
 {
-  public float minValue = 0f;
+  public float minValue;
   public float maxValue = 1f;
-  public float value = 0f;
+  public float value;
   void OnEnable()
   {
     minValue = 0f;

@@ -6,7 +6,7 @@ public class FloatReferenceTextSetter : MonoBehaviour
 {
   [SerializeField] FloatReference value;
   Text text;
-  [SerializeField] bool showOnlyWhenPositive = false;
+  [SerializeField] bool showOnlyWhenPositive;
   void Start() { text = GetComponent<Text>(); }
   void Update() {
     if(showOnlyWhenPositive) text.text = value > 0 ? value.Value.Ceil().ToString() : "";

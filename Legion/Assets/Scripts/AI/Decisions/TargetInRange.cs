@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Fralle;
+﻿using Fralle;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Decisions/TargetInRange")]

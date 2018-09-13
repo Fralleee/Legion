@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,7 @@ public class HealthBar : MonoBehaviour
   [SerializeField] Image foregroundImage;
   [SerializeField] Image changeIndicator;
   float oldValue = 1f;
-  float updateSpeedSeconds = 0.2f;
+  private const float updateSpeedSeconds = 0.2f;
 
   void Awake()
   {
@@ -20,8 +19,7 @@ public class HealthBar : MonoBehaviour
     float percentage = currentHealth / maxHealth;
     if (animate)
     {
-      if(percentage < oldValue) StartCoroutine(AnimateHealthLoss(percentage));
-      else StartCoroutine(AnimateHealthGain(percentage));
+      StartCoroutine(percentage < oldValue ? AnimateHealthLoss(percentage) : AnimateHealthGain(percentage));
     }
     else
     {

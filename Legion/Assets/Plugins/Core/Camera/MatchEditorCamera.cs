@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -8,84 +7,70 @@ using UnityEditor;
 public class MatchEditorCamera : MonoBehaviour
 {
 
-  private Camera myCamera;
+  Camera myCamera;
   public bool matchCameraDurringPlay = true;
   public float swimAmount = 0.5f;
   public float swimSpeed = 0.5f;
   public float smoothing = 10f;
   public float speed = 5.0f;
 
-  private Vector3 targetPos = Vector3.zero;
-  private Quaternion targetRotation = Quaternion.identity;
-  private Vector3 mousePos = Vector3.zero;
-  private float targetFov = 60.0f;
+  Vector3 targetPos = Vector3.zero;
+  Quaternion targetRotation = Quaternion.identity;
+  float targetFov = 60.0f;
 
-  private Transform targetTransform;
+  Transform targetTransform;
 
 #if UNITY_EDITOR
-  private SceneView sceneView;
-  private EditorApplication.CallbackFunction cbf_UpdateCamera;
+  SceneView sceneView;
+  EditorApplication.CallbackFunction cbf_UpdateCamera;
 #endif
 
   // Use this for initialization
   void Start()
   {
-    myCamera = this.GetComponent<Camera>();
+    myCamera = GetComponent<Camera>();
     if (targetFov <= 0) Debug.LogWarning("targetFov error");
 
     //#if UNITY_EDITOR
 
     //#else
-    if (Application.isPlaying == true && matchCameraDurringPlay)
-    {
-      targetTransform = new GameObject().transform;
-      targetTransform.name = "CameraTargetTransform";
-      targetTransform.position = myCamera.transform.position;
-      targetTransform.rotation = myCamera.transform.rotation;
-    }
+    if (Application.isPlaying != true || !matchCameraDurringPlay) return;
+    targetTransform = new GameObject().transform;
+    targetTransform.name = "CameraTargetTransform";
+    targetTransform.position = myCamera.transform.position;
+    targetTransform.rotation = myCamera.transform.rotation;
     //#endif
   }
 
 #if UNITY_EDITOR
   void UpdateCamera()
   {
-
-    if (Application.isPlaying == false || matchCameraDurringPlay == true)
+    if (Application.isPlaying && matchCameraDurringPlay != true) return;
+    if (myCamera == null) return;
+    myCamera.ResetProjectionMatrix();
+    if (SceneView.currentDrawingSceneView != null)
     {
-
-      if (myCamera != null)
-      {
-        myCamera.ResetProjectionMatrix();
-        if (SceneView.currentDrawingSceneView != null)
-        {
-          sceneView = SceneView.currentDrawingSceneView;
-        }
-        if (sceneView != null)
-        {
-          targetRotation = sceneView.camera.transform.rotation;
-          targetPos = sceneView.camera.transform.position;
-          targetFov = sceneView.camera.fieldOfView;
-
-
-          float randRotX = Mathf.Sin(Time.fixedTime * 2.17f * swimSpeed) + Mathf.Sin(Time.fixedTime * 0.73f * swimSpeed);
-          float randRotY = Mathf.Sin(Time.fixedTime * 2.73f * swimSpeed) + Mathf.Sin(Time.fixedTime * 1.17f * swimSpeed);
-          float randRotZ = Mathf.Sin(Time.fixedTime * 3.17f * swimSpeed) + Mathf.Sin(Time.fixedTime * 1.31f * swimSpeed);
-
-          targetRotation = targetRotation * Quaternion.Euler(randRotX * swimAmount, randRotY * swimAmount, randRotZ * swimAmount);
-
-          myCamera.transform.position += (targetPos - myCamera.transform.position) * Mathf.Clamp01(1.0f / smoothing);
-          myCamera.transform.rotation = Quaternion.Slerp(myCamera.transform.rotation, targetRotation, Mathf.Clamp01(1.0f / smoothing));
-
-          //myCamera.transform.position = targetPos;
-          //myCamera.transform.rotation = targetRotation;
-
-          myCamera.fieldOfView = targetFov;
-
-        }
-
-      }
+      sceneView = SceneView.currentDrawingSceneView;
     }
+    if (sceneView == null) return;
+    targetRotation = sceneView.camera.transform.rotation;
+    targetPos = sceneView.camera.transform.position;
+    targetFov = sceneView.camera.fieldOfView;
 
+
+    float randRotX = Mathf.Sin(Time.fixedTime * 2.17f * swimSpeed) + Mathf.Sin(Time.fixedTime * 0.73f * swimSpeed);
+    float randRotY = Mathf.Sin(Time.fixedTime * 2.73f * swimSpeed) + Mathf.Sin(Time.fixedTime * 1.17f * swimSpeed);
+    float randRotZ = Mathf.Sin(Time.fixedTime * 3.17f * swimSpeed) + Mathf.Sin(Time.fixedTime * 1.31f * swimSpeed);
+
+    targetRotation = targetRotation * Quaternion.Euler(randRotX * swimAmount, randRotY * swimAmount, randRotZ * swimAmount);
+
+    myCamera.transform.position += (targetPos - myCamera.transform.position) * Mathf.Clamp01(1.0f / smoothing);
+    myCamera.transform.rotation = Quaternion.Slerp(myCamera.transform.rotation, targetRotation, Mathf.Clamp01(1.0f / smoothing));
+
+    //myCamera.transform.position = targetPos;
+    //myCamera.transform.rotation = targetRotation;
+
+    myCamera.fieldOfView = targetFov;
   }
 #endif
 
@@ -93,7 +78,7 @@ public class MatchEditorCamera : MonoBehaviour
   {
     //Debug.Log(this + " OnEnable");
 #if UNITY_EDITOR
-    cbf_UpdateCamera = new EditorApplication.CallbackFunction(UpdateCamera);
+    cbf_UpdateCamera = UpdateCamera;
     EditorApplication.update += cbf_UpdateCamera;
 #endif
   }
@@ -111,7 +96,7 @@ public class MatchEditorCamera : MonoBehaviour
   {
 
 #if UNITY_EDITOR
-    if (Application.isPlaying == true && matchCameraDurringPlay == false)
+    if (Application.isPlaying && matchCameraDurringPlay == false)
     {
 #endif
       /*

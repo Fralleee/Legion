@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 public static class TargetingHelpers
@@ -73,7 +72,6 @@ public static class TargetingHelpers
   }
 
 
-
   /// <summary>
   /// Basically return true if we have line of sight from same team we're trying to hit
   /// Useful for AOE spells in which we just want the AI to do damage
@@ -81,6 +79,8 @@ public static class TargetingHelpers
   /// <param name="caster"></param>
   /// <param name="target"></param>
   /// <param name="range"></param>
+  /// <param name="targetMask"></param>
+  /// <param name="environmentMask"></param>
   /// <returns></returns>
   public static bool LineOfSightLayer(Transform caster, Transform target, float range, LayerMask targetMask, LayerMask environmentMask)
   {
@@ -99,9 +99,8 @@ public static class TargetingHelpers
   /// <param name="caster"></param>
   /// <param name="target"></param>
   /// <param name="range"></param>
-  /// <param name="targetLayer"></param>
   /// <param name="targetMask"></param>
-  /// <param name="obstacleMask"></param>
+  /// <param name="environmentMask"></param>
   /// <returns></returns>
   public static bool LineOfSightUnObstructed(Transform caster, Transform target, float range, LayerMask targetMask, LayerMask environmentMask)
   {

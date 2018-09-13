@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class InventoryButtonRightClick : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IPointerExitHandler
@@ -7,16 +6,16 @@ public class InventoryButtonRightClick : MonoBehaviour, IPointerClickHandler, IP
     [Header("ANIMATORS")]
     public Animator panelAnimator;
 
-    private bool isOpen = false;
+  bool isOpen;
 
-    public void OnPointerClick(PointerEventData eventData)
+  public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right && isOpen == false)
         {
             panelAnimator.Play("Expand");
             isOpen = true;
         }
-        else if (eventData.button == PointerEventData.InputButton.Right && isOpen == true)
+        else if (eventData.button == PointerEventData.InputButton.Right && isOpen)
         {
             panelAnimator.Play("Minimize");
             isOpen = false;
@@ -30,7 +29,7 @@ public class InventoryButtonRightClick : MonoBehaviour, IPointerClickHandler, IP
             panelAnimator.Play("Expand");
             isOpen = true;
         }
-        else if (eventData.button == PointerEventData.InputButton.Right && isOpen == true)
+        else if (eventData.button == PointerEventData.InputButton.Right && isOpen)
         {
             panelAnimator.Play("Minimize");
             isOpen = false;

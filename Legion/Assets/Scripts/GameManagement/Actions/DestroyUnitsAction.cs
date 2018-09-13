@@ -1,6 +1,4 @@
 ﻿using Fralle;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Match/Actions/Destroy Units")]
@@ -8,10 +6,10 @@ public class DestroyUnitsAction : Action
 {
   public override void Act(IStateController controller)
   {
-    Kill(controller);
+    Kill();
   }
 
-  void Kill(IStateController isc)
+  void Kill()
   {
     GameManager.instance.PerformDestroyUnits();
   }

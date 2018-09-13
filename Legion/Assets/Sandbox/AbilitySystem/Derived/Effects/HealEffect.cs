@@ -1,7 +1,4 @@
-﻿using Fralle;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Effects/Heal")]
 public class HealEffect : AbilityEffect

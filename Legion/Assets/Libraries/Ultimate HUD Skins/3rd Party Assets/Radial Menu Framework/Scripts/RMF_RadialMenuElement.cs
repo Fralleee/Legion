@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 [AddComponentMenu("Radial Menu Framework/RMF Element")]
 public class RMF_RadialMenuElement : MonoBehaviour {
@@ -24,15 +23,15 @@ public class RMF_RadialMenuElement : MonoBehaviour {
     public float angleOffset;
 
     [HideInInspector]
-    public bool active = false;
+    public bool active;
 
     [HideInInspector]
-    public int assignedIndex = 0;
-    // Use this for initialization
+    public int assignedIndex;
+  // Use this for initialization
 
-    private CanvasGroup cg;
+  CanvasGroup cg;
 
-    void Awake() {
+  void Awake() {
 
         rt = gameObject.GetComponent<RectTransform>();
 

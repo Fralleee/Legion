@@ -6,10 +6,10 @@ public class DisableBuildingAction : Action
 {
   public override void Act(IStateController controller)
   {
-    Disable(controller);
+    Disable();
   }
 
-  void Disable(IStateController isc)
+  void Disable()
   {
     GameManager.instance.PerformDisableBuilding();
   }

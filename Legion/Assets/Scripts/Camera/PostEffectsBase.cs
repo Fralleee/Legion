@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +8,10 @@ namespace UnityStandardAssets.ImageEffects
   public class PostEffectsBase : MonoBehaviour
   {
     protected bool supportHDRTextures = true;
-    protected bool supportDX11 = false;
+    protected bool supportDX11;
     protected bool isSupported = true;
 
-    private List<Material> createdMaterials = new List<Material>();
+    List<Material> createdMaterials = new List<Material>();
 
     protected Material CheckShaderAndCreateMaterial(Shader s, Material m2Create)
     {
@@ -74,7 +73,7 @@ namespace UnityStandardAssets.ImageEffects
       RemoveCreatedMaterials();
     }
 
-    private void RemoveCreatedMaterials()
+    void RemoveCreatedMaterials()
     {
       while (createdMaterials.Count > 0)
       {
@@ -182,8 +181,6 @@ namespace UnityStandardAssets.ImageEffects
 
     protected void DrawBorder(RenderTexture dest, Material material)
     {
-      float x1;
-      float x2;
       float y1;
       float y2;
 
@@ -208,8 +205,8 @@ namespace UnityStandardAssets.ImageEffects
         }
 
         // left
-        x1 = 0.0f;
-        x2 = 0.0f + 1.0f / (dest.width * 1.0f);
+        var x1 = 0.0f;
+        var x2 = 0.0f + 1.0f / (dest.width * 1.0f);
         y1 = 0.0f;
         y2 = 1.0f;
         GL.Begin(GL.QUADS);

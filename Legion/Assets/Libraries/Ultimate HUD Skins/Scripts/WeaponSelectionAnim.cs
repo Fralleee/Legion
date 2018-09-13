@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSelectionAnim : MonoBehaviour {
@@ -7,21 +6,21 @@ public class WeaponSelectionAnim : MonoBehaviour {
     public Animator weaponPanelAnimator;
     public List<GameObject> weaponButtons = new List<GameObject>();
 
-    private GameObject currentWeapon;
-    private GameObject selectedWeapon;
+  GameObject currentWeapon;
+  GameObject selectedWeapon;
 
-    private GameObject currentButton;
-    private GameObject nextButton;
+  GameObject currentButton;
+  GameObject nextButton;
 
-    public int currentButtonIndex = 0;
-    private int nextButtonIndex = 0;
+  public int currentButtonIndex;
+  int nextButtonIndex;
 
-    private Animator currentWeaponAnimator;
+  Animator currentWeaponAnimator;
 
-    private Animator currentButtonAnimator;
-    private Animator nextButtonAnimator;
+  Animator currentButtonAnimator;
+  Animator nextButtonAnimator;
 
-    void Start ()
+  void Start ()
     {
         nextButton = weaponButtons[nextButtonIndex];
         nextButtonAnimator = nextButton.GetComponent<Animator>();

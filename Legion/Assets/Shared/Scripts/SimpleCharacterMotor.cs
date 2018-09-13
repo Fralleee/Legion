@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class SimpleCharacterMotor : MonoBehaviour
 {
     public CursorLockMode cursorLockMode = CursorLockMode.Locked;
-    public bool cursorVisible = false;
+    public bool cursorVisible;
     [Header("Movement")]
     public float walkSpeed = 2;
     public float runSpeed = 4;
@@ -43,8 +40,8 @@ public class SimpleCharacterMotor : MonoBehaviour
 
     void UpdateLookRotation()
     {
-        var x = Input.GetAxis("Mouse Y");
-        var y = Input.GetAxis("Mouse X");
+        float x = Input.GetAxis("Mouse Y");
+        float y = Input.GetAxis("Mouse X");
 
         x *= invertY ? -1 : 1;
         targetRotation = transform.localRotation * Quaternion.AngleAxis(y * lookSpeed * Time.deltaTime, Vector3.up);
@@ -58,11 +55,11 @@ public class SimpleCharacterMotor : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            var x = Input.GetAxis("Horizontal");
-            var z = Input.GetAxis("Vertical");
-            var run = Input.GetKey(KeyCode.LeftShift);
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+            bool run = Input.GetKey(KeyCode.LeftShift);
 
-            var translation = new Vector3(x, 0, z);
+            Vector3 translation = new Vector3(x, 0, z);
             speed = run ? runSpeed : walkSpeed;
             movement = transform.TransformDirection(translation * speed);
         }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using TMPro;
 
 
@@ -7,12 +6,12 @@ public class AdjustTimeScale : MonoBehaviour
 {
     TextMeshProUGUI textMesh;
 
-    private void Start()
-    {
-        textMesh = GetComponent<TextMeshProUGUI>();
-    }
+  void Start()
+  {
+    textMesh = GetComponent<TextMeshProUGUI>();
+  }
 
-    void Update()
+  void Update()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {

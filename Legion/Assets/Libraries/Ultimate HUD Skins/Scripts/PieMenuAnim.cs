@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PieMenuAnim : MonoBehaviour {
 
@@ -14,10 +12,10 @@ public class PieMenuAnim : MonoBehaviour {
     [Header("SETTINGS")]
     public string shortcutKey;
 
-    private bool isOn = false;
-    private bool isHolding = false;
+  bool isOn;
+  bool isHolding;
 
-    void Update()
+  void Update()
     {
 
         if (Input.GetKey(shortcutKey))
@@ -31,13 +29,13 @@ public class PieMenuAnim : MonoBehaviour {
             isOn = true;
         }
 
-        if (isOn == true && isHolding == false)
+        if (isOn && isHolding == false)
         {
             panelAnimator.Play(fadeOutAnim);
             isHolding = false;
             isOn = false;
         }
-        else if (isOn == false && isHolding == true)
+        else if (isOn == false && isHolding)
         {
             panelAnimator.Play(fadeInAnim);
             isHolding = true;
@@ -46,7 +44,7 @@ public class PieMenuAnim : MonoBehaviour {
 
     public void AnimatePanel ()
     {
-        if (isOn == true)
+        if (isOn)
         {
             panelAnimator.Play(fadeOutAnim);
             isOn = false;

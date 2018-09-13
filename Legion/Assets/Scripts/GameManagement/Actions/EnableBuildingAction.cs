@@ -6,10 +6,10 @@ public class EnableBuildingAction : Action
 {
   public override void Act(IStateController controller)
   {
-    Enable(controller);
+    Enable();
   }
 
-  void Enable(IStateController isc)
+  void Enable()
   {
     GameManager.instance.PerformEnableBuilding();
   }

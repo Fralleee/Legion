@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
@@ -24,12 +23,12 @@ namespace UnityStandardAssets.ImageEffects
     public float lumThreshold = 0.2f;
     public float edgeExp = 1.0f;
     public float sampleDist = 1.0f;
-    public float edgesOnly = 0.0f;
+    public float edgesOnly;
     public Color edgesOnlyBgColor = Color.white;
 
     public Shader edgeDetectShader;
-    private Material edgeDetectMaterial = null;
-    private EdgeDetectMode oldMode = EdgeDetectMode.SobelDepthThin;
+    Material edgeDetectMaterial;
+    EdgeDetectMode oldMode = EdgeDetectMode.SobelDepthThin;
 
 
     public override bool CheckResources()

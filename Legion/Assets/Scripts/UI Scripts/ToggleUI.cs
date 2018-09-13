@@ -3,7 +3,7 @@
 public class ToggleUI : MonoBehaviour
 {
   [SerializeField] KeyCode key;
-  bool displayItems = false;
+  bool displayItems;
 
   void Update()
   {

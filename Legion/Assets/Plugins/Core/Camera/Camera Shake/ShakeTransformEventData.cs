@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Shake Transform Event", menuName = "Camera/Shake Transform Event", order = 1)]
 public class ShakeTransformEventData : ScriptableObject

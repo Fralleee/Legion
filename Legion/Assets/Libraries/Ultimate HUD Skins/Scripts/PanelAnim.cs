@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,13 +6,13 @@ public class PanelAnim : MonoBehaviour {
 
 	[Header("PANEL SETTINGS")]
 	public List<GameObject> panels = new List<GameObject>();
-	public int currentPanelIndex = 0;
+	public int currentPanelIndex;
 	public GameObject currentPanel;
 	public CanvasGroup canvasGroup;
 
 	[Header("ANIMATION SETTINGS")]
-	public bool fadeOut = false;
-	public bool fadeIn = false;
+	public bool fadeOut;
+	public bool fadeIn;
 	public float fadeFactor = 8f;
 	public float growRate = 0.5f;
 

@@ -22,11 +22,9 @@ public class SetUnitUIValues : MonoBehaviour
     {
       goldCostGo.SetActive(true);
       goldAmountText.text = unit.goldCost.ToString();
-    }    
-    if(unit.woodCost > 0)
-    {
-      woodCostGo.SetActive(true);
-      woodAmountText.text = unit.woodCost.ToString();
     }
+    if (!(unit.woodCost > 0)) return;
+    woodCostGo.SetActive(true);
+    woodAmountText.text = unit.woodCost.ToString();
   }
 }

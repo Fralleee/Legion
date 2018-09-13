@@ -16,6 +16,6 @@ public class BlockerController : MonoBehaviour
     movement.HasValue ? x.Movement == movement.Value :
     rotation.HasValue ? x.Rotation == rotation.Value :
     abilities.HasValue ? x.Abilities == abilities.Value :
-    production.HasValue ? x.Production == production.Value : false);
+    production.HasValue && x.Production == production.Value);
   }
 }
