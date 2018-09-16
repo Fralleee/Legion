@@ -23,11 +23,13 @@ public abstract class AbilityCaster : MonoBehaviour
     {
       abilities[i] = abilities[i].Setup(this);
     }
-    abilities.Where(x => x.castType == AbilityCastType.Passive).ToList().ForEach(x => TargetCast((TargetAbility)x.Setup(this), true));
-    abilities.Where(x => x.castType != AbilityCastType.Passive).Select(x => x.Setup(this));
+    abilities.Where(x => x.castType == AbilityCastType.Passive).ToList().ForEach(x => PassiveCast((TargetAbility)x.Setup(this)));
+    abilities = abilities.Where((x => x.castType != AbilityCastType.Passive)).ToList();
+    abilities.Select(x => x.Setup(this));
   }
 
   public abstract bool TryCast(Ability ability, bool selfCast = false);
+  public abstract void PassiveCast(TargetAbility ability);
   public abstract IEnumerator TargetCast(TargetAbility ability, bool selfCast = false);
   public abstract IEnumerator PointCast(PointAbility ability);
   public abstract IEnumerator DirectionCast(DirectionAbility ability);

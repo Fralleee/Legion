@@ -2,14 +2,13 @@
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
 + Target Ability 						=> 	Active, Target, Hostile
-+ Bolt 											=> 	Active, Direction, Hostile
-+ Heal 											=> 	Active, Target, Friendly
++ Bolt 									=> 	Active, Direction, Hostile
++ Heal 									=> 	Active, Target, Friendly
++ Add melee attack again				=> 	Active, Target, Hostile
 
-- Extra movement speed 			=> 	Passive, Target, Self 		- Use ember effect
+- Extra movement speed 					=> 	Passive, Target, Self 		- Use ember effect
+- AOE 									=> 	Active, Location, Hostile - Use explosion effect
 
-- AOE 											=> 	Active, Location, Hostile - Use explosion effect
-
-- Add melee attack again		=> 	Active, Target, Hostile 	- Use animation only
 
 
 - Ensure that the player can cast all o these aswell

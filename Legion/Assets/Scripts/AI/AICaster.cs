@@ -11,15 +11,19 @@ public class AICaster : AbilityCaster
   AIAnimationUpdater aIAnimationUpdater;
   AIMotor motor;
 
-  protected override void Start()
+  protected override void Awake()
   {
-    base.Start();
+    base.Awake();
     blockerController = GetComponent<BlockerController>();
     motor = GetComponent<AIMotor>();
     animator = GetComponentInChildren<Animator>();
     aIAnimationUpdater = GetComponent<AIAnimationUpdater>();
     effectsHolder = transform.Find("EffectsHolder");
+  }
 
+  protected override void Start()
+  {
+    base.Start();
     float maxRange = Mathf.Max(
       mainAttack.range,
       secondaryAttack ? secondaryAttack.range : 15f,
@@ -42,14 +46,21 @@ public class AICaster : AbilityCaster
     return validTarget;
   }
 
+  public override void PassiveCast(TargetAbility ability)
+  {
+    ability.ApplyEffects(gameObject);
+    if (ability.prefab) Instantiate(ability.prefab, transform);
+  }
+
   public override IEnumerator TargetCast(TargetAbility ability, bool selfCast = false)
   {
+    GameObject target = selfCast ? gameObject : targeter.currentTarget;
     CoroutineWithResponse cwr = new CoroutineWithResponse(this, Windup(ability));
     yield return cwr.coroutine;
     if (!(bool) cwr.result) yield break;
-    ability.ApplyEffects(targeter.currentTarget);
+    ability.ApplyEffects(target);
     ability.ApplyCooldown();
-    if(ability.prefab) Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
+    if(ability.prefab) Instantiate(ability.prefab, target.transform.position, Quaternion.identity);
     yield return Recovery(ability);
   }
   public override IEnumerator PointCast(PointAbility ability)
@@ -112,6 +123,6 @@ public class AICaster : AbilityCaster
     if (!effect) return;
     ParticleSystem onCastEffect = Instantiate(effect, effectsHolder);
     onCastEffect.Play();
-    Destroy(onCastEffect.gameObject, time > 0 ? time : onCastEffect.main.startLifetime.constant);
+    Destroy(onCastEffect.gameObject, time > 0 ? time : onCastEffect.main.duration + onCastEffect.main.startLifetime.constantMax);
   }
 }

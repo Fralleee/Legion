@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e286d3a0e03106048b686a251c79c73a, type: 3}
+  m_Name: PassiveBuff
+  m_EditorClassIdentifier: 
+  blocker: {fileID: 0}
+  image: {fileID: 0}
+  range: 15
+  cooldown: 0
+  castTime: 0
+  transferEffectsToPrefab: 0
+  requireLineOfSight: 2
+  priority: 5
+  targetRequirement: 0
+  targetTeam: 1
+  castType: 1
+  targetType: 0
+  effects:
+  - {fileID: 11400000, guid: df543de0980c6c44eb187396ffd35f9e, type: 2}
+  animationTrigger: 0
+  startEffect: {fileID: 0}
+  onCastEffect: {fileID: 0}
+  lastAction: 6.3020267
+  owner: {fileID: 0}
+  environmentLayer: 0
+  targetLayer: 0
+  prefab: {fileID: 0}

@@ -166,7 +166,7 @@ public class CharacterLaunch : MonoBehaviour
   //  cameraUtils.ResetFOV();
   //  blocker.Camera = false;
   //  GameObject effect = Instantiate(landingEffectPrefab, landingPosition + Vector3.up * 0.1f, Quaternion.Euler(-90, 0, 0));
-  //  Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+  //  Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration + effect.GetComponent<ParticleSystem>().main.startLifetime.constantMax);
   //  Camera.main.GetComponentInParent<ShakeTransform>().AddShakeEvent(cameraShake);
   //  Invoke("RemoveMovementBlock", 1);
   //}

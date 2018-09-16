@@ -16,4 +16,4 @@ MonoBehaviour:
   MaxHealth: 100
   Health: 100
   Armor: 0
-  resetHealth: 1
+  resetHealth: 0

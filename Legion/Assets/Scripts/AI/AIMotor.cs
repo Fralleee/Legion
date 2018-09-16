@@ -4,11 +4,12 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(AITargeter))]
 [RequireComponent(typeof(BlockerController))]
-public class AIMotor : MonoBehaviour
+public class AIMotor : MonoBehaviour, IMotor
 {
   public float travelSpeed = 4f;
   public float chasingSpeed = 6f;
   public float wanderTimer = 5f;
+  float speedModifier = 1f;
   public bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
   public bool isRotationBlocked { get { return blockerController.ContainsBlocker(rotation: true); } }
   public Transform turnTowardsTarget; 
@@ -48,6 +49,7 @@ public class AIMotor : MonoBehaviour
     {
       navMeshAgent.isStopped = false;
       navMeshAgent.speed = chasing ? chasingSpeed : travelSpeed;
+      navMeshAgent.speed *= speedModifier;
       navMeshAgent.SetDestination(target.position);
     }
   }
@@ -71,6 +73,11 @@ public class AIMotor : MonoBehaviour
   public void SimpleMove(Vector3 position)
   {
     if (navMeshAgent.enabled) navMeshAgent.SetDestination(position);
+  }
+
+  public void ApplyModifier(float value)
+  {
+    speedModifier += value;
   }
 
   IEnumerator ActivateAgent(float delay)

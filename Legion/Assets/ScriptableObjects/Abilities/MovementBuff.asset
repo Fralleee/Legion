@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: MovementBuff
+  m_EditorClassIdentifier: Assembly-CSharp::MovementBuff
+  onHitEffect: {fileID: 198111228059077286, guid: 8510ce90494e1e340a23f50159236314,
+    type: 2}
+  constantEffect: 1
+  followTarget: 1
+  amount: 25
