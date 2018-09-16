@@ -8,28 +8,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e286d3a0e03106048b686a251c79c73a, type: 3}
-  m_Name: MeleeAttack
+  m_Script: {fileID: 11500000, guid: f7e38326a58044f428583575e716be96, type: 3}
+  m_Name: PointAbility
   m_EditorClassIdentifier: 
   blocker: {fileID: 11400000, guid: c9635f202fbd974409d0cb229682f82d, type: 2}
   image: {fileID: 0}
-  range: 2
-  cooldown: 5
+  range: 15
+  cooldown: 2
   castTime: 1.25
-  transferEffectsToPrefab: 0
-  requireLineOfSight: 1
+  transferEffectsToPrefab: 1
+  requireLineOfSight: 0
   priority: 2
   targetRequirement: 0
   targetTeam: 0
   castType: 0
-  targetType: 0
+  targetType: 2
   effects:
   - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
-  animationTrigger: 0
+  animationTrigger: 2
   startEffect: {fileID: 0}
   onCastEffect: {fileID: 0}
-  lastAction: 0.02
+  lastAction: 0
   owner: {fileID: 0}
   environmentLayer: 0
   targetLayer: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 1620664206651942, guid: c0d1aa689f094984f918a5efbe46be5e, type: 2}

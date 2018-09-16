@@ -5,17 +5,15 @@
 + Bolt 									=> 	Active, Direction, Hostile
 + Heal 									=> 	Active, Target, Friendly
 + Add melee attack again				=> 	Active, Target, Hostile
-
-- Extra movement speed 					=> 	Passive, Target, Self 		- Use ember effect
-- AOE 									=> 	Active, Location, Hostile - Use explosion effect
-
-
++ Extra movement speed 					=> 	Passive, Target, Self 		- Use ember effect
++ AOE 									=> 	Active, Location, Hostile - Use explosion effect
 
 - Ensure that the player can cast all o these aswell
-
 - Organize scripts in Project 
   Ability System should move from sandbox
-
+  
+- When adding blocker blocker should perform checks on which states are blocked
+  We could save time from iterating list every blockcheck 
 ---------------------------------------------------------------------------------------------
 
 

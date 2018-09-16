@@ -1348,6 +1348,23 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: ee618ebe982d4614689b7f8d54c31096,
         type: 2}
+    - target: {fileID: 114561078611824584, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: secondaryAttack
+      value: 
+      objectReference: {fileID: 11400000, guid: ae52ce8273e1bc34cb746b35bb4ccda8,
+        type: 2}
+    - target: {fileID: 114561078611824584, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ae52ce8273e1bc34cb746b35bb4ccda8,
+        type: 2}
+    - target: {fileID: 114914358451658006, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: wanderTimer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 156928815164f574dad70c19cdcfd467, type: 2}

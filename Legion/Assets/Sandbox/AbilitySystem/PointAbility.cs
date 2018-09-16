@@ -4,10 +4,11 @@
 public class PointAbility : Ability
 {
   public GameObject prefab;
+  public float aoeRange = 5f;
   public override void Cast(bool selfCast = false)
   {
-    Debug.LogWarning("Dont forget about transferEffectsToPrefab");
-    if (owner) owner.PointCast(this);
+    if(!transferEffectsToPrefab) Debug.LogWarning("Dont forget about transferEffectsToPrefab");
+    if (owner) owner.StartCoroutine(owner.PointCast(this));
     else Debug.LogWarning("No owner on Ability: " + name);
   }
 }

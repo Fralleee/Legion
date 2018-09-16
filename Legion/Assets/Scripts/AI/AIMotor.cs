@@ -8,11 +8,11 @@ public class AIMotor : MonoBehaviour, IMotor
 {
   public float travelSpeed = 4f;
   public float chasingSpeed = 6f;
-  public float wanderTimer = 5f;
+  public float wanderTimer;
   float speedModifier = 1f;
   public bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
   public bool isRotationBlocked { get { return blockerController.ContainsBlocker(rotation: true); } }
-  public Transform turnTowardsTarget; 
+  public Transform turnTowardsTarget;
   BlockerController blockerController;
   NavMeshAgent navMeshAgent;
   NavMeshObstacle navMeshObstacle;
@@ -29,12 +29,18 @@ public class AIMotor : MonoBehaviour, IMotor
 
   void Update()
   {
-    if(turnTowardsTarget) transform.LookAt(turnTowardsTarget);
+    if (turnTowardsTarget) transform.LookAt(turnTowardsTarget);
   }
 
   public void SetStoppingDistance(float distance)
   {
     navMeshAgent.stoppingDistance = distance;
+  }
+
+  public void TryMove(Transform target, bool chasing = false)
+  {
+    if (isBlocked) Stop(target);
+    else Move(target, chasing);
   }
 
   public void Move(Transform target, bool chasing = false)

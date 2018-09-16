@@ -12,6 +12,6 @@ public class ChaseAction : Action
   void Chase(IStateController isc)
   {
     AIStateController ai = (AIStateController)isc;
-    ai.motor.Move(ai.targeter.currentTarget, true);
+    ai.motor.TryMove(ai.targeter.currentTarget, true);
   }
 }

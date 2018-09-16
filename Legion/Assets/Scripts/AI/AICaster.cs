@@ -67,11 +67,11 @@ public class AICaster : AbilityCaster
   {
     CoroutineWithResponse cwr = new CoroutineWithResponse(this, Windup(ability));
     yield return cwr.coroutine;
-    if ((bool)cwr.result)
-    {
-      Vector3 position = targeter.currentTarget.transform.position;
-      Instantiate(ability.prefab, new Vector3(position.x, 0, position.z), Quaternion.identity);
-    }
+    if (!(bool)cwr.result) yield break;
+    ability.ApplyCooldown();
+    Vector3 position = targeter.currentTarget.transform.position;
+    GameObject instance = Instantiate(ability.prefab, new Vector3(position.x, 0, position.z), Quaternion.identity);
+    instance.GetComponent<PointAbilityInstance>().ApplyEffects(ability);
     yield return Recovery(ability);
   }
   public override IEnumerator DirectionCast(DirectionAbility ability)
