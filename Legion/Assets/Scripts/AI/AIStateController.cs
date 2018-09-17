@@ -14,7 +14,7 @@ public class AIStateController : MonoBehaviour, IStateController
   [HideInInspector] public AIMotor motor;
   [HideInInspector] public AICaster caster;
   BlockerController blockerController;
-  public bool IsBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
+  public bool isBlocked { get { return blockerController && blockerController.Movement; } }
 
   void Awake()
   {

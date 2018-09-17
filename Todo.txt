@@ -1,19 +1,38 @@
 ---------------------------------------------------------------------------------------------
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
-+ Target Ability 						=> 	Active, Target, Hostile
-+ Bolt 									=> 	Active, Direction, Hostile
-+ Heal 									=> 	Active, Target, Friendly
-+ Add melee attack again				=> 	Active, Target, Hostile
-+ Extra movement speed 					=> 	Passive, Target, Self 		- Use ember effect
-+ AOE 									=> 	Active, Location, Hostile - Use explosion effect
+- Differentiate abilities and effects prefabs
+  Ex. MovementBuff Effect should have like swooshing lines behind the moving target
+	    Important to match the scale: useLocalScale
+			These should go from the ground up: InstantiationPosition.Ground
+			
+	Ex. PassiveBuff Ability should have swirling lines on the ground
+			Important to match the scale
+			This is a projector
+			
+- InstantiationPosition:
+  - Ensure that direction ability does not collide with caster
+	
+
+	
+Finished abilities: 
+Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE
 
 - Ensure that the player can cast all o these aswell
+
+	
+- Tidal Wave 					=> Active, Direction, Hostile
+- Chain Lightning 		=> Active, Target, Hostile
+- Turret 							=> Active, Point, Hostile
+- Healing Rain				=> Active, Point, Ally
+	
+- Some better way to transfer effects to prefab
+  Maybe some unified class that can take effects
+	And then used derived versions of it for different effects
+	Ability, AOEAbility, ChainedAbility
+	
 - Organize scripts in Project 
   Ability System should move from sandbox
-  
-- When adding blocker blocker should perform checks on which states are blocked
-  We could save time from iterating list every blockcheck 
 ---------------------------------------------------------------------------------------------
 
 

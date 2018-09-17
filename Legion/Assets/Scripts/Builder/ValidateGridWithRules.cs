@@ -13,6 +13,6 @@ public class ValidateGridWithRules : MonoBehaviour
 
   public void Validate()
   {
-    projector.enabled = blockerController.ContainsBlocker(production: true);
+    projector.enabled = blockerController && blockerController.Movement;
   }
 }

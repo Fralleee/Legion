@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
   float currentY;
   int layerMask;
   BlockerController blockerController;
-  bool isBlocked { get { return blockerController.ContainsBlocker(camera: true); } }
+  bool isBlocked { get { return blockerController && blockerController.Camera; } }
   bool isActive = true;
 
   void Start()

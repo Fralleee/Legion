@@ -7,7 +7,6 @@ public enum AbilityPriority { LowHealth, HighHealth, Nearest, Furthest, UseCaste
 public enum AbilityTargetRequirement { None, DamagedHealth }
 public enum AbilityTargetTeam { Hostile, Ally }
 public enum AbilityCastType { Active, Passive, Toggle, Channel }
-public enum AbilityTargetType { Target, Direction, Point }
 public enum AnimationTrigger { Swing, Slash, Cast }
 
 public abstract class Ability : ScriptableObject
@@ -26,7 +25,6 @@ public abstract class Ability : ScriptableObject
   public AbilityTargetRequirement targetRequirement = AbilityTargetRequirement.None;
   public AbilityTargetTeam targetTeam = AbilityTargetTeam.Hostile;
   public AbilityCastType castType = AbilityCastType.Active;
-  public AbilityTargetType targetType = AbilityTargetType.Target;
   public List<AbilityEffect> effects = new List<AbilityEffect>();
   [Space(10)]
 

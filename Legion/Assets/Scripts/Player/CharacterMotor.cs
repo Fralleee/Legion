@@ -14,7 +14,7 @@ public class CharacterMotor : MonoBehaviour
 
   BlockerController blockerController;
 
-  public bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
+  public bool isBlocked { get { return blockerController && blockerController.Movement; } }
 
   void Start()
   {

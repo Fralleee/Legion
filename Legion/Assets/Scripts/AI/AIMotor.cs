@@ -10,8 +10,8 @@ public class AIMotor : MonoBehaviour, IMotor
   public float chasingSpeed = 6f;
   public float wanderTimer;
   float speedModifier = 1f;
-  public bool isBlocked { get { return blockerController.ContainsBlocker(movement: true); } }
-  public bool isRotationBlocked { get { return blockerController.ContainsBlocker(rotation: true); } }
+  bool isBlocked { get { return blockerController && blockerController.Movement; } }
+  bool isRotationBlocked { get { return blockerController && blockerController.Rotation; } }
   public Transform turnTowardsTarget;
   BlockerController blockerController;
   NavMeshAgent navMeshAgent;
@@ -29,7 +29,7 @@ public class AIMotor : MonoBehaviour, IMotor
 
   void Update()
   {
-    if (turnTowardsTarget) transform.LookAt(turnTowardsTarget);
+    if (turnTowardsTarget && !isRotationBlocked) transform.LookAt(turnTowardsTarget);
   }
 
   public void SetStoppingDistance(float distance)

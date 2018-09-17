@@ -11,7 +11,7 @@ public class ImpactReceiver : MonoBehaviour
   CharacterController controller;
   BlockerController blockerController;
   public bool hasActiveImpact { get { return impact.magnitude < 0.2; } }
-  bool isBlocked { get { return blockerController.ContainsBlocker(physics: true);  } }
+  bool isBlocked { get { return blockerController && blockerController.Physics; } }
 
   void Start()
   {

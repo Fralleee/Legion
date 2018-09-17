@@ -11,11 +11,7 @@ public class PointAbilityInstance : MonoBehaviour
     Collider[] colliders = Physics.OverlapSphere(transform.position, ability.aoeRange, layerMask);
     if (colliders.Length <= 0) return;
     foreach (Collider col in colliders)
-    {
       foreach (AbilityEffect effect in ability.effects)
-      {
         effect.Affect(ability, col.gameObject);
-      }
-    }
   }
 }

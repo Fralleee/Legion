@@ -1,15 +1,19 @@
-﻿using System.Collections;
+﻿using Fralle;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
 public class AICaster : AbilityCaster
 {
-  public bool isBlocked { get { return blockerController && blockerController.ContainsBlocker(abilities: true); } }
+  public bool isBlocked { get { return blockerController && blockerController.Abilities; } }
   BlockerController blockerController;
   Animator animator;
   Transform effectsHolder;
   AIAnimationUpdater aIAnimationUpdater;
   AIMotor motor;
+
+  [SerializeField] Transform leftHand;
+  [SerializeField] Transform rightHand;
 
   protected override void Awake()
   {
@@ -60,7 +64,18 @@ public class AICaster : AbilityCaster
     if (!(bool) cwr.result) yield break;
     ability.ApplyEffects(target);
     ability.ApplyCooldown();
-    if(ability.prefab) Instantiate(ability.prefab, target.transform.position, Quaternion.identity);
+    if (ability.prefab)
+    {
+      float yPos = 0f;
+      switch (ability.instantiationSettings.InstantiationPosition)
+      {
+        case TargetInstantiationPosition.TargetFeet: yPos = 0f; break;
+        case TargetInstantiationPosition.TargetCenter: yPos = target.transform.lossyScale.y * 0.5f; break;
+        case TargetInstantiationPosition.TargetHead: yPos = target.transform.lossyScale.y; break;
+        default: break;
+      }
+      Instantiate(ability.prefab, target.transform.position.With(y: yPos), Quaternion.identity);
+    }
     yield return Recovery(ability);
   }
   public override IEnumerator PointCast(PointAbility ability)
@@ -70,7 +85,14 @@ public class AICaster : AbilityCaster
     if (!(bool)cwr.result) yield break;
     ability.ApplyCooldown();
     Vector3 position = targeter.currentTarget.transform.position;
-    GameObject instance = Instantiate(ability.prefab, new Vector3(position.x, 0, position.z), Quaternion.identity);
+
+    float yPos = 0f;
+    switch (ability.instantiationSettings.InstantiationPosition)
+    {
+      case PointInstantiationPosition.Ground: yPos = 0f; break;
+      default: break;
+    }
+    GameObject instance = Instantiate(ability.prefab, new Vector3(position.x, yPos, position.z), Quaternion.identity);
     instance.GetComponent<PointAbilityInstance>().ApplyEffects(ability);
     yield return Recovery(ability);
   }
@@ -79,7 +101,20 @@ public class AICaster : AbilityCaster
     CoroutineWithResponse cwr = new CoroutineWithResponse(this, Windup(ability));
     yield return cwr.coroutine;
     if (!(bool) cwr.result) yield break;
-    GameObject instance = Instantiate(ability.prefab, transform.position + transform.up + transform.forward, transform.rotation);
+
+
+    Vector3 spawnPosition = transform.position;
+    switch (ability.instantiationSettings.InstantiationPosition)
+    {
+      case CasterInstantiationPosition.CasterFeet: spawnPosition = transform.position; break;
+      case CasterInstantiationPosition.CasterCenter: spawnPosition = spawnPosition.With(y: transform.lossyScale.y * 0.5f); break;
+      case CasterInstantiationPosition.CasterHead: spawnPosition = spawnPosition.With(y: transform.lossyScale.y); break;
+      case CasterInstantiationPosition.CasterLeftHand: spawnPosition = leftHand.position; break;
+      case CasterInstantiationPosition.CasterRightHand: spawnPosition = rightHand.position; break;
+      default: break;
+    }
+
+    GameObject instance = Instantiate(ability.prefab, spawnPosition, transform.rotation);
     instance.layer = targeter.GetSpawnLayer();
     instance.GetComponent<AbilityProjectile>().ability = ability;
     if (ability.transferEffectsToPrefab) instance.GetComponent<AbilityProjectile>().effects = ability.effects;
