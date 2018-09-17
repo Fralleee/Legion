@@ -11,6 +11,7 @@ public class AICaster : AbilityCaster
   Transform effectsHolder;
   AIAnimationUpdater aIAnimationUpdater;
   AIMotor motor;
+  DamageController damageController;
 
   [SerializeField] Transform leftHand;
   [SerializeField] Transform rightHand;
@@ -22,6 +23,7 @@ public class AICaster : AbilityCaster
     motor = GetComponent<AIMotor>();
     animator = GetComponentInChildren<Animator>();
     aIAnimationUpdater = GetComponent<AIAnimationUpdater>();
+    damageController = GetComponent<DamageController>();
     effectsHolder = transform.Find("EffectsHolder");
   }
 
@@ -58,7 +60,7 @@ public class AICaster : AbilityCaster
 
   public override IEnumerator TargetCast(TargetAbility ability, bool selfCast = false)
   {
-    GameObject target = selfCast ? gameObject : targeter.currentTarget;
+    GameObject target = selfCast ? gameObject : targeter.currentTarget;    
     CoroutineWithResponse cwr = new CoroutineWithResponse(this, Windup(ability));
     yield return cwr.coroutine;
     if (!(bool) cwr.result) yield break;
@@ -70,8 +72,8 @@ public class AICaster : AbilityCaster
       switch (ability.instantiationSettings.InstantiationPosition)
       {
         case TargetInstantiationPosition.TargetFeet: yPos = 0f; break;
-        case TargetInstantiationPosition.TargetCenter: yPos = target.transform.lossyScale.y * 0.5f; break;
-        case TargetInstantiationPosition.TargetHead: yPos = target.transform.lossyScale.y; break;
+        case TargetInstantiationPosition.TargetCenter: yPos = damageController.model.bounds.center.y; break;
+        case TargetInstantiationPosition.TargetHead: yPos = damageController.model.bounds.max.y; break;
         default: break;
       }
       Instantiate(ability.prefab, target.transform.position.With(y: yPos), Quaternion.identity);
@@ -107,13 +109,12 @@ public class AICaster : AbilityCaster
     switch (ability.instantiationSettings.InstantiationPosition)
     {
       case CasterInstantiationPosition.CasterFeet: spawnPosition = transform.position; break;
-      case CasterInstantiationPosition.CasterCenter: spawnPosition = spawnPosition.With(y: transform.lossyScale.y * 0.5f); break;
-      case CasterInstantiationPosition.CasterHead: spawnPosition = spawnPosition.With(y: transform.lossyScale.y); break;
+      case CasterInstantiationPosition.CasterCenter: spawnPosition = damageController.model.bounds.center; break;
+      case CasterInstantiationPosition.CasterHead: spawnPosition = transform.position.With(y: damageController.model.bounds.max.y); break;
       case CasterInstantiationPosition.CasterLeftHand: spawnPosition = leftHand.position; break;
       case CasterInstantiationPosition.CasterRightHand: spawnPosition = rightHand.position; break;
       default: break;
     }
-
     GameObject instance = Instantiate(ability.prefab, spawnPosition, transform.rotation);
     instance.layer = targeter.GetSpawnLayer();
     instance.GetComponent<AbilityProjectile>().ability = ability;

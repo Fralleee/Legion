@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class AbilityProjectile : MonoBehaviour
 {
-  public Ability ability;
-  public List<AbilityEffect> effects;
+  [HideInInspector] public Ability ability;
+  [HideInInspector] public List<AbilityEffect> effects;
+
   void Start()
   {
     GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);

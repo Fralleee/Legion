@@ -9,11 +9,7 @@
 	Ex. PassiveBuff Ability should have swirling lines on the ground
 			Important to match the scale
 			This is a projector
-			
-- InstantiationPosition:
-  - Ensure that direction ability does not collide with caster
 	
-
 	
 Finished abilities: 
 Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE

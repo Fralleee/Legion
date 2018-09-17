@@ -5,7 +5,7 @@ public class DamageController : MonoBehaviour
 {
   [SerializeField] Attributes attributes;
   [SerializeField] GameObject healthBar;
-
+  [HideInInspector] public Renderer model;
   [HideInInspector] public float Armor;
   [HideInInspector] public float Health;
   [HideInInspector] public float MaxHealth;
@@ -17,6 +17,7 @@ public class DamageController : MonoBehaviour
 
   void Awake()
   {
+    model = GetComponentInChildren<Renderer>();
     Armor = attributes.Armor;
     Health = attributes.Health;
     MaxHealth = attributes.MaxHealth;
