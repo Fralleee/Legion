@@ -5,6 +5,8 @@ Finished abilities:
 Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE
 
 
+- InstantiationPosition is not used when creating effects
+
 
 - Differentiate abilities and effects prefabs
   Ex. MovementBuff Effect should have like swooshing lines behind the moving target
