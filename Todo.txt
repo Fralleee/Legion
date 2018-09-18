@@ -1,6 +1,11 @@
 ---------------------------------------------------------------------------------------------
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
+Finished abilities: 
+Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE
+
+
+
 - Differentiate abilities and effects prefabs
   Ex. MovementBuff Effect should have like swooshing lines behind the moving target
 	    Important to match the scale: useLocalScale
@@ -10,9 +15,6 @@
 			Important to match the scale
 			This is a projector
 	
-	
-Finished abilities: 
-Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE
 
 - Ensure that the player can cast all o these aswell
 
@@ -29,6 +31,11 @@ Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE
 	
 - Organize scripts in Project 
   Ability System should move from sandbox
+	
+- Targeting script
+  Animated portraits: https://www.youtube.com/watch?v=ISrNP5CPnLM
+	
+- Stylized culling shader
 ---------------------------------------------------------------------------------------------
 
 
