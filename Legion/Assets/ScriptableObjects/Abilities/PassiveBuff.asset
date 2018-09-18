@@ -22,7 +22,6 @@ MonoBehaviour:
   targetRequirement: 0
   targetTeam: 1
   castType: 1
-  targetType: 0
   effects:
   - {fileID: 11400000, guid: df543de0980c6c44eb187396ffd35f9e, type: 2}
   animationTrigger: 0
@@ -32,4 +31,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   environmentLayer: 0
   targetLayer: 0
-  prefab: {fileID: 0}
+  instantiationSettings:
+    InstantiationPosition: 1
+    useLocalScale: 1
+  prefab: {fileID: 1048261870201396, guid: cdf2bb4b291459c419502dc1bb36311e, type: 2}

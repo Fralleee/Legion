@@ -1,30 +1,28 @@
 ---------------------------------------------------------------------------------------------
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
++ InstantiationPosition is not used when creating effects
++ MovementEffect particles
++ MovementBuff Aura indicator
+
+- Targeter should be better and more "same" for both AI and Player
+  Somehow implement a better generic targeter class for both
+  That atleast stores layers
+
+
+
 Finished abilities: 
 Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE
 
+Player can cast:
+Bolt
 
-- InstantiationPosition is not used when creating effects
-
-
-- Differentiate abilities and effects prefabs
-  Ex. MovementBuff Effect should have like swooshing lines behind the moving target
-	    Important to match the scale: useLocalScale
-			These should go from the ground up: InstantiationPosition.Ground
-			
-	Ex. PassiveBuff Ability should have swirling lines on the ground
-			Important to match the scale
-			This is a projector
-	
-
-- Ensure that the player can cast all o these aswell
 
 	
 - Tidal Wave 					=> Active, Direction, Hostile
-- Chain Lightning 		=> Active, Target, Hostile
-- Turret 							=> Active, Point, Hostile
-- Healing Rain				=> Active, Point, Ally
+- Chain Lightning 				=> Active, Target, Hostile
+- Turret 						=> Active, Point, Hostile
+- Healing Rain					=> Active, Point, Ally
 	
 - Some better way to transfer effects to prefab
   Maybe some unified class that can take effects

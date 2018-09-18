@@ -104,7 +104,6 @@ public class AICaster : AbilityCaster
     yield return cwr.coroutine;
     if (!(bool) cwr.result) yield break;
 
-
     Vector3 spawnPosition = transform.position;
     switch (ability.instantiationSettings.InstantiationPosition)
     {

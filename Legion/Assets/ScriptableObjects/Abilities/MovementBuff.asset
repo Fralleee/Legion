@@ -11,7 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: MovementBuff
   m_EditorClassIdentifier: Assembly-CSharp::MovementBuff
-  onHitEffect: {fileID: 198241692772530336, guid: 5ffc0099a2bc8784493fe3f856cab3d2,
+  instantiationSettings:
+    InstantiationPosition: 1
+    useLocalScale: 1
+  onHitEffect: {fileID: 198519680830739212, guid: 950ffccb809cd384a8180002ffefb678,
     type: 2}
   constantEffect: 1
   followTarget: 1

@@ -8,11 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -151411849, guid: a017aeacc8c359d4ba31e2d99bb8dba9, type: 3}
-  m_Name: BuildingBlocker
+  m_Script: {fileID: 11500000, guid: 09f778c00c45a3d43a3cd23bc21bb76e, type: 3}
+  m_Name: Health
   m_EditorClassIdentifier: 
-  Physics: 0
-  Camera: 0
-  Movement: 0
-  Abilities: 0
-  Production: 0
+  defaultValue: 100
+  currentValue: 100
