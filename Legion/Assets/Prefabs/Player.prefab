@@ -2820,6 +2820,12 @@ MonoBehaviour:
   secondaryAttack: {fileID: 0}
   abilities:
   - {fileID: 11400000, guid: ca1b76753f1b0c54abbf7e340398fa2c, type: 2}
+  - {fileID: 11400000, guid: e25fba56c7d57dc468bbb2cbb786afdc, type: 2}
+  - {fileID: 11400000, guid: 7564be40d5e71bc46befaef287b291c4, type: 2}
+  - {fileID: 11400000, guid: 49f57b5baf175724a994763b8e730117, type: 2}
+  - {fileID: 11400000, guid: ee618ebe982d4614689b7f8d54c31096, type: 2}
+  - {fileID: 11400000, guid: 79acc033cec33a1408c1e84ef0d4c4b8, type: 2}
+  - {fileID: 11400000, guid: ae52ce8273e1bc34cb746b35bb4ccda8, type: 2}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
 --- !u!114 &114258399160559158

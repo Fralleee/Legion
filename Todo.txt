@@ -1,26 +1,32 @@
 ---------------------------------------------------------------------------------------------
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
-
-
 Finished abilities: 
 Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE, TidalWave
 
 Player can cast:
-Target Ability: false
+TidalWave: true
 Bolt: true 
-Heal: false
-Melee: false
-Passive Movement buff: false
-AOE: false
-TidalWave: false
+Target Ability: false (target)
+Heal: false (target)
+Melee: false (target)
+Passive Movement buff: false (passive,  (target))
+AOE: false (point)
+
+
+
+- Targeting script
+  Animated portraits: https://www.youtube.com/watch?v=ISrNP5CPnLM
+	
+- Target indicator for Point abilities
+
+
+
 
 	
 - Organize scripts in Project 
   Ability System should move from sandbox
 	
-- Targeting script
-  Animated portraits: https://www.youtube.com/watch?v=ISrNP5CPnLM
 ---------------------------------------------------------------------------------------------
 
 
