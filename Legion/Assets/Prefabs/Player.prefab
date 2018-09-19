@@ -176,6 +176,8 @@ GameObject:
   - component: {fileID: 114821620220820588}
   - component: {fileID: 114566918128365602}
   - component: {fileID: 114770711193637700}
+  - component: {fileID: 114233999083004442}
+  - component: {fileID: 114546165654489264}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1788,7 +1790,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1109992263044688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.226812, y: 1, z: -2.481874}
+  m_LocalPosition: {x: 1.5181427, y: 1, z: 1.1091537}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4164434768354660}
@@ -2803,6 +2805,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9efc4cd43dfa344bcb04d5a3295fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114233999083004442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109992263044688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9125e6a8c4746a4587189825c7d6b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainAttack: {fileID: 11400000, guid: ca1b76753f1b0c54abbf7e340398fa2c, type: 2}
+  secondaryAttack: {fileID: 0}
+  abilities:
+  - {fileID: 11400000, guid: ca1b76753f1b0c54abbf7e340398fa2c, type: 2}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
 --- !u!114 &114258399160559158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3188,6 +3207,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114546165654489264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109992263044688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50aed19fb030ffc48a68b96886a1f141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: {fileID: 11400000, guid: 13a98d89cf305ec468aff37db7d6d2ee, type: 2}
+  healthBar: {fileID: 0}
+  model: {fileID: 0}
+  Armor: 0
+  Health: 0
+  MaxHealth: 0
 --- !u!114 &114566918128365602
 MonoBehaviour:
   m_ObjectHideFlags: 1
