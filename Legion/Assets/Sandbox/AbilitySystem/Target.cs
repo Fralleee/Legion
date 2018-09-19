@@ -1,22 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[Serializable]
 public class Target
 {
   const float INACTIVITY_TIME = 4f;
-
-  public DamageController damageController;
-  public GameObject gameObject;
-  public Transform transform;
-  public Vector3 position;
-  public string name;
-  public float Width = 0.5f;
-  public float lastAttack;
-
-  public bool lookForNewTarget { get { return lastAttack + INACTIVITY_TIME < Time.time; } }
-  public static implicit operator bool(Target target) { return target != null && target.gameObject != null; }
-  public static implicit operator Transform(Target target) { return target ? target.transform : null; }
-  public static implicit operator GameObject(Target target) { return target ? target.gameObject : null; }
-  public override string ToString() { return gameObject.name; }
+  [HideInInspector] public GameObject gameObject;
+  [HideInInspector] public Transform transform;
+  [HideInInspector] public Vector3 position;
+  [HideInInspector] public string name;
+  [HideInInspector] public float Width = 0.5f;
+  [HideInInspector] public float lastAttack;
+  [HideInInspector] public bool lookForNewTarget { get { return lastAttack + INACTIVITY_TIME < Time.time; } }
+  [HideInInspector] public static implicit operator bool(Target target) { return target != null && target.gameObject != null; }
+  [HideInInspector] public static implicit operator Transform(Target target) { return target ? target.transform : null; }
+  [HideInInspector] public static implicit operator GameObject(Target target) { return target ? target.gameObject : null; }
+  [HideInInspector] public override string ToString() { return gameObject.name; }
 
   public Target() { }
   public Target(Transform t)
@@ -27,7 +26,6 @@ public class Target
     Width = t.GetComponent<Collider>().bounds.size.x / 2;
     name = t.name;
     lastAttack = Time.time;
-    damageController = t.GetComponent<DamageController>();
   }
 
   public Target(GameObject go)
@@ -38,7 +36,6 @@ public class Target
     Width = go.GetComponent<Collider>().bounds.size.x / 2;
     name = go.name;
     lastAttack = Time.time;
-    damageController = go.GetComponent<DamageController>();
   }
 
 }

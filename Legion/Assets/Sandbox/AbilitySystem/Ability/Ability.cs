@@ -48,7 +48,7 @@ public abstract class Ability : ScriptableObject
     instance.owner = caster;
     instance.lastAction = 0;
     instance.environmentLayer = LayerMask.NameToLayer("Environment");
-    instance.targetLayer = caster.targeter.GetTargetLayer(targetTeam);
+    instance.targetLayer = targetTeam == AbilityTargetTeam.Hostile ? caster.targeter.enemyLayer : caster.targeter.teamLayer;
     return instance;
   }
 

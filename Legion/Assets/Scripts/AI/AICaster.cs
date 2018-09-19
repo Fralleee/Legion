@@ -11,6 +11,7 @@ public class AICaster : AbilityCaster
   Transform effectsHolder;
   AIAnimationUpdater aIAnimationUpdater;
   AIMotor motor;
+  new AITargeter targeter;
   DamageController damageController;
 
   [SerializeField] Transform leftHand;
@@ -21,6 +22,7 @@ public class AICaster : AbilityCaster
     base.Awake();
     blockerController = GetComponent<BlockerController>();
     motor = GetComponent<AIMotor>();
+    targeter = GetComponent<AITargeter>();
     animator = GetComponentInChildren<Animator>();
     aIAnimationUpdater = GetComponent<AIAnimationUpdater>();
     damageController = GetComponent<DamageController>();
@@ -35,7 +37,7 @@ public class AICaster : AbilityCaster
       secondaryAttack ? secondaryAttack.range : 15f,
       abilities.Count > 0 ? abilities.Max(x => x.range) : 15f
     );
-    ((AITargeter)targeter).SetAggroRange((int)maxRange);
+    targeter.SetAggroRange((int)maxRange);
   }
 
   public override bool TryCast(Ability ability, bool selfCast = false)
@@ -72,8 +74,8 @@ public class AICaster : AbilityCaster
       switch (ability.instantiationSettings.InstantiationPosition)
       {
         case TargetInstantiationPosition.TargetFeet: yPos = 0f; break;
-        case TargetInstantiationPosition.TargetCenter: yPos = damageController.model.bounds.center.y; break;
-        case TargetInstantiationPosition.TargetHead: yPos = damageController.model.bounds.max.y; break;
+        case TargetInstantiationPosition.TargetCenter: yPos = target.GetComponent<DamageController>().model.bounds.center.y; break;
+        case TargetInstantiationPosition.TargetHead: yPos = target.GetComponent<DamageController>().model.bounds.max.y; break;
         default: break;
       }
       Instantiate(ability.prefab, target.transform.position.With(y: yPos), Quaternion.identity);
@@ -115,7 +117,7 @@ public class AICaster : AbilityCaster
       default: break;
     }
     GameObject instance = Instantiate(ability.prefab, spawnPosition, transform.rotation);
-    instance.layer = targeter.GetSpawnLayer();
+    instance.layer = targeter.spawnLayer;
     instance.GetComponent<AbilityProjectile>().ability = ability;
     if (ability.transferEffectsToPrefab) instance.GetComponent<AbilityProjectile>().effects = ability.effects;
     ability.ApplyCooldown();

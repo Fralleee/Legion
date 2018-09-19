@@ -1,11 +1,16 @@
 fileFormatVersion: 2
-guid: b92081986cb3d844a97844f1f184d659
+guid: effd0d8c6ff6346c7b6bc0dfa68f13b3
+labels:
+- Editor
+- Extensions
+- Inspector
+- Serialization
+- Properties
+- Undo
+- Property
 MonoImporter:
-  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 

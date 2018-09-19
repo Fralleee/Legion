@@ -701,8 +701,102 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: ae52ce8273e1bc34cb746b35bb4ccda8,
         type: 2}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayerMask.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayerMask.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayerMask.m_Bits
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156928815164f574dad70c19cdcfd467, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &548466734
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 11400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_ArrayProperty.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_ArrayProperty.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
+      propertyPath: m_ArrayProperty.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a82ee4caed37d4eaab5feb1ef0b0bb06, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &605527645
 Prefab:
@@ -1289,6 +1383,46 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayerMask.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayerMask.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayerMask.m_Bits
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 156928815164f574dad70c19cdcfd467, type: 2}
@@ -1612,6 +1746,46 @@ Prefab:
       propertyPath: wanderTimer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayerMask.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayerMask.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayerMask.m_Bits
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 156928815164f574dad70c19cdcfd467, type: 2}
@@ -1808,7 +1982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animDistance: 1.5
-  farDistance: 30
+  farDistance: 75
 --- !u!1 &1166522964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2510,46 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayerMask.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayerMask.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayerMask.m_Bits
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -3129,6 +3343,46 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayerMask.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayerMask.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayerMask.m_Bits
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _teamLayer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _spawnLayer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _enemyLayer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144653384439598, guid: 156928815164f574dad70c19cdcfd467,
+        type: 2}
+      propertyPath: _environmentLayer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

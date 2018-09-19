@@ -175,9 +175,9 @@ GameObject:
   - component: {fileID: 114910637737284626}
   - component: {fileID: 114821620220820588}
   - component: {fileID: 114566918128365602}
-  - component: {fileID: 114770711193637700}
   - component: {fileID: 114233999083004442}
   - component: {fileID: 114546165654489264}
+  - component: {fileID: 114862703350277662}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -3392,25 +3392,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 3
   smoothing: 0.5
---- !u!114 &114770711193637700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1109992263044688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaa08f36e78b0e343a767d7e9cb122c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnvironmentLayerMask:
-    serializedVersion: 2
-    m_Bits: 32768
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 8192
-  EnemyLayer: 13
-  SpawnLayer: 12
 --- !u!114 &114790241112024276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3555,6 +3536,36 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114862703350277662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109992263044688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92081986cb3d844a97844f1f184d659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentTarget: No Target
+  MainTarget: No Target
+  Objective: No Target
+  _teamLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _spawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  _environmentLayerMask:
+    serializedVersion: 2
+    m_Bits: 32768
+  _teamLayer: 11
+  _spawnLayer: 12
+  _enemyLayer: 13
+  _environmentLayer: 15
 --- !u!114 &114868645425102174
 MonoBehaviour:
   m_ObjectHideFlags: 1

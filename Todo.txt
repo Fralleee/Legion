@@ -4,10 +4,10 @@
 + InstantiationPosition is not used when creating effects
 + MovementEffect particles
 + MovementBuff Aura indicator
++ Targeter should be better and more "same" for both AI and Player
++ Fix targeting as player
++ Fix healthbar bug
 
-- Targeter should be better and more "same" for both AI and Player
-  Somehow implement a better generic targeter class for both
-  That atleast stores layers
 
 
 

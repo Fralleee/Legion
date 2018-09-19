@@ -1,36 +1,23 @@
 ﻿using UnityEngine;
 
-public class AITargeter : MonoBehaviour, ITargeter
+public class AITargeter : Targeter
 {
   const float TargetScanRate = 0.5f;
   const int MinAggroRange = 15;
   const float LosCheckRate = 0.5f;
-
-  public Target currentTarget { get; set; }
-  public Target mainTarget { get; set; }
-  public Target objective { get; set; }
   public bool PerformLoSCheck { get { return Time.time > LastLosCheck; } }
   [HideInInspector] public float LastScan { get; set; }
   [HideInInspector] public float LastLosCheck { get; set; }
   [HideInInspector] public bool LastLosResult { get; set; }
-
-  [Header("Layer masks")]
-  public LayerMask EnvironmentLayerMask;
-  public LayerMask EnemyLayerMask;
-  public int EnemyLayer;
-  public int SpawnLayer;
-
   [HideInInspector] public float LookRange = 15f;
 
-  public int GetTargetLayer(AbilityTargetTeam targetTeam) { return targetTeam == AbilityTargetTeam.Hostile ? EnemyLayer : gameObject.layer; }
-  public int GetSpawnLayer() { return SpawnLayer; }
   public void SetAggroRange(int range) { LookRange = Mathf.Max(range, MinAggroRange); }
   public bool FindMainTarget(Ability ability)
   {
     if (!(Time.time > LastScan)) return mainTarget;
     if (mainTarget && !mainTarget.lookForNewTarget) return mainTarget;
     LastScan = Time.time + TargetScanRate;
-    DamageController[] targets = TargetingHelpers.FindTargetsInRange(EnemyLayerMask, LookRange, transform.position);
+    DamageController[] targets = TargetingHelpers.FindTargetsInRange(enemyLayerMask, LookRange, transform.position);
     if (targets.Length == 0) return false;
     targets = TargetingHelpers.OrderTargetsByPriority(targets, transform, ability.priority);
     mainTarget = new Target(targets[0].gameObject);
@@ -54,7 +41,7 @@ public class AITargeter : MonoBehaviour, ITargeter
   {
     if (!PerformLoSCheck) return LastLosResult;
     LastLosCheck = Time.time + LosCheckRate;
-    LastLosResult = TargetingHelpers.LineOfSightUnObstructed(ability.owner.transform, mainTarget, ability.range, EnemyLayerMask, EnvironmentLayerMask);
+    LastLosResult = TargetingHelpers.LineOfSightUnObstructed(ability.owner.transform, mainTarget, ability.range, enemyLayerMask, environmentLayerMask);
     return LastLosResult;
   }
 }

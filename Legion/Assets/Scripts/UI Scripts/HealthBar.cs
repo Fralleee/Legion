@@ -19,6 +19,7 @@ public class HealthBar : MonoBehaviour
     float percentage = currentHealth / maxHealth;
     if (animate)
     {
+      StopAllCoroutines();
       StartCoroutine(percentage < oldValue ? AnimateHealthLoss(percentage) : AnimateHealthGain(percentage));
     }
     else

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class CharacterCaster : AbilityCaster
 {
+  new Targeter targeter;
   DamageController damageController;
   [SerializeField] Transform leftHand;
   [SerializeField] Transform rightHand;
@@ -13,6 +14,7 @@ public class CharacterCaster : AbilityCaster
   protected override void Awake()
   {
     base.Awake();
+    targeter = GetComponent<Targeter>();
     damageController = GetComponent<DamageController>();
   }
 
@@ -48,7 +50,7 @@ public class CharacterCaster : AbilityCaster
     }
     if (!targeter.currentTarget) yield break;
     if (ability.targetTeam == AbilityTargetTeam.Ally && targeter.currentTarget.gameObject.layer != gameObject.layer) yield break;
-    if (ability.targetTeam == AbilityTargetTeam.Hostile && targeter.currentTarget.gameObject.layer != ((CharacterTargeter)targeter).EnemyLayer) yield break;
+    if (ability.targetTeam == AbilityTargetTeam.Hostile && targeter.currentTarget.gameObject.layer != targeter.enemyLayer) yield break;
     GameObject instance = Instantiate(ability.prefab, targeter.currentTarget.transform.position, Quaternion.identity);
 
   }
@@ -73,7 +75,7 @@ public class CharacterCaster : AbilityCaster
       default: break;
     }
     GameObject instance = Instantiate(ability.prefab, spawnPosition, transform.rotation);
-    instance.layer = targeter.GetSpawnLayer();
+    instance.layer = targeter.spawnLayer;
     instance.GetComponent<AbilityProjectile>().ability = ability;
     if (ability.transferEffectsToPrefab) instance.GetComponent<AbilityProjectile>().effects = ability.effects;
     ability.ApplyCooldown();

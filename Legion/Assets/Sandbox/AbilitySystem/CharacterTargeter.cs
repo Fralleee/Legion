@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using Fralle;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class CharacterTargeter : MonoBehaviour, ITargeter
+public class CharacterTargeter : Targeter
 {
-  public Target currentTarget { get; set; }
-  public Target mainTarget { get; set; }
-  public Target objective { get; set; }
-  public LayerMask EnvironmentLayerMask;
-  public LayerMask EnemyLayerMask;
-  public int EnemyLayer;
-  public int SpawnLayer;
-  public int GetTargetLayer(AbilityTargetTeam targetTeam) { return targetTeam == AbilityTargetTeam.Hostile ? EnemyLayer : gameObject.layer; }
-  public int GetSpawnLayer() { return SpawnLayer; }
-  public bool FindTarget(Ability ability) { return true; }
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.Tab)) FindTarget();
+  }
+
+  void FindTarget()
+  {
+    RaycastHit hit;
+    if (Physics.SphereCast(transform.position.With(y: 1), 2f, transform.forward, out hit, 25f, enemyLayerMask | teamLayerMask))
+    {
+      currentTarget = new Target(hit.collider.gameObject);
+    }
+  }
 }
