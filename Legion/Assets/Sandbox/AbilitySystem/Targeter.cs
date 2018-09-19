@@ -1,10 +1,9 @@
-﻿using Candlelight;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public partial class Targeter : MonoBehaviour, ITargeter
+public abstract class Targeter : MonoBehaviour, ITargeter
 {
   [Header("Targets")]
   [SerializeField]

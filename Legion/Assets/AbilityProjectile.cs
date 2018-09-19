@@ -26,6 +26,7 @@ public class AbilityProjectile : MonoBehaviour
 
   void OnCollisionEnter(Collision collision)
   {
+    Debug.Log("Collision");
     ApplyEffects(collision.gameObject);
     Destroy(gameObject, delayedDestruction);
   }
