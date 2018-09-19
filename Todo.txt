@@ -1,41 +1,26 @@
 ---------------------------------------------------------------------------------------------
 # Day 1 - 2
 ---------------------------------------------------------------------------------------------
-+ InstantiationPosition is not used when creating effects
-+ MovementEffect particles
-+ MovementBuff Aura indicator
-+ Targeter should be better and more "same" for both AI and Player
-+ Fix targeting as player
-+ Fix healthbar bug
-
-
 
 
 Finished abilities: 
-Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE
+Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE, TidalWave
 
 Player can cast:
-Bolt
+Target Ability: false
+Bolt: true 
+Heal: false
+Melee: false
+Passive Movement buff: false
+AOE: false
+TidalWave: false
 
-
-	
-- Tidal Wave 					=> Active, Direction, Hostile
-- Chain Lightning 				=> Active, Target, Hostile
-- Turret 						=> Active, Point, Hostile
-- Healing Rain					=> Active, Point, Ally
-	
-- Some better way to transfer effects to prefab
-  Maybe some unified class that can take effects
-	And then used derived versions of it for different effects
-	Ability, AOEAbility, ChainedAbility
 	
 - Organize scripts in Project 
   Ability System should move from sandbox
 	
 - Targeting script
   Animated portraits: https://www.youtube.com/watch?v=ISrNP5CPnLM
-	
-- Stylized culling shader
 ---------------------------------------------------------------------------------------------
 
 
@@ -43,6 +28,8 @@ Bolt
 ---------------------------------------------------------------------------------------------
 # Day 3
 ---------------------------------------------------------------------------------------------
+# Player mainattack + secondaryattack
+
 # Health bar
   Have default colors = red?
 	Use Color GameManager.instance.GetHealthColor()
@@ -66,8 +53,25 @@ Bolt
 
 
 
+
 ---------------------------------------------------------------------------------------------
-# Day 4 - 5
+# Day 4
+---------------------------------------------------------------------------------------------
+# Armor/damage types
+- Use scriptableobjects, ryan hipple => elements talk (unite 2017)
+- Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
+
+# Advanced abilities 
+- Chain Lightning 				=> Active, Target, Hostile
+- Turret 						=> Active, Point, Hostile
+- Healing Rain					=> Active, Point, Ally
+
+---------------------------------------------------------------------------------------------
+	
+	
+
+---------------------------------------------------------------------------------------------
+# Day 5
 ---------------------------------------------------------------------------------------------
 # Ultimates
 - Refactor Launch to be used as Mecanim or FSM 
@@ -79,16 +83,6 @@ Bolt
   A lot of particle effects! 
 ---------------------------------------------------------------------------------------------
 
-
----------------------------------------------------------------------------------------------
-# Day 6
----------------------------------------------------------------------------------------------
-# Armor/damage types
-- Use scriptableobjects, ryan hipple => elements talk (unite 2017)
-- Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)
----------------------------------------------------------------------------------------------
-	
-	
 	
 ################################################
 	Backlog

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9089237de53a2594a907d3c712dbfddf, type: 3}
+  m_Name: TidalWave
+  m_EditorClassIdentifier: 
+  blocker: {fileID: 11400000, guid: c9635f202fbd974409d0cb229682f82d, type: 2}
+  image: {fileID: 0}
+  range: 15
+  cooldown: 2
+  castTime: 1
+  transferEffectsToPrefab: 1
+  requireLineOfSight: 1
+  priority: 2
+  targetRequirement: 0
+  targetTeam: 0
+  castType: 0
+  effects:
+  - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
+  - {fileID: 11400000, guid: e2463f59897aeae4cbf7e1427e547c51, type: 2}
+  animationTrigger: 2
+  startEffect: {fileID: 0}
+  onCastEffect: {fileID: 0}
+  lastAction: 0
+  owner: {fileID: 0}
+  environmentLayer: 0
+  targetLayer: 0
+  instantiationSettings:
+    InstantiationPosition: 3
+  prefab: {fileID: 1281818586949914, guid: ebc679c3b14a3f54395c19cec38f1df9, type: 2}

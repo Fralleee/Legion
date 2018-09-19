@@ -13,6 +13,7 @@ public abstract class AbilityEffect : ScriptableObject
     {
       float yPos = 0f;
       DamageController damageController = target.GetComponent<DamageController>();
+      if (!damageController) return;
       switch (instantiationSettings.InstantiationPosition)
       {
         case TargetInstantiationPosition.TargetFeet: yPos = 0f; break;
@@ -28,4 +29,5 @@ public abstract class AbilityEffect : ScriptableObject
     }
     else Debug.LogWarning("No OnHitEffect for Effect: " + name);
   }
+  public virtual void Affect(Ability ability, GameObject target, Vector3 direction) { Affect(ability, target); }
 }
