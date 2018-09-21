@@ -34,8 +34,6 @@ AOE: false (point)
 ---------------------------------------------------------------------------------------------
 # Day 3
 ---------------------------------------------------------------------------------------------
-# Player mainattack + secondaryattack
-
 # Health bar
   Have default colors = red?
 	Use Color GameManager.instance.GetHealthColor()
@@ -79,6 +77,15 @@ AOE: false (point)
 ---------------------------------------------------------------------------------------------
 # Day 5
 ---------------------------------------------------------------------------------------------
+# Player mainattack + secondaryattack
+
+# Controller
+- Turn when above certain degree (45deg-)
+  Otherwise turn characters upper body towards direction
+	
+# Improve character
+- https://www.youtube.com/watch?v=C2wwxd8SnKY
+
 # Ultimates
 - Refactor Launch to be used as Mecanim or FSM 
   - Sometimes it bugs when landing on uneven terrain
@@ -93,10 +100,6 @@ AOE: false (point)
 ################################################
 	Backlog
 ################################################
-
-# Improve character
-- https://www.youtube.com/watch?v=C2wwxd8SnKY
-
 # En liten stuga men stor som en mansion innuti, kör portaltricket
 
 # DamageController
@@ -105,12 +108,7 @@ AOE: false (point)
 # Sounds
 - Damage
 - Effect
-- Hit
-  
-
-# Controller
-- Turn when above certain degree (45deg-)
-  Otherwise turn characters upper body towards direction
+- Hit 
 	
 # InventorySystem
 - Kolla unitegrejerna
