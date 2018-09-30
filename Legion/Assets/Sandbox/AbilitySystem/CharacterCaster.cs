@@ -131,6 +131,12 @@ public class CharacterCaster : AbilityCaster
 
   void SetupTargetIndicator(Ability ability)
   {
+    if(targetIndicator)
+    {
+      Destroy(targetIndicator);
+      targetIndicator = null;
+    }
+
     // Instead of all this code in character caster
     // Set this to targetindicator-script
     if (ability is TargetAbility)
