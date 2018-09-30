@@ -4,6 +4,7 @@
 public class PointAbility : Ability
 {
   public PointInstantiationSettings instantiationSettings;
+  public Projector targetIndicator;
   public GameObject prefab;
   public float aoeRange = 5f;
   public override void Cast(bool selfCast = false)

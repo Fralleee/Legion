@@ -8,24 +8,63 @@ public class CharacterCaster : AbilityCaster
 {
   new Targeter targeter;
   DamageController damageController;
+  Animator animator;
+
+  Ability activeAbility;
+  GameObject targetIndicator;
+
   [SerializeField] Transform leftHand;
   [SerializeField] Transform rightHand;
+  bool siegeMode;
+  public enum PrimaryCastAnimation { PrimaryCastRight, PrimaryCastLeft }
+  PrimaryCastAnimation currentCastAnimation = PrimaryCastAnimation.PrimaryCastRight;
 
   protected override void Awake()
   {
     base.Awake();
     targeter = GetComponent<Targeter>();
+    animator = GetComponentInChildren<Animator>();
     damageController = GetComponent<DamageController>();
   }
 
   void Update()
   {
+    if (!activeAbility) targetIndicator = null;
+
     for (int i = 0; i < abilities.Count; i++)
     {
       if (!Input.GetKeyDown(KeyCode.Alpha1 + i)) continue;
-      bool result = TryCast(abilities[i], Input.GetKey(KeyCode.LeftAlt));
-      if (result) abilities[i].Cast(Input.GetKey(KeyCode.LeftAlt));
+      activeAbility = abilities[i];
+      SetupTargetIndicator(activeAbility);
     }
+
+    if (activeAbility && Input.GetButtonDown("Fire1"))
+    {
+      bool result = TryCast(activeAbility, Input.GetKey(KeyCode.LeftAlt));
+      if (result) activeAbility.Cast(Input.GetKey(KeyCode.LeftAlt));
+      activeAbility = null;
+      Destroy(targetIndicator);
+      targetIndicator = null;
+    }
+
+    if (Input.GetKeyDown(KeyCode.Alpha1))
+    {
+      animator.SetTrigger(currentCastAnimation.ToString());
+      currentCastAnimation = currentCastAnimation == PrimaryCastAnimation.PrimaryCastRight
+        ? PrimaryCastAnimation.PrimaryCastLeft
+        : PrimaryCastAnimation.PrimaryCastRight;
+    }
+    else if (Input.GetKeyDown(KeyCode.Alpha2))
+    {
+      animator.SetTrigger("AOECast");
+    }
+    else if (Input.GetKeyDown(KeyCode.Alpha3))
+    {
+      siegeMode = !siegeMode;
+      animator.SetBool("SiegeMode", siegeMode);
+    }
+
+    if (targetIndicator) UpdateTargetIndicator();
   }
 
   public override bool TryCast(Ability ability, bool selfCast = false)
@@ -57,8 +96,14 @@ public class CharacterCaster : AbilityCaster
 
   public override IEnumerator PointCast(PointAbility ability)
   {
-    Vector3 position = transform.position + transform.forward * ability.range;
-    GameObject instance = Instantiate(ability.prefab, new Vector3(position.x, 0, position.z), Quaternion.identity);
+    float yPos = 0f;
+    switch (ability.instantiationSettings.InstantiationPosition)
+    {
+      case PointInstantiationPosition.Ground: yPos = 0f; break;
+    }
+    GameObject instance = Instantiate(ability.prefab, new Vector3(targetIndicator.transform.position.x, yPos, targetIndicator.transform.position.z), Quaternion.identity);
+    instance.GetComponent<PointAbilityInstance>().ApplyEffects(ability);
+
     yield break;
   }
 
@@ -79,7 +124,45 @@ public class CharacterCaster : AbilityCaster
     instance.GetComponent<AbilityProjectile>().ability = ability;
     if (ability.transferEffectsToPrefab) instance.GetComponent<AbilityProjectile>().effects = ability.effects;
     ability.ApplyCooldown();
+
+
     yield break;
+  }
+
+  void SetupTargetIndicator(Ability ability)
+  {
+    // Instead of all this code in character caster
+    // Set this to targetindicator-script
+    if (ability is TargetAbility)
+    {
+      // Use currentTarget
+      // Change material of currentTarget
+    }
+
+    else if (ability is DirectionAbility)
+    {
+      // Use a projector to indicate which direction
+      // Decals
+    }
+    else if (ability is PointAbility)
+    {
+      // Use a projector to indicate position and range
+      Projector abilityTargetIndicator = ((PointAbility)ability).targetIndicator;
+      targetIndicator = Instantiate(abilityTargetIndicator.gameObject, transform.position, Quaternion.Euler(90, 0, 0), transform);
+    }
+  }
+
+  void UpdateTargetIndicator()
+  {
+    if (!targetIndicator) return;
+
+    float camXRot = Camera.main.transform.eulerAngles.x;
+    float zPosition = (60 - camXRot) / 4;
+
+    zPosition = Mathf.Clamp(zPosition, 0, activeAbility.range);
+    Vector3 position = transform.position + transform.forward * zPosition;
+
+    targetIndicator.transform.position = position;
   }
 
 }

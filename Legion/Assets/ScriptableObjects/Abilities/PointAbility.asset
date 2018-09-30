@@ -22,7 +22,6 @@ MonoBehaviour:
   targetRequirement: 0
   targetTeam: 0
   castType: 0
-  targetType: 2
   effects:
   - {fileID: 11400000, guid: b7ea5c873b6e27f42863156f22fdb520, type: 2}
   animationTrigger: 2
@@ -32,4 +31,9 @@ MonoBehaviour:
   owner: {fileID: 0}
   environmentLayer: 0
   targetLayer: 0
+  instantiationSettings:
+    InstantiationPosition: 0
+  targetIndicator: {fileID: 119491402789573550, guid: 347b4727f4ac0574d8f1620cd1b2c270,
+    type: 2}
   prefab: {fileID: 1620664206651942, guid: c0d1aa689f094984f918a5efbe46be5e, type: 2}
+  aoeRange: 5

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovementBuff
   instantiationSettings:
     InstantiationPosition: 0
-    useLocalScale: 0
+    useLocalScale: 1
   onHitEffect: {fileID: 198519680830739212, guid: 950ffccb809cd384a8180002ffefb678,
     type: 2}
   constantEffect: 1

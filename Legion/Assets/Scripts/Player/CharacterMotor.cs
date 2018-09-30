@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-public class CharacterMotor : MonoBehaviour
+public class CharacterMotor : MonoBehaviour, IMotor
 {
   [Header("Motor Settings")]
   public bool useGravity = true;
   public float speed = 1f;
   public float fallMultiplier = 2.5f;
   public float jumpPower = 50f;
+  float speedModifier = 1f;
   [HideInInspector] public CharacterController controller;
 
   Vector3 movement;
@@ -27,12 +28,10 @@ public class CharacterMotor : MonoBehaviour
     if (isBlocked)
     {
       movement = Vector3.zero;
-      if (useGravity)
-      {
-        vSpeed += Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        movement.y = vSpeed;
-        controller.Move(movement * Time.deltaTime);
-      }
+      if (!useGravity) return;
+      vSpeed += Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+      movement.y = vSpeed;
+      controller.Move(movement * Time.deltaTime);
       return;
     }
     float movementVertical = Input.GetAxisRaw("Vertical");
@@ -41,7 +40,7 @@ public class CharacterMotor : MonoBehaviour
 
     movement = new Vector3(movementHorizontal, 0, movementVertical) * movementMultiplier;
     movement = transform.TransformDirection(movement);
-    movement *= speed;
+    movement *= speed * speedModifier;
     movement = Vector3.ClampMagnitude(movement, speed);
     if (controller.isGrounded)
     {
@@ -52,6 +51,11 @@ public class CharacterMotor : MonoBehaviour
     if (useGravity) vSpeed += Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
     movement.y = vSpeed;
     controller.Move(movement * Time.deltaTime);
+  }
+
+  public void ApplyModifier(float value)
+  {
+    speedModifier += value;
   }
 
 }

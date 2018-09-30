@@ -1,39 +1,43 @@
 ---------------------------------------------------------------------------------------------
-# Day 1 - 2
+# Day 1
 ---------------------------------------------------------------------------------------------
-Finished abilities: 
-Target Ability, Bolt, Heal, Melee, Passive Movement buff, AOE, TidalWave
-
-Player can cast:
-TidalWave: true
-Bolt: true 
-Target Ability: false (target)
-Heal: false (target)
-Melee: false (target)
-Passive Movement buff: false (passive,  (target))
-AOE: false (point)
-
-
-
-- Targeting script
-  Animated portraits: https://www.youtube.com/watch?v=ISrNP5CPnLM
-	
-- Target indicator for Point abilities
-
-
-
-
+- Add ClosestDistance and replace with all distance checks
 	
 - Organize scripts in Project 
   Ability System should move from sandbox
+  Targeting system from Sandbox
 	
 ---------------------------------------------------------------------------------------------
 
+
+
+---------------------------------------------------------------------------------------------
+# Day 2
+---------------------------------------------------------------------------------------------
+- Target indicator for Target abilities
+- Target indicator for Direction abilities
+- Targeting for friendly units
+
+# Player can cast:
+Target Ability: false (target)
+Heal: false (target)
+Melee: false (target)
+
+# Health bar
+  Have default colors = red?
+	Use Color GameManager.instance.GetHealthColor()
+  Color based on Team
+	Green = Ally
+	Red = Hostile
+		
+---------------------------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------------------------
 # Day 3
 ---------------------------------------------------------------------------------------------
+# Death ragdolls
+# Projector spell indicator
 # Health bar
   Have default colors = red?
 	Use Color GameManager.instance.GetHealthColor()
@@ -41,6 +45,16 @@ AOE: false (point)
 	Green = Ally
 	Red = Hostile
 	
+	
+
+# Make a level with paper assets
+---------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------
+# Day 4
+---------------------------------------------------------------------------------------------
 # Animations
 - Organize animations (wizard, units, shared)
   Animations should be both BR and Regular
@@ -48,19 +62,8 @@ AOE: false (point)
 - Attack animation for ranged and melee
   Bow animation
   Sword attack animation
-	
-# Death ragdolls
-# Projector spell indicator
-
-# Make a level with paper assets
----------------------------------------------------------------------------------------------
-
-
-
-
----------------------------------------------------------------------------------------------
-# Day 4
----------------------------------------------------------------------------------------------
+  
+  
 # Armor/damage types
 - Use scriptableobjects, ryan hipple => elements talk (unite 2017)
 - Separate SelfBlocked from OtherBlocked (add this to later todo, selfblock => cant start new stuff, otherblock interrupt everything)

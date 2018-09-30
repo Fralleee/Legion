@@ -23,7 +23,7 @@ MonoBehaviour:
   targetTeam: 1
   castType: 1
   effects:
-  - {fileID: 11400000, guid: df543de0980c6c44eb187396ffd35f9e, type: 2}
+  - {fileID: 11400000, guid: 1cfaa03edb4e57649bb7e27eb0d9d725, type: 2}
   animationTrigger: 0
   startEffect: {fileID: 0}
   onCastEffect: {fileID: 0}

@@ -36,25 +36,21 @@ public class Builder : MonoBehaviour
 
   void Update()
   {
-    if (buildingInstance && canBuild)
+    if (!buildingInstance || !canBuild) return;
+    if (Input.GetMouseButtonDown(0))
     {
-      if (Input.GetMouseButtonDown(0))
-      {
-        if (Input.GetKey(KeyCode.LeftShift)) Build(true);
-        else Build();
-      }
-      if (Input.GetMouseButtonDown(1)) Cancel();
+      if (Input.GetKey(KeyCode.LeftShift)) Build(true);
+      else Build();
     }
+    if (Input.GetMouseButtonDown(1)) Cancel();
   }
 
   public void Build(bool shouldReset = false)
   {
-    if (buildingInstance.SetBuilding())
-    {
-      gridProjector.enabled = false;
-      buildingInstance = null;
-      if (shouldReset) ActivateBuilding(recentBuilding);
-    }
+    if (!buildingInstance.SetBuilding()) return;
+    gridProjector.enabled = false;
+    buildingInstance = null;
+    if (shouldReset) ActivateBuilding(recentBuilding);
   }
 
   public void Cancel()

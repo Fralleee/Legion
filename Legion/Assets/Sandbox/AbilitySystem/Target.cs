@@ -8,6 +8,7 @@ public class Target
   [HideInInspector] public GameObject gameObject;
   [HideInInspector] public Transform transform;
   [HideInInspector] public Vector3 position;
+  [HideInInspector] public Collider collider;
   [HideInInspector] public string name;
   [HideInInspector] public float Width = 0.5f;
   [HideInInspector] public float lastAttack;
@@ -23,7 +24,8 @@ public class Target
     gameObject = t.gameObject;
     transform = t;
     position = t.position;
-    Width = t.GetComponent<Collider>().bounds.size.x / 2;
+    collider = t.GetComponent<Collider>();
+    Width = collider.bounds.size.x / 2;
     name = t.name;
     lastAttack = Time.time;
   }
@@ -33,7 +35,8 @@ public class Target
     gameObject = go;
     transform = go.transform;
     position = go.transform.position;
-    Width = go.GetComponent<Collider>().bounds.size.x / 2;
+    collider = go.GetComponent<Collider>();
+    Width = collider.bounds.size.x / 2;
     name = go.name;
     lastAttack = Time.time;
   }

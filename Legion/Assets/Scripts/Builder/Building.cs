@@ -36,14 +36,11 @@ public class Building : MonoBehaviour
   }
   public bool SetBuilding(Transform parent = null)
   {
-    if (GetComponent<PlacementCollisionDetection>().allowedPlacement)
-    {
-      Destroy(GetComponent<SetBuilding>());
-      transform.position = transform.position.Flat();
-      transform.parent = parent;
-      return true;
-    }
-    return false;
+    if (!GetComponent<PlacementCollisionDetection>().allowedPlacement) return false;
+    Destroy(GetComponent<SetBuilding>());
+    transform.position = transform.position.Flat();
+    transform.parent = parent;
+    return true;
   }
 
   void OnDestroy()
